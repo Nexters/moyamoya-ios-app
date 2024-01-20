@@ -16,6 +16,7 @@ extension ButtonStyle where Self == DefaultFunchButtonStyle {
 
 /// 우리 앱에서 사용하는  `기본` 버튼 스타일
 struct DefaultFunchButtonStyle: ButtonStyle {
+    /// 버튼 클릭 여부에 따른 fade 여부
     var fadeOnPress = true
     
     func makeBody(configuration: Configuration) -> some View {
