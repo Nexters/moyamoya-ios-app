@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Text("친구와 프로필 매칭하기")
                 .font(.system(size: 14, weight: .bold))
                 .multilineTextAlignment(.center)
@@ -33,6 +33,9 @@ struct OnboardingView: View {
                 .font(.system(size: 14, weight: .bold))
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+            
+            Spacer()
+                .frame(height: 8)
             
             Button {
                 // action

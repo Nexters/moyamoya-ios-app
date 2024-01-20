@@ -297,9 +297,17 @@
 		1ACE49872B5BAB7000024336 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */,
+				1ACE49882B5BAFDD00024336 /* Style */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		1ACE49882B5BAFDD00024336 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

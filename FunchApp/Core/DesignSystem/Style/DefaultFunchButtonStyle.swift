@@ -27,6 +27,5 @@ struct DefaultFunchButtonStyle: ButtonStyle {
             .opacity(configuration.isPressed && fadeOnPress ? 0.75 : 1)
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
-            
     }
 }
