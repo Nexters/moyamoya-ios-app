@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct ProfileDTO {
+    
+}
+
+extension ProfileDTO {
+//    func toDomain() -> Profile {
+//        
+//    }
+}
+
+
