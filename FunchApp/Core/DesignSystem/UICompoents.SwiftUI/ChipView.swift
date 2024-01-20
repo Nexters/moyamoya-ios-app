@@ -65,9 +65,8 @@ struct ChipView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.black)
             }
-            .padding(.leading, 8)
+            .padding([.vertical, .leading], 8)
             .padding(.trailing, 16)
-            .padding(.vertical, 8)
             .frame(height: 48, alignment: .leading)
             .background(Color(red: 0.96, green: 0.96, blue: 0.96))
             .clipShape(RoundedRectangle(cornerRadius: 16))
