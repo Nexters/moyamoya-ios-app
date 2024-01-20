@@ -32,7 +32,18 @@ struct ProfileEditorView: View {
                 HStack(alignment: .top) {
                     Text("직군")
                         .frame(width: 52, alignment: .leading)
-                    grid
+                    
+                    FlowLayoutGrid(alignment: .leading, itemSpacing: 10, lineSpacing: 10) {
+                        Text("test")
+                            .frame(width: 70)
+                            .background(Color.gray)
+                        Text("test")
+                            .frame(width: 100)
+                            .background(Color.gray)
+                        Text("test")
+                            .frame(width: 150)
+                            .background(Color.gray)
+                    }
                 }
                 
                 HStack(alignment: .top) {
@@ -67,42 +78,63 @@ struct ProfileEditorView: View {
     }
     
     
-    let testDummy: [String] = [
-        "test",
-        "asdfasdf",
-        "fe",
-        "awvewc"
-    ]
-    let columns: [GridItem] = [
-//        .init(.fixed(50)),
-//        .init(.fixed(100)),
-//        .init(.fixed(120))
-//        .init(.flexible(maximum: 300)),
-//        .init(.flexible(maximum: 300)),
-//        .init(.flexible(maximum: 300)),
-        .init(.adaptive(minimum: 50), spacing: 10)
-    ]
-    var grid: some View {
-        LazyVGrid(columns: columns, alignment: .leading) {
-            ForEach((2...9), id: \.self) { t in
-                Text("\(t * t * t * t * t)")
-                    .frame(maxWidth: .infinity)
-                    .background(Color.cyan)
-            }
-//            Text("test")
-//                .padding(.horizontal)
-//                .background(Color.gray)
-//            Text("fewafe")
-//                .padding(.horizontal)
-//                .background(Color.gray)
-//            Text("awvmeokwmcoe")
-//                .padding(.horizontal)
-//                .background(Color.gray)
-        }
-        .background(Color.blue)
-    }
 }
 
 #Preview {
     ProfileEditorView()
+}
+
+
+
+struct FlowLayoutGrid {
+    var alignment: HorizontalAlignment = .leading
+    var itemSpacing: CGFloat
+    var lineSpacing: CGFloat
+    
+    init(alignment: HorizontalAlignment,
+         itemSpacing: CGFloat,
+         lineSpacing: CGFloat) {
+        self.alignment = alignment
+        self.itemSpacing = itemSpacing
+        self.lineSpacing = lineSpacing
+    }
+}
+
+extension FlowLayoutGrid: Layout {
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let width = proposal.replacingUnspecifiedDimensions().width
+        let sizes = subviews.map { $0.sizeThatFits(.zero) }
+        return calculateLayout(of: sizes, containerWidth: width).size
+    }
+    
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let sizes = subviews.map { $0.sizeThatFits(.zero) }
+        let offsets = calculateLayout(of: sizes, containerWidth: bounds.width).offsets
+        for (offset, subview) in zip(offsets, subviews) {
+            subview.place(at: .init(x: offset.x + bounds.minX, y: offset.y + bounds.minY), proposal: .unspecified)
+        }
+    }
+}
+
+extension FlowLayoutGrid {
+    func calculateLayout(of subviewSizes: [CGSize], containerWidth: CGFloat) -> (offsets: [CGPoint], size: CGSize) {
+        var offsets: [CGPoint] = []
+        var containerSize: CGSize = .zero
+        
+        var curPos: CGPoint = .zero
+        for size in subviewSizes {
+            if curPos.x + size.width > containerWidth {
+                curPos.x = 0
+                curPos.y += size.height + lineSpacing
+            }
+            
+            offsets.append(curPos)
+            curPos.x += size.width + itemSpacing
+            
+            containerSize.width = max(containerSize.width, curPos.x)
+            containerSize.height = max(containerSize.height, curPos.y + size.height)
+        }
+        
+        return (offsets, containerSize)
+    }
 }
