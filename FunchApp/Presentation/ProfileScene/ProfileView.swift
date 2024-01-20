@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    let items: [String] = ["1", "2", "3"]
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("USERCODE")
@@ -18,6 +20,9 @@ struct ProfileView: View {
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(Color(red: 0.68, green: 0.68, blue: 0.68))
                 .frame(maxWidth: .infinity, alignment: .topLeading)
+            
+            ChipView(title: "Nexters")
+            ChipView(title: "Nexters", imageName: "")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)

@@ -28,6 +28,7 @@
 		1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
 		1ACE49832B5BA4A400024336 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49822B5BA4A400024336 /* APIClient.swift */; };
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
+		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1ACE497F2B5BA46600024336 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		1ACE49822B5BA4A400024336 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
+		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACE49882B5BAFDD00024336 /* Style */,
+				1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -308,6 +311,14 @@
 				1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE498C2B5C111500024336 /* ChipView.swift */,
+			);
+			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +403,7 @@
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,
+				1ACE498D2B5C111500024336 /* ChipView.swift in Sources */,
 				1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,
