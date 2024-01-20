@@ -27,6 +27,7 @@
 		1ACE497D2B5BA3B600024336 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497C2B5BA3B600024336 /* ProfileDTO.swift */; };
 		1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
 		1ACE49832B5BA4A400024336 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49822B5BA4A400024336 /* APIClient.swift */; };
+		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		1ACE497C2B5BA3B600024336 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		1ACE497F2B5BA46600024336 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		1ACE49822B5BA4A400024336 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
+				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
 				1ACE49512B5B9D8D00024336 /* Domain */,
 				1ACE494B2B5B9D6000024336 /* Presentation */,
@@ -283,6 +286,30 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		1ACE49842B5BAB5000024336 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE49872B5BAB7000024336 /* DesignSystem */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1ACE49872B5BAB7000024336 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE49882B5BAFDD00024336 /* Style */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		1ACE49882B5BAFDD00024336 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
+				1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1ACE49732B5BA29700024336 /* ProfileUseCase.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* ProfileDTO.swift in Sources */,
