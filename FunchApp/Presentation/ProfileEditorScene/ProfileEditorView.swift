@@ -31,23 +31,25 @@ struct ProfileEditorView: View {
                 
                 HStack(alignment: .top) {
                     Text("직군")
-                        .frame(width: 52, alignment: .leading)
+                        .frame(width: 52, height: 48, alignment: .leading)
                     
-                    FlowLayoutGrid(alignment: .leading, itemSpacing: 10, lineSpacing: 10) {
-                        Text("test")
-                            .frame(width: 70)
-                            .background(Color.gray)
-                        Text("test")
-                            .frame(width: 100)
-                            .background(Color.gray)
-                        Text("test")
-                            .frame(width: 150)
-                            .background(Color.gray)
+                    HStack {
+                        ChipView(title: "개발자", imageName: "plus")
+                        Spacer()
+                            .frame(width: 8)
+                        ChipView(title: "디자이너", imageName: "plus")
                     }
                 }
                 
                 HStack(alignment: .top) {
                     Text("동아리")
+                        .frame(width: 52, height: 48, alignment: .leading)
+                    
+                    FlowLayoutGrid(alignment: .leading, itemSpacing: 8, lineSpacing: 8) {
+                        ChipView(title: "넥스터즈", imageName: "plus")
+                        ChipView(title: "SOPT", imageName: "plus")
+                        ChipView(title: "Depromeet", imageName: "plus")
+                    }
                 }
                 
                 HStack(alignment: .top) {
@@ -56,6 +58,14 @@ struct ProfileEditorView: View {
                 
                 HStack(alignment: .top) {
                     Text("생일")
+                        .frame(width: 52, height: 56, alignment: .leading)
+                    
+                    VStack(alignment: .leading) {
+                        FunchTextField(onSubmit: {},
+                                       bindingText: $userNickName,
+                                       placeholder: "test")
+                        Text("test")
+                    }
                 }
                 
                 HStack(alignment: .center) {
@@ -103,12 +113,12 @@ struct FlowLayoutGrid {
 extension FlowLayoutGrid: Layout {
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let width = proposal.replacingUnspecifiedDimensions().width
-        let sizes = subviews.map { $0.sizeThatFits(.zero) }
+        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
         return calculateLayout(of: sizes, containerWidth: width).size
     }
     
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let sizes = subviews.map { $0.sizeThatFits(.zero) }
+        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
         let offsets = calculateLayout(of: sizes, containerWidth: bounds.width).offsets
         for (offset, subview) in zip(offsets, subviews) {
             subview.place(at: .init(x: offset.x + bounds.minX, y: offset.y + bounds.minY), proposal: .unspecified)
