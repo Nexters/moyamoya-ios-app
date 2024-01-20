@@ -28,7 +28,8 @@
 		1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
 		1ACE49832B5BA4A400024336 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49822B5BA4A400024336 /* APIClient.swift */; };
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
-		3EA69BFB2B5BF0B9008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFA2B5BF0B9008AE23B /* FunchTextField.swift */; };
+		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
+		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,8 @@
 		1ACE497F2B5BA46600024336 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		1ACE49822B5BA4A400024336 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
-		3EA69BFA2B5BF0B9008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
+		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,8 +301,8 @@
 		1ACE49872B5BAB7000024336 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				3EA69BF92B5BF0AC008AE23B /* UIComponent */,
 				1ACE49882B5BAFDD00024336 /* Style */,
+				1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -313,12 +315,13 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
-		3EA69BF92B5BF0AC008AE23B /* UIComponent */ = {
+		1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				3EA69BFA2B5BF0B9008AE23B /* FunchTextField.swift */,
+				1ACE498C2B5C111500024336 /* ChipView.swift */,
+				3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */,
 			);
-			path = UIComponent;
+			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,17 +396,18 @@
 			files = (
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
 				1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */,
+				3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1ACE49732B5BA29700024336 /* ProfileUseCase.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* ProfileDTO.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
 				1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */,
 				1ACE49582B5B9ECE00024336 /* MatchResultView.swift in Sources */,
-				3EA69BFB2B5BF0B9008AE23B /* FunchTextField.swift in Sources */,
 				1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,
+				1ACE498D2B5C111500024336 /* ChipView.swift in Sources */,
 				1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,

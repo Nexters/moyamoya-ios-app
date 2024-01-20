@@ -11,7 +11,10 @@ import SwiftUI
 struct FunchAppApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingView()
+            NavigationStack {
+                ProfileView()
+            }
+            
         }
     }
 }
