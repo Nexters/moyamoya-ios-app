@@ -49,7 +49,8 @@ struct ChipView: View {
             .padding(.vertical, 8)
             .frame(height: 48, alignment: .leading)
             .background(Color(red: 0.96, green: 0.96, blue: 0.96))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            
         case .image:
             HStack(alignment: .center, spacing: 0) {
                 Image(systemName: "plus")
@@ -65,11 +66,12 @@ struct ChipView: View {
                     .foregroundColor(.black)
             }
             .padding(.leading, 8)
-            .padding(.trailing, 8)
+            .padding(.trailing, 16)
             .padding(.vertical, 8)
             .frame(height: 48, alignment: .leading)
             .background(Color(red: 0.96, green: 0.96, blue: 0.96))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            
         }
         
     }
