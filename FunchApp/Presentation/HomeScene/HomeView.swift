@@ -8,11 +8,13 @@
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
+    
     @Published var state = State()
     
     /// 상태
     struct State {
-        var text: String = ""
+        /// 코드 검색 텍스트 필드
+        var serachCodeText: String = ""
     }
 }
 
@@ -78,7 +80,7 @@ struct HomeView: View {
             Spacer()
                 .frame(height: 16)
             
-            TextField("여기 성민이 텍스트 필드로 교체할 것", text: $viewModel.state.text)
+            TextField("여기 성민이 텍스트 필드로 교체할 것", text: $viewModel.state.serachCodeText)
                 .background(.blue)
         }
         .padding(.vertical, 24)
@@ -110,7 +112,6 @@ struct HomeView: View {
             
             Spacer()
         }
-        
         .padding(.horizontal, 16)
         .padding(.vertical, 24)
         .background(.red)
@@ -163,7 +164,6 @@ struct HomeView: View {
             
             Spacer()
         }
-        
         .padding(.horizontal, 16)
         .padding(.vertical, 24)
         .background(.red)
