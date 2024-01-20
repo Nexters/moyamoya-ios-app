@@ -18,7 +18,7 @@ struct ChipView: View {
     }
     
     /// 칩 뷰 타입
-    var type: ViewType
+    private(set) var type: ViewType
     
     init(title: String, imageName: String? = nil) {
         self.title = title
