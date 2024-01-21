@@ -43,6 +43,7 @@ struct FunchTextField: View {
                 .frame(width: 8)
             
             TextField(placeholder, text: bindingText)
+                .font(.system(size: 14))
                 .onSubmit {
                     action()
                 }
