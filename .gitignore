@@ -112,4 +112,4 @@ iOSInjectionProject/
 
 # 개인 커스텀
 *.DS_Store
-APIEnvironment.swift
+FunchApp/Core/Network/APIEnvironment.swift
