@@ -19,5 +19,3 @@ extension ResponseDTO.ProfileDTO {
         return Profile.testableValue
     }
 }
-
-

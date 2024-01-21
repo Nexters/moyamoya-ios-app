@@ -25,6 +25,8 @@ struct Profile {
     var constellation: String
     /// 지하철 역
     var subwayName: String
+    /// 조회수
+    var viewerShip: String
     
     /// 전공
     struct Major {
@@ -54,7 +56,8 @@ extension Profile {
             club: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
             constellation: "물병",
-            subwayName: "강남"
+            subwayName: "강남",
+            viewerShip: "31"
         )
     }
 }
