@@ -39,9 +39,8 @@
 		1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE495B2B5B9EF200024336 /* OnboardingView.swift */; };
 		1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49632B5B9F4A00024336 /* Profile.swift */; };
 		1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */; };
-		1ACE496A2B5BA19200024336 /* ProfileEditorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* ProfileEditorUseCase.swift */; };
+		1ACE496A2B5BA19200024336 /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* ProfileUseCase.swift */; };
 		1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49702B5BA29000024336 /* HomeUseCase.swift */; };
-		1ACE49732B5BA29700024336 /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49722B5BA29700024336 /* ProfileUseCase.swift */; };
 		1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */; };
 		1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */; };
 		1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49782B5BA2F100024336 /* UserDataStorage.swift */; };
@@ -84,9 +83,8 @@
 		1ACE495B2B5B9EF200024336 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1ACE49632B5B9F4A00024336 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryType.swift; sourceTree = "<group>"; };
-		1ACE49692B5BA19200024336 /* ProfileEditorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorUseCase.swift; sourceTree = "<group>"; };
+		1ACE49692B5BA19200024336 /* ProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCase.swift; sourceTree = "<group>"; };
 		1ACE49702B5BA29000024336 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
-		1ACE49722B5BA29700024336 /* ProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCase.swift; sourceTree = "<group>"; };
 		1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultUseCase.swift; sourceTree = "<group>"; };
 		1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUseCase.swift; sourceTree = "<group>"; };
 		1ACE49782B5BA2F100024336 /* UserDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorage.swift; sourceTree = "<group>"; };
@@ -301,19 +299,10 @@
 			children = (
 				1ACE496C2B5BA22C00024336 /* HomeScene */,
 				1ACE496F2B5BA27600024336 /* ProfileScene */,
-				1ACE496B2B5BA21F00024336 /* ProfileEditorScene */,
 				1ACE496D2B5BA23400024336 /* MatchResultScene */,
 				1ACE496E2B5BA23E00024336 /* OnboardingScene */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		1ACE496B2B5BA21F00024336 /* ProfileEditorScene */ = {
-			isa = PBXGroup;
-			children = (
-				1ACE49692B5BA19200024336 /* ProfileEditorUseCase.swift */,
-			);
-			path = ProfileEditorScene;
 			sourceTree = "<group>";
 		};
 		1ACE496C2B5BA22C00024336 /* HomeScene */ = {
@@ -343,7 +332,7 @@
 		1ACE496F2B5BA27600024336 /* ProfileScene */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49722B5BA29700024336 /* ProfileUseCase.swift */,
+				1ACE49692B5BA19200024336 /* ProfileUseCase.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -506,7 +495,6 @@
 				1A792B892B5D62A300A080F2 /* SearchUserQuery.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */,
-				1ACE49732B5BA29700024336 /* ProfileUseCase.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* ProfileDTO.Requset.swift in Sources */,
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
@@ -530,7 +518,7 @@
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStationDTO.Request.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* SearchUserDTO.Request.swift in Sources */,
-				1ACE496A2B5BA19200024336 /* ProfileEditorUseCase.swift in Sources */,
+				1ACE496A2B5BA19200024336 /* ProfileUseCase.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */,
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
