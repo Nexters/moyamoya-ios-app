@@ -20,7 +20,7 @@ extension DefaultTargetType: TargetType {
 
     var baseURL: URL {
         guard let url = URL(string: APIEnvironment.develop.urlString) else {
-            fatalError("fatal error - invalid api url")
+            fatalError("❗️URL 타입 변환에 실패했습니다.")
         }
         return url
     }
