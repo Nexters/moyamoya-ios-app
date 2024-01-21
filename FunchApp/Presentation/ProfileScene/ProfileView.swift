@@ -21,8 +21,40 @@ struct ProfileView: View {
                 .foregroundColor(Color(red: 0.68, green: 0.68, blue: 0.68))
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             
-            ChipView(title: "Nexters")
-            ChipView(title: "Nexters", imageName: "")
+            HStack(spacing: 0) {
+                Text("직군")
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(0)
+                    .font(.system(size: 14))
+                    .foregroundColor(Color(red: 0.18, green: 0.18, blue: 0.18))
+                    .frame(width: 52, alignment: .leading)
+                
+//                Spacer()
+//                    .frame(width: 14)
+                
+                ChipView(title: "Nexters", imageName: "")
+                
+                Spacer()
+            }
+//            .padding(.horizontal, 20)
+            
+            Grid(alignment: .leading) {
+                GridRow {
+                    Text("직군")
+                        .frame(width: 52, alignment: .leading)
+//                        .lineLimit(0)
+                        .font(.system(size: 14))
+                        .foregroundColor(Color(red: 0.18, green: 0.18, blue: 0.18))
+                        .background(.red)
+                        
+                    ChipView(title: "Nexters", imageName: "")
+                    
+//                    Spacer()
+                }
+            }
+            
+//            ChipView(title: "Nexters")
+//            ChipView(title: "Nexters", imageName: "")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
@@ -35,4 +67,8 @@ struct ProfileView: View {
                 .stroke(Color(red: 0.89, green: 0.89, blue: 0.89), lineWidth: 1)
         )
     }
+}
+
+#Preview {
+    ProfileView()
 }
