@@ -47,13 +47,11 @@ struct ProfileChipRow: View {
         switch type {
         case .직군:
             let major = profile.major
-                .compactMap { $0 }
                 .map { $0 }
                 .first!
             return ChipView(title: major.name, imageName: major.imageName)
         case .동아리:
             let club = profile.club
-                .compactMap { $0 }
                 .map { $0 }
                 .first!
             return ChipView(title: club.name, imageName: club.imageName)
