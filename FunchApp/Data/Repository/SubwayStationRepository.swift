@@ -21,7 +21,7 @@ final class SubwayStationRepository: SubwayStationRepositoryType {
         completion: @escaping (Result<Profile, Error>) -> Void
     ) {
         let requestDTO = RequestDTO.SearchSubwayStationDTO(query: searchSubwayStationQuery)
-        provider.request(.createUserProfile(parameters: requestDTO.toDitionary)) { result in
+        provider.request(.searchSubwayStations(parameters: requestDTO.toDitionary)) { result in
             switch result {
             case .success(let response):
                 let data = try? JSONDecoder().decode(ResponseDTO.ProfileDTO.self, from: response.data)
