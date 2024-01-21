@@ -27,7 +27,7 @@ struct Profile {
     var subwayName: String
     
     /// 전공
-    struct Major {
+    struct Major: Hashable {
         /// 전공 이름
         var name: String
         /// 전공 이미지
@@ -35,7 +35,7 @@ struct Profile {
     }
     
     /// 동아리
-    struct Club {
+    struct Club: Hashable {
         /// 동아리 이름
         var name: String
         /// 동아리 이미지
@@ -56,5 +56,26 @@ extension Profile {
             constellation: "물병",
             subwayName: "강남"
         )
+    }
+}
+
+extension Profile.Major {
+    
+    static var dummies: [Profile.Major] {
+        return [
+            .init(name: "개발자", imageName: "plus"),
+            .init(name: "디자이너", imageName: "plus"),
+        ]
+    }
+}
+
+extension Profile.Club {
+    
+    static var dummies: [Profile.Club] {
+        return [
+            .init(name: "넥스터즈", imageName: "plus"),
+            .init(name: "SOPT", imageName: "plus"),
+            .init(name: "Depromeet", imageName: "plus"),
+        ]
     }
 }
