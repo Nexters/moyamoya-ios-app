@@ -124,7 +124,6 @@
 		1ACE494E2B5B9D7800024336 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49812B5BA49600024336 /* Network */,
 				1ACE497E2B5BA45800024336 /* Repository */,
 				1ACE497B2B5BA39D00024336 /* DataMapping */,
 				1ACE497A2B5BA38200024336 /* PersistentStorage */,
@@ -294,6 +293,7 @@
 		1ACE49842B5BAB5000024336 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1ACE49812B5BA49600024336 /* Network */,
 				1ACE49872B5BAB7000024336 /* DesignSystem */,
 			);
 			path = Core;
