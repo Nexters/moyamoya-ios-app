@@ -33,6 +33,7 @@
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* FlowLayoutGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* FlowLayoutGrid.swift */; };
 		3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */; };
+		3EA69C052B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C042B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
 		3EA69C002B5D61E9008AE23B /* FlowLayoutGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutGrid.swift; sourceTree = "<group>"; };
 		3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTapEffectButtonStyle.swift; sourceTree = "<group>"; };
+		3EA69C042B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMBTIButtonPair.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACE49592B5B9EDE00024336 /* ProfileEditorView.swift */,
+				3EA69C042B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift */,
 			);
 			path = ProfileEditorScene;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* ProfileEditorUseCase.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
+				3EA69C052B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */,
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1ACE49832B5BA4A400024336 /* APIClient.swift in Sources */,
