@@ -16,6 +16,8 @@ enum DefaultTargetType {
     case createUserProfile(parameters: DictionaryType)
     /// `지하철 역` 검색
     case searchSubwayStations(parameters: DictionaryType)
+    /// `타인 프로필` 검색
+    case searchUser(parameters: DictionaryType)
 }
 
 extension DefaultTargetType: TargetType {
@@ -35,13 +37,16 @@ extension DefaultTargetType: TargetType {
             return "/user/create"
         case .searchSubwayStations(_):
             return "search/subways"
+        case .searchUser(_):
+            return "search/user"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .getUserProfile(_),
-                .searchSubwayStations(_):
+                .searchSubwayStations(_),
+                .searchUser(_):
             return .get
         case .createUserProfile:
             return .post
@@ -53,7 +58,8 @@ extension DefaultTargetType: TargetType {
         case .getUserProfile:
             return .requestPlain
         case let .createUserProfile(parameters),
-            let .searchSubwayStations(parameters):
+            let .searchSubwayStations(parameters),
+            let .searchUser(parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }
