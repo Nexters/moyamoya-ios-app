@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProfileMBTIButtonPair: View {
     
-    var action: (String) -> Void
+    var action: (Int) -> Void
     var dataPair: [String]
     
     @State var buttonSelected: Int?
     
-    init(onTap action: @escaping (String) -> Void,
+    init(onTap action: @escaping (Int) -> Void,
          dataPair: [String]) {
         self.action = action
         self.dataPair = dataPair
@@ -25,7 +25,7 @@ struct ProfileMBTIButtonPair: View {
             VStack(spacing: 0) {
                 ForEach(0..<2) { i in
                     Button {
-                        action(dataPair[i])
+                        action(i)
                         self.buttonSelected = i
                     } label: {
                         Text(dataPair[i])
