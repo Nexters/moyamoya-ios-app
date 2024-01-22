@@ -57,7 +57,7 @@ struct ProfileInputRow: View {
                            placeholderText: "최대 00글자")
             
         case .직군:
-            DynamicGrid(alignment: .leading, itemSpacing: 8, lineSpacing: 8) {
+            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                 ForEach(Profile.Major.dummies, id: \.self) { major in
                     Button {
                         if profile.major.isEmpty { profile.major.append(major) }
@@ -78,7 +78,7 @@ struct ProfileInputRow: View {
             
         case .동아리:
             var selectedClubs: Set<Profile.Club> = Set()
-            DynamicGrid(alignment: .leading, itemSpacing: 8, lineSpacing: 8) {
+            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                 ForEach(Profile.Club.dummies, id: \.self) { club in
                     Button {
                         if selectedClubs.contains(club) { selectedClubs.remove(club) }
@@ -101,7 +101,7 @@ struct ProfileInputRow: View {
         case .MBTI:
             var selectedMBTI: [String] = .init(repeating: String(), count: 4)
             let mbtiPairData: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
-            DynamicGrid(alignment: .leading, itemSpacing: 8, lineSpacing: 8) {
+            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                 ForEach(0..<4) { i in
                     ProfileMBTIButtonPair(onTap: { index in
                         selectedMBTI[i] = mbtiPairData[i][index]
