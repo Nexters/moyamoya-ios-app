@@ -100,14 +100,16 @@ struct ProfileInputRow: View {
             
         case .MBTI:
             var selectedMBTI: [String] = .init(repeating: String(), count: 4)
+            /// Profile.MBTI에 적용될 값들입니다. 각각 쌍으로 매칭해두었습니다.
+            // FIXME: 나중에 다른 곳에 빼두면 좋을 것 같아요
             let mbtiPairData: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
             DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-                ForEach(0..<4) { i in
+                ForEach(0..<4) { pairIndex in
                     ProfileMBTIButtonPair(onTap: { index in
-                        selectedMBTI[i] = mbtiPairData[i][index]
+                        selectedMBTI[pairIndex] = mbtiPairData[pairIndex][index]
                         // action
                         print(selectedMBTI)
-                    }, dataPair: mbtiPairData[i])
+                    }, dataPair: mbtiPairData[pairIndex])
                 }
             }
             
