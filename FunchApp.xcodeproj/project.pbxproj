@@ -306,44 +306,44 @@
 		1ACE49682B5BA09700024336 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE496C2B5BA22C00024336 /* HomeScene */,
-				1ACE496F2B5BA27600024336 /* ProfileScene */,
-				1ACE496D2B5BA23400024336 /* MatchResultScene */,
-				1ACE496E2B5BA23E00024336 /* OnboardingScene */,
+				1ACE496C2B5BA22C00024336 /* Home */,
+				1ACE496F2B5BA27600024336 /* Profile */,
+				1ACE496D2B5BA23400024336 /* MatchResult */,
+				1ACE496E2B5BA23E00024336 /* Onboarding */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		1ACE496C2B5BA22C00024336 /* HomeScene */ = {
+		1ACE496C2B5BA22C00024336 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				1ACE49702B5BA29000024336 /* HomeUseCase.swift */,
 			);
-			path = HomeScene;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		1ACE496D2B5BA23400024336 /* MatchResultScene */ = {
+		1ACE496D2B5BA23400024336 /* MatchResult */ = {
 			isa = PBXGroup;
 			children = (
 				1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */,
 			);
-			path = MatchResultScene;
+			path = MatchResult;
 			sourceTree = "<group>";
 		};
-		1ACE496E2B5BA23E00024336 /* OnboardingScene */ = {
+		1ACE496E2B5BA23E00024336 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */,
 			);
-			path = OnboardingScene;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		1ACE496F2B5BA27600024336 /* ProfileScene */ = {
+		1ACE496F2B5BA27600024336 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				1ACE49692B5BA19200024336 /* ProfileUseCase.swift */,
 			);
-			path = ProfileScene;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		1ACE497A2B5BA38200024336 /* PersistentStorage */ = {
