@@ -404,8 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA69C112B5ED6DA008AE23B /* Resources */,
-				1ACE49882B5BAFDD00024336 /* Style */,
-				1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */,
+				3EA69C162B5ED816008AE23B /* Sources */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -444,6 +443,15 @@
 			children = (
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3EA69C162B5ED816008AE23B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1ACE49882B5BAFDD00024336 /* Style */,
+				1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
