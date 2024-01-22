@@ -1,5 +1,5 @@
 //
-//  FlowLayoutGrid.swift
+//  DynamicGrid.swift
 //  FunchApp
 //
 //  Created by 이성민 on 1/21/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FlowLayoutGrid {
+struct DynamicGrid {
     var alignment: HorizontalAlignment = .leading
     var itemSpacing: CGFloat
     var lineSpacing: CGFloat
@@ -21,7 +21,7 @@ struct FlowLayoutGrid {
     }
 }
 
-extension FlowLayoutGrid: Layout {
+extension DynamicGrid: Layout {
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let width = proposal.replacingUnspecifiedDimensions().width
         let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
@@ -37,7 +37,7 @@ extension FlowLayoutGrid: Layout {
     }
 }
 
-extension FlowLayoutGrid {
+extension DynamicGrid {
     func calculateLayout(of subviewSizes: [CGSize], containerWidth: CGFloat) -> (offsets: [CGPoint], size: CGSize) {
         var offsets: [CGPoint] = []
         var containerSize: CGSize = .zero
