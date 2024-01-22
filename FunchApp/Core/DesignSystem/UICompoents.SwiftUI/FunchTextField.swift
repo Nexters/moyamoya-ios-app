@@ -9,22 +9,17 @@ import SwiftUI
 
 struct FunchTextField: View {
     
-    let action: () -> Void
-    let bindingText: Binding<String>
+    @Binding var bindingText: String
     let placeholder: String
-    
     let leftImage: Image?
     let rightImage: Image?
     
-    init(onSubmit: @escaping () -> Void,
-         bindingText: Binding<String>,
+    init(bindingText: Binding<String>,
          placeholder: String = "",
          leftImage: Image? = nil,
-         rightImage: Image? = nil
-    ) {
+         rightImage: Image? = nil) {
+        self._bindingText = bindingText
         self.placeholder = placeholder
-        self.bindingText = bindingText
-        self.action = onSubmit
         self.leftImage = leftImage
         self.rightImage = rightImage
     }
@@ -42,11 +37,8 @@ struct FunchTextField: View {
             Spacer()
                 .frame(width: 8)
             
-            TextField(placeholder, text: bindingText)
+            TextField(placeholder, text: $bindingText)
                 .font(.system(size: 14))
-                .onSubmit {
-                    action()
-                }
             
             Spacer()
                 .frame(width: 8)
