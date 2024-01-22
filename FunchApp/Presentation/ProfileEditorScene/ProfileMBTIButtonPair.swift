@@ -36,11 +36,6 @@ struct ProfileMBTIButtonPair: View {
                     .buttonStyle(.noEffect)
                 }
             }
-            
-            DashedLine()
-                .stroke(style: .init(dash: [3]))
-                .fill(Color(red: 0.73, green: 0.73, blue: 0.73))
-                .frame(height: 2)
         }
         .frame(width: 48, height: 96)
         .background(Color(red: 0.96, green: 0.96, blue: 0.96))
