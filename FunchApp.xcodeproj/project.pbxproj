@@ -57,6 +57,9 @@
 		3EA69C132B5ED709008AE23B /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C122B5ED709008AE23B /* Color.xcassets */; };
 		3EA69C1A2B5ED94F008AE23B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C192B5ED94F008AE23B /* Color+.swift */; };
 		3EA69C1C2B5ED956008AE23B /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C1B2B5ED956008AE23B /* Font+.swift */; };
+		3EA69C212B5ED9D3008AE23B /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C1E2B5ED9D2008AE23B /* SpoqaHanSansNeo-Bold.otf */; };
+		3EA69C222B5ED9D3008AE23B /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C1F2B5ED9D2008AE23B /* SpoqaHanSansNeo-Medium.otf */; };
+		3EA69C232B5ED9D3008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C202B5ED9D3008AE23B /* SpoqaHanSansNeo-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		3EA69C122B5ED709008AE23B /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		3EA69C192B5ED94F008AE23B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3EA69C1B2B5ED956008AE23B /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		3EA69C1E2B5ED9D2008AE23B /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		3EA69C1F2B5ED9D2008AE23B /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
+		3EA69C202B5ED9D3008AE23B /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +451,7 @@
 		3EA69C142B5ED76E008AE23B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3EA69C1D2B5ED9BB008AE23B /* SpoqaHanSans */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -474,6 +481,16 @@
 				3EA69C192B5ED94F008AE23B /* Color+.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		3EA69C1D2B5ED9BB008AE23B /* SpoqaHanSans */ = {
+			isa = PBXGroup;
+			children = (
+				3EA69C1E2B5ED9D2008AE23B /* SpoqaHanSansNeo-Bold.otf */,
+				3EA69C1F2B5ED9D2008AE23B /* SpoqaHanSansNeo-Medium.otf */,
+				3EA69C202B5ED9D3008AE23B /* SpoqaHanSansNeo-Regular.otf */,
+			);
+			path = SpoqaHanSans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,8 +558,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */,
+				3EA69C232B5ED9D3008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				3EA69C132B5ED709008AE23B /* Color.xcassets in Resources */,
 				1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */,
+				3EA69C222B5ED9D3008AE23B /* SpoqaHanSansNeo-Medium.otf in Resources */,
+				3EA69C212B5ED9D3008AE23B /* SpoqaHanSansNeo-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
