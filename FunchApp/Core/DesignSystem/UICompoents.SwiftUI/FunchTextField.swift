@@ -9,27 +9,27 @@ import SwiftUI
 
 struct FunchTextField: View {
     
-    @Binding var bindingText: String
-    let placeholder: String
-    let leftImage: Image?
-    let rightImage: Image?
+    @Binding var text: String
+    let placeholderText: String
+    let leadingImage: Image?
+    let trailingImage: Image?
     
-    init(bindingText: Binding<String>,
-         placeholder: String = "",
-         leftImage: Image? = nil,
-         rightImage: Image? = nil) {
-        self._bindingText = bindingText
-        self.placeholder = placeholder
-        self.leftImage = leftImage
-        self.rightImage = rightImage
+    init(text: Binding<String>,
+         placeholderText: String = "",
+         leadingImage: Image? = nil,
+         trailingImage: Image? = nil) {
+        self._text = text
+        self.placeholderText = placeholderText
+        self.leadingImage = leadingImage
+        self.trailingImage = trailingImage
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Spacer()
                 .frame(width: 8)
             
-            leftImage?
+            leadingImage?
                 .resizable()
                 .padding(8)
                 .frame(width: 40, height: 40)
@@ -37,13 +37,13 @@ struct FunchTextField: View {
             Spacer()
                 .frame(width: 8)
             
-            TextField(placeholder, text: $bindingText)
+            TextField(placeholderText, text: $text)
                 .font(.system(size: 14))
             
             Spacer()
                 .frame(width: 8)
             
-            rightImage?
+            trailingImage?
                 .resizable()
                 .padding(8)
                 .frame(width: 40, height: 40)

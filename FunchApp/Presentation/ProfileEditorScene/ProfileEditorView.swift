@@ -27,8 +27,8 @@ struct ProfileEditorView: View {
                             .font(.system(size: 14))
                             .frame(width: 52, alignment: .leading)
                         
-                        FunchTextField(bindingText: $profile.userNickname,
-                                       placeholder: "최대 00글자")
+                        FunchTextField(text: $profile.userNickname,
+                                       placeholderText: "최대 00글자")
                     }
                     
                     HStack(alignment: .center, spacing: 0) {
@@ -161,8 +161,8 @@ struct ProfileEditorView: View {
     
     private var birthInputField: some View {
         VStack(alignment: .leading) {
-            FunchTextField(bindingText: $profile.birth,
-                           placeholder: "생년월일 6자리 (ex: 991114)")
+            FunchTextField(text: $profile.birth,
+                           placeholderText: "생년월일 6자리 (ex: 991114)")
             .keyboardType(.numberPad)
             .onChange(of: profile.birth) { _, newValue in
                 // action
@@ -196,9 +196,9 @@ struct ProfileEditorView: View {
     @State var subwayRecommendation: [SubwayName] = [.init(name: "test")]
     private var subwayInputField: some View {
         VStack(alignment: .leading) {
-            FunchTextField(bindingText: $profile.subwayName,
-                           placeholder: "지하철",
-                           leftImage: Image(systemName: "magnifyingglass"))
+            FunchTextField(text: $profile.subwayName,
+                           placeholderText: "지하철",
+                           leadingImage: Image(systemName: "magnifyingglass"))
             .onChange(of: profile.subwayName) { _, newValue in
                 // action
                 subwayRecommendation.append(.init(name: newValue))
