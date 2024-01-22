@@ -49,7 +49,7 @@
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
 		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
-		3EA69C012B5D61E9008AE23B /* DynamicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicGrid.swift */; };
+		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
 		3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */; };
 		3EA69C052B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C042B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift */; };
 		3EA69C0D2B5E5379008AE23B /* ProfileInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C0C2B5E5379008AE23B /* ProfileInputRow.swift */; };
@@ -99,7 +99,7 @@
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
 		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
-		3EA69C002B5D61E9008AE23B /* DynamicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGrid.swift; sourceTree = "<group>"; };
+		3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHGrid.swift; sourceTree = "<group>"; };
 		3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTapEffectButtonStyle.swift; sourceTree = "<group>"; };
 		3EA69C042B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMBTIButtonPair.swift; sourceTree = "<group>"; };
 		3EA69C0C2B5E5379008AE23B /* ProfileInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInputRow.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 			children = (
 				1ACE498C2B5C111500024336 /* ChipView.swift */,
 				3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */,
-				3EA69C002B5D61E9008AE23B /* DynamicGrid.swift */,
+				3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */,
 			);
 			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
-				3EA69C012B5D61E9008AE23B /* DynamicGrid.swift in Sources */,
+				3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */,
 				1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */,
 				1A792B872B5D605400A080F2 /* MatchingRepository.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
