@@ -60,6 +60,20 @@ extension Profile {
             viewerShip: "31"
         )
     }
+    
+    static var emptyValue: Profile {
+        return Profile(
+            userCode: "",
+            userNickname: "",
+            birth: "",
+            major: [],
+            club: [],
+            mbti: "",
+            constellation: "",
+            subwayName: "",
+            viewerShip: ""
+        )
+    }
 }
 
 extension Profile.Major {
