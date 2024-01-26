@@ -57,6 +57,10 @@
 		3EA69C132B5ED709008AE23B /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C122B5ED709008AE23B /* Color.xcassets */; };
 		3EA69C1A2B5ED94F008AE23B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C192B5ED94F008AE23B /* Color+.swift */; };
 		3EA69C1C2B5ED956008AE23B /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C1B2B5ED956008AE23B /* Font+.swift */; };
+		3EA69C292B5EDF44008AE23B /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C262B5EDF43008AE23B /* SpoqaHanSansNeo-Bold.otf */; };
+		3EA69C2A2B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C272B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf */; };
+		3EA69C2B2B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */; };
+		3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C2C2B5EE591008AE23B /* Text+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +114,11 @@
 		3EA69C122B5ED709008AE23B /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		3EA69C192B5ED94F008AE23B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3EA69C1B2B5ED956008AE23B /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		3EA69C242B5EDA19008AE23B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3EA69C262B5EDF43008AE23B /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		3EA69C272B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
+		3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
+		3EA69C2C2B5EE591008AE23B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +201,7 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
+				3EA69C242B5EDA19008AE23B /* Info.plist */,
 				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
 				1ACE49512B5B9D8D00024336 /* Domain */,
@@ -445,6 +455,7 @@
 		3EA69C142B5ED76E008AE23B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3EA69C252B5EDF35008AE23B /* SpoqaHanSans */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -464,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA69C1B2B5ED956008AE23B /* Font+.swift */,
+				3EA69C2C2B5EE591008AE23B /* Text+.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -474,6 +486,16 @@
 				3EA69C192B5ED94F008AE23B /* Color+.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		3EA69C252B5EDF35008AE23B /* SpoqaHanSans */ = {
+			isa = PBXGroup;
+			children = (
+				3EA69C262B5EDF43008AE23B /* SpoqaHanSansNeo-Bold.otf */,
+				3EA69C272B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf */,
+				3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */,
+			);
+			path = SpoqaHanSans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,8 +563,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */,
+				3EA69C2B2B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				3EA69C132B5ED709008AE23B /* Color.xcassets in Resources */,
 				1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */,
+				3EA69C2A2B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf in Resources */,
+				3EA69C292B5EDF44008AE23B /* SpoqaHanSansNeo-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +581,7 @@
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
 				3EA69C1A2B5ED94F008AE23B /* Color+.swift in Sources */,
 				1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */,
+				3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */,
 				3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */,
 				3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */,
 				1A792B772B5D55F700A080F2 /* ResponseDTO.swift in Sources */,
@@ -727,14 +753,13 @@
 		1ACE49472B5B9D0D00024336 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FunchApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -756,14 +781,13 @@
 		1ACE49482B5B9D0D00024336 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FunchApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
