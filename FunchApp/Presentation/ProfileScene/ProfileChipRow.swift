@@ -46,12 +46,12 @@ struct ProfileChipRow: View {
     private var flexibleChipView: some View {
         switch type {
         case .직군:
-            let major = profile.major
+            let major = profile.majors
                 .map { $0 }
                 .first!
             return ChipView(title: major.name, imageName: major.imageName)
         case .동아리:
-            let club = profile.club
+            let club = profile.clubs
                 .map { $0 }
                 .first!
             return ChipView(title: club.name, imageName: club.imageName)
@@ -62,7 +62,9 @@ struct ProfileChipRow: View {
             let constellation = profile.constellation
             return ChipView(title: constellation)
         case .지하철:
-            let subwayName = profile.subwayName
+            let subwayName = profile.subwayInfos
+                .map { $0.name }
+                .first ?? ""
             return ChipView(title: subwayName)
         }
     }

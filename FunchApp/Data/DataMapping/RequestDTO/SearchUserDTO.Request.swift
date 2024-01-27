@@ -10,15 +10,20 @@ import Foundation
 extension RequestDTO {
     struct SearchUserDTO: RequestType {
         
-        var userCode: String
+        /// 내가 입력한 상대방 유저 코드
+        var requestUserCode: String
+        /// 내가 입력한 상대방 유저 코드
+        var targetUserCode: String
         
         init(query: SearchUserQuery) {
-            userCode = query.userCode
+            requestUserCode = query.requestUserCode
+            targetUserCode = query.targetUserCode
         }
         
         var toDitionary: DictionaryType {
             [
-                "userCode": userCode,
+                "requestMemberId": requestUserCode,
+                "targetMemberCode": targetUserCode,
             ]
         }
     }

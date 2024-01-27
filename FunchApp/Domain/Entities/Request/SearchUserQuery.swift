@@ -8,5 +8,8 @@
 import Foundation
 
 struct SearchUserQuery {
-    var userCode: String
+    /// 나의 userCode
+    var requestUserCode: String
+    /// 상대방 userCode
+    var targetUserCode: String
 }

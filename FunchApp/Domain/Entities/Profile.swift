@@ -16,15 +16,15 @@ struct Profile {
     var birth: String
     
     /// 직군
-    var major: [Major]
+    var majors: [Major]
     /// 동아리
-    var club: [Club]
+    var clubs: [Club]
     /// mbti
     var mbti: String
     /// 별자리
     var constellation: String
     /// 지하철 역
-    var subwayName: String
+    var subwayInfos: [SubwayInfo]
     /// 조회수
     var viewerShip: String
     
@@ -52,11 +52,11 @@ extension Profile {
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
             birth: "20021225",
-            major: [.init(name: "개발자", imageName: "plus")],
-            club: [.init(name: "넥스터즈", imageName: "plus")],
+            majors: [.init(name: "개발자", imageName: "plus")],
+            clubs: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
             constellation: "물병",
-            subwayName: "강남",
+            subwayInfos: [.init(name: "동대문", lines: ["2"])],
             viewerShip: "31"
         )
     }
@@ -66,11 +66,11 @@ extension Profile {
             userCode: "",
             userNickname: "",
             birth: "",
-            major: [],
-            club: [],
+            majors: [],
+            clubs: [],
             mbti: "",
             constellation: "",
-            subwayName: "",
+            subwayInfos: [],
             viewerShip: ""
         )
     }
