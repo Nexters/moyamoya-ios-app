@@ -60,6 +60,7 @@
 		3EA69C2A2B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C272B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf */; };
 		3EA69C2B2B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */; };
 		3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C2C2B5EE591008AE23B /* Text+.swift */; };
+		3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C3E2B64C086008AE23B /* CGFloat+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		3EA69C272B5EDF44008AE23B /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		3EA69C2C2B5EE591008AE23B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
+		3EA69C3E2B64C086008AE23B /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA69C172B5ED866008AE23B /* Font */,
+				3EA69C3D2B64C047008AE23B /* Size */,
 				1ACE49882B5BAFDD00024336 /* Style */,
 				1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */,
 			);
@@ -477,14 +480,6 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		3EA69C182B5ED869008AE23B /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				3EA69C192B5ED94F008AE23B /* Color+.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
 		3EA69C252B5EDF35008AE23B /* SpoqaHanSans */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +488,14 @@
 				3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */,
 			);
 			path = SpoqaHanSans;
+			sourceTree = "<group>";
+		};
+		3EA69C3D2B64C047008AE23B /* Size */ = {
+			isa = PBXGroup;
+			children = (
+				3EA69C3E2B64C086008AE23B /* CGFloat+.swift */,
+			);
+			path = Size;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,6 +595,7 @@
 				1ACE497D2B5BA3B600024336 /* ProfileDTO.Requset.swift in Sources */,
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
+				3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */,
 				1A792B812B5D581600A080F2 /* RequestType.swift in Sources */,
 				3EA69C0F2B5E9AB2008AE23B /* View+.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* ResponseType.swift in Sources */,
