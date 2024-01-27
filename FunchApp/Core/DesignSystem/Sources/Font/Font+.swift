@@ -25,9 +25,9 @@ extension Font {
         /// weight: bold, size: 20
         static let title2: Font = .custom(FunchFontFamily.SpoqaHanSans.bold, size: 20)
         /// weight: medium, size: 18
-        static let subtitle1: Font = .custom(FunchFontFamily.SpoqaHanSans.medium, size: 18)
+        static let subtitle1: Font = .custom(FunchFontFamily.SpoqaHanSans.bold, size: 18)
         /// weight: medium, size: 16
-        static let subtitle2: Font = .custom(FunchFontFamily.SpoqaHanSans.medium, size: 16)
+        static let subtitle2: Font = .custom(FunchFontFamily.SpoqaHanSans.bold, size: 16)
         /// weight: regular, size: 14
         static let body: Font = .custom(FunchFontFamily.SpoqaHanSans.regular, size: 14)
         /// weight: regular, size: 12
@@ -105,24 +105,4 @@ extension Font {
         }
     }
     
-    
-    
 }
-
-
-///// weight: bold, size: 22
-//static let title1: Font = .custom(FunchFontFamily.SpoqaHanSans.bold, size: 22)
-///// weight: bold, size: 20
-//static let title2: Font = .custom(FunchFontFamily.SpoqaHanSans.bold, size: 20)
-///// weight: medium, size: 18
-//static let subtitle1: Font = .custom(FunchFontFamily.SpoqaHanSans.medium, size: 18)
-///// weight: medium, size: 16
-//static let subtitle2: Font = .custom(FunchFontFamily.SpoqaHanSans.medium, size: 16)
-///// weight: regular, size: 14
-//static let body: Font = .custom(FunchFontFamily.SpoqaHanSans.regular, size: 14)
-///// weight: regular, size: 12
-//static let caption: Font = .custom(FunchFontFamily.SpoqaHanSans.regular, size: 12)
-//
-//static func custom(name: FunchFontFamily.SpoqaHanSans, size: CGFloat) -> Font {
-//    .custom(name, size: size)
-//}
