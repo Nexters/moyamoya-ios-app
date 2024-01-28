@@ -15,7 +15,7 @@ extension RequestDTO {
         var birth: String
         var major: String
         var clubs: [String]
-        var subwayStation: String
+        var subwayStation: [String]
         var mbti: String
         
         init(query: CreateUserQuery) {
@@ -23,21 +23,36 @@ extension RequestDTO {
             self.birth = query.birth
             self.major = query.major
             self.clubs = query.clubs
-            self.subwayStation = query.subwayStation
+            self.subwayStation = query.subwayStationName
             self.mbti = query.mbti
         }
         
         var toDitionary: DictionaryType {
             [
-                "deviceId": deviceId,
                 "name": name,
-                "birth": birth,
-                "major": major,
+                "birthDate": birth,
+                "age": 0,
+                "jobGroup": major,
                 "clubs": clubs,
-                "subwayStation": subwayStation,
-                "mbti": mbti
+                "subwayStations": subwayStation,
+                "mbti": mbti,
+                "deviceNumber": deviceId,
             ]
         }
     }
 }
 
+//{
+//  "name": "string",
+//  "birthDate": "2024-01-28",
+//  "age": 0,
+//  "jobGroup": "string",
+//  "clubs": [
+//    "string"
+//  ],
+//  "subwayStations": [
+//    "string"
+//  ],
+//  "mbti": "string",
+//  "deviceNumber": "string"
+//}
