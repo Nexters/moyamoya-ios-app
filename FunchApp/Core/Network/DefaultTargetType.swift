@@ -32,13 +32,13 @@ extension DefaultTargetType: TargetType {
     var path: String {
         switch self {
         case let .getUserProfile(id):
-            return "/user/\(id)"
+            return "/v1/user/\(id)"
         case .createUserProfile:
             return "/user/create"
         case .searchSubwayStations(_):
             return "search/subways"
-        case .searchUser(_):
-            return "search/user"
+        case let .searchUser(id):
+            return "v1/user/members/\(id)"
         }
     }
     
@@ -55,11 +55,11 @@ extension DefaultTargetType: TargetType {
 
     var task: Task {
         switch self {
-        case .getUserProfile:
+        case .getUserProfile,
+                .searchUser(_):
             return .requestPlain
         case let .createUserProfile(parameters),
-            let .searchSubwayStations(parameters),
-            let .searchUser(parameters):
+            let .searchSubwayStations(parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }

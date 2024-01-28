@@ -17,7 +17,7 @@ enum APIEnvironment {
     var urlString: String {
         switch self {
         case .develop:
-            return ""
+            return "http://ec2-3-37-160-167.ap-northeast-2.compute.amazonaws.com/api"
         case .prodiction:
             return ""
         case .staging:
