@@ -20,7 +20,7 @@ final class SubwayStationRepository: SubwayStationRepositoryType {
         searchSubwayStationQuery: SearchSubwayStationQuery,
         completion: @escaping (Result<Profile, Error>) -> Void
     ) {
-        let requestDTO = RequestDTO.SearchSubwayStationDTO(query: searchSubwayStationQuery)
+        let requestDTO = RequestDTO.SearchSubwayStation(query: searchSubwayStationQuery)
         provider.request(.searchSubwayStations(parameters: requestDTO.toDitionary)) { result in
             switch result {
             case .success(let response):

@@ -22,7 +22,7 @@ final class MatchingRepository: MatchingRepositoryType {
         completion: @escaping (Result<Profile, Error>) -> Void
     ) {
         let requestDTO = RequestDTO.MatchingUser(query: searchUserQuery)
-        provider.request(.createUserProfile(parameters: requestDTO.toDitionary)) { result in
+        provider.request(.matchingUser(parameters: requestDTO.toDitionary)) { result in
             switch result {
             case .success(let response):
                 let data = try? JSONDecoder().decode(ResponseDTO.GetProfileDTO.self, from: response.data)

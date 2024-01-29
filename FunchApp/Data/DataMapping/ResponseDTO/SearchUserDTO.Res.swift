@@ -8,7 +8,7 @@
 import Foundation
 
 extension ResponseDTO {
-    struct SearchUserDTO: Respondable {
+    struct SearchUser: Respondable {
         var status: Int
         var message: String
         var data: DataClass
@@ -73,7 +73,7 @@ extension ResponseDTO {
     }
 }
 
-extension ResponseDTO.SearchUserDTO {
+extension ResponseDTO.SearchUser {
     func toDomain() {
 //        let majors: [Profile.Major] = [
 //            .init(name: data.targetProfile.jobGroup, imageName: "")

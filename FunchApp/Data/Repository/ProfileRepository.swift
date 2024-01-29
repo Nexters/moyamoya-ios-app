@@ -16,7 +16,7 @@ final class ProfileRepository: ProfileRepositoryType {
         provider = MoyaProvider<DefaultTargetType>()
     }
     
-    /// `내 프로필` 정보 조회
+    /// `내 프로필` 디바이스 기반 정보 조회
     func fetchProfile(completion: @escaping (Result<Profile, Error>) -> Void) {
         provider.request(.getUserProfileFromDeviceId(id: UIDevice.uuidString)) { result in
             switch result {

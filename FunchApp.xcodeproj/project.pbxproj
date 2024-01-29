@@ -11,6 +11,7 @@
 		1A44AAA92B67E848006D8894 /* GetProfileFromId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */; };
 		1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B7B2B5D56BA00A080F2 /* GetProfileFromDeviceId.Res.swift */; };
 		1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */; };
+		1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
 		1A45882F2B64D70700FBB841 /* SearchUserDTO.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */; };
 		1A4588372B64DE2100FBB841 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4588362B64DE2100FBB841 /* APIClientTests.swift */; };
 		1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
@@ -83,6 +84,7 @@
 		1A44AAA62B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileFromDeviceId.Req.swift; sourceTree = "<group>"; };
 		1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileFromId.Req.swift; sourceTree = "<group>"; };
 		1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.Req.swift; sourceTree = "<group>"; };
+		1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUser.Res.swift; sourceTree = "<group>"; };
 		1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.Res.swift; sourceTree = "<group>"; };
 		1A4588342B64DE2100FBB841 /* FunchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4588362B64DE2100FBB841 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				1A792B7B2B5D56BA00A080F2 /* GetProfileFromDeviceId.Res.swift */,
 				1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */,
 				1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */,
+				1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
 				3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */,
 				1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */,
+				1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */,
 				1A792B872B5D605400A080F2 /* MatchingRepository.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,
