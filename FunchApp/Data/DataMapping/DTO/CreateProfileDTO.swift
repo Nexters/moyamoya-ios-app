@@ -8,7 +8,7 @@
 import UIKit
 
 extension RequestDTO {
-    struct CreateUserProfileDTO: RequestType {
+    struct CreateUserProfileDTO: Requestable {
         var deviceId = UIDevice.uuidString
         
         var name: String
@@ -43,7 +43,7 @@ extension RequestDTO {
 }
 
 extension ResponseDTO {
-    struct CreateProfileDTO: ResponseType {
+    struct CreateProfileDTO: Respondable {
         var status: Int
         var message: String
         

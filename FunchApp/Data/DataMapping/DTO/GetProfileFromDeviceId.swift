@@ -7,8 +7,30 @@
 
 import Foundation
 
+extension RequestDTO {
+    /// 디바이스 아이디로 프로필을 조회
+    struct GetProfileFromDeviceId: Requestable {
+        var deviceId: String
+        
+        init(deviceId: String) {
+            self.deviceId = deviceId
+        }
+        
+        var toDitionary: DictionaryType {
+            [
+                "deviceNumber": deviceId,
+            ]
+        }
+    }
+    
+    /// 아이디로 프로필을 조회
+    struct GetProfileFromId: Requestable {
+        
+    }
+}
+
 extension ResponseDTO {
-    struct GetProfileDTO: ResponseType {
+    struct GetProfileDTO: Respondable {
         var status: Int
         var message: String
         var data: DataClass
@@ -81,27 +103,22 @@ extension ResponseDTO {
 
 extension ResponseDTO.GetProfileDTO {
     func toDomain() -> Profile {
-        return Profile.testableValue
+        
+        let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: "")]
+        let clubs = data.clubs.map { club -> Profile.Club in
+            Profile.Club(name: club, imageName: "")
+        }
+        let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
+                .init(name: name, lines: [])
+        }
+        return Profile(userCode: data.memberCode,
+                userNickname: data.name,
+                birth: data.birth,
+                majors: majors,
+                clubs: clubs,
+                mbti: data.mbti,
+                constellation: data.constellation,
+                subwayInfos: subwayInfos,
+                viewerShip: "0")
     }
 }
-//
-//{
-//  "status": "string",
-//  "message": "string",
-//  "data": {
-//    "id": "string",
-//    "name": "string",
-//    "birth": "2024-01-28",
-//    "age": 0,
-//    "constellation": "string",
-//    "jobGroup": "string",
-//    "clubs": [
-//      "string"
-//    ],
-//    "subwayStations": [
-//      "string"
-//    ],
-//    "mbti": "string",
-//    "memberCode": "string"
-//  }
-//}

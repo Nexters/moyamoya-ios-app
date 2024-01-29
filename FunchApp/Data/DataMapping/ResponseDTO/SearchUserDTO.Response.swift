@@ -8,7 +8,7 @@
 import Foundation
 
 extension ResponseDTO {
-    struct SearchUserDTO: ResponseType {
+    struct SearchUserDTO: Respondable {
         var status: Int
         var message: String
         var data: DataClass

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ResponseType: Decodable {
+protocol Respondable: Decodable {
     var status: Int { get set }
     var message: String { get set }
 }
