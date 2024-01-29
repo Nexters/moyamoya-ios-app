@@ -21,7 +21,7 @@ final class ProfileRepository: ProfileRepositoryType {
         provider.request(.getUserProfile(id: UIDevice.uuidString)) { result in
             switch result {
             case .success(let response):
-                let data = try? JSONDecoder().decode(ResponseDTO.ProfileDTO.self, from: response.data)
+                let data = try? JSONDecoder().decode(ResponseDTO.GetProfileDTO.self, from: response.data)
                 completion(.success(data!.toDomain()))
             case .failure(let error):
                 completion(.failure(error))

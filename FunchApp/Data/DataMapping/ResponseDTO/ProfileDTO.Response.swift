@@ -8,7 +8,7 @@
 import Foundation
 
 extension ResponseDTO {
-    struct ProfileDTO: ResponseType {
+    struct GetProfileDTO: ResponseType {
         var status: Int
         var message: String
         let data: DataClass
@@ -39,7 +39,7 @@ extension ResponseDTO {
     }
 }
 
-extension ResponseDTO.ProfileDTO {
+extension ResponseDTO.GetProfileDTO {
     func toDomain() -> Profile {
         return Profile.testableValue
     }
