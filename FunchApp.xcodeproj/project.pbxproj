@@ -47,7 +47,7 @@
 		1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */; };
 		1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */; };
 		1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49782B5BA2F100024336 /* UserDataStorage.swift */; };
-		1ACE497D2B5BA3B600024336 /* CreateProfileDTO.Requset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497C2B5BA3B600024336 /* CreateProfileDTO.Requset.swift */; };
+		1ACE497D2B5BA3B600024336 /* CreateProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497C2B5BA3B600024336 /* CreateProfileDTO.swift */; };
 		1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
 		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
@@ -118,7 +118,7 @@
 		1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultUseCase.swift; sourceTree = "<group>"; };
 		1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUseCase.swift; sourceTree = "<group>"; };
 		1ACE49782B5BA2F100024336 /* UserDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorage.swift; sourceTree = "<group>"; };
-		1ACE497C2B5BA3B600024336 /* CreateProfileDTO.Requset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileDTO.Requset.swift; sourceTree = "<group>"; };
+		1ACE497C2B5BA3B600024336 /* CreateProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileDTO.swift; sourceTree = "<group>"; };
 		1ACE497F2B5BA46600024336 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
 		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		1A44AAA52B669147006D8894 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE497C2B5BA3B600024336 /* CreateProfileDTO.Requset.swift */,
+				1ACE497C2B5BA3B600024336 /* CreateProfileDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -675,7 +675,7 @@
 				1A792B892B5D62A300A080F2 /* SearchUserQuery.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */,
-				1ACE497D2B5BA3B600024336 /* CreateProfileDTO.Requset.swift in Sources */,
+				1ACE497D2B5BA3B600024336 /* CreateProfileDTO.swift in Sources */,
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
 				3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */,

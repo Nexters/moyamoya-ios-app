@@ -11,8 +11,21 @@ extension ResponseDTO {
     struct GetProfileDTO: ResponseType {
         var status: Int
         var message: String
-        let data: DataClass
+        var data: DataClass
 
+        enum CodingKeys: CodingKey {
+            case status
+            case message
+            case data
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container: KeyedDecodingContainer<ResponseDTO.GetProfileDTO.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfileDTO.CodingKeys.self)
+            self.status = try container.decode(Int.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.status)
+            self.message = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.message)
+            self.data = try container.decode(ResponseDTO.GetProfileDTO.DataClass.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.data)
+        }
+        
         // MARK: - DataClass
         struct DataClass: Decodable {
             /// 멤버 id
@@ -35,6 +48,33 @@ extension ResponseDTO {
             let mbti: String
             /// 해당 유저 코드
             let memberCode: String
+            
+            enum CodingKeys: CodingKey {
+                case id
+                case name
+                case birth
+                case age
+                case constellation
+                case jobGroup
+                case clubs
+                case subwayStations
+                case mbti
+                case memberCode
+            }
+            
+            init(from decoder: Decoder) throws {
+                let container: KeyedDecodingContainer<ResponseDTO.GetProfileDTO.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.self)
+                self.id = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.id)
+                self.name = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.name)
+                self.birth = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.birth)
+                self.age = try container.decode(Int.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.age)
+                self.constellation = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.constellation)
+                self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.jobGroup)
+                self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.clubs)
+                self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.subwayStations)
+                self.mbti = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.mbti)
+                self.memberCode = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.memberCode)
+            }
         }
     }
 }
