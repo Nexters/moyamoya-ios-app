@@ -7,28 +7,6 @@
 
 import Foundation
 
-extension RequestDTO {
-    /// 디바이스 아이디로 프로필을 조회
-    struct GetProfileFromDeviceId: Requestable {
-        var deviceId: String
-        
-        init(deviceId: String) {
-            self.deviceId = deviceId
-        }
-        
-        var toDitionary: DictionaryType {
-            [
-                "deviceNumber": deviceId,
-            ]
-        }
-    }
-    
-    /// 아이디로 프로필을 조회
-    struct GetProfileFromId: Requestable {
-        
-    }
-}
-
 extension ResponseDTO {
     struct GetProfileDTO: Respondable {
         var status: Int

@@ -8,7 +8,7 @@
 import Foundation
 
 extension RequestDTO {
-    struct SearchUserDTO: Requestable {
+    struct MatchingUser: Requestable {
         
         /// 내가 입력한 상대방 유저 코드
         var requestUserCode: String

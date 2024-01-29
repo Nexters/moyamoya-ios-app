@@ -18,7 +18,7 @@ final class ProfileRepository: ProfileRepositoryType {
     
     /// `내 프로필` 정보 조회
     func fetchProfile(completion: @escaping (Result<Profile, Error>) -> Void) {
-        provider.request(.getUserProfile(id: UIDevice.uuidString)) { result in
+        provider.request(.getUserProfileFromDeviceId(id: UIDevice.uuidString)) { result in
             switch result {
             case .success(let response):
                 let data = try? JSONDecoder().decode(ResponseDTO.GetProfileDTO.self, from: response.data)
