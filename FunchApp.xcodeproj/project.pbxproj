@@ -203,7 +203,7 @@
 		1A4588352B64DE2100FBB841 /* FunchAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A87EAE02B691D050059F80A /* Data */,
+				1A87EAE02B691D050059F80A /* Repositories */,
 			);
 			path = FunchAppTests;
 			sourceTree = "<group>";
@@ -262,12 +262,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		1A87EAE02B691D050059F80A /* Data */ = {
+		1A87EAE02B691D050059F80A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */,
 			);
-			path = Data;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		1ACE492F2B5B9D0B00024336 = {

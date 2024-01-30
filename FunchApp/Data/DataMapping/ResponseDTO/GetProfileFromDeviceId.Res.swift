@@ -8,7 +8,7 @@
 import Foundation
 
 extension ResponseDTO {
-    struct GetProfileDTO: Respondable {
+    struct GetProfile: Respondable {
         var status: Int
         var message: String
         var data: DataClass
@@ -20,10 +20,10 @@ extension ResponseDTO {
         }
         
         init(from decoder: Decoder) throws {
-            let container: KeyedDecodingContainer<ResponseDTO.GetProfileDTO.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfileDTO.CodingKeys.self)
-            self.status = try container.decode(Int.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.status)
-            self.message = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.message)
-            self.data = try container.decode(ResponseDTO.GetProfileDTO.DataClass.self, forKey: ResponseDTO.GetProfileDTO.CodingKeys.data)
+            let container: KeyedDecodingContainer<ResponseDTO.GetProfile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfile.CodingKeys.self)
+            self.status = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.CodingKeys.status)
+            self.message = try container.decode(String.self, forKey: ResponseDTO.GetProfile.CodingKeys.message)
+            self.data = try container.decode(ResponseDTO.GetProfile.DataClass.self, forKey: ResponseDTO.GetProfile.CodingKeys.data)
         }
         
         // MARK: - DataClass
@@ -63,23 +63,23 @@ extension ResponseDTO {
             }
             
             init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.GetProfileDTO.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.self)
-                self.id = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.id)
-                self.name = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.name)
-                self.birth = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.birth)
-                self.age = try container.decode(Int.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.age)
-                self.constellation = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.constellation)
-                self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.jobGroup)
-                self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.clubs)
-                self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.subwayStations)
-                self.mbti = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.mbti)
-                self.memberCode = try container.decode(String.self, forKey: ResponseDTO.GetProfileDTO.DataClass.CodingKeys.memberCode)
+                let container: KeyedDecodingContainer<ResponseDTO.GetProfile.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfile.DataClass.CodingKeys.self)
+                self.id = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.id)
+                self.name = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.name)
+                self.birth = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.birth)
+                self.age = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.age)
+                self.constellation = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.constellation)
+                self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.jobGroup)
+                self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.clubs)
+                self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.subwayStations)
+                self.mbti = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.mbti)
+                self.memberCode = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.memberCode)
             }
         }
     }
 }
 
-extension ResponseDTO.GetProfileDTO {
+extension ResponseDTO.GetProfile {
     func toDomain() -> Profile {
         
         let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: "")]

@@ -7,10 +7,8 @@
 
 import UIKit
 
-
-
 extension ResponseDTO {
-    struct CreateProfileDTO: Respondable {
+    struct CreateProfile: Respondable {
         var status: Int
         var message: String
         
@@ -39,23 +37,23 @@ extension ResponseDTO {
         }
         
         init(from decoder: Decoder) throws {
-            let container: KeyedDecodingContainer<ResponseDTO.CreateProfileDTO.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.CreateProfileDTO.CodingKeys.self)
-            self.status = try container.decode(Int.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.status)
-            self.message = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.message)
-            self.userCode = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.userCode)
-            self.name = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.name)
-            self.birth = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.birth)
-            self.age = try container.decode(Int.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.age)
-            self.constellation = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.constellation)
-            self.major = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.major)
-            self.clubs = try container.decode([String].self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.clubs)
-            self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.subwayStations)
-            self.mbti = try container.decode(String.self, forKey: ResponseDTO.CreateProfileDTO.CodingKeys.mbti)
+            let container: KeyedDecodingContainer<ResponseDTO.CreateProfile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.CreateProfile.CodingKeys.self)
+            self.status = try container.decode(Int.self, forKey: ResponseDTO.CreateProfile.CodingKeys.status)
+            self.message = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.message)
+            self.userCode = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.userCode)
+            self.name = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.name)
+            self.birth = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.birth)
+            self.age = try container.decode(Int.self, forKey: ResponseDTO.CreateProfile.CodingKeys.age)
+            self.constellation = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.constellation)
+            self.major = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.major)
+            self.clubs = try container.decode([String].self, forKey: ResponseDTO.CreateProfile.CodingKeys.clubs)
+            self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.CreateProfile.CodingKeys.subwayStations)
+            self.mbti = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.mbti)
         }
     }
 }
 
-extension ResponseDTO.CreateProfileDTO {
+extension ResponseDTO.CreateProfile {
     func toDomain() -> Profile {
         let majors: [Profile.Major] = [.init(name: major, imageName: "")]
         let clubs = clubs
