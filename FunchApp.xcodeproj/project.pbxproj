@@ -13,7 +13,6 @@
 		1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */; };
 		1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
 		1A45882F2B64D70700FBB841 /* SearchUserDTO.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */; };
-		1A4588372B64DE2100FBB841 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4588362B64DE2100FBB841 /* APIClientTests.swift */; };
 		1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
 		1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */; };
 		1A792B6F2B5D3F6B00A080F2 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1A792B6E2B5D3F6B00A080F2 /* Moya */; };
@@ -35,6 +34,42 @@
 		1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069B2B5D6D600024356C /* UIDeivce+.swift */; };
 		1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069D2B5D702D0024356C /* APIEnvironment.swift */; };
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
+		1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */; };
+		1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B862B5D605400A080F2 /* MatchingRepository.swift */; };
+		1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
+		1A87EAE42B691E490059F80A /* GetProfileFromDeviceId.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B7B2B5D56BA00A080F2 /* GetProfileFromDeviceId.Res.swift */; };
+		1A87EAE52B691E570059F80A /* ProfileRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */; };
+		1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B762B5D55F700A080F2 /* ResponseDTO.swift */; };
+		1A87EAE72B691E6D0059F80A /* RequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B732B5D55D400A080F2 /* RequestDTO.swift */; };
+		1A87EAE82B691E710059F80A /* Respondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B7E2B5D580500A080F2 /* Respondable.swift */; };
+		1A87EAE92B691E730059F80A /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B802B5D581600A080F2 /* Requestable.swift */; };
+		1A87EAEA2B691F2D0059F80A /* DefaultTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B702B5D465700A080F2 /* DefaultTargetType.swift */; };
+		1A87EAEB2B691F3B0059F80A /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069D2B5D702D0024356C /* APIEnvironment.swift */; };
+		1A87EAEC2B691F420059F80A /* DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06932B5D67570024356C /* DictionaryType.swift */; };
+		1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069B2B5D6D600024356C /* UIDeivce+.swift */; };
+		1A87EAEE2B691F470059F80A /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C0E2B5E9AB2008AE23B /* View+.swift */; };
+		1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49702B5BA29000024336 /* HomeUseCase.swift */; };
+		1A87EAF02B691F940059F80A /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* ProfileUseCase.swift */; };
+		1A87EAF12B691F990059F80A /* MatchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */; };
+		1A87EAF22B691F9C0059F80A /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */; };
+		1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */; };
+		1A87EAF42B691FA20059F80A /* SubwayStationRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06912B5D67250024356C /* SubwayStationRepositoryType.swift */; };
+		1A87EAF52B691FA50059F80A /* MatchingRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8C2B5D653B00A080F2 /* MatchingRepositoryType.swift */; };
+		1A87EAF62B691FA70059F80A /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
+		1A87EAF72B691FA90059F80A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49632B5B9F4A00024336 /* Profile.swift */; };
+		1A87EAF82B691FAC0059F80A /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
+		1A87EAF92B691FB00059F80A /* CreateUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B842B5D5A5100A080F2 /* CreateUserQuery.swift */; };
+		1A87EAFA2B691FB20059F80A /* SearchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B882B5D62A300A080F2 /* SearchUserQuery.swift */; };
+		1A87EAFB2B691FB60059F80A /* SearchSubwayStationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */; };
+		1A87EAFC2B691FEA0059F80A /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49782B5BA2F100024336 /* UserDataStorage.swift */; };
+		1A87EAFE2B691FF80059F80A /* SearchUserDTO.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */; };
+		1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */; };
+		1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
+		1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */; };
+		1A87EB022B6920030059F80A /* GetProfileFromDeviceId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA62B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift */; };
+		1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */; };
+		1A87EB042B6920080059F80A /* SearchSubwayStationDTO.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */; };
+		1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -87,7 +122,7 @@
 		1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUser.Res.swift; sourceTree = "<group>"; };
 		1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.Res.swift; sourceTree = "<group>"; };
 		1A4588342B64DE2100FBB841 /* FunchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A4588362B64DE2100FBB841 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryTests.swift; sourceTree = "<group>"; };
 		1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayInfo.swift; sourceTree = "<group>"; };
 		1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChipRow.swift; sourceTree = "<group>"; };
 		1A792B702B5D465700A080F2 /* DefaultTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTargetType.swift; sourceTree = "<group>"; };
@@ -168,7 +203,7 @@
 		1A4588352B64DE2100FBB841 /* FunchAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A4588362B64DE2100FBB841 /* APIClientTests.swift */,
+				1A87EAE02B691D050059F80A /* Data */,
 			);
 			path = FunchAppTests;
 			sourceTree = "<group>";
@@ -225,6 +260,14 @@
 				3EA69C0E2B5E9AB2008AE23B /* View+.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		1A87EAE02B691D050059F80A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		1ACE492F2B5B9D0B00024336 = {
@@ -656,7 +699,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A4588372B64DE2100FBB841 /* APIClientTests.swift in Sources */,
+				1A87EAF62B691FA70059F80A /* SubwayInfo.swift in Sources */,
+				1A87EAEA2B691F2D0059F80A /* DefaultTargetType.swift in Sources */,
+				1A87EAF42B691FA20059F80A /* SubwayStationRepositoryType.swift in Sources */,
+				1A87EAF72B691FA90059F80A /* Profile.swift in Sources */,
+				1A87EAF52B691FA50059F80A /* MatchingRepositoryType.swift in Sources */,
+				1A87EAF92B691FB00059F80A /* CreateUserQuery.swift in Sources */,
+				1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */,
+				1A87EAE72B691E6D0059F80A /* RequestDTO.swift in Sources */,
+				1A87EAEC2B691F420059F80A /* DictionaryType.swift in Sources */,
+				1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */,
+				1A87EAFE2B691FF80059F80A /* SearchUserDTO.Res.swift in Sources */,
+				1A87EAEE2B691F470059F80A /* View+.swift in Sources */,
+				1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */,
+				1A87EAF22B691F9C0059F80A /* OnboardingUseCase.swift in Sources */,
+				1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */,
+				1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */,
+				1A87EAF82B691FAC0059F80A /* MatchingInfo.swift in Sources */,
+				1A87EAFC2B691FEA0059F80A /* UserDataStorage.swift in Sources */,
+				1A87EAE92B691E730059F80A /* Requestable.swift in Sources */,
+				1A87EAE82B691E710059F80A /* Respondable.swift in Sources */,
+				1A87EAF02B691F940059F80A /* ProfileUseCase.swift in Sources */,
+				1A87EAFB2B691FB60059F80A /* SearchSubwayStationQuery.swift in Sources */,
+				1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */,
+				1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */,
+				1A87EAFA2B691FB20059F80A /* SearchUserQuery.swift in Sources */,
+				1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */,
+				1A87EB042B6920080059F80A /* SearchSubwayStationDTO.Req.swift in Sources */,
+				1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */,
+				1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */,
+				1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */,
+				1A87EAEB2B691F3B0059F80A /* APIEnvironment.swift in Sources */,
+				1A87EAE52B691E570059F80A /* ProfileRepositoryTests.swift in Sources */,
+				1A87EAF12B691F990059F80A /* MatchResultUseCase.swift in Sources */,
+				1A87EAE42B691E490059F80A /* GetProfileFromDeviceId.Res.swift in Sources */,
+				1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */,
+				1A87EB022B6920030059F80A /* GetProfileFromDeviceId.Req.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
