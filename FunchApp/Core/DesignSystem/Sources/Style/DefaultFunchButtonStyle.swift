@@ -18,13 +18,14 @@ extension ButtonStyle where Self == DefaultFunchButtonStyle {
 struct DefaultFunchButtonStyle: ButtonStyle {
     /// 버튼 클릭 여부에 따른 fade 여부
     var fadeOnPress = true
+    var isEnabled = false
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)
             .padding(.horizontal, 24)
             .padding(.vertical, 16)
-            .background(.black)
+            .background(isEnabled ? .lemon900: .lemon500)
             .opacity(configuration.isPressed && fadeOnPress ? 0.75 : 1)
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
