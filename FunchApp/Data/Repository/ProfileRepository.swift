@@ -8,7 +8,7 @@
 import UIKit
 import Moya
 
-/// `User 본인`을 기준으로 하는 repository
+/// User 본인을 기준으로 하는 repository
 final class ProfileRepository: ProfileRepositoryType {
     
     private let apiClient: APIClient

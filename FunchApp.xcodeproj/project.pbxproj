@@ -12,7 +12,7 @@
 		1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B7B2B5D56BA00A080F2 /* GetProfileFromDeviceId.Res.swift */; };
 		1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */; };
 		1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
-		1A45882F2B64D70700FBB841 /* SearchUserDTO.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */; };
+		1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */; };
 		1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
 		1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */; };
 		1A792B6F2B5D3F6B00A080F2 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1A792B6E2B5D3F6B00A080F2 /* Moya */; };
@@ -30,7 +30,7 @@
 		1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06912B5D67250024356C /* SubwayStationRepositoryType.swift */; };
 		1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06932B5D67570024356C /* DictionaryType.swift */; };
 		1A7B06982B5D68650024356C /* SearchSubwayStationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */; };
-		1A7B069A2B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */; };
+		1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */; };
 		1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069B2B5D6D600024356C /* UIDeivce+.swift */; };
 		1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069D2B5D702D0024356C /* APIEnvironment.swift */; };
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
@@ -62,13 +62,13 @@
 		1A87EAFA2B691FB20059F80A /* SearchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B882B5D62A300A080F2 /* SearchUserQuery.swift */; };
 		1A87EAFB2B691FB60059F80A /* SearchSubwayStationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */; };
 		1A87EAFC2B691FEA0059F80A /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49782B5BA2F100024336 /* UserDataStorage.swift */; };
-		1A87EAFE2B691FF80059F80A /* SearchUserDTO.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */; };
+		1A87EAFE2B691FF80059F80A /* SearchUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */; };
 		1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */; };
 		1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
 		1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */; };
 		1A87EB022B6920030059F80A /* GetProfileFromDeviceId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA62B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift */; };
 		1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */; };
-		1A87EB042B6920080059F80A /* SearchSubwayStationDTO.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */; };
+		1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */; };
 		1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */; };
 		1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
@@ -121,7 +121,7 @@
 		1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileFromId.Req.swift; sourceTree = "<group>"; };
 		1A44AAAB2B67EFCD006D8894 /* CreateProfile.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.Req.swift; sourceTree = "<group>"; };
 		1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUser.Res.swift; sourceTree = "<group>"; };
-		1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.Res.swift; sourceTree = "<group>"; };
+		1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUser.Res.swift; sourceTree = "<group>"; };
 		1A4588342B64DE2100FBB841 /* FunchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryTests.swift; sourceTree = "<group>"; };
 		1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayInfo.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		1A7B06912B5D67250024356C /* SubwayStationRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayStationRepositoryType.swift; sourceTree = "<group>"; };
 		1A7B06932B5D67570024356C /* DictionaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryType.swift; sourceTree = "<group>"; };
 		1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayStationQuery.swift; sourceTree = "<group>"; };
-		1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayStationDTO.Req.swift; sourceTree = "<group>"; };
+		1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayStation.Req.swift; sourceTree = "<group>"; };
 		1A7B069B2B5D6D600024356C /* UIDeivce+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDeivce+.swift"; sourceTree = "<group>"; };
 		1A7B069D2B5D702D0024356C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 				1A44AAA62B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift */,
 				1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */,
 				1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */,
-				1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */,
+				1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				1A792B7B2B5D56BA00A080F2 /* GetProfileFromDeviceId.Res.swift */,
-				1A45882E2B64D70700FBB841 /* SearchUserDTO.Res.swift */,
+				1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */,
 				1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */,
 				1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */,
 			);
@@ -712,7 +712,7 @@
 				1A87EAE72B691E6D0059F80A /* RequestDTO.swift in Sources */,
 				1A87EAEC2B691F420059F80A /* DictionaryType.swift in Sources */,
 				1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */,
-				1A87EAFE2B691FF80059F80A /* SearchUserDTO.Res.swift in Sources */,
+				1A87EAFE2B691FF80059F80A /* SearchUser.Res.swift in Sources */,
 				1A87EAEE2B691F470059F80A /* View+.swift in Sources */,
 				1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */,
 				1A87EAF22B691F9C0059F80A /* OnboardingUseCase.swift in Sources */,
@@ -728,7 +728,7 @@
 				1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */,
 				1A87EAFA2B691FB20059F80A /* SearchUserQuery.swift in Sources */,
 				1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */,
-				1A87EB042B6920080059F80A /* SearchSubwayStationDTO.Req.swift in Sources */,
+				1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */,
 				1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */,
 				1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */,
 				1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */,
@@ -745,7 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A45882F2B64D70700FBB841 /* SearchUserDTO.Res.swift in Sources */,
+				1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */,
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
 				1A44AAA92B67E848006D8894 /* GetProfileFromId.Req.swift in Sources */,
 				1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */,
@@ -788,7 +788,7 @@
 				1A7B06982B5D68650024356C /* SearchSubwayStationQuery.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,
-				1A7B069A2B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift in Sources */,
+				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* ProfileUseCase.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
