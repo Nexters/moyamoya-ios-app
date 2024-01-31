@@ -9,25 +9,28 @@ import Foundation
 import Moya
 
 final class SubwayStationRepository: SubwayStationRepositoryType {
-    private let provider: MoyaProvider<DefaultTargetType>
+    
+    private let apiClient: APIClient
     
     init() {
-        provider = MoyaProvider<DefaultTargetType>()
+        apiClient = APIClient()
     }
     
     /// `지하철역` 검색
     func searchSubwayStations(
         searchSubwayStationQuery: SearchSubwayStationQuery,
-        completion: @escaping (Result<Profile, Error>) -> Void
+        completion: @escaping (Result<Profile, MoyaError>) -> Void
     ) {
         let requestDTO = RequestDTO.SearchSubwayStation(query: searchSubwayStationQuery)
-        provider.request(.searchSubwayStations(parameters: requestDTO.toDitionary)) { result in
+        apiClient.request(
+            ResponseDTO.GetProfile.self,
+            target: .searchSubwayStations(parameters: requestDTO.toDitionary)
+        ) { result in
             switch result {
-            case .success(let response):
-                let data = try? JSONDecoder().decode(ResponseDTO.GetProfile.self, from: response.data)
-                completion(.success(data!.toDomain()))
-            case .failure(let error):
-                completion(.failure(error))
+            case .success(let success):
+                completion(.success(success.toDomain()))
+            case .failure(let failure):
+                completion(.failure(failure))
             }
         }
     }

@@ -17,7 +17,7 @@ final class ProfileRepository: ProfileRepositoryType {
         apiClient = APIClient()
     }
     
-    /// `내 프로필` 디바이스 기반 정보 조회
+    /// 내 프로필 디바이스 기반 정보 조회
     func fetchProfile(completion: @escaping (Result<Profile, MoyaError>) -> Void) {
         apiClient.request(
             ResponseDTO.GetProfile.self,
@@ -32,7 +32,7 @@ final class ProfileRepository: ProfileRepositoryType {
         }
     }
     
-    /// `내 프로필` 생성
+    /// 내 프로필 생성
     func createProfile(
         createUserQuery: CreateUserQuery,
         completion: @escaping (Result<Profile, MoyaError>) -> Void

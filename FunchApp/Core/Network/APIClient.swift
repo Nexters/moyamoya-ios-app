@@ -15,7 +15,7 @@ final class APIClient {
         provider = MoyaProvider<DefaultTargetType>()
     }
     
-    /// api 요청에 사용
+    /// response가 있는 api request에 사용
     func request<T: Respondable>(
         _ T: T.Type,
         target: DefaultTargetType,
