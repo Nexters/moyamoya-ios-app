@@ -8,32 +8,26 @@
 import UIKit
 import Moya
 
-enum ProfileRepositoryError: Error {
-    case decodingFailure
-    case unknown
-}
-
 /// `User 본인`을 기준으로 하는 repository
 final class ProfileRepository: ProfileRepositoryType {
-    private let provider: MoyaProvider<DefaultTargetType>
+    
+    private let apiClient: APIClient
     
     init() {
-        provider = MoyaProvider<DefaultTargetType>()
+        apiClient = APIClient()
     }
     
     /// `내 프로필` 디바이스 기반 정보 조회
-    func fetchProfile(completion: @escaping (Result<Profile, ProfileRepositoryError>) -> Void) {
-        provider.request(.getUserProfileFromDeviceId(id: UIDevice.uuidString)) { result in
+    func fetchProfile(completion: @escaping (Result<Profile, MoyaError>) -> Void) {
+        apiClient.request(
+            ResponseDTO.GetProfile.self,
+            target: .getUserProfileFromDeviceId(id: UIDevice.uuidString)
+        ) { result in
             switch result {
-            case .success(let response):
-                do {
-                    let data = try JSONDecoder().decode(ResponseDTO.GetProfile.self, from: response.data)
-                    completion(.success(data.toDomain()))
-                } catch {
-                    completion(.failure(.decodingFailure))
-                }
-            case .failure(_):
-                completion(.failure(.unknown))
+            case .success(let success):
+                completion(.success(success.toDomain()))
+            case .failure(let failure):
+                completion(.failure(failure))
             }
         }
     }
@@ -41,20 +35,18 @@ final class ProfileRepository: ProfileRepositoryType {
     /// `내 프로필` 생성
     func createProfile(
         createUserQuery: CreateUserQuery,
-        completion: @escaping (Result<Profile, ProfileRepositoryError>) -> Void
+        completion: @escaping (Result<Profile, MoyaError>) -> Void
     ) {
         let requestDTO = RequestDTO.CreateUserProfileDTO(query: createUserQuery)
-        provider.request(.createUserProfile(parameters: requestDTO.toDitionary)) { result in
+        apiClient.request(
+            ResponseDTO.CreateProfile.self,
+            target: .createUserProfile(parameters: requestDTO.toDitionary)
+        ) { result in
             switch result {
-            case .success(let response):
-                do {
-                    let data = try JSONDecoder().decode(ResponseDTO.CreateProfile.self, from: response.data)
-                    completion(.success(data.toDomain()))
-                } catch {
-                    completion(.failure(.decodingFailure))
-                }
-            case .failure(_):
-                completion(.failure(.unknown))
+            case .success(let success):
+                completion(.success(success.toDomain()))
+            case .failure(let failure):
+                completion(.failure(failure))
             }
         }
     }
