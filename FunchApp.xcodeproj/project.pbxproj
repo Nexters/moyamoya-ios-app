@@ -70,6 +70,7 @@
 		1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */; };
 		1A87EB042B6920080059F80A /* SearchSubwayStationDTO.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStationDTO.Req.swift */; };
 		1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */; };
+		1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -144,6 +145,7 @@
 		1A7B069B2B5D6D600024356C /* UIDeivce+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDeivce+.swift"; sourceTree = "<group>"; };
 		1A7B069D2B5D702D0024356C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
+		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchAppApp.swift; sourceTree = "<group>"; };
 		1ACE493D2B5B9D0B00024336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 			children = (
 				1A792B702B5D465700A080F2 /* DefaultTargetType.swift */,
 				1A7B069D2B5D702D0024356C /* APIEnvironment.swift */,
+				1A87EB062B6A6A430059F80A /* APIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
 				1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */,
+				1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

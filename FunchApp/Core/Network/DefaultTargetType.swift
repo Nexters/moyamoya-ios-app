@@ -10,15 +10,15 @@ import Moya
 
 /// 앱 서비스에서 사용하는 기본 타겟
 enum DefaultTargetType {
-    /// `본인 프로필` id 기반으로 조회
+    /// 본인 프로필 id 기반으로 조회
     case getUserProfileFromId(id: String)
-    /// `본인 프로필` 디바이스 기반으로 조회
+    /// 본인 프로필 디바이스 기반으로 조회
     case getUserProfileFromDeviceId(id: String)
-    /// `본인 프로필` 생성
+    /// 본인 프로필 생성
     case createUserProfile(parameters: DictionaryType)
-    /// `지하철 역` 검색
+    /// 지하철 역 검색
     case searchSubwayStations(parameters: DictionaryType)
-    /// `타인 프로필` 검색
+    /// 타인 프로필 검색
     case matchingUser(parameters: DictionaryType)
 }
 
