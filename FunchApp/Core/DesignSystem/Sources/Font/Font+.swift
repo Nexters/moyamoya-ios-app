@@ -11,9 +11,9 @@ import SwiftUI
 enum FunchFontFamily {
     /// `SpoqaHanSans` 폰트 모음
     enum SpoqaHanSans {
-        static let bold = "SpoqaHanSansNeo-Bold.otf"
-        static let medium = "SpoqaHanSansNeo-Medium.otf"
-        static let regular = "SpoqaHanSansNeo-Regular.otf"
+        static let bold = "SpoqaHanSansNeo-Bold"
+        static let medium = "SpoqaHanSansNeo-Medium"
+        static let regular = "SpoqaHanSansNeo-Regular"
     }
 }
 
@@ -57,9 +57,9 @@ extension Font {
             case .title2:
                 return .custom(FunchFontFamily.SpoqaHanSans.bold, size: 20)
             case .subtitle1:
-                return .custom(FunchFontFamily.SpoqaHanSans.medium, size: 18)
+                return .custom(FunchFontFamily.SpoqaHanSans.bold, size: 18)
             case .subtitle2:
-                return .custom(FunchFontFamily.SpoqaHanSans.medium, size: 16)
+                return .custom(FunchFontFamily.SpoqaHanSans.bold, size: 16)
             case .body:
                 return .custom(FunchFontFamily.SpoqaHanSans.regular, size: 14)
             case .caption:
