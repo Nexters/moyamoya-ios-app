@@ -18,18 +18,19 @@ final class MatchingRepository: MatchingRepositoryType {
     }
     
     /// 상대 프로필 검색
-    func searchUser(
+    func matchingUser(
         searchUserQuery: MatchingUserQuery,
-        completion: @escaping (Result<Profile, MoyaError>) -> Void
+        completion: @escaping (Result<MatchingInfo, MoyaError>) -> Void
     ) {
         let requestDTO = RequestDTO.MatchingUser(query: searchUserQuery)
         apiClient.request(
-            ResponseDTO.GetProfile.self,
+            ResponseDTO.MatchingUser.self,
             target: .matchingUser(parameters: requestDTO.toDitionary)
         ) { result in
             switch result {
             case .success(let success):
-                completion(.success(success.toDomain()))
+//                completion(.success(success.toDomain()))
+                break
             case .failure(let failure):
                 completion(.failure(failure))
             }

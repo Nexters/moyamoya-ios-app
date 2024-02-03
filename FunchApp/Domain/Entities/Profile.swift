@@ -23,8 +23,8 @@ struct Profile {
     var clubs: [Club]
     /// mbti
     var mbti: String
-    /// 별자리
-    var constellation: String
+    /// 혈액형 타입
+    var bloodType: String
     /// 지하철 역
     var subwayInfos: [SubwayInfo]
     /// 조회수
@@ -58,7 +58,7 @@ extension Profile {
             majors: [.init(name: "개발자", imageName: "plus")],
             clubs: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
-            constellation: "물병",
+            bloodType: "물병",
             subwayInfos: [.init(name: "동대문", lines: ["2"])],
             viewerShip: "31"
         )
@@ -73,7 +73,7 @@ extension Profile {
             majors: [],
             clubs: [],
             mbti: "",
-            constellation: "",
+            bloodType: "",
             subwayInfos: [],
             viewerShip: ""
         )

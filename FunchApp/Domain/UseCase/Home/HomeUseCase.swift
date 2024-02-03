@@ -35,7 +35,7 @@ final class HomeUseCase {
                     targetUserCode: String,
                     completion: @escaping (Profile) -> Void) {
         let searchUserQuery = MatchingUserQuery(requestId: requestId, targetUserCode: targetUserCode)
-        matchingRepository.searchUser(searchUserQuery: searchUserQuery) { result in
+        matchingRepository.matchingUser(searchUserQuery: searchUserQuery) { result in
             switch result {
             case .success(let success):
 //                completion()
