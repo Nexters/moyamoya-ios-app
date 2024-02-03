@@ -14,9 +14,24 @@ final class FetchProfileUseCase {
         self.profileRepository = ProfileRepository()
     }
     
-    /// 본인 프로필 생성
+    /// 디바이스 기반으로 id 조회
     func fetchProfileFromDeviceId(completion: @escaping (Result<Void, Error>) -> Void) {
         profileRepository.fetchProfile { result in
+            switch result {
+            case .success(let success):
+                completion(.success(()))
+            case .failure(let failure):
+                break
+            }
+        }
+    }
+    
+    /// 프로필 아이디 기반으로 조회
+    func fetchProfileFromId(
+        query: FetchUserQuery,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        profileRepository.fetchProfileId(userQuery: query) { result in
             switch result {
             case .success(let success):
                 completion(.success(()))

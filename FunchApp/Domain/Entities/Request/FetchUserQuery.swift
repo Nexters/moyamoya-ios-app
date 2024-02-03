@@ -7,16 +7,23 @@
 
 import UIKit
 
+/// id를 기반으로 유저 조회
 struct FetchUserQuery {
     
-    /// 디바이스 아이디
-    let deviceId = UIDevice.uuidString
+    /// 프로필 아이디
+    let id: String
     
-    init() {}
+    init(id: String) {
+        self.id = id
+    }
     
     var toDitionary: DictionaryType {
         [
-            "deviceNumber": deviceId,
+            "id": id,
         ]
+    }
+    
+    var path: String {
+        "\(id)"
     }
 }

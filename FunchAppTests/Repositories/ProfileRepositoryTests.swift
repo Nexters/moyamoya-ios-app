@@ -28,7 +28,7 @@ final class ProfileRepositoryTests: XCTestCase {
         continueAfterFailure = false
     }
     
-    /// 디바이스 기반 아이디 조회
+    /// 디바이스 기반 조회
     func test_fetch_profile_from_device_id() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
@@ -46,6 +46,28 @@ final class ProfileRepositoryTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
     }
     
+    /// 프로필 아이디 기반 조회
+    func test_fetch_profile_from_id() {
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 1
+        
+        let testableId = "65bdd58cebe5db753688b9fb"
+        let query = FetchUserQuery(id: testableId)
+        
+        repository?.fetchProfileId(userQuery: query) { result in
+            switch result {
+            case .success(let response):
+                XCTAssertTrue(true, "일단 api 성공하는지만 체크")
+            case .failure(let failure):
+                XCTFail(failure.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    /// 유저 생성
     func test_createProfile() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
@@ -53,7 +75,7 @@ final class ProfileRepositoryTests: XCTestCase {
         // mock으로 나중에 뺄게요
         let query = CreateUserQuery(
             name: "박당근",
-            birth: "2002-02-14",
+            birth: "2002-02-15",
             major: "backend",
             clubs: ["nexters"],
             subwayStationName: ["건대입구"],

@@ -8,7 +8,9 @@
 import Foundation
 
 struct Profile {
-    /// `unique`
+    /// 유저 고유 아이디
+    var id: String
+    /// 유저코드
     var userCode: String
     /// 유저 닉네임
     var userNickname: String
@@ -49,6 +51,7 @@ extension Profile {
     /// 작업에 있어 테스트 가능한 값 (테스트 코드에 사용하면 안됩니다.)
     static var testableValue: Profile {
         return Profile(
+            id: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
             birth: "20021225",
@@ -63,6 +66,7 @@ extension Profile {
     
     static var emptyValue: Profile {
         return Profile(
+            id: "",
             userCode: "",
             userNickname: "",
             birth: "",

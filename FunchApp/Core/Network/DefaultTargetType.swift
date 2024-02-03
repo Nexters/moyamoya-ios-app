@@ -11,7 +11,7 @@ import Moya
 /// 앱 서비스에서 사용하는 기본 타겟
 enum DefaultTargetType {
     /// 본인 프로필 id 기반으로 조회
-    case getUserProfileFromId(id: String)
+    case getUserProfileFromId(path: String)
     /// 본인 프로필 디바이스 기반으로 조회
     case getUserProfileFromDeviceId(parameters: DictionaryType)
     /// 본인 프로필 생성
@@ -61,11 +61,10 @@ extension DefaultTargetType: TargetType {
     var task: Task {
         switch self {
         case .getUserProfileFromId(_),
-                
+                .getUserProfileFromDeviceId(_),
                 .searchSubwayStations(_):
             return .requestPlain
-        case .matchingUser(let parameters),
-                .getUserProfileFromDeviceId(let parameters):
+        case .matchingUser(let parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case let .createUserProfile(parameters):
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
