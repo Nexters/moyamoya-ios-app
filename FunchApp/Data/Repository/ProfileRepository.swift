@@ -19,9 +19,10 @@ final class ProfileRepository: ProfileRepositoryType {
     
     /// 내 프로필 디바이스 기반 정보 조회
     func fetchProfile(completion: @escaping (Result<Profile, MoyaError>) -> Void) {
+        let query = FetchUserQuery()
         apiClient.request(
             ResponseDTO.GetProfile.self,
-            target: .getUserProfileFromDeviceId(id: UIDevice.uuidString)
+            target: .getUserProfileFromDeviceId(parameters: query.toDitionary)
         ) { result in
             switch result {
             case .success(let success):

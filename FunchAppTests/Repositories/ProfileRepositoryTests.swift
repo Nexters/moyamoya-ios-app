@@ -28,7 +28,8 @@ final class ProfileRepositoryTests: XCTestCase {
         continueAfterFailure = false
     }
     
-    func test_fetchProfile() {
+    /// 디바이스 기반 아이디 조회
+    func test_fetch_profile_from_device_id() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
         
