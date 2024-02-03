@@ -43,7 +43,7 @@ struct ProfileEditorView: View {
                             ProfileInputRow(type: .직군, profile: $profile)
                             ProfileInputRow(type: .동아리, profile: $profile)
                             ProfileInputRow(type: .MBTI, profile: $profile)
-                            ProfileInputRow(type: .생일, profile: $profile)
+                            ProfileInputRow(type: .혈액형, profile: $profile)
                             ProfileInputRow(type: .지하철, profile: $profile)
                         }
                         
@@ -58,7 +58,6 @@ struct ProfileEditorView: View {
                 
                 matchingButtonView
             }
-            .ignoresSafeArea(.container ,edges: .bottom)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -92,11 +91,8 @@ struct ProfileEditorView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
-            
-            Spacer()
-                .frame(height: 34)
         }
-        .padding(.top, 16)
+        .padding(.vertical, 16)
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
         .background(.gray900)
