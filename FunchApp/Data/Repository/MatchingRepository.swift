@@ -19,7 +19,7 @@ final class MatchingRepository: MatchingRepositoryType {
     
     /// 상대 프로필 검색
     func searchUser(
-        searchUserQuery: SearchUserQuery,
+        searchUserQuery: MatchingUserQuery,
         completion: @escaping (Result<Profile, MoyaError>) -> Void
     ) {
         let requestDTO = RequestDTO.MatchingUser(query: searchUserQuery)
