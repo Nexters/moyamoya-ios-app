@@ -8,6 +8,6 @@
 import Foundation
 
 protocol Respondable: Decodable {
-    var status: Int { get set }
+    var status: String { get set }
     var message: String { get set }
 }

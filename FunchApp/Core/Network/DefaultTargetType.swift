@@ -40,7 +40,7 @@ extension DefaultTargetType: TargetType {
         case let .matchingUser(id):
             return "/v1/members/\(id)"
         case .createUserProfile:
-            return "/user/create"
+            return "/v1/members"
         case .searchSubwayStations(_):
             return "search/subways"
         }
@@ -64,9 +64,11 @@ extension DefaultTargetType: TargetType {
                 .getUserProfileFromDeviceId(_),
                 .searchSubwayStations(_):
             return .requestPlain
-        case let .createUserProfile(parameters),
-                let .matchingUser(parameters):
+        case let .matchingUser(parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case let .createUserProfile(parameters):
+            let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+            return .requestData(jsonData)
         }
     }
 

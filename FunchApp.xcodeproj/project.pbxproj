@@ -71,6 +71,7 @@
 		1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */; };
 		1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */; };
 		1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
+		1A87EB082B6DFD430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -730,6 +731,7 @@
 				1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */,
 				1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */,
 				1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */,
+				1A87EB082B6DFD430059F80A /* APIClient.swift in Sources */,
 				1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */,
 				1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */,
 				1A87EAEB2B691F3B0059F80A /* APIEnvironment.swift in Sources */,

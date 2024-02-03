@@ -9,7 +9,7 @@ import Foundation
 
 extension ResponseDTO {
     struct GetProfile: Respondable {
-        var status: Int
+        var status: String
         var message: String
         var data: DataClass
 
@@ -21,7 +21,7 @@ extension ResponseDTO {
         
         init(from decoder: Decoder) throws {
             let container: KeyedDecodingContainer<ResponseDTO.GetProfile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfile.CodingKeys.self)
-            self.status = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.CodingKeys.status)
+            self.status = try container.decode(String.self, forKey: ResponseDTO.GetProfile.CodingKeys.status)
             self.message = try container.decode(String.self, forKey: ResponseDTO.GetProfile.CodingKeys.message)
             self.data = try container.decode(ResponseDTO.GetProfile.DataClass.self, forKey: ResponseDTO.GetProfile.CodingKeys.data)
         }

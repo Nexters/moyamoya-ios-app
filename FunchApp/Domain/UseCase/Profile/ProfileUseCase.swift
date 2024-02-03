@@ -21,7 +21,8 @@ final class ProfileUseCase {
             case .success(let success):
                 completion(.success(()))
             case .failure(let failure):
-                completion(.success(()))
+//                completion(.success(()))
+                break
             }
         }
     }

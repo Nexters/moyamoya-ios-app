@@ -31,7 +31,6 @@ extension RequestDTO {
             [
                 "name": name,
                 "birthDate": birth,
-                "age": 0,
                 "jobGroup": major,
                 "clubs": clubs,
                 "subwayStations": subwayStations,

@@ -50,12 +50,14 @@ final class ProfileRepositoryTests: XCTestCase {
         expectation.expectedFulfillmentCount = 1
         
         // mock으로 나중에 뺄게요
-        let query = CreateUserQuery(name: "박당근",
-                        birth: "2002-02-13",
-                        major: "developer",
-                        clubs: ["nexters"],
-                        subwayStationName: ["건대입구"],
-                        mbti: "ISTP")
+        let query = CreateUserQuery(
+            name: "박당근",
+            birth: "2002-02-14",
+            major: "backend",
+            clubs: ["nexters"],
+            subwayStationName: ["건대입구"],
+            mbti: "ISTP"
+        )
         repository?.createProfile(createUserQuery: query) { result in
             switch result {
             case .success(let response):

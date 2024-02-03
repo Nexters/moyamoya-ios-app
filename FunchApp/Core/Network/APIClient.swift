@@ -33,6 +33,7 @@ final class APIClient {
                     let data = try JSONDecoder().decode(T.self, from: response.data)
                     completion(.success(data))
                 } catch {
+                    print("error \(error.localizedDescription)")
                     completion(.failure(.objectMapping(error, response)))
                 }
             case .failure(let error):
