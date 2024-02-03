@@ -35,7 +35,7 @@ extension DefaultTargetType: TargetType {
         switch self {
         case let .getUserProfileFromId(id):
             return "/v1/members/\(id)"
-        case let .getUserProfileFromDeviceId(_):
+        case .getUserProfileFromDeviceId(_):
             return "/v1/members"
         case let .matchingUser(id):
             return "/v1/members/\(id)"
@@ -52,23 +52,28 @@ extension DefaultTargetType: TargetType {
                 .getUserProfileFromDeviceId(_),
                 .searchSubwayStations(_):
             return .get
+            
         case .createUserProfile(_),
                 .matchingUser(_):
             return .post
+            
         }
     }
 
     var task: Task {
         switch self {
         case .getUserProfileFromId(_),
-                .getUserProfileFromDeviceId(_),
                 .searchSubwayStations(_):
             return .requestPlain
-        case .matchingUser(let parameters):
+            
+        case .matchingUser(let parameters),
+                .getUserProfileFromDeviceId(let parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            
         case let .createUserProfile(parameters):
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
             return .requestData(jsonData)
+            
         }
     }
 

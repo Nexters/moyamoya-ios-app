@@ -15,13 +15,12 @@ final class CreateProfileUseCase {
     }
     
     /// 본인 프로필 생성
-    func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Void, Error>) -> Void) {
+    func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Profile, Error>) -> Void) {
         profileRepository.createProfile(createUserQuery: createUserQuery) { result in
             switch result {
-            case .success(let success):
-                completion(.success(()))
+            case .success(let profile):
+                completion(.success(profile))
             case .failure(let failure):
-//                completion(.success(()))
                 break
             }
         }
