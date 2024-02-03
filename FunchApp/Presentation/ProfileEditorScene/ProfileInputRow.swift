@@ -14,8 +14,18 @@ struct ProfileInputRow: View {
         case 직군
         case 동아리
         case MBTI
-        case 생일
+        case 혈액형
         case 지하철
+    }
+    
+    /// 좌측 Text()의 ViewType 별로 높이 값
+    private var leadingTextHeight: CGFloat {
+        switch type {
+        case .닉네임, .혈액형, .지하철:
+            return 56
+        case .직군, .동아리, .MBTI:
+            return 48
+        }
     }
     
     /// 입력받을 값들의 종류
@@ -31,21 +41,11 @@ struct ProfileInputRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             Text(type.rawValue)
-                .font(.system(size: 14))
-                .foregroundColor(Color(red: 0.18, green: 0.18, blue: 0.18))
+                .foregroundStyle(.gray300)
+                .customFont(.body)
                 .frame(width: 52, height: leadingTextHeight, alignment: .leading)
             
             inputView
-        }
-    }
-    
-    /// 좌측 Text()의 ViewType 별로 높이 값
-    private var leadingTextHeight: CGFloat {
-        switch type {
-        case .닉네임, .생일, .지하철:
-            return 56
-        case .직군, .동아리, .MBTI:
-            return 48
         }
     }
     
@@ -53,137 +53,218 @@ struct ProfileInputRow: View {
     private var inputView: some View {
         switch type {
         case .닉네임:
-            FunchTextField(text: $profile.userNickname,
-                           placeholderText: "최대 00글자")
+            nicknameInputField
             
         case .직군:
-            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-                ForEach(Profile.Major.dummies, id: \.self) { major in
-                    EmptyView()
-//                    Button {
-//                        if profile.major.name.isEmpty { profile.major.append(major) }
-//                        else { profile.major[0] = major }
-//                        // action
-//                        print(profile.major)
-//                    } label: {
-////                        ChipView(title: major.name,
-////                                 imageName: major.imageName,
-////                                 isSelected: profile.major.contains(major))
-//                    }
-//                    .foregroundStyle(profile.major.contains(major) ? Color.black : Color.gray)
-//                    .background(profile.major.contains(major) ? Color.gray : Color.clear)
-//                    .buttonStyle(.noEffect)
-//                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
-            }
+            majorInputField
             
         case .동아리:
-            var selectedClubs: Set<Profile.Club> = Set()
-            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-                ForEach(Profile.Club.dummies, id: \.self) { club in
-                    Button {
-//                        if selectedClubs.contains(club) { selectedClubs.remove(club) }
-//                        else { selectedClubs.insert(club) }
-//                        profile.club = Array(selectedClubs)
-//                        // action
-//                        print(profile.club)
-                    } label: {
-//                        ChipView(title: club.name,
-//                                 imageName: club.imageName,
-//                                 isSelected: profile.club.contains(club))
-                    }
-//                    .foregroundStyle(profile.club.contains(club) ? Color.black : Color.gray)
-//                    .background(profile.club.contains(club) ? Color.gray : Color.clear)
-                    .buttonStyle(.noEffect)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
-            }
+            clubInputField
             
         case .MBTI:
-            var selectedMBTI: [String] = .init(repeating: String(), count: 4)
+            mbtiInputField
+//            var selectedMBTI: [String] = .init(repeating: String(), count: 4)
             /// Profile.MBTI에 적용될 값들입니다. 각각 쌍으로 매칭해두었습니다.
             // FIXME: 나중에 다른 곳에 빼두면 좋을 것 같아요
-            let mbtiPairData: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
-            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-                ForEach(0..<4) { pairIndex in
-                    ProfileMBTIButtonPair(onTap: { index in
-                        selectedMBTI[pairIndex] = mbtiPairData[pairIndex][index]
-                        // action
-                        print(selectedMBTI)
-                    }, dataPair: mbtiPairData[pairIndex])
-                }
-            }
+//            let mbtiPairData: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
+//            DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
+//                ForEach(0..<4) { pairIndex in
+//                    ProfileMBTIButtonPair(onTap: { index in
+//                        selectedMBTI[pairIndex] = mbtiPairData[pairIndex][index]
+//                        // action
+//                        print(selectedMBTI)
+//                    }, dataPair: mbtiPairData[pairIndex])
+//                }
+//            }
             
-        case .생일:
-            VStack(spacing: 0) {
-                FunchTextField(text: $profile.birth,
-                               placeholderText: "생년월일 6자리 (ex: 991114)")
-                .keyboardType(.numberPad)
-                .onChange(of: profile.birth) { _, newValue in /* action */ }
-                .onSubmit { /* action */ }
-                
-                Spacer()
-                    .frame(height: 4)
-                
-                HStack(spacing: 0) {
-                    Spacer()
-                        .frame(width: 8)
-                    
-                    Image(systemName: "info.circle")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                        .foregroundColor(Color(red: 0.73, green: 0.73, blue: 0.73))
-                    
-                    Spacer()
-                        .frame(width: 4)
-                    
-                    Text("나이는 상대에게 공개되지 않아요")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(red: 0.73, green: 0.73, blue: 0.73))
-                    
-                    Spacer()
-                }
-            }
+        case .혈액형:
+            bloodTypeInputField
             
         case .지하철:
-            /// 지하철 검색하면 받아와지는 유사 지하철역 이름 리스트
-            var subwayRecommendation: [SubwayName] = [.init(name: "test")]
-            
-            VStack(spacing: 0) {
-//                FunchTextField(text: $profile.subwayName,
-//                               placeholderText: "지하철",
-//                               leadingImage: Image(systemName: "magnifyingglass"))
-//                .onChange(of: profile.subwayName) { _, newValue in
-//                    /* action */
-//                    subwayRecommendation.append(.init(name: newValue))
-//                    print(subwayRecommendation)
-//                }
-                
-                Spacer()
-                    .frame(height: 8)
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(subwayRecommendation, id: \.self) { subway in
-                            Button {
-                                print(subway.name)
-//                                profile.subwayName = subway.name
-                            } label: {
-                                Text(subway.name)
-                                    .frame(maxWidth: .infinity)
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.black)
-                                    .padding(8)
-                            }
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+            subwayInputField
+        }
+    }
+}
+
+extension ProfileInputRow {
+    @ViewBuilder
+    private var nicknameInputField: some View {
+        FunchTextField(text: $profile.userNickname,
+                       placeholderText: "최대 9글자", textLimit: 9)
+    }
+    
+    @ViewBuilder
+    private var majorInputField: some View {
+        var selectedMajor: [Profile.Major] = profile.majors
+        
+        DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
+            ForEach(Profile.Major.dummies, id: \.self) { major in
+                ChipButton(
+                    action: {
+                        if selectedMajor.isEmpty { selectedMajor.append(major) }
+                        else {
+                            selectedMajor.removeAll()
+                            selectedMajor.append(major)
                         }
-                    }
+                        profile.majors = selectedMajor
+                    },
+                    title: major.name,
+                    imageName: major.imageName,
+                    isSelected: selectedMajor.contains(major)
+                )
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var clubInputField: some View {
+        var selectedClub: Set<Profile.Club> = Set(profile.clubs)
+        
+        DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
+            ForEach(Profile.Club.dummies, id: \.self) { club in
+                ChipButton(
+                    action: {
+                        if selectedClub.contains(club) {
+                            selectedClub.remove(club)
+                        } else {
+                            selectedClub.insert(club)
+                        }
+                        profile.clubs = Array(selectedClub)
+                        print(profile.clubs)
+                    },
+                    title: club.name,
+                    imageName: club.imageName,
+                    isSelected: selectedClub.contains(club)
+                )
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var mbtiInputField: some View {
+        Text("test")
+    }
+    
+    @ViewBuilder
+    private var bloodTypeInputField: some View {
+        Text("test")
+    }
+    
+    @ViewBuilder
+    private var subwayInputField: some View {
+        /// 지하철 검색하면 받아와지는 유사 지하철역 이름 리스트
+        let subwayRecommendation: [SubwayInfo] = [.testableValue, .testableValue]
+        Text("test")
+    }
+}
+
+
+
+struct ChipButton: View {
+    
+    enum ViewType {
+        /// 텍스트
+        case text
+        /// 이미지 + 텍스트
+        case image
+    }
+    
+    /// 어떤 view인지에 따른 가로 padding
+    private var verticalPadding: CGFloat {
+        switch type {
+        case .text: 12
+        case .image: 8
+        }
+    }
+    
+    /// 어떤 view인지에 따른 세로 padding
+    private var horizontalPadding: CGFloat {
+        switch type {
+        case .text: 16
+        case .image: 8
+        }
+    }
+    
+    
+    /// 칩 뷰 타입
+    private(set) var type: ViewType
+    
+    init(action: @escaping () -> Void,
+//         isSelected: Binding<Bool>,
+         title: String,
+         imageName: String? = nil,
+         isSelected: Bool
+    ) {
+        self.action = action
+//        self._isSelected = isSelected
+        self.title = title
+        self.isSelected = isSelected
+        
+        if let imageName = imageName {
+            self.type = .image
+            self.imageName = imageName
+        } else {
+            self.type = .text
+            self.imageName = ""
+        }
+    }
+    
+    /// 터치 액션
+    var action: () -> Void
+    /// 선택됐는지를 나타내는 State
+    var isSelected: Bool
+//    @Binding private var isSelected: Bool
+    /// 타이틀
+    var title: String = ""
+    /// 리소스 이름
+    var imageName: String = ""
+    
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            buttonInnerView
+        }
+        .tint(.white)
+        .padding(.vertical, verticalPadding)
+        .padding(.horizontal, horizontalPadding)
+        .padding(.trailing, type == .image ? 8 : 0)
+        .background(isSelected ? .gray500 : .gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+    
+    @ViewBuilder
+    private var buttonInnerView: some View {
+        switch type {
+        case .text:
+            Text(title)
+                .foregroundStyle(isSelected ? .white : .gray400)
+                .customFont(.subtitle2)
+                .frame(width: 16, height: 24)
+            
+        case .image:
+            HStack {
+                VStack {
+                    Image(systemName: imageName)
+                        .resizable()
+                        .frame(width: 18, height: 18)
                 }
-                .scrollIndicators(.hidden)
+                .frame(width: 32, height: 32)
+                .background(.gray900)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+                Text(title)
+                    .foregroundStyle(isSelected ? .white : .gray400)
+                    .customFont(.body)
             }
         }
     }
 }
 
-struct SubwayName: Hashable { var name: String }
+
+#Preview {
+    NavigationStack {
+        ProfileEditorView()
+    }
+}
