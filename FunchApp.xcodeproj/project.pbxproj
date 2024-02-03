@@ -49,7 +49,7 @@
 		1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069B2B5D6D600024356C /* UIDeivce+.swift */; };
 		1A87EAEE2B691F470059F80A /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C0E2B5E9AB2008AE23B /* View+.swift */; };
 		1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49702B5BA29000024336 /* HomeUseCase.swift */; };
-		1A87EAF02B691F940059F80A /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* ProfileUseCase.swift */; };
+		1A87EAF02B691F940059F80A /* CreateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* CreateProfileUseCase.swift */; };
 		1A87EAF12B691F990059F80A /* MatchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */; };
 		1A87EAF22B691F9C0059F80A /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */; };
 		1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */; };
@@ -72,6 +72,9 @@
 		1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */; };
 		1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
 		1A87EB082B6DFD430059F80A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB062B6A6A430059F80A /* APIClient.swift */; };
+		1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */; };
+		1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
+		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -83,7 +86,7 @@
 		1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE495B2B5B9EF200024336 /* OnboardingView.swift */; };
 		1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49632B5B9F4A00024336 /* Profile.swift */; };
 		1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */; };
-		1ACE496A2B5BA19200024336 /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* ProfileUseCase.swift */; };
+		1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49692B5BA19200024336 /* CreateProfileUseCase.swift */; };
 		1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49702B5BA29000024336 /* HomeUseCase.swift */; };
 		1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */; };
 		1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */; };
@@ -147,6 +150,8 @@
 		1A7B069D2B5D702D0024356C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
+		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchAppApp.swift; sourceTree = "<group>"; };
 		1ACE493D2B5B9D0B00024336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,7 +164,7 @@
 		1ACE495B2B5B9EF200024336 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1ACE49632B5B9F4A00024336 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1ACE49652B5BA06D00024336 /* ProfileRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryType.swift; sourceTree = "<group>"; };
-		1ACE49692B5BA19200024336 /* ProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCase.swift; sourceTree = "<group>"; };
+		1ACE49692B5BA19200024336 /* CreateProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileUseCase.swift; sourceTree = "<group>"; };
 		1ACE49702B5BA29000024336 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		1ACE49742B5BA2A100024336 /* MatchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultUseCase.swift; sourceTree = "<group>"; };
 		1ACE49762B5BA2AB00024336 /* OnboardingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUseCase.swift; sourceTree = "<group>"; };
@@ -251,6 +256,7 @@
 				1A792B842B5D5A5100A080F2 /* CreateUserQuery.swift */,
 				1A792B882B5D62A300A080F2 /* SearchUserQuery.swift */,
 				1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */,
+				1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -456,7 +462,8 @@
 		1ACE496F2B5BA27600024336 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49692B5BA19200024336 /* ProfileUseCase.swift */,
+				1ACE49692B5BA19200024336 /* CreateProfileUseCase.swift */,
+				1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -717,13 +724,14 @@
 				1A87EAEE2B691F470059F80A /* View+.swift in Sources */,
 				1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */,
 				1A87EAF22B691F9C0059F80A /* OnboardingUseCase.swift in Sources */,
+				1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */,
 				1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */,
 				1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */,
 				1A87EAF82B691FAC0059F80A /* MatchingInfo.swift in Sources */,
 				1A87EAFC2B691FEA0059F80A /* UserDataStorage.swift in Sources */,
 				1A87EAE92B691E730059F80A /* Requestable.swift in Sources */,
 				1A87EAE82B691E710059F80A /* Respondable.swift in Sources */,
-				1A87EAF02B691F940059F80A /* ProfileUseCase.swift in Sources */,
+				1A87EAF02B691F940059F80A /* CreateProfileUseCase.swift in Sources */,
 				1A87EAFB2B691FB60059F80A /* SearchSubwayStationQuery.swift in Sources */,
 				1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */,
 				1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */,
@@ -792,14 +800,16 @@
 				1ACE49772B5BA2AB00024336 /* OnboardingUseCase.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
-				1ACE496A2B5BA19200024336 /* ProfileUseCase.swift in Sources */,
+				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
 				3EA69C0D2B5E5379008AE23B /* ProfileInputRow.swift in Sources */,
 				3EA69C052B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */,
+				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
 				1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */,
+				1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */,
 				1A87EB072B6A6A430059F80A /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

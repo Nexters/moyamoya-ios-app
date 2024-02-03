@@ -89,14 +89,16 @@ extension ResponseDTO.GetProfile {
         let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
                 .init(name: name, lines: [])
         }
-        return Profile(userCode: data.memberCode,
-                userNickname: data.name,
-                birth: data.birth,
-                majors: majors,
-                clubs: clubs,
-                mbti: data.mbti,
-                constellation: data.constellation,
-                subwayInfos: subwayInfos,
-                viewerShip: "0")
+        return Profile(
+            id: data.id,
+            userCode: data.memberCode,
+            userNickname: data.name,
+            birth: data.birth,
+            majors: majors,
+            clubs: clubs,
+            mbti: data.mbti,
+            constellation: data.constellation,
+            subwayInfos: subwayInfos,
+            viewerShip: "0")
     }
 }
