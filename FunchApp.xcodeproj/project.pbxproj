@@ -76,6 +76,7 @@
 		1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
+		1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -154,6 +155,7 @@
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
 		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
+		1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubway.Res.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchAppApp.swift; sourceTree = "<group>"; };
 		1ACE493D2B5B9D0B00024336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */,
 				1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */,
 				1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */,
+				1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */,
 				1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */,
 				1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */,
+				1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */,
 				1A792B872B5D605400A080F2 /* MatchingRepository.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,

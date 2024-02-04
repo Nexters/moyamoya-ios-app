@@ -14,6 +14,4 @@ struct SearchSubwayStationQuery {
     init(searchText: String) {
         self.searchText = searchText
     }
-    
-    
 }
