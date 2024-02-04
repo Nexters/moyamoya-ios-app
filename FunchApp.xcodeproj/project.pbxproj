@@ -75,6 +75,7 @@
 		1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */; };
 		1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
+		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -152,6 +153,7 @@
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
+		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchAppApp.swift; sourceTree = "<group>"; };
 		1ACE493D2B5B9D0B00024336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */,
+				1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */,
 				1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */,
 				1A87EAFF2B691FFB0059F80A /* CreateProfile.Res.swift in Sources */,
+				1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */,
 				1A87EB082B6DFD430059F80A /* APIClient.swift in Sources */,
 				1A87EB002B691FFE0059F80A /* MatchingUser.Res.swift in Sources */,
 				1A87EAF32B691FA00059F80A /* ProfileRepositoryType.swift in Sources */,

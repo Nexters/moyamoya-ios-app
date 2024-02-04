@@ -59,7 +59,7 @@ struct ProfileChipRow: View {
             let mbti = profile.mbti
             return ChipView(title: mbti)
         case .별자리:
-            let constellation = profile.constellation
+            let constellation = profile.bloodType
             return ChipView(title: constellation)
         case .지하철:
             let subwayName = profile.subwayInfos

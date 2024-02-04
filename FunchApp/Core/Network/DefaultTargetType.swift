@@ -37,8 +37,8 @@ extension DefaultTargetType: TargetType {
             return "/v1/members/\(id)"
         case .getUserProfileFromDeviceId(_):
             return "/v1/members"
-        case let .matchingUser(id):
-            return "/v1/members/\(id)"
+        case .matchingUser(_):
+            return "/v1/matching"
         case .createUserProfile:
             return "/v1/members"
         case .searchSubwayStations(_):
@@ -66,11 +66,11 @@ extension DefaultTargetType: TargetType {
                 .searchSubwayStations(_):
             return .requestPlain
             
-        case .matchingUser(let parameters),
-                .getUserProfileFromDeviceId(let parameters):
+        case .getUserProfileFromDeviceId(let parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
             
-        case let .createUserProfile(parameters):
+        case let .createUserProfile(parameters),
+                .matchingUser(let parameters):
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
             return .requestData(jsonData)
             
