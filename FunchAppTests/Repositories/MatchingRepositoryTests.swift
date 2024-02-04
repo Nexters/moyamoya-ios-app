@@ -31,8 +31,12 @@ final class MatchingRepositoryTests: XCTestCase {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
         
-        let testableReuqestId: String = "65bdd58cebe5db753688b9fb"
-        let testableTargetUserCode: String = "GP38"
+        let testableReuqestId: String = "65bf251debe5db753688ba02" // 성민
+        // 성민- 65bf251debe5db753688ba02
+        // 건우- 65bf253febe5db753688ba03
+        let testableTargetUserCode: String = "G36K" // 건우
+        // 성민- 2M5N
+        // 건우- G36K
         
         let query = MatchingUserQuery(
             requestId: testableReuqestId,

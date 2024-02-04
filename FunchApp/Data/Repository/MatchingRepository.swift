@@ -29,7 +29,7 @@ final class MatchingRepository: MatchingRepositoryType {
         ) { result in
             switch result {
             case .success(let success):
-//                completion(.success(success.toDomain()))
+                completion(.success(success.toDomain()))
                 break
             case .failure(let failure):
                 completion(.failure(failure))
