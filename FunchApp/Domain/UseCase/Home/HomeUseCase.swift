@@ -31,9 +31,11 @@ final class HomeUseCase {
     }
     
     /// `상대 프로필` 검색
-    func searchUser(userCode: String, completion: @escaping (Profile) -> Void) {
-        let searchUserQuery = SearchUserQuery(userCode: userCode)
-        matchingRepository.searchUser(searchUserQuery: searchUserQuery) { result in
+    func searchUser(requestId: String,
+                    targetUserCode: String,
+                    completion: @escaping (Profile) -> Void) {
+        let searchUserQuery = MatchingUserQuery(requestId: requestId, targetUserCode: targetUserCode)
+        matchingRepository.matchingUser(searchUserQuery: searchUserQuery) { result in
             switch result {
             case .success(let success):
 //                completion()

@@ -8,7 +8,9 @@
 import Foundation
 
 struct Profile {
-    /// `unique`
+    /// 유저 고유 아이디
+    var id: String
+    /// 유저코드
     var userCode: String
     /// 유저 닉네임
     var userNickname: String
@@ -16,15 +18,15 @@ struct Profile {
     var birth: String
     
     /// 직군
-    var major: [Major]
+    var majors: [Major]
     /// 동아리
-    var club: [Club]
+    var clubs: [Club]
     /// mbti
     var mbti: String
-    /// 별자리
-    var constellation: String
+    /// 혈액형 타입
+    var bloodType: String
     /// 지하철 역
-    var subwayName: String
+    var subwayInfos: [SubwayInfo]
     /// 조회수
     var viewerShip: String
     
@@ -49,28 +51,30 @@ extension Profile {
     /// 작업에 있어 테스트 가능한 값 (테스트 코드에 사용하면 안됩니다.)
     static var testableValue: Profile {
         return Profile(
+            id: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
             birth: "20021225",
-            major: [.init(name: "개발자", imageName: "plus")],
-            club: [.init(name: "넥스터즈", imageName: "plus")],
+            majors: [.init(name: "개발자", imageName: "plus")],
+            clubs: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
-            constellation: "물병",
-            subwayName: "강남",
+            bloodType: "물병",
+            subwayInfos: [.init(name: "동대문", lines: ["2"])],
             viewerShip: "31"
         )
     }
     
     static var emptyValue: Profile {
         return Profile(
+            id: "",
             userCode: "",
             userNickname: "",
             birth: "",
-            major: [],
-            club: [],
+            majors: [],
+            clubs: [],
             mbti: "",
-            constellation: "",
-            subwayName: "",
+            bloodType: "",
+            subwayInfos: [],
             viewerShip: ""
         )
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension RequestDTO {
-    struct SearchSubwayStationDTO: RequestType {
+    struct SearchSubwayStation: Requestable {
         
         var searchText: String
         
@@ -23,4 +23,3 @@ extension RequestDTO {
         }
     }
 }
-

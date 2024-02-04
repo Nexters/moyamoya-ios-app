@@ -8,27 +8,30 @@
 import Foundation
 import Moya
 
-/// `User 타인`을 기준으로 하는 repository
+/// User 타인을 기준으로 하는 repository
 final class MatchingRepository: MatchingRepositoryType {
-    private let provider: MoyaProvider<DefaultTargetType>
+    
+    private let apiClient: APIClient
     
     init() {
-        provider = MoyaProvider<DefaultTargetType>()
+        apiClient = APIClient()
     }
     
-    /// `상대 프로필` 검색
-    func searchUser(
-        searchUserQuery: SearchUserQuery,
-        completion: @escaping (Result<Profile, Error>) -> Void
+    /// 상대 프로필 검색
+    func matchingUser(
+        searchUserQuery: MatchingUserQuery,
+        completion: @escaping (Result<MatchingInfo, MoyaError>) -> Void
     ) {
-        let requestDTO = RequestDTO.SearchUserDTO(query: searchUserQuery)
-        provider.request(.createUserProfile(parameters: requestDTO.toDitionary)) { result in
+        let requestDTO = RequestDTO.MatchingUser(query: searchUserQuery)
+        apiClient.request(
+            ResponseDTO.MatchingUser.self,
+            target: .matchingUser(parameters: requestDTO.toDitionary)
+        ) { result in
             switch result {
-            case .success(let response):
-                let data = try? JSONDecoder().decode(ResponseDTO.ProfileDTO.self, from: response.data)
-                completion(.success(data!.toDomain()))
-            case .failure(let error):
-                completion(.failure(error))
+            case .success(let success):
+                completion(.success(success.toDomain()))
+            case .failure(let failure):
+                completion(.failure(failure))
             }
         }
     }

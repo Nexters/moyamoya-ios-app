@@ -13,8 +13,7 @@ struct FunchAppApp: App {
         WindowGroup {
             NavigationStack {
                 ProfileView()
-            }
-            
+            }   
         }
     }
 }

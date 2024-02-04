@@ -59,20 +59,21 @@ struct ProfileInputRow: View {
         case .직군:
             DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                 ForEach(Profile.Major.dummies, id: \.self) { major in
-                    Button {
-                        if profile.major.isEmpty { profile.major.append(major) }
-                        else { profile.major[0] = major }
-                        // action
-                        print(profile.major)
-                    } label: {
-                        ChipView(title: major.name,
-                                 imageName: major.imageName,
-                                 isSelected: profile.major.contains(major))
-                    }
-                    .foregroundStyle(profile.major.contains(major) ? Color.black : Color.gray)
-                    .background(profile.major.contains(major) ? Color.gray : Color.clear)
-                    .buttonStyle(.noEffect)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    EmptyView()
+//                    Button {
+//                        if profile.major.name.isEmpty { profile.major.append(major) }
+//                        else { profile.major[0] = major }
+//                        // action
+//                        print(profile.major)
+//                    } label: {
+////                        ChipView(title: major.name,
+////                                 imageName: major.imageName,
+////                                 isSelected: profile.major.contains(major))
+//                    }
+//                    .foregroundStyle(profile.major.contains(major) ? Color.black : Color.gray)
+//                    .background(profile.major.contains(major) ? Color.gray : Color.clear)
+//                    .buttonStyle(.noEffect)
+//                    .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }
             
@@ -81,18 +82,18 @@ struct ProfileInputRow: View {
             DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                 ForEach(Profile.Club.dummies, id: \.self) { club in
                     Button {
-                        if selectedClubs.contains(club) { selectedClubs.remove(club) }
-                        else { selectedClubs.insert(club) }
-                        profile.club = Array(selectedClubs)
-                        // action
-                        print(profile.club)
+//                        if selectedClubs.contains(club) { selectedClubs.remove(club) }
+//                        else { selectedClubs.insert(club) }
+//                        profile.club = Array(selectedClubs)
+//                        // action
+//                        print(profile.club)
                     } label: {
-                        ChipView(title: club.name,
-                                 imageName: club.imageName,
-                                 isSelected: profile.club.contains(club))
+//                        ChipView(title: club.name,
+//                                 imageName: club.imageName,
+//                                 isSelected: profile.club.contains(club))
                     }
-                    .foregroundStyle(profile.club.contains(club) ? Color.black : Color.gray)
-                    .background(profile.club.contains(club) ? Color.gray : Color.clear)
+//                    .foregroundStyle(profile.club.contains(club) ? Color.black : Color.gray)
+//                    .background(profile.club.contains(club) ? Color.gray : Color.clear)
                     .buttonStyle(.noEffect)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
@@ -149,14 +150,14 @@ struct ProfileInputRow: View {
             var subwayRecommendation: [SubwayName] = [.init(name: "test")]
             
             VStack(spacing: 0) {
-                FunchTextField(text: $profile.subwayName,
-                               placeholderText: "지하철",
-                               leadingImage: Image(systemName: "magnifyingglass"))
-                .onChange(of: profile.subwayName) { _, newValue in
-                    /* action */
-                    subwayRecommendation.append(.init(name: newValue))
-                    print(subwayRecommendation)
-                }
+//                FunchTextField(text: $profile.subwayName,
+//                               placeholderText: "지하철",
+//                               leadingImage: Image(systemName: "magnifyingglass"))
+//                .onChange(of: profile.subwayName) { _, newValue in
+//                    /* action */
+//                    subwayRecommendation.append(.init(name: newValue))
+//                    print(subwayRecommendation)
+//                }
                 
                 Spacer()
                     .frame(height: 8)
@@ -166,7 +167,7 @@ struct ProfileInputRow: View {
                         ForEach(subwayRecommendation, id: \.self) { subway in
                             Button {
                                 print(subway.name)
-                                profile.subwayName = subway.name
+//                                profile.subwayName = subway.name
                             } label: {
                                 Text(subway.name)
                                     .frame(maxWidth: .infinity)

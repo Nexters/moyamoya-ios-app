@@ -1,21 +1,21 @@
 //
-//  ProfileDTO.swift
+//  CreateProfile.Req.swift
 //  FunchApp
 //
-//  Created by Geon Woo lee on 1/20/24.
+//  Created by Geon Woo lee on 1/29/24.
 //
 
 import UIKit
 
 extension RequestDTO {
-    struct CreateUserProfileDTO: RequestType {
+    struct CreateUserProfileDTO: Requestable {
         var deviceId = UIDevice.uuidString
         
         var name: String
         var birth: String
         var major: String
         var clubs: [String]
-        var subwayStation: String
+        var subwayStations: [String]
         var mbti: String
         
         init(query: CreateUserQuery) {
@@ -23,21 +23,20 @@ extension RequestDTO {
             self.birth = query.birth
             self.major = query.major
             self.clubs = query.clubs
-            self.subwayStation = query.subwayStation
+            self.subwayStations = query.subwayStationName
             self.mbti = query.mbti
         }
         
         var toDitionary: DictionaryType {
             [
-                "deviceId": deviceId,
                 "name": name,
-                "birth": birth,
-                "major": major,
+                "birthDate": birth,
+                "jobGroup": major,
                 "clubs": clubs,
-                "subwayStation": subwayStation,
-                "mbti": mbti
+                "subwayStations": subwayStations,
+                "mbti": mbti,
+                "deviceNumber": deviceId,
             ]
         }
     }
 }
-
