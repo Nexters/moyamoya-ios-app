@@ -8,7 +8,7 @@
 import Foundation
 
 extension ResponseDTO {
-    struct SearchSubway: Respondable {
+    struct SearchSubwayStation: Respondable {
         var status: String
         var message: String
         var data: DataClass
@@ -20,10 +20,10 @@ extension ResponseDTO {
         }
         
         init(from decoder: Decoder) throws {
-            let container: KeyedDecodingContainer<ResponseDTO.SearchSubway.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubway.CodingKeys.self)
-            self.status = try container.decode(String.self, forKey: ResponseDTO.SearchSubway.CodingKeys.status)
-            self.message = try container.decode(String.self, forKey: ResponseDTO.SearchSubway.CodingKeys.message)
-            self.data = try container.decode(ResponseDTO.SearchSubway.DataClass.self, forKey: ResponseDTO.SearchSubway.CodingKeys.data)
+            let container: KeyedDecodingContainer<ResponseDTO.SearchSubwayStation.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubwayStation.CodingKeys.self)
+            self.status = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.status)
+            self.message = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.message)
+            self.data = try container.decode(ResponseDTO.SearchSubwayStation.DataClass.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.data)
         }
         
         struct DataClass: Decodable {
@@ -41,10 +41,10 @@ extension ResponseDTO {
             }
             
             init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.SearchSubway.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubway.DataClass.CodingKeys.self)
-                self.name = try container.decode(String.self, forKey: ResponseDTO.SearchSubway.DataClass.CodingKeys.name)
-                self.lines = try container.decode([String].self, forKey: ResponseDTO.SearchSubway.DataClass.CodingKeys.lines)
-                self.location = try container.decode(ResponseDTO.SearchSubway.DataClass.Location.self, forKey: ResponseDTO.SearchSubway.DataClass.CodingKeys.location)
+                let container: KeyedDecodingContainer<ResponseDTO.SearchSubwayStation.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubwayStation.DataClass.CodingKeys.self)
+                self.name = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.DataClass.CodingKeys.name)
+                self.lines = try container.decode([String].self, forKey: ResponseDTO.SearchSubwayStation.DataClass.CodingKeys.lines)
+                self.location = try container.decode(ResponseDTO.SearchSubwayStation.DataClass.Location.self, forKey: ResponseDTO.SearchSubwayStation.DataClass.CodingKeys.location)
             }
             
             struct Location: Decodable {
@@ -57,11 +57,18 @@ extension ResponseDTO {
                 }
                 
                 init(from decoder: Decoder) throws {
-                    let container: KeyedDecodingContainer<ResponseDTO.SearchSubway.DataClass.Location.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubway.DataClass.Location.CodingKeys.self)
-                    self.latitude = try container.decode(String.self, forKey: ResponseDTO.SearchSubway.DataClass.Location.CodingKeys.latitude)
-                    self.longitude = try container.decode(String.self, forKey: ResponseDTO.SearchSubway.DataClass.Location.CodingKeys.longitude)
+                    let container: KeyedDecodingContainer<ResponseDTO.SearchSubwayStation.DataClass.Location.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubwayStation.DataClass.Location.CodingKeys.self)
+                    self.latitude = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.DataClass.Location.CodingKeys.latitude)
+                    self.longitude = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.DataClass.Location.CodingKeys.longitude)
                 }
             }
         }
+    }
+}
+
+extension ResponseDTO.SearchSubwayStation {
+    func toDomain() -> [SubwayInfo] {
+        // TODO: - 
+        
     }
 }
