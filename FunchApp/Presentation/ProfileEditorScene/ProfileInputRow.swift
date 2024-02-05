@@ -161,11 +161,11 @@ extension ProfileInputRow {
             
             HStack(spacing: 4) {
                 ForEach(subwayRecommendation, id: \.self) { subwayInfo in
-                    Text(subwayInfo.name)
+                    Text(subwayInfo.name.applyColorToText(target: profile.userCode, color: .white) ?? AttributedString(subwayInfo.name))
                         .font(.Funch.body)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.gray500)
                         .padding(8)
-                        .background(.gray500)
+                        .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 }
                 Spacer()
