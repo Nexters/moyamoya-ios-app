@@ -11,7 +11,7 @@ extension ResponseDTO {
     struct SearchSubwayStation: Respondable {
         var status: String
         var message: String
-        var data: DataClass
+        var data: [DataClass]
         
         enum CodingKeys: CodingKey {
             case status
@@ -23,7 +23,7 @@ extension ResponseDTO {
             let container: KeyedDecodingContainer<ResponseDTO.SearchSubwayStation.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.SearchSubwayStation.CodingKeys.self)
             self.status = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.status)
             self.message = try container.decode(String.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.message)
-            self.data = try container.decode(ResponseDTO.SearchSubwayStation.DataClass.self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.data)
+            self.data = try container.decode([ResponseDTO.SearchSubwayStation.DataClass].self, forKey: ResponseDTO.SearchSubwayStation.CodingKeys.data)
         }
         
         struct DataClass: Decodable {
@@ -68,7 +68,9 @@ extension ResponseDTO {
 
 extension ResponseDTO.SearchSubwayStation {
     func toDomain() -> [SubwayInfo] {
-        // TODO: - 
-        
+        let subwayInfoList: [SubwayInfo] = data.map { subwayInfo in
+                .init(name: subwayInfo.name, lines: subwayInfo.lines)
+        }
+        return subwayInfoList
     }
 }
