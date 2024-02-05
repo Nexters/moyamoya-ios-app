@@ -54,17 +54,15 @@ struct FunchTextField: View {
     }
     
     var body: some View {
-        HStack(spacing: 0) {
+        // 어쩔 수 없는 spacing -> 간격 조절을 위해 ...
+        HStack(spacing: 8) {
             Spacer()
                 .frame(width: 8)
             
             leadingImage?
                 .resizable()
-                .padding(8)
-                .frame(width: 40, height: 40)
-            
-            Spacer()
-                .frame(width: 8)
+                .foregroundStyle(.gray500)
+                .frame(width: 24, height: 24)
             
             TextField(
                 "",
@@ -83,9 +81,6 @@ struct FunchTextField: View {
                     isError = false
                 }
             }
-            
-            Spacer()
-                .frame(width: 8)
             
             textLimitLabel
             
