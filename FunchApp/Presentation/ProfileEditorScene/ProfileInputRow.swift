@@ -124,11 +124,8 @@ extension ProfileInputRow {
             ForEach(Profile.Club.dummies, id: \.self) { club in
                 ChipButton(
                     action: {
-                        if selectedClub.contains(club) {
-                            selectedClub.remove(club)
-                        } else {
-                            selectedClub.insert(club)
-                        }
+                        if selectedClub.contains(club) { selectedClub.remove(club) }
+                        else { selectedClub.insert(club) }
                         profile.clubs = Array(selectedClub)
                         print(profile.clubs)
                     },
@@ -142,7 +139,7 @@ extension ProfileInputRow {
     
     @ViewBuilder
     private var mbtiInputField: some View {
-        Text("test")
+        ProfileMBTIButtonSet(selectedMBTI: $profile.mbti)
     }
     
     @ViewBuilder
