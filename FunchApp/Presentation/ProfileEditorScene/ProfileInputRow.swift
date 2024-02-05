@@ -18,7 +18,7 @@ struct ProfileInputRow: View {
         case 지하철
     }
     
-    /// 좌측 Text()의 ViewType 별로 높이 값
+    /// 좌측 Text()의 ViewType 별 높이 값
     private var leadingTextHeight: CGFloat {
         switch type {
         case .닉네임, .혈액형, .지하철:
@@ -74,12 +74,15 @@ struct ProfileInputRow: View {
 }
 
 extension ProfileInputRow {
+    /// 닉네임 입력용 Input Field
     @ViewBuilder
     private var nicknameInputField: some View {
         FunchTextField(text: $profile.userNickname,
-                       placeholderText: "최대 9글자", textLimit: 9)
+                       placeholderText: "최대 9글자",
+                       textLimit: 9)
     }
     
+    /// 직업 입력용 Input Field
     @ViewBuilder
     private var majorInputField: some View {
         var selectedMajor: [Profile.Major] = profile.majors
@@ -103,6 +106,7 @@ extension ProfileInputRow {
         }
     }
     
+    /// 동아리 입력용 Input Field
     @ViewBuilder
     private var clubInputField: some View {
         var selectedClub: Set<Profile.Club> = Set(profile.clubs)
@@ -123,29 +127,34 @@ extension ProfileInputRow {
         }
     }
     
+    /// MBTI 입력용 Input Field
     @ViewBuilder
     private var mbtiInputField: some View {
         ProfileMBTIButtonSet(selectedMBTI: $profile.mbti)
     }
     
+    /// 혈액형 입력용 Input Field
     @ViewBuilder
     private var bloodTypeInputField: some View {
         Text("test")
     }
     
+    /// 지하철 입력용 Input Field
     @ViewBuilder
     private var subwayInputField: some View {
-        @State var inputString: String = ""
         /// 지하철 검색하면 받아와지는 유사 지하철역 이름 리스트
-        let subwayRecommendation: [SubwayInfo] = [.testableValue, .testableValue]
+        let subwayRecommendation: [SubwayInfo] = [.testableValue]
         
         VStack(spacing: 0) {
-            FunchTextField(text: $inputString,
-                           placeholderText: "가까운 지하철역 검색",
-                           leadingImage: .init(systemName: "magnifyingglass"))
-            .onSubmit {
-                // api 통신
-            }
+            // FIXME: profile editor model 도 넣으면 좋을듯 -> 이 텍스트필드에 subwayInfo로 접근이 불가능
+            FunchTextField(
+                onChangeAction: { oldText, newText in
+                    // action
+                },
+                text: $profile.userCode,
+                placeholderText: "가까운 지하철역 검색",
+                leadingImage: .init(systemName: "magnifyingglass")
+            )
             
             Spacer()
                 .frame(height: 4)
