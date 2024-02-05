@@ -8,28 +8,46 @@
 import XCTest
 
 final class SubwayStationRepositoryTests: XCTestCase {
+    
+    // FIXME: 추후 프로토콜로 교체
+    var repository: SubwayStationRepository?
+    
+    override func setUp() {
+        super.setUp()
+        
+        repository = SubwayStationRepository()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        repository = nil
+    }
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        continueAfterFailure = false
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_search_subway_stations() {
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 1
+        
+        let multipleAvailableValue = "강남" // 강남, 강남구청, 강남대
+        let query = SearchSubwayStationQuery(searchText: multipleAvailableValue)
+//        let singleAvailableValue = "고속터미널" // 고속터미널
+//        let query = SearchSubwayStationQuery(searchText: singleAvailableValue)
+        
+        repository?.searchSubwayStations(searchSubwayStationQuery: query) { result in
+            switch result {
+            case .success(let response):
+                XCTAssertTrue(true, "잘 받아와지는지 ?")
+            case .failure(let failure):
+                XCTFail(failure.localizedDescription)
+            }
+            expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: 5)
     }
 
 }
