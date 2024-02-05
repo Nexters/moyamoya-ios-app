@@ -97,6 +97,7 @@
 		1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
 		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
+		3E1E73EF2B7071030082386A /* SubwayStationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73EE2B7071030082386A /* SubwayStationRepositoryTests.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
 		3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */; };
@@ -177,6 +178,7 @@
 		1ACE497F2B5BA46600024336 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
 		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		3E1E73EE2B7071030082386A /* SubwayStationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayStationRepositoryTests.swift; sourceTree = "<group>"; };
 		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
 		3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHGrid.swift; sourceTree = "<group>"; };
 		3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTapEffectButtonStyle.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */,
 				1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */,
+				3E1E73EE2B7071030082386A /* SubwayStationRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A87EAF62B691FA70059F80A /* SubwayInfo.swift in Sources */,
+				3E1E73EF2B7071030082386A /* SubwayStationRepositoryTests.swift in Sources */,
 				1A87EAEA2B691F2D0059F80A /* DefaultTargetType.swift in Sources */,
 				1A87EAF42B691FA20059F80A /* SubwayStationRepositoryType.swift in Sources */,
 				1A87EAF72B691FA90059F80A /* Profile.swift in Sources */,
