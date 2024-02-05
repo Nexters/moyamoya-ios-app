@@ -9,20 +9,72 @@ import SwiftUI
 
 struct FunchTextField: View {
     
+    enum TextFieldType {
+        /// 별다른 추가사항 없는 일반 텍스트필드
+        case normal
+        /// 최대 글자 수 제한이 있는 텍스트필드
+        case maxLength
+        /// 좌측에 아이콘이 들어간 텍스트필드
+        case icon
+        /// 우측에 버튼이 들어간 텍스트필드
+        case button
+    }
+    
+    /// 텍스트필드 타입
+    private(set) var type: TextFieldType
+    
+    // MARK: - inputs
+    /// TextField의 onChange에 들어갈 action
+    var onChangeAction: (String, String) -> Void = { _, _ in }
+    /// Binding
     @Binding var text: String
     /// placeholder
     let placeholderText: String
     /// 좌측에 넣을 이미지
-    let leadingImage: Image?
+    var leadingImage: Image?
     /// 글자수 제한 있는 Textfield 용 글자 제한 수
-    let textLimit: Int?
+    var textLimit: Int?
+    /// 우측 버튼에 넣을 이미지
+    var trailingButtonImage: Image?
+    /// 버튼 터치 액션
+    var buttonAction: () -> Void = {}
     
+    init(
+        onChangeAction: @escaping (String, String) -> Void = { _, _ in },
+        text: Binding<String>,
+        placeholderText: String = "",
+        textLimit: Int? = nil,
+        leadingImage: Image? = nil,
+        buttonAction: @escaping () -> Void = {},
+        trailingButtonImage: Image? = nil
+    ) {
+        self.onChangeAction = onChangeAction
+        self._text = text
+        self.placeholderText = placeholderText
+        
+        if let textLimit {
+            self.textLimit = textLimit
+            self.type = .maxLength
+        }
+        else if let leadingImage {
+            self.leadingImage = leadingImage
+            self.type = .icon
+        }
+        else if let trailingButtonImage {
+            self.buttonAction = buttonAction
+            self.trailingButtonImage = trailingButtonImage
+            self.type = .button
+        }
+        else {
+            self.type = .normal
+        }
+    }
     
+    // MARK: - properties for UI
     /// Textfield에 focus가 되어 있는지 판단하는 변수
     @FocusState private var isFocused: Bool
     /// Textfield에 error가 있는지 판단하는 변수
     @State private var isError: Bool = false
-    
     
     /// border 색상
     private var borderColor: Color {
@@ -42,27 +94,14 @@ struct FunchTextField: View {
         else { return .gray400 }
     }
     
-    
-    init(text: Binding<String>,
-         placeholderText: String = "",
-         leadingImage: Image? = nil,
-         textLimit: Int? = nil) {
-        self._text = text
-        self.placeholderText = placeholderText
-        self.leadingImage = leadingImage
-        self.textLimit = textLimit
-    }
-    
+    // MARK: - body
     var body: some View {
         // 어쩔 수 없는 spacing -> 간격 조절을 위해 ...
         HStack(spacing: 8) {
             Spacer()
                 .frame(width: 8)
             
-            leadingImage?
-                .resizable()
-                .foregroundStyle(.gray500)
-                .frame(width: 24, height: 24)
+            leadingView
             
             TextField(
                 "",
@@ -72,17 +111,11 @@ struct FunchTextField: View {
             .focused($isFocused)
             .foregroundStyle(.white)
             .font(.Funch.body)
-            .onChange(of: text) { _, _ in
-                guard let textLimit else { return }
-                if text.count > textLimit {
-                    text = String(text.prefix(textLimit))
-                    isError = true
-                } else {
-                    isError = false
-                }
+            .onChange(of: text) { oldText, newText in
+                onTextFieldChangeAction(oldText, newText)
             }
             
-            textLimitLabel
+            trailingView
             
             Spacer()
                 .frame(width: 8)
@@ -97,17 +130,65 @@ struct FunchTextField: View {
         }
     }
     
-    @ViewBuilder
-    private var textLimitLabel: some View {
-        if let textLimit {
-            HStack(spacing: 0) {
-                Text("\(text.count)")
-                    .foregroundStyle(textCountColor)
-                Text("/\(textLimit)")
-                    .foregroundStyle(textLimitColor)
+    // MARK: - additional
+    private func onTextFieldChangeAction(_ oldValue: String, _ newValue: String) {
+        switch type {
+        case .maxLength:
+            guard let textLimit else { return }
+            if newValue.count > textLimit {
+                text = oldValue
+                isError = true
             }
-            .font(.Funch.body)
-            .padding(8)
+            else if newValue.count < textLimit {
+                isError = false
+            }
+        default:
+            onChangeAction(oldValue, newValue)
+        }
+    }
+    
+    @ViewBuilder
+    private var leadingView: some View {
+        switch type {
+        case .icon:
+            leadingImage?
+                .resizable()
+                .foregroundStyle(.gray500)
+                .frame(width: 24, height: 24)
+        default:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private var trailingView: some View {
+        switch type {
+        case .maxLength:
+            if let textLimit {
+                HStack(spacing: 0) {
+                    Text("\(text.count)")
+                        .foregroundStyle(textCountColor)
+                    Text("/\(textLimit)")
+                        .foregroundStyle(textLimitColor)
+                }
+                .font(.Funch.body)
+                .padding(8)
+            }
+            
+        case .button:
+            Button {
+                buttonAction()
+            } label: {
+                trailingButtonImage?
+                    .resizable()
+                    .foregroundStyle(.yellow500)
+                    .frame(width: 24, height: 24)
+                    .padding(8)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            
+        default:
+            EmptyView()
         }
     }
 }
