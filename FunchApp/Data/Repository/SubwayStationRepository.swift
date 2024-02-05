@@ -19,11 +19,11 @@ final class SubwayStationRepository: SubwayStationRepositoryType {
     /// `지하철역` 검색
     func searchSubwayStations(
         searchSubwayStationQuery: SearchSubwayStationQuery,
-        completion: @escaping (Result<Profile, MoyaError>) -> Void
+        completion: @escaping (Result<[SubwayInfo], MoyaError>) -> Void
     ) {
         let requestDTO = RequestDTO.SearchSubwayStation(query: searchSubwayStationQuery)
         apiClient.request(
-            ResponseDTO.GetProfile.self,
+            ResponseDTO.SearchSubwayStation.self,
             target: .searchSubwayStations(parameters: requestDTO.toDitionary)
         ) { result in
             switch result {

@@ -17,12 +17,6 @@ struct FetchUserQuery {
         self.id = id
     }
     
-    var toDitionary: DictionaryType {
-        [
-            "id": id,
-        ]
-    }
-    
     var path: String {
         "\(id)"
     }
