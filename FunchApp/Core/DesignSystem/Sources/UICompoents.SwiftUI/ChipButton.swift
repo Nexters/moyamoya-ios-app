@@ -14,21 +14,21 @@ struct ChipButton: View {
         case text
         /// 이미지 + 텍스트
         case image
-    }
-    
-    /// 어떤 view인지에 따른 가로 padding
-    private var verticalPadding: CGFloat {
-        switch type {
-        case .text: 12
-        case .image: 8
+        
+        /// 어떤 view인지에 따른 가로 padding
+        var verticalPadding: CGFloat {
+            switch self {
+            case .text: 12
+            case .image: 8
+            }
         }
-    }
-    
-    /// 어떤 view인지에 따른 세로 padding
-    private var horizontalPadding: CGFloat {
-        switch type {
-        case .text: 16
-        case .image: 8
+        
+        /// 어떤 view인지에 따른 세로 padding
+        var horizontalPadding: CGFloat {
+            switch self {
+            case .text: 16
+            case .image: 8
+            }
         }
     }
     
@@ -72,8 +72,8 @@ struct ChipButton: View {
         }
         .buttonStyle(NoTapEffectButtonStyle())
         .tint(.white)
-        .padding(.vertical, verticalPadding)
-        .padding(.horizontal, horizontalPadding)
+        .padding(.vertical, type.verticalPadding)
+        .padding(.horizontal, type.horizontalPadding)
         .padding(.trailing, type == .image ? 8 : 0)
         .background(isSelected ? .gray500 : .gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16))
