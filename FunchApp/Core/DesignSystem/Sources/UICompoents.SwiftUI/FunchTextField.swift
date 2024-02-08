@@ -30,6 +30,8 @@ struct FunchTextField: View {
     @Binding var text: String
     /// placeholder
     let placeholderText: String
+    /// 백그라운드 색상
+    let backgroundColor: Color
     /// 좌측에 넣을 이미지
     var leadingImage: Image?
     /// 글자수 제한 있는 Textfield 용 글자 제한 수
@@ -43,6 +45,7 @@ struct FunchTextField: View {
         onChangeAction: @escaping (String, String) -> Void = { _, _ in },
         text: Binding<String>,
         placeholderText: String = "",
+        backgroundColor: Color = .gray800,
         textLimit: Int? = nil,
         leadingImage: Image? = nil,
         buttonAction: @escaping () -> Void = {},
@@ -51,6 +54,7 @@ struct FunchTextField: View {
         self.onChangeAction = onChangeAction
         self._text = text
         self.placeholderText = placeholderText
+        self.backgroundColor = backgroundColor
         
         if let textLimit {
             self.textLimit = textLimit
@@ -112,7 +116,7 @@ struct FunchTextField: View {
         }
         .frame(height: 56)
         .frame(maxWidth: .infinity)
-        .background(.gray800)
+        .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
