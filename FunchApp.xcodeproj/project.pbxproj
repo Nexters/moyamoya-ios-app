@@ -93,6 +93,7 @@
 		3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F02B70B3570082386A /* ChipButton.swift */; };
 		3E1E73F32B713B3A0082386A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F22B713B3A0082386A /* String+.swift */; };
 		3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */; };
+		3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73FB2B74AC510082386A /* Gradient+.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
 		3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */; };
@@ -171,6 +172,7 @@
 		3E1E73F02B70B3570082386A /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
 		3E1E73F22B713B3A0082386A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchDropDownMenu.swift; sourceTree = "<group>"; };
+		3E1E73FB2B74AC510082386A /* Gradient+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+.swift"; sourceTree = "<group>"; };
 		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
 		3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHGrid.swift; sourceTree = "<group>"; };
 		3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTapEffectButtonStyle.swift; sourceTree = "<group>"; };
@@ -542,6 +544,14 @@
 			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
 		};
+		3E1E73FA2B74AC4C0082386A /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				3E1E73FB2B74AC510082386A /* Gradient+.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 		3EA69C112B5ED6DA008AE23B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +573,7 @@
 		3EA69C162B5ED816008AE23B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3E1E73FA2B74AC4C0082386A /* Color */,
 				3EA69C172B5ED866008AE23B /* Font */,
 				3EA69C3D2B64C047008AE23B /* Size */,
 				1ACE49882B5BAFDD00024336 /* Style */,
@@ -782,6 +793,7 @@
 				1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */,
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */,
+				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
