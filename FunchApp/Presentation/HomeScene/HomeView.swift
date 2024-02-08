@@ -26,25 +26,30 @@ struct HomeView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            codeSearchView
+        ZStack {
+            Color.gray900
+                .ignoresSafeArea(.all)
             
-            Spacer()
-                .frame(height: 8)
-            
-            HStack(spacing: 0) {
-                myCodeView
+            VStack(spacing: 0) {
+                codeSearchView
+                
                 Spacer()
-                    .frame(width: 8)
-                myProfileView
+                    .frame(height: 8)
+                
+                HStack(spacing: 0) {
+                    myCodeView
+                    Spacer()
+                        .frame(width: 8)
+                    myProfileView
+                }
+                
+                Spacer()
+                    .frame(height: 8)
+                
+                lookupCountView
+                
+                Spacer()
             }
-            
-            Spacer()
-                .frame(height: 8)
-            
-            lookupCountView
-            
-            Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -68,25 +73,37 @@ struct HomeView: View {
     private var codeSearchView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("우리는 잘 맞을까?")
-                .font(.system(size: 20, weight: .bold))
+                .font(.Funch.title2)
+                .foregroundStyle(.white)
             
             Spacer()
                 .frame(height: 2)
             
             Text("궁합부터 공통점까지 다양한 정보가 기다려요!")
-                .font(.system(size: 14, weight: .bold))
-                .foregroundColor(Color(red: 0.49, green: 0.49, blue: 0.48))
+                .font(.Funch.body)
+                .foregroundStyle(.gray300)
             
             Spacer()
                 .frame(height: 16)
             
-            TextField("여기 성민이 텍스트 필드로 교체할 것", text: $viewModel.state.serachCodeText)
-                .background(.blue)
+            FunchTextField(
+                text: $viewModel.state.serachCodeText,
+                placeholderText: "친구 코드를 입력하고 매칭하기",
+                backgroundColor: .gray700,
+                buttonAction: {
+                    // FIXME: api 통신
+                },
+                trailingButtonImage: .init(systemName: "magnifyingglass")
+            )
         }
         .padding(.vertical, 24)
         .padding(.horizontal, 16)
-        .background(.red)
+        .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.lemon500, lineWidth: 1)
+        }
         .padding(.horizontal, 20)
     }
     
@@ -95,26 +112,27 @@ struct HomeView: View {
         HStack(spacing: 0) {
             Image(systemName: "plus")
                 .frame(width: 40, height: 40)
-                .background(.blue)
+                .foregroundStyle(.gray400)
             
             Spacer()
                 .frame(width: 12)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text("나의 코드")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(Color(red: 0.49, green: 0.49, blue: 0.48))
+                    .font(.Funch.body)
+                    .foregroundStyle(.gray400)
                 
                 Text("U23S")
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.black)
+                    .font(.Funch.subtitle2)
+                    .foregroundStyle(.gradientLemon5001)
+                    // FIXME: 그라디언트 적용
             }
             
             Spacer()
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 24)
-        .background(.red)
+        .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .padding(.leading, 20)
         .frame(maxWidth: .infinity)
@@ -125,19 +143,19 @@ struct HomeView: View {
     private var myProfileView: some View {
         VStack(spacing: 0) {
             Image(systemName: "plus")
+                .foregroundStyle(.gray400)
                 .frame(width: 40, height: 40)
-                .background(.blue)
             
             Spacer()
                 .frame(height: 8)
             
             Text("내 프로필")
-                .font(.system(size: 14, weight: .regular))
-                .foregroundColor(Color(red: 0.49, green: 0.49, blue: 0.48))
+                .font(.Funch.body)
+                .foregroundStyle(.gray400)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 11.5)
-        .background(.red)
+        .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .padding(.trailing, 20)
     }
@@ -147,26 +165,26 @@ struct HomeView: View {
         HStack(spacing: 0) {
             Image(systemName: "plus")
                 .frame(width: 40, height: 40)
-                .background(.blue)
+                .foregroundStyle(.gray400)
             
             Spacer()
                 .frame(width: 12)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text("내 프로필을")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(Color(red: 0.49, green: 0.49, blue: 0.48))
+                    .font(.Funch.body)
+                    .foregroundStyle(.gray400)
                 
                 Text("00명이 조회했어요.")
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.black)
+                    .font(.Funch.subtitle2)
+                    .foregroundStyle(.white)
             }
             
             Spacer()
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 24)
-        .background(.red)
+        .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
