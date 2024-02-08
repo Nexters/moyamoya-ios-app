@@ -102,7 +102,7 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
-                .stroke(.lemon500, lineWidth: 1)
+                .stroke(Gradient.funchGradient(type: .lemon500), lineWidth: 1.0)
         }
         .padding(.horizontal, 20)
     }
@@ -124,8 +124,7 @@ struct HomeView: View {
                 
                 Text("U23S")
                     .font(.Funch.subtitle2)
-                    .foregroundStyle(.gradientLemon5001)
-                    // FIXME: 그라디언트 적용
+                    .foregroundStyle(Gradient.funchGradient(type: .lemon500))
             }
             
             Spacer()
