@@ -71,7 +71,7 @@ extension ResponseDTO.CreateProfile {
             majors: majors,
             clubs: clubs,
             mbti: mbti,
-            constellation: constellation,
+            bloodType: constellation,
             subwayInfos: subwayInfos,
             viewerShip: "0"
         )

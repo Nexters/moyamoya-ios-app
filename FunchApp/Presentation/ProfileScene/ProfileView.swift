@@ -36,7 +36,7 @@ struct ProfileView: View {
                     ProfileChipRow(.직군, .testableValue)
                     ProfileChipRow(.동아리, .testableValue)
                     ProfileChipRow(.MBTI, .testableValue)
-                    ProfileChipRow(.별자리, .testableValue)
+                    ProfileChipRow(.혈액형, .testableValue)
                     ProfileChipRow(.지하철, .testableValue)
                 }
             }

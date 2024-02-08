@@ -14,3 +14,7 @@ struct SubwayInfo: Hashable {
     /// 호선 정보
     var lines: [String]
 }
+
+extension SubwayInfo {
+    static var testableValue: SubwayInfo = .init(name: "고속터미널", lines: ["3", "7", "9"])
+}
