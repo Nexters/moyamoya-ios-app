@@ -102,18 +102,14 @@ struct FunchTextField: View {
     var body: some View {
         // 어쩔 수 없는 spacing -> 간격 조절을 위해 ...
         HStack(spacing: 8) {
-            Spacer()
-                .frame(width: 8)
-            
             leadingView
             
             textField
             
             trailingView
-            
-            Spacer()
-                .frame(width: 8)
         }
+        .padding(.leading, 16)
+        .padding(.trailing, 8)
         .frame(height: 56)
         .frame(maxWidth: .infinity)
         .background(backgroundColor)
@@ -170,6 +166,7 @@ struct FunchTextField: View {
                 .resizable()
                 .foregroundStyle(.gray500)
                 .frame(width: 24, height: 24)
+                .padding(.trailing, 8)
         default:
             EmptyView()
         }
@@ -188,7 +185,7 @@ struct FunchTextField: View {
                         .foregroundStyle(textLimitColor)
                 }
                 .font(.Funch.body)
-                .padding(8)
+                .padding(.trailing, 8)
             }
             
         case .button:
@@ -200,6 +197,7 @@ struct FunchTextField: View {
                     .foregroundStyle(.yellow500)
                     .frame(width: 24, height: 24)
                     .padding(8)
+                    .background(.gray500)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             

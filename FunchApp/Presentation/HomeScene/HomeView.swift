@@ -50,6 +50,7 @@ struct HomeView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, 20)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -93,18 +94,17 @@ struct HomeView: View {
                 buttonAction: {
                     // FIXME: api 통신
                 },
-                trailingButtonImage: .init(systemName: "magnifyingglass")
+                trailingButtonImage: Image(.iconSearchYellow)
             )
         }
-        .padding(.vertical, 24)
         .padding(.horizontal, 16)
+        .frame(height: 178)
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Gradient.funchGradient(type: .lemon500), lineWidth: 1.0)
         }
-        .padding(.horizontal, 20)
     }
     
     /// 내 코드가 나타나는 영역
@@ -130,12 +130,10 @@ struct HomeView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 24)
+        .frame(height: 92)
+        .frame(maxWidth: .infinity)
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
-        .padding(.leading, 20)
-        .frame(maxWidth: .infinity)
-        
     }
     
     /// 내 프로필 영역
@@ -152,11 +150,9 @@ struct HomeView: View {
                 .font(.Funch.body)
                 .foregroundStyle(.gray400)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 11.5)
+        .frame(width: 101, height: 92)
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
-        .padding(.trailing, 20)
     }
     
     /// 프로필 조회수 영역
@@ -182,10 +178,9 @@ struct HomeView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 24)
+        .frame(height: 92)
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
-        .padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
     }
 }
