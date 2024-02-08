@@ -56,25 +56,6 @@ enum FunchGradient {
     }
 }
 
-extension Gradient.Stop {
-    
-    enum Funch {
-        static let lemon500: [Gradient.Stop] = [
-            .init(color: .gradientLemon5001, location: 0.00),
-            .init(color: .gradientLemon5002, location: 1.00),
-        ]
-    }
-}
-
-extension Array where Element == Gradient.Stop {
-    enum Funch {
-        static let lemon500Stops: [Gradient.Stop] = [
-            .init(color: .gradientLemon5001, location: 0.00),
-            .init(color: .gradientLemon5002, location: 1.00),
-        ]
-    }
-}
-
 extension Gradient {
     
     func funchGradient(type: FunchGradient) -> LinearGradient {
