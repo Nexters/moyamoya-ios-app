@@ -136,7 +136,9 @@ extension ProfileInputRow {
     /// 혈액형 입력용 Input Field
     @ViewBuilder
     private var bloodTypeInputField: some View {
-        Text("test")
+        let bloodTypes = ["A", "B", "AB", "O"]
+        let bloodTypeInStrings = bloodTypes.map { type in type + "형" }
+        FunchDropDownMenu(selectedData: $profile.bloodType, data: bloodTypeInStrings)
     }
     
     /// 지하철 입력용 Input Field
