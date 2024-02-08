@@ -90,7 +90,7 @@ extension ResponseDTO.SearchUser {
 //            major: majors,
 //            club: clubs,
 //            mbti: data.targetProfile.mbti,
-//            constellation: data.targetProfile.constellation,
+//            bloodType: data.targetProfile.constellation,
 //            subwayName: data.targetProfile.,
 //            viewerShip: ""
 //        )
