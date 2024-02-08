@@ -103,17 +103,7 @@ struct FunchTextField: View {
             
             leadingView
             
-            TextField(
-                "",
-                text: $text,
-                prompt: Text(placeholderText).foregroundStyle(.gray400)
-            )
-            .focused($isFocused)
-            .foregroundStyle(.white)
-            .font(.Funch.body)
-            .onChange(of: text) { oldText, newText in
-                onTextFieldChangeAction(oldText, newText)
-            }
+            textField
             
             trailingView
             
@@ -131,6 +121,11 @@ struct FunchTextField: View {
     }
     
     // MARK: - additional
+    /// textField가 변화할 떄 실행될 action
+    ///
+    /// textField에 변화가 있을 때 필요한 action들이 다를 것이기 때문에,
+    /// 글자 수 제한이 필요한 경우는 직접 구현해두었고,
+    /// 그 외에는 직접 필요한 action을 구현하면 됩니다.
     private func onTextFieldChangeAction(_ oldValue: String, _ newValue: String) {
         switch type {
         case .maxLength:
@@ -147,6 +142,22 @@ struct FunchTextField: View {
         }
     }
     
+    /// textField UI
+    private var textField: some View {
+        TextField(
+            "",
+            text: $text,
+            prompt: Text(placeholderText).foregroundStyle(.gray400)
+        )
+        .focused($isFocused)
+        .foregroundStyle(.white)
+        .font(.Funch.body)
+        .onChange(of: text) { oldText, newText in
+            onTextFieldChangeAction(oldText, newText)
+        }
+    }
+    
+    /// textField의 leading 쪽에 오는 뷰
     @ViewBuilder
     private var leadingView: some View {
         switch type {
@@ -160,6 +171,7 @@ struct FunchTextField: View {
         }
     }
     
+    /// textfield의 trailing 쪽에 오는 뷰
     @ViewBuilder
     private var trailingView: some View {
         switch type {
