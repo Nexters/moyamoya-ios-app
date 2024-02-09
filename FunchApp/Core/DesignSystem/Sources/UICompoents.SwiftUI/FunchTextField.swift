@@ -30,6 +30,8 @@ struct FunchTextField: View {
     @Binding var text: String
     /// placeholder
     let placeholderText: String
+    /// 백그라운드 색상
+    let backgroundColor: Color
     /// 좌측에 넣을 이미지
     var leadingImage: Image?
     /// 글자수 제한 있는 Textfield 용 글자 제한 수
@@ -43,6 +45,7 @@ struct FunchTextField: View {
         onChangeAction: @escaping (String, String) -> Void = { _, _ in },
         text: Binding<String>,
         placeholderText: String = "",
+        backgroundColor: Color = .gray800,
         textLimit: Int? = nil,
         leadingImage: Image? = nil,
         buttonAction: @escaping () -> Void = {},
@@ -51,6 +54,7 @@ struct FunchTextField: View {
         self.onChangeAction = onChangeAction
         self._text = text
         self.placeholderText = placeholderText
+        self.backgroundColor = backgroundColor
         
         if let textLimit {
             self.textLimit = textLimit
@@ -98,21 +102,17 @@ struct FunchTextField: View {
     var body: some View {
         // 어쩔 수 없는 spacing -> 간격 조절을 위해 ...
         HStack(spacing: 8) {
-            Spacer()
-                .frame(width: 8)
-            
             leadingView
             
             textField
             
             trailingView
-            
-            Spacer()
-                .frame(width: 8)
         }
+        .padding(.leading, 16)
+        .padding(.trailing, 8)
         .frame(height: 56)
         .frame(maxWidth: .infinity)
-        .background(.gray800)
+        .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
@@ -166,6 +166,7 @@ struct FunchTextField: View {
                 .resizable()
                 .foregroundStyle(.gray500)
                 .frame(width: 24, height: 24)
+                .padding(.trailing, 8)
         default:
             EmptyView()
         }
@@ -184,7 +185,7 @@ struct FunchTextField: View {
                         .foregroundStyle(textLimitColor)
                 }
                 .font(.Funch.body)
-                .padding(8)
+                .padding(.trailing, 8)
             }
             
         case .button:
@@ -196,6 +197,7 @@ struct FunchTextField: View {
                     .foregroundStyle(.yellow500)
                     .frame(width: 24, height: 24)
                     .padding(8)
+                    .background(.gray500)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             

@@ -72,7 +72,7 @@ extension ResponseDTO {
             let jobGroup: String
             let clubs: [String]
             let mbti: String
-            let constellation: String
+            let bloodType: String
             let subwayNames: [String]
             
             enum CodingKeys: CodingKey {
@@ -80,7 +80,7 @@ extension ResponseDTO {
                 case jobGroup
                 case clubs
                 case mbti
-                case constellation
+                case bloodType
                 case subwayNames
             }
             
@@ -90,7 +90,7 @@ extension ResponseDTO {
                 self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.jobGroup)
                 self.clubs = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.clubs)
                 self.mbti = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.mbti)
-                self.constellation = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.constellation)
+                self.bloodType = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.bloodType)
                 self.subwayNames = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.subwayNames)
             }
         }
