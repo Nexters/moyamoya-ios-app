@@ -16,7 +16,7 @@ extension ResponseDTO {
         var name: String
         var birth: String
         var age: Int
-        var constellation: String
+        var bloodType: String
         var major: String
         var clubs: [String]
         var subwayStations: [String]
@@ -29,7 +29,7 @@ extension ResponseDTO {
             case name
             case birth = "birthDate"
             case age
-            case constellation
+            case bloodType
             case major = "jobGroup"
             case clubs
             case subwayStations = "subwayStations"
@@ -44,7 +44,7 @@ extension ResponseDTO {
             self.name = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.name)
             self.birth = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.birth)
             self.age = try container.decode(Int.self, forKey: ResponseDTO.CreateProfile.CodingKeys.age)
-            self.constellation = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.constellation)
+            self.bloodType = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.bloodType)
             self.major = try container.decode(String.self, forKey: ResponseDTO.CreateProfile.CodingKeys.major)
             self.clubs = try container.decode([String].self, forKey: ResponseDTO.CreateProfile.CodingKeys.clubs)
             self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.CreateProfile.CodingKeys.subwayStations)
@@ -71,7 +71,7 @@ extension ResponseDTO.CreateProfile {
             majors: majors,
             clubs: clubs,
             mbti: mbti,
-            bloodType: constellation,
+            bloodType: bloodType,
             subwayInfos: subwayInfos,
             viewerShip: "0"
         )
