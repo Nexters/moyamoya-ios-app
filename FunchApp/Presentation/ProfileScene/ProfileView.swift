@@ -56,14 +56,14 @@ struct ProfileView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // action
+                    /* action */
                 } label: {
                     Text("피드백 보내기")
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
+                        .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .background(.black)
+                        .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 12.0))
                 }
             }
