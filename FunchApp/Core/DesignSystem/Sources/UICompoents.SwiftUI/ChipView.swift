@@ -42,7 +42,7 @@ struct ChipView: View {
         case .text:
             HStack(alignment: .center, spacing: 0) {
                 Text(title)
-                    .font(.system(size: 14))
+                    .font(.Funch.body)
                     .foregroundColor(.white)
             }
             .padding(.horizontal, 16)
@@ -62,7 +62,7 @@ struct ChipView: View {
                     .frame(width: 8)
                 
                 Text(title)
-                    .font(.system(size: 14))
+                    .font(.Funch.body)
                     .foregroundColor(.white)
             }
             .padding([.vertical, .leading], 8)
