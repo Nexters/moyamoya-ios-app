@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIPager
 
 struct MatchResultView: View {
-    
+    /// 매칭 결과물
     let matchResult: MatchingInfo
     
     init(matchResult: MatchingInfo = .testableValue) {
@@ -52,6 +52,7 @@ struct MatchResultView: View {
         }
     }
     
+    /// pageIndex에 따른 결과 View
     @ViewBuilder
     private func resultView(_ pageIndex: Int) -> some View {
         switch pageIndex {
@@ -62,6 +63,7 @@ struct MatchResultView: View {
         }
     }
     
+    /// 몇 번째 페이지인지 나타내는 index label
     private func pageIndexLabel(_ index: Int) -> some View {
         HStack(spacing: 0) {
             Text("\(index + 1)")
@@ -76,6 +78,7 @@ struct MatchResultView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
     
+    /// 시너지 정보를 보여주는 View
     private var synergyView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -93,7 +96,7 @@ struct MatchResultView: View {
             
             Image(findSynergyImageResource(from: matchResult.similarity))
                 .resizable()
-                .frame(width: 136, height: 136)
+                .frame(minWidth: 136, maxWidth: 200, minHeight: 136, maxHeight: 200)
             
             Spacer()
                 .frame(height: 16)
@@ -106,6 +109,8 @@ struct MatchResultView: View {
         }
     }
     
+    // FIXME: 나중에 옮기면 좋을듯
+    /// 추천 대화 주제 리스트
     private let recommendationList: [String] = [
         "어느 팀이세요?",
         "팀에서 어떤 서비스를 만드나요?",
@@ -113,6 +118,7 @@ struct MatchResultView: View {
         "가장 인상 깊었던 여행지는?",
         "취미를 소개해주세요!"
     ]
+    /// 대화 주제 추천해주는 View
     private var recommendationView: some View {
         VStack(spacing: 0) {
             Text("우리 이런 주제로 대화해봐요")
@@ -128,13 +134,7 @@ struct MatchResultView: View {
             
             VStack(spacing: 8) {
                 ForEach(recommendationList, id: \.self) { recommendationText in
-                    Text(recommendationText)
-                        .font(.Funch.body)
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 16)
-                        .frame(height: 48)
-                        .background(.gray500)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    ChipView(title: recommendationText)
                 }
             }
             .frame(maxHeight: .infinity)
@@ -144,6 +144,7 @@ struct MatchResultView: View {
         }
     }
     
+    /// 상대방의 프로필을 보여주는 View
     private var profileView: some View {
         VStack(spacing: 0) {
             Text(matchResult.profile.userNickname)
@@ -155,17 +156,18 @@ struct MatchResultView: View {
                 .frame(height: 20)
             
             VStack(alignment: .leading, spacing: 16) {
-                ProfileChipRow(.직군, matchResult.profile)
-                ProfileChipRow(.동아리, matchResult.profile)
-                ProfileChipRow(.MBTI, matchResult.profile)
-                ProfileChipRow(.혈액형, matchResult.profile)
-                ProfileChipRow(.지하철, matchResult.profile)
+                ProfileChipRow(.직군, matchResult.profile, isHighlighted: true)
+                ProfileChipRow(.동아리, matchResult.profile, isHighlighted: false)
+                ProfileChipRow(.MBTI, matchResult.profile, isHighlighted: false)
+                ProfileChipRow(.혈액형, matchResult.profile, isHighlighted: true)
+                ProfileChipRow(.지하철, matchResult.profile, isHighlighted: false)
             }
         }
     }
 }
 
 extension MatchResultView {
+    /// synergy 정도에 따른 synergyView의 이미지 리소스 타입
     private func findSynergyImageResource(from percentage: Int) -> ImageResource {
         switch percentage {
         case 0...20: return .percent5

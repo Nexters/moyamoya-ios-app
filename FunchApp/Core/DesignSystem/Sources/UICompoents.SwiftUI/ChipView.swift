@@ -53,7 +53,9 @@ struct ChipView: View {
             
         case .image:
             HStack(alignment: .center, spacing: 0) {
-                Image(systemName: "plus")
+                Image(findImageResource(from: imageName))
+                    .resizable()
+                    .padding(7)
                     .frame(width: 32, height: 32)
                     .background(.gray900)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -70,6 +72,20 @@ struct ChipView: View {
             .frame(height: 48, alignment: .leading)
             .background(.gray500)
             .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+    }
+}
+
+extension ChipView {
+    /// chipView 내부에 들어갈 이미지 리소스
+    private func findImageResource(from name: String) -> ImageResource {
+        switch name.lowercased() {
+        case "nexters": return .NEXTERS
+        case "sopt": return .sopt
+        case "depromeet": return .depromeet
+        case "developer": return .developer
+        case "designer": return .designer
+        default: return .percent1
         }
     }
 }

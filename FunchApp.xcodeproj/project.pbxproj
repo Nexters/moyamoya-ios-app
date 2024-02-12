@@ -97,6 +97,7 @@
 		3E1E74042B7A05290082386A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E1E74032B7A05290082386A /* SnapKit */; };
 		3E1E74092B7A0F150082386A /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 3E1E74082B7A0F150082386A /* SwiftUIPager */; };
 		3E1E740B2B7A22A80082386A /* SynergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E740A2B7A22A80082386A /* SynergyLabel.swift */; };
+		3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
 		3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */; };
@@ -177,6 +178,7 @@
 		3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchDropDownMenu.swift; sourceTree = "<group>"; };
 		3E1E73FB2B74AC510082386A /* Gradient+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+.swift"; sourceTree = "<group>"; };
 		3E1E740A2B7A22A80082386A /* SynergyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynergyLabel.swift; sourceTree = "<group>"; };
+		3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipViewHighlighter.swift; sourceTree = "<group>"; };
 		3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunchTextField.swift; sourceTree = "<group>"; };
 		3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHGrid.swift; sourceTree = "<group>"; };
 		3EA69C022B5D67A3008AE23B /* NoTapEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTapEffectButtonStyle.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */,
 				3E1E73F02B70B3570082386A /* ChipButton.swift */,
 				3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */,
+				3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */,
 			);
 			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				3EA69C0F2B5E9AB2008AE23B /* View+.swift in Sources */,
 				3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
+				3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */,
 				1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */,
 				1ACE49582B5B9ECE00024336 /* MatchResultView.swift in Sources */,
 				1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */,

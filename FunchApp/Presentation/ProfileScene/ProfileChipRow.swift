@@ -21,10 +21,13 @@ struct ProfileChipRow: View {
     private(set) var type: ViewType
     /// 프로필
     private(set) var profile: Profile
+    /// 매치 결과에 따라 하이라이트 여부
+    private(set) var isHighlighted: Bool
     
-    init(_ type: ViewType, _ profile: Profile) {
+    init(_ type: ViewType, _ profile: Profile, isHighlighted: Bool = false) {
         self.type = type
         self.profile = profile
+        self.isHighlighted = isHighlighted
     }
     
     var body: some View {
@@ -37,6 +40,7 @@ struct ProfileChipRow: View {
                 .frame(width: 52, alignment: .leading)
             
             flexibleChipView
+                .highlight(isHighlighted)
             
             Spacer()
         }
