@@ -20,8 +20,8 @@ final class CreateProfileUseCase {
             switch result {
             case .success(let profile):
                 completion(.success(profile))
-            case .failure(let failure):
-                break
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
