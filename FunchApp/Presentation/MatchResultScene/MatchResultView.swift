@@ -62,6 +62,20 @@ struct MatchResultView: View {
         }
     }
     
+    private func pageIndexLabel(_ index: Int) -> some View {
+        HStack(spacing: 0) {
+            Text("\(index)")
+                .foregroundStyle(.white)
+            Text("/3")
+                .foregroundStyle(.gray400)
+        }
+        .font(.Funch.caption)
+        .padding(.vertical, 2)
+        .padding(.horizontal, 8)
+        .background(.gray500)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+    
     private var synergyView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -77,7 +91,7 @@ struct MatchResultView: View {
             Spacer()
                 .frame(height: 16)
             
-            Image(.iconInformation)
+            Image(findSynergyImageResource(from: matchResult.similarity))
                 .resizable()
                 .frame(width: 136, height: 136)
             
@@ -105,20 +119,18 @@ struct MatchResultView: View {
             
         }
     }
-    
-    
-    private func pageIndexLabel(_ index: Int) -> some View {
-        HStack(spacing: 0) {
-            Text("\(index)")
-                .foregroundStyle(.white)
-            Text("/3")
-                .foregroundStyle(.gray400)
+}
+
+extension MatchResultView {
+    private func findSynergyImageResource(from percentage: Int) -> ImageResource {
+        switch percentage {
+        case 0...20: return .percent5
+        case 21...40: return .percent4
+        case 41...60: return .percent3
+        case 61...80: return .percent2
+        case 81...100: return .percent1
+        default: return .percent3
         }
-        .font(.Funch.caption)
-        .padding(.vertical, 2)
-        .padding(.horizontal, 8)
-        .background(.gray500)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 
