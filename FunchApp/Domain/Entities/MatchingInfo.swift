@@ -20,7 +20,7 @@ struct MatchingInfo {
     var subwayInfos: [SubwayInfo]
     
     /// 궁합 정보
-    struct SynergyInfo {
+    struct SynergyInfo: Hashable {
         /// 제목
         var title: String
         /// 설명
