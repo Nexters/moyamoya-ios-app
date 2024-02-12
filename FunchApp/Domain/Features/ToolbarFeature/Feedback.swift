@@ -8,9 +8,9 @@
 import UIKit
 
 final class OpenURLFeature {
-
+    
     enum URLType: String {
-        case feedback = "피드백 링크"
+        case feedback = "https://www.naver.com"
         case appstore = "앱스토어 링크"
     }
     

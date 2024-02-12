@@ -13,17 +13,6 @@ final class HomeViewModel: ObservableObject {
     @Published var state = State()
     @Published var presentation: State.PresentationState?
     
-    enum Action: Equatable {
-        
-        case presentation(PresentationAction)
-        
-        enum PresentationAction: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case profile
-        }
-    }
-    
     /// 상태
     struct State {
         /// 코드 검색 텍스트 필드
@@ -35,9 +24,25 @@ final class HomeViewModel: ObservableObject {
             case profile
         }
     }
+        
+    enum Action: Equatable {
+        case feedback
+        
+        case presentation(PresentationAction)
+        
+        enum PresentationAction: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case profile
+        }
+    }
+    
+    private let openURL: OpenURLFeature = .init()
     
     func send(action: Action) {
         switch action {
+        case .feedback:
+            openURL.execute(type: .feedback)
         case let .presentation(presentationAction):
             switch presentationAction {
             case .profile:
@@ -90,6 +95,7 @@ struct HomeView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     // action
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .font(.system(size: 14, weight: .regular))

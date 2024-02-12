@@ -12,6 +12,8 @@ struct ProfileView: View {
     
     let profile: Profile = .testableValue
     
+    private let openURL: OpenURLFeature = .init()
+    
     var body: some View {
         VStack {
             Spacer()
@@ -56,7 +58,7 @@ struct ProfileView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // action
+                    openURL.execute(type: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .font(.system(size: 14, weight: .regular))
