@@ -15,13 +15,26 @@ struct FunchAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
-                HomeView()
-                    .navigationDestination(for: AppCoordinatorPathType.self) { type in
-                        switch type {
-                        default: EmptyView()
+                if appCoordinator.hasProfile {
+                    HomeView()
+                } else {
+                    OnboardingView()
+                        .navigationDestination(for: AppCoordinatorPathType.self) { type in
+                            switch type {
+                            case let .onboarding(pathType):
+                                switch pathType {
+                                case .createProfile:
+                                    ProfileEditorView()
+                                        .navigationBarBackButtonHidden()
+                                }
+                            case .home:
+                                EmptyView()
+                            }
                         }
-                    }
+                }
             }
         }
+        .environmentObject(appCoordinator)
+        
     }
 }

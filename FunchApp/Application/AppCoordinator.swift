@@ -13,9 +13,16 @@ final class AppCoordinator: ObservableObject {
     init(paths: [AppCoordinatorPathType] = []) {
         self.paths = paths
     }
+    
+    /// 프로필을 가진 경우
+    var hasProfile: Bool = false
 }
 
 enum AppCoordinatorPathType: Hashable {
-    case onboarding
+    case onboarding(OnboardingPathType)
     case home
+}
+
+enum OnboardingPathType: Hashable {
+    case createProfile
 }

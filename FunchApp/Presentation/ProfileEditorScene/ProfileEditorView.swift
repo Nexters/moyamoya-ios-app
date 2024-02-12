@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileEditorView: View {
     
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    
     @State var profile: Profile = .emptyValue
     
     var body: some View {
@@ -54,6 +56,15 @@ struct ProfileEditorView: View {
             matchingButtonView
         }
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    appCoordinator.paths.removeLast()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.black)
+                }
+            }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     /* action */
@@ -71,8 +82,6 @@ struct ProfileEditorView: View {
         .ignoresSafeArea(edges: .bottom)
     }
     
-    
-    
     private var matchingButtonView: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -80,6 +89,9 @@ struct ProfileEditorView: View {
             
             Button {
                 /* action */
+                appCoordinator.paths.removeAll()
+                appCoordinator.hasProfile = true
+                
             } label: {
                 Text("이제 매칭할래요!")
                     .font(.system(size: 18))

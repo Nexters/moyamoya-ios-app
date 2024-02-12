@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    
+//    @StateObject private var appCoordinator = AppCoordinator()
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("친구와 프로필 매칭하기")
@@ -39,6 +43,7 @@ struct OnboardingView: View {
             
             Button {
                 // action
+                appCoordinator.paths.append(.onboarding(.createProfile))
             } label: {
                 Text("프로필 생성 시작🚀")
                     .font(.system(size: 16, weight: .medium))
