@@ -20,7 +20,6 @@ final class AppCoordinator: ObservableObject {
 
 enum AppCoordinatorPathType: Hashable {
     case onboarding(OnboardingPathType)
-    case home
 }
 
 enum OnboardingPathType: Hashable {

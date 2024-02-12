@@ -35,6 +35,8 @@
 		1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069D2B5D702D0024356C /* APIEnvironment.swift */; };
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
 		1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */; };
+		1A7B837C2B7A067D007408D7 /* ApplicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */; };
+		1A7B83812B7A07E6007408D7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
 		1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */; };
 		1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B862B5D605400A080F2 /* MatchingRepository.swift */; };
 		1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
@@ -154,6 +156,8 @@
 		1A7B069D2B5D702D0024356C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
 		1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUseCase.swift; sourceTree = "<group>"; };
+		1A7B83802B7A07E6007408D7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
@@ -278,6 +282,14 @@
 				3EA69C0E2B5E9AB2008AE23B /* View+.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		1A7B837F2B7A07B5007408D7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		1A87EAE02B691D050059F80A /* Repositories */ = {
@@ -439,6 +451,7 @@
 		1ACE49682B5BA09700024336 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				1A7B837F2B7A07B5007408D7 /* Application */,
 				1ACE496C2B5BA22C00024336 /* Home */,
 				1ACE496F2B5BA27600024336 /* Profile */,
 				1ACE496D2B5BA23400024336 /* MatchResult */,
@@ -484,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACE49782B5BA2F100024336 /* UserDataStorage.swift */,
+				1A7B83802B7A07E6007408D7 /* UserDefault.swift */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -793,6 +807,7 @@
 				3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */,
 				1A792B812B5D581600A080F2 /* Requestable.swift in Sources */,
 				3EA69C0F2B5E9AB2008AE23B /* View+.swift in Sources */,
+				1A7B837C2B7A067D007408D7 /* ApplicationUseCase.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
 				1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */,
 				1ACE49582B5B9ECE00024336 /* MatchResultView.swift in Sources */,
@@ -800,6 +815,7 @@
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				1ACE49752B5BA2A100024336 /* MatchResultUseCase.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
+				1A7B83812B7A07E6007408D7 /* UserDefault.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
 				3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */,
 				1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */,
