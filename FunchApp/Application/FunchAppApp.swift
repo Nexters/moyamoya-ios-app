@@ -9,13 +9,18 @@ import SwiftUI
 
 @main
 struct FunchAppApp: App {
-    
     @StateObject private var appCoordinator = AppCoordinator()
+    
+    private var applicationUsecase: ApplicationUseCaseType
+    
+    init() { 
+        self.applicationUsecase = ApplicationUseCase(userStorage: .shared)
+    }
     
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
-                if appCoordinator.hasProfile {
+                if applicationUsecase.hasProfile {
                     HomeView()
                 } else {
                     OnboardingView()
@@ -27,8 +32,6 @@ struct FunchAppApp: App {
                                     ProfileEditorView()
                                         .navigationBarBackButtonHidden()
                                 }
-                            case .home:
-                                EmptyView()
                             }
                         }
                 }
