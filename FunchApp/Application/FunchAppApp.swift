@@ -9,11 +9,19 @@ import SwiftUI
 
 @main
 struct FunchAppApp: App {
+    
+    @StateObject private var appCoordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ProfileView()
-            }   
+            NavigationStack(path: $appCoordinator.paths) {
+                HomeView()
+                    .navigationDestination(for: AppCoordinatorPathType.self) { type in
+                        switch type {
+                        default: EmptyView()
+                        }
+                    }
+            }
         }
     }
 }

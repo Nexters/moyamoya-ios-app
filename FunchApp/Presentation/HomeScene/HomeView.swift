@@ -6,15 +6,44 @@
 //
 
 import SwiftUI
+import Combine
 
 final class HomeViewModel: ObservableObject {
     
     @Published var state = State()
+    @Published var presentation: State.PresentationState?
+    
+    enum Action: Equatable {
+        
+        case presentation(PresentationAction)
+        
+        enum PresentationAction: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case profile
+        }
+    }
     
     /// 상태
     struct State {
         /// 코드 검색 텍스트 필드
         var serachCodeText: String = ""
+        
+        enum PresentationState: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case profile
+        }
+    }
+    
+    func send(action: Action) {
+        switch action {
+        case let .presentation(presentationAction):
+            switch presentationAction {
+            case .profile:
+                presentation = .profile
+            }
+        }
     }
 }
 
@@ -37,6 +66,9 @@ struct HomeView: View {
                 Spacer()
                     .frame(width: 8)
                 myProfileView
+                    .onTapGesture {
+                        viewModel.send(action: .presentation(.profile))
+                    }
             }
             
             Spacer()
@@ -45,6 +77,14 @@ struct HomeView: View {
             lookupCountView
             
             Spacer()
+        }
+        .fullScreenCover(item: $viewModel.presentation) { presentation in
+            switch presentation {
+            case .profile:
+                NavigationStack { 
+                    ProfileView()
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

@@ -72,7 +72,7 @@ struct ProfileView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image(systemName: "arrow.backward")
+                    Image(systemName: "xmark")
                         .foregroundColor(.black)
                 }
             }
