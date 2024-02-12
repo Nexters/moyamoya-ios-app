@@ -10,14 +10,6 @@ import SwiftUIPager
 
 struct MatchResultView: View {
     
-//    enum ResultType: Int, CaseIterable {
-//        case synergy
-//        case recommendation
-//        case profile
-//    }
-//    
-//    private(set) var type: ResultType
-    
     let matchResult: MatchingInfo
     
     init(matchResult: MatchingInfo = .testableValue) {
@@ -52,9 +44,8 @@ struct MatchResultView: View {
                 }
                 .horizontal()
                 .singlePagination(ratio: 0.33, sensitivity: .custom(0.2))
-                .preferredItemSize(.init(width: viewSize.width * 0.9, height: 509))
+                .preferredItemSize(.init(width: viewSize.width * 0.9, height: viewSize.height))
                 .itemSpacing(8)
-                .frame(height: 509)
                 
                 Spacer()
             }
@@ -95,9 +86,11 @@ struct MatchResultView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(matchResult.synergyInfos, id: \.self) { info in
-                    SynergyLabel()
+                    SynergyLabel(info: info)
                 }
             }
+            
+            Spacer()
         }
     }
     
