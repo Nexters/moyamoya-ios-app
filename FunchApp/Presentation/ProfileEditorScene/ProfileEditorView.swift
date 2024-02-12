@@ -51,12 +51,10 @@ final class ProfileEditorViewModel: ObservableObject {
                                         subwayStationName: subwayInfoNames,
                                         mbti: state.profile.mbti)
             createProfileUseCase.createProfile(createUserQuery: query) { result in
-                self.applicationUseCase.hasProfile = true
                 switch result {
                 case .success(let profile):
                     DispatchQueue.main.async { [weak self] in
                         guard let self else { return }
-                        self.state.profile = profile
                         self.applicationUseCase.hasProfile = true
                     }
                 case .failure(_):
@@ -138,7 +136,6 @@ struct ProfileEditorView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    /* action */
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
