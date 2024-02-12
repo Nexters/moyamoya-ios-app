@@ -24,6 +24,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     enum Action: Equatable {
         case makeProfile
+        case feedback
         
         enum PresentationAction: Int, Identifiable, Equatable {
             var id: Int { self.rawValue }
@@ -34,6 +35,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
     let createProfileUseCase: CreateProfileUseCase = .init()
+    let openURL: OpenURLFeature = .init()
     
     func send(action: Action) {
         switch action {
@@ -61,6 +63,8 @@ final class ProfileEditorViewModel: ObservableObject {
                     break
                 }
             }
+        case .feedback:
+            openURL.execute(type: .feedback)
         }
     }
 }
@@ -135,6 +139,7 @@ struct ProfileEditorView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     /* action */
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .font(.system(size: 14, weight: .regular))
