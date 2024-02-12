@@ -81,7 +81,7 @@
 		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
 		1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
-		1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */; };
+		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493D2B5B9D0B00024336 /* ContentView.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -166,7 +166,7 @@
 		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
 		1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubway.Res.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchAppApp.swift; sourceTree = "<group>"; };
+		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493D2B5B9D0B00024336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 		1ACE49522B5B9DAD00024336 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE493B2B5B9D0B00024336 /* FunchAppApp.swift */,
+				1ACE493B2B5B9D0B00024336 /* FunchApp.swift */,
 				1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */,
 			);
 			path = Application;
@@ -856,7 +856,7 @@
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
 				3EA69C0D2B5E5379008AE23B /* ProfileInputRow.swift in Sources */,
 				3EA69C052B5D6D1C008AE23B /* ProfileMBTIButtonPair.swift in Sources */,
-				1ACE493C2B5B9D0B00024336 /* FunchAppApp.swift in Sources */,
+				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
 				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
