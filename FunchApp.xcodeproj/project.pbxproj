@@ -94,7 +94,6 @@
 		3E1E73F32B713B3A0082386A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F22B713B3A0082386A /* String+.swift */; };
 		3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */; };
 		3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73FB2B74AC510082386A /* Gradient+.swift */; };
-		3E1E74042B7A05290082386A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E1E74032B7A05290082386A /* SnapKit */; };
 		3E1E74092B7A0F150082386A /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 3E1E74082B7A0F150082386A /* SwiftUIPager */; };
 		3E1E740B2B7A22A80082386A /* SynergyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E740A2B7A22A80082386A /* SynergyLabel.swift */; };
 		3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */; };
@@ -208,7 +207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A792B6F2B5D3F6B00A080F2 /* Moya in Frameworks */,
-				3E1E74042B7A05290082386A /* SnapKit in Frameworks */,
 				3E1E74092B7A0F150082386A /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,7 +653,6 @@
 			name = FunchApp;
 			packageProductDependencies = (
 				1A792B6E2B5D3F6B00A080F2 /* Moya */,
-				3E1E74032B7A05290082386A /* SnapKit */,
 				3E1E74082B7A0F150082386A /* SwiftUIPager */,
 			);
 			productName = FunchApp;
@@ -692,7 +689,6 @@
 			mainGroup = 1ACE492F2B5B9D0B00024336;
 			packageReferences = (
 				1A792B6D2B5D3F6B00A080F2 /* XCRemoteSwiftPackageReference "Moya" */,
-				3E1E74022B7A05290082386A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				3E1E74072B7A0F150082386A /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = 1ACE49392B5B9D0B00024336 /* Products */;
@@ -1103,14 +1099,6 @@
 				minimumVersion = 15.0.3;
 			};
 		};
-		3E1E74022B7A05290082386A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
-			};
-		};
 		3E1E74072B7A0F150082386A /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
@@ -1126,11 +1114,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A792B6D2B5D3F6B00A080F2 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
-		};
-		3E1E74032B7A05290082386A /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3E1E74022B7A05290082386A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 		3E1E74082B7A0F150082386A /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
