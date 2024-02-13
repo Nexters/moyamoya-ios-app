@@ -70,51 +70,56 @@ final class ProfileEditorViewModel: ObservableObject {
 struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
-    
-    @State var profile: Profile = .emptyValue
     @StateObject var viewModel = ProfileEditorViewModel()
+    @State private var buttonIsEnabled: Bool = false
+    @State var profile: Profile = .emptyValue
     
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
+            Color.gray900
+                .ignoresSafeArea(.all)
             
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    
-                    Spacer()
-                        .frame(height: 8)
-                    
-                    Text("프로필 만들기")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                        .frame(height: 2)
-                    
-                    Text("프로필을 바탕으로 매칭을 도와드려요")
-                        .font(.system(size: 14))
-                    
-                    Spacer()
-                        .frame(height: 24)
-                    
-                    VStack(alignment: .leading, spacing: 16) {
-                        ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
-                        ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
-                        ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
-                        ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
-                        ProfileInputRow(type: .생일, profile: $viewModel.state.profile)
-                        ProfileInputRow(type: .지하철, profile: $viewModel.state.profile)
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        Spacer()
+                            .frame(height: 8)
+                        
+                        Text("프로필 만들기")
+                            .foregroundStyle(.white)
+                            .customFont(.title2)
+                        
+                        Spacer()
+                            .frame(height: 2)
+                        
+                        Text("프로필을 바탕으로 매칭을 도와드려요")
+                            .foregroundStyle(.gray300)
+                            .customFont(.body)
+                        
+                        Spacer()
+                            .frame(height: 24)
+                        
+                        VStack(alignment: .leading, spacing: 16) {
+                            ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
+                            ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
+                            ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
+                            ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
+                            ProfileInputRow(type: .혈액형, profile: $viewModel.state.profile)
+                            ProfileInputRow(type: .지하철, profile: $viewModel.state.profile)
+                        }
+                        
+                        Spacer()
+                            .frame(height: 24)
                     }
-                    
-                    Spacer()
-                        .frame(height: 24)
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
+                .onTapGesture {
+                    hideKeyboard()
+                }
+                
+                matchingButtonView
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
-            
-            matchingButtonView
         }
         .onReceive(viewModel.$presentation) {
             switch $0 {
@@ -139,11 +144,11 @@ struct ProfileEditorView: View {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
+                        .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .background(.black)
+                        .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 12.0))
                 }
             }
@@ -153,25 +158,21 @@ struct ProfileEditorView: View {
     
     private var matchingButtonView: some View {
         VStack(spacing: 0) {
-            Spacer()
-                .frame(height: 16)
             
             Button {
                 viewModel.send(action: .makeProfile)
             } label: {
                 Text("이제 매칭할래요!")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .frame(height: 32)
+                    .foregroundStyle(.gray900)
+                    .customFont(.subtitle1)
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.funch)
-            .padding(.horizontal, 20)
-            
-            Spacer()
+            .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
         }
-        .frame(height: 114)
-        .background(Color.gray)
+        .padding(.vertical, 16)
+        .padding(.horizontal, 20)
+        .frame(maxWidth: .infinity)
+        .background(.gray900)
     }
 }
 

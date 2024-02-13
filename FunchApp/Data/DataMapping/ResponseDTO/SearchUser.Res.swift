@@ -16,7 +16,7 @@ extension ResponseDTO {
         /// 데이터 클래스
         struct DataClass: Decodable {
             let matchingItems: MatchingItems
-            let constellationChemistry: ConstellationChemistry
+            let bloodTypeChemistry: bloodTypeChemistry
             let subwayInfo: SubwayInfo
             let matchingRatio: Int
             let topic: TargetProfile
@@ -24,9 +24,9 @@ extension ResponseDTO {
             let targetProfile: TargetProfile
             
             /// 별자리 케미
-            struct ConstellationChemistry: Decodable {
-                let referenceConstellation, targetConstellation: String
-                let isEqualConstellation: Bool
+            struct bloodTypeChemistry: Decodable {
+                let referenceBloodType, targetBloodType: String
+                let isEqualBloodType: Bool
                 let description: Description
             }
 
@@ -60,7 +60,7 @@ extension ResponseDTO {
             struct TargetProfile: Decodable {
                 let jobGroup: String
                 let clubs: [String]
-                let mbti, constellation: String
+                let mbti, bloodType: String
                 let subwayStations: [SubwayStation]
                 
                 /// 지하철 역
@@ -90,7 +90,7 @@ extension ResponseDTO.SearchUser {
 //            major: majors,
 //            club: clubs,
 //            mbti: data.targetProfile.mbti,
-//            constellation: data.targetProfile.constellation,
+//            bloodType: data.targetProfile.bloodType,
 //            subwayName: data.targetProfile.,
 //            viewerShip: ""
 //        )

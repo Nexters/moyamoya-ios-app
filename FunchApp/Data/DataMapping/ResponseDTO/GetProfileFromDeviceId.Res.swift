@@ -36,8 +36,8 @@ extension ResponseDTO {
             let birth: String
             /// 나이
             let age: Int
-            /// 별자리
-            let constellation: String
+            /// 혈액형
+            let bloodType: String
             /// 직군
             let jobGroup: String
             /// 동아리
@@ -54,7 +54,7 @@ extension ResponseDTO {
                 case name
                 case birth
                 case age
-                case constellation
+                case bloodType
                 case jobGroup
                 case clubs
                 case subwayStations
@@ -68,7 +68,7 @@ extension ResponseDTO {
                 self.name = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.name)
                 self.birth = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.birth)
                 self.age = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.age)
-                self.constellation = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.constellation)
+                self.bloodType = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.bloodType)
                 self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.jobGroup)
                 self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.clubs)
                 self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.subwayStations)
@@ -82,9 +82,9 @@ extension ResponseDTO {
 extension ResponseDTO.GetProfile {
     func toDomain() -> Profile {
         
-        let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: "")]
+        let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: self.data.jobGroup)]
         let clubs = data.clubs.map { club -> Profile.Club in
-            Profile.Club(name: club, imageName: "")
+            Profile.Club(name: club, imageName: club)
         }
         let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
                 .init(name: name, lines: [])
@@ -97,7 +97,7 @@ extension ResponseDTO.GetProfile {
             majors: majors,
             clubs: clubs,
             mbti: data.mbti,
-            bloodType: data.constellation,
+            bloodType: data.bloodType,
             subwayInfos: subwayInfos,
             viewerShip: "0")
     }

@@ -123,7 +123,6 @@ extension ResponseDTO {
                 }
             }
         }
-        
     }
 }
 
