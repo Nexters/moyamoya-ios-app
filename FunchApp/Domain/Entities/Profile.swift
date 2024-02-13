@@ -80,8 +80,8 @@ extension Profile.Major {
     
     static var dummies: [Profile.Major] {
         return [
-            .init(name: "개발자", imageName: "plus"),
-            .init(name: "디자이너", imageName: "plus"),
+            .init(name: "개발자", imageName: "developer"),
+            .init(name: "디자이너", imageName: "designer"),
         ]
     }
 }
@@ -90,9 +90,9 @@ extension Profile.Club {
     
     static var dummies: [Profile.Club] {
         return [
-            .init(name: "넥스터즈", imageName: "plus"),
-            .init(name: "SOPT", imageName: "plus"),
-            .init(name: "Depromeet", imageName: "plus"),
+            .init(name: "넥스터즈", imageName: "nexters"),
+            .init(name: "SOPT", imageName: "sopt"),
+            .init(name: "Depromeet", imageName: "depromeet"),
         ]
     }
 }
