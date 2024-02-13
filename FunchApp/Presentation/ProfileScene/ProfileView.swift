@@ -12,6 +12,8 @@ struct ProfileView: View {
     
     let profile: Profile = .testableValue
     
+    private let openURL: OpenURLFeature = .init()
+    
     var body: some View {
         ZStack {
             Color.gray900
@@ -36,13 +38,7 @@ struct ProfileView: View {
                     Spacer()
                         .frame(height: 20)
                     
-                    VStack(spacing: 20) {
-                        ProfileChipRow(.직군, .testableValue)
-                        ProfileChipRow(.동아리, .testableValue)
-                        ProfileChipRow(.MBTI, .testableValue)
-                        ProfileChipRow(.혈액형, .testableValue)
-                        ProfileChipRow(.지하철, .testableValue)
-                    }
+                    profileView(profile)
                 }
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
@@ -56,7 +52,7 @@ struct ProfileView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    /* action */
+                    openURL.execute(type: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .foregroundStyle(.white)
@@ -72,10 +68,32 @@ struct ProfileView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image(systemName: "arrow.backward")
+                    Image(systemName: "xmark")
                         .foregroundColor(.black)
                 }
             }
+        }
+    }
+    
+    
+    @ViewBuilder
+    private func profileView(_ profile: Profile) -> some View {
+        let major: String = profile.majors.map { $0.name }.first ?? ""
+        let clubs: [String] = profile.clubs.map { $0.name }
+        let subwayInfos: [String] = profile.subwayInfos.map { $0.name }
+        
+        let profile: ProfileChipRow.ProfileRowInfo = .init(major: major,
+                                                           clubs: clubs,
+                                                           mbti: profile.mbti,
+                                                           bloodType: profile.bloodType,
+                                                           subwayInfos: subwayInfos)
+        
+        VStack(alignment: .leading, spacing: 16) {
+            ProfileChipRow(.직군, profile, isHighlighted: true)
+            ProfileChipRow(.동아리, profile, isHighlighted: false)
+            ProfileChipRow(.MBTI, profile, isHighlighted: false)
+            ProfileChipRow(.혈액형, profile, isHighlighted: true)
+            ProfileChipRow(.지하철, profile, isHighlighted: false)
         }
     }
 }

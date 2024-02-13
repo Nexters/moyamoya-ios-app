@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct SearchUserQuery {
-    /// 나의 userCode
-    var requestUserCode: String
+struct MatchingUserQuery {
+    /// 나의 id
+    var requestId: String
     /// 상대방 userCode
     var targetUserCode: String
 }

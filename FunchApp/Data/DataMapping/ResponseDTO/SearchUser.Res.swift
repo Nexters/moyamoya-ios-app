@@ -9,7 +9,7 @@ import Foundation
 
 extension ResponseDTO {
     struct SearchUser: Respondable {
-        var status: Int
+        var status: String
         var message: String
         var data: DataClass
         

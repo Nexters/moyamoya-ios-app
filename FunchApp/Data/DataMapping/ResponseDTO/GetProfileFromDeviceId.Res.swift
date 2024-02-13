@@ -9,7 +9,7 @@ import Foundation
 
 extension ResponseDTO {
     struct GetProfile: Respondable {
-        var status: Int
+        var status: String
         var message: String
         var data: DataClass
 
@@ -21,7 +21,7 @@ extension ResponseDTO {
         
         init(from decoder: Decoder) throws {
             let container: KeyedDecodingContainer<ResponseDTO.GetProfile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfile.CodingKeys.self)
-            self.status = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.CodingKeys.status)
+            self.status = try container.decode(String.self, forKey: ResponseDTO.GetProfile.CodingKeys.status)
             self.message = try container.decode(String.self, forKey: ResponseDTO.GetProfile.CodingKeys.message)
             self.data = try container.decode(ResponseDTO.GetProfile.DataClass.self, forKey: ResponseDTO.GetProfile.CodingKeys.data)
         }
@@ -82,21 +82,23 @@ extension ResponseDTO {
 extension ResponseDTO.GetProfile {
     func toDomain() -> Profile {
         
-        let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: "")]
+        let majors: [Profile.Major] = [.init(name: self.data.jobGroup, imageName: self.data.jobGroup)]
         let clubs = data.clubs.map { club -> Profile.Club in
-            Profile.Club(name: club, imageName: "")
+            Profile.Club(name: club, imageName: club)
         }
         let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
                 .init(name: name, lines: [])
         }
-        return Profile(userCode: data.memberCode,
-                userNickname: data.name,
-                birth: data.birth,
-                majors: majors,
-                clubs: clubs,
-                mbti: data.mbti,
-                bloodType: data.bloodType,
-                subwayInfos: subwayInfos,
-                viewerShip: "0")
+        return Profile(
+            id: data.id,
+            userCode: data.memberCode,
+            userNickname: data.name,
+            birth: data.birth,
+            majors: majors,
+            clubs: clubs,
+            mbti: data.mbti,
+            bloodType: data.bloodType,
+            subwayInfos: subwayInfos,
+            viewerShip: "0")
     }
 }

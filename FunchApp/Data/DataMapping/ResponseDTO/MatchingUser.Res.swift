@@ -9,7 +9,7 @@ import Foundation
 
 extension ResponseDTO {
     struct MatchingUser: Respondable {
-        var status: Int
+        var status: String
         var message: String
         var data: DataClass
         
@@ -21,7 +21,7 @@ extension ResponseDTO {
         
         init(from decoder: Decoder) throws {
             let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.CodingKeys.self)
-            self.status = try container.decode(Int.self, forKey: ResponseDTO.MatchingUser.CodingKeys.status)
+            self.status = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.CodingKeys.status)
             self.message = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.CodingKeys.message)
             self.data = try container.decode(ResponseDTO.MatchingUser.DataClass.self, forKey: ResponseDTO.MatchingUser.CodingKeys.data)
         }
@@ -32,7 +32,7 @@ extension ResponseDTO {
             let chemistryInfos: [ChemistryInfo]
             let recommendInfos: [RecommendInfo]
             let subwayInfos: [SubwayInfo]
-            
+
             enum CodingKeys: CodingKey {
                 case profile
                 case similarity
@@ -43,86 +43,119 @@ extension ResponseDTO {
             
             init(from decoder: Decoder) throws {
                 let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.CodingKeys.self)
-                self.profile = try container.decode(ResponseDTO.MatchingUser.Profile.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.profile)
+                self.profile = try container.decode(ResponseDTO.MatchingUser.DataClass.Profile.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.profile)
                 self.similarity = try container.decode(Int.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.similarity)
-                self.chemistryInfos = try container.decode([ResponseDTO.MatchingUser.ChemistryInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.chemistryInfos)
-                self.recommendInfos = try container.decode([ResponseDTO.MatchingUser.RecommendInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.recommendInfos)
-                self.subwayInfos = try container.decode([ResponseDTO.MatchingUser.SubwayInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.subwayInfos)
-            }
-        }
-        
-        struct ChemistryInfo: Decodable {
-            let title: String
-            let description: String
-            
-            enum CodingKeys: CodingKey {
-                case title
-                case description
+                self.chemistryInfos = try container.decode([ResponseDTO.MatchingUser.DataClass.ChemistryInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.chemistryInfos)
+                self.recommendInfos = try container.decode([ResponseDTO.MatchingUser.DataClass.RecommendInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.recommendInfos)
+                self.subwayInfos = try container.decode([ResponseDTO.MatchingUser.DataClass.SubwayInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.subwayInfos)
             }
             
-            init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.ChemistryInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.ChemistryInfo.CodingKeys.self)
-                self.title = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.ChemistryInfo.CodingKeys.title)
-                self.description = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.ChemistryInfo.CodingKeys.description)
-            }
-        }
-
-        struct Profile: Decodable {
-            let name: String
-            let jobGroup: String
-            let clubs: [String]
-            let mbti: String
-            let bloodType: String
-            let subwayNames: [String]
-            
-            enum CodingKeys: CodingKey {
-                case name
-                case jobGroup
-                case clubs
-                case mbti
-                case bloodType
-                case subwayNames
-            }
-            
-            init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.Profile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.Profile.CodingKeys.self)
-                self.name = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.name)
-                self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.jobGroup)
-                self.clubs = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.clubs)
-                self.mbti = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.mbti)
-                self.bloodType = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.bloodType)
-                self.subwayNames = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.Profile.CodingKeys.subwayNames)
-            }
-        }
-        
-        struct RecommendInfo: Decodable {
-            let title: String
-            
-            enum CodingKeys: CodingKey {
-                case title
+            struct Profile: Decodable {
+                let name: String
+                let jobGroup: String
+                let clubs: [String]
+                let mbti: String
+                let bloodType: String
+                let subwayNames: [String]
+                
+                enum CodingKeys: CodingKey {
+                    case name
+                    case jobGroup
+                    case clubs
+                    case mbti
+                    case constellation
+                    case subwayNames
+                }
+                
+                init(from decoder: Decoder) throws {
+                    let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.self)
+                    self.name = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.name)
+                    self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.jobGroup)
+                    self.clubs = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.clubs)
+                    self.mbti = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.mbti)
+                    self.bloodType = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.constellation)
+                    self.subwayNames = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.subwayNames)
+                }
             }
             
-            init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.RecommendInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.RecommendInfo.CodingKeys.self)
-                self.title = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.RecommendInfo.CodingKeys.title)
+            struct SubwayInfo: Decodable {
+                let name: String
+                let lines: [String]
+                
+                enum CodingKeys: CodingKey {
+                    case name
+                    case lines
+                }
+                
+                init(from decoder: Decoder) throws {
+                    let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.self)
+                    self.name = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.name)
+                    self.lines = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.lines)
+                }
             }
-        }
-        
-        struct SubwayInfo: Decodable {
-            let name: String
-            let lines: [String]
             
-            enum CodingKeys: CodingKey {
-                case name
-                case lines
+            struct ChemistryInfo: Decodable {
+                let title: String
+                let description: String
+                
+                enum CodingKeys: CodingKey {
+                    case title
+                    case description
+                }
+                
+                init(from decoder: Decoder) throws {
+                    let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.ChemistryInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.ChemistryInfo.CodingKeys.self)
+                    self.title = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.ChemistryInfo.CodingKeys.title)
+                    self.description = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.ChemistryInfo.CodingKeys.description)
+                }
             }
             
-            init(from decoder: Decoder) throws {
-                let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.SubwayInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.SubwayInfo.CodingKeys.self)
-                self.name = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.SubwayInfo.CodingKeys.name)
-                self.lines = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.SubwayInfo.CodingKeys.lines)
+            struct RecommendInfo: Decodable {
+                let title: String
+                
+                enum CodingKeys: CodingKey {
+                    case title
+                }
+                
+                init(from decoder: Decoder) throws {
+                    let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.RecommendInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.RecommendInfo.CodingKeys.self)
+                    self.title = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.RecommendInfo.CodingKeys.title)
+                }
             }
         }
     }
 }
 
+extension ResponseDTO.MatchingUser {
+    func toDomain() -> MatchingInfo {
+        
+        let profile = MatchingInfo.MatchProfile(
+            name: data.profile.name,
+            major: data.profile.jobGroup,
+            clubs: data.profile.clubs,
+            mbti: data.profile.jobGroup,
+            bloodType: data.profile.bloodType,
+            subwayNames: data.profile.subwayNames
+        )
+        
+        let chemistryInfos = data.chemistryInfos.map { info -> MatchingInfo.ChemistryInfo in
+                .init(title: info.title, description: info.description)
+        }
+        
+        let recommendInfos = data.recommendInfos.map { info -> MatchingInfo.RecommendInfo in
+                .init(title: info.title)
+        }
+        
+        let subwayInfos = data.subwayInfos.map { info -> SubwayInfo in
+                .init(name: info.name, lines: info.lines)
+        }
+        
+        return .init(
+            profile: profile,
+            similarity: data.similarity,
+            chemistryInfos: chemistryInfos,
+            recommendInfos: recommendInfos,
+            subwayInfos: subwayInfos
+        )
+    }
+}

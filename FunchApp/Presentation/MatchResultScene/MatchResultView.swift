@@ -58,7 +58,7 @@ struct MatchResultView: View {
         switch pageIndex {
         case 0: synergyView
         case 1: recommendationView
-        case 2: profileView
+        case 2: profileView(matchResult.profile)
         default: EmptyView()
         }
     }
@@ -102,8 +102,8 @@ struct MatchResultView: View {
                 .frame(height: 16)
             
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(matchResult.synergyInfos, id: \.self) { info in
-                    SynergyLabel(info: info)
+                ForEach(matchResult.chemistryInfos, id: \.self) { info in
+                    ChemistryLabel(info: info)
                 }
             }
         }
@@ -145,23 +145,27 @@ struct MatchResultView: View {
     }
     
     /// 상대방의 프로필을 보여주는 View
-    private var profileView: some View {
-        VStack(spacing: 0) {
-            Text(matchResult.profile.userNickname)
-                .font(.Funch.title2)
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Spacer()
-                .frame(height: 20)
-            
-            VStack(alignment: .leading, spacing: 16) {
-                ProfileChipRow(.직군, matchResult.profile, isHighlighted: true)
-                ProfileChipRow(.동아리, matchResult.profile, isHighlighted: false)
-                ProfileChipRow(.MBTI, matchResult.profile, isHighlighted: false)
-                ProfileChipRow(.혈액형, matchResult.profile, isHighlighted: true)
-                ProfileChipRow(.지하철, matchResult.profile, isHighlighted: false)
-            }
+    @ViewBuilder
+    private func profileView(_ matchResult: MatchingInfo.MatchProfile) -> some View {
+        let profile: ProfileChipRow.ProfileRowInfo = .init(major: matchResult.major,
+                                                           clubs: matchResult.clubs,
+                                                           mbti: matchResult.mbti,
+                                                           bloodType: matchResult.bloodType,
+                                                           subwayInfos: matchResult.subwayNames)
+        Text(matchResult.name)
+            .font(.Funch.title2)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        
+        Spacer()
+            .frame(height: 20)
+        
+        VStack(alignment: .leading, spacing: 16) {
+            ProfileChipRow(.직군, profile, isHighlighted: true)
+            ProfileChipRow(.동아리, profile, isHighlighted: false)
+            ProfileChipRow(.MBTI, profile, isHighlighted: false)
+            ProfileChipRow(.혈액형, profile, isHighlighted: true)
+            ProfileChipRow(.지하철, profile, isHighlighted: false)
         }
     }
 }

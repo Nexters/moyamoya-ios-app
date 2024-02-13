@@ -8,17 +8,17 @@
 import Foundation
 import SwiftUI
 
-struct SynergyLabel: View {
+struct ChemistryLabel: View {
     
-    private let synergyData: MatchingInfo.SynergyInfo
+    private let chemistryData: MatchingInfo.ChemistryInfo
     
-    init(info synergyData: MatchingInfo.SynergyInfo) {
-        self.synergyData = synergyData
+    init(info chemistryData: MatchingInfo.ChemistryInfo) {
+        self.chemistryData = chemistryData
     }
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            Image(findImageResource(from: synergyData.title))
+            Image(findImageResource(from: chemistryData.title))
                 .resizable()
                 .frame(width: 24, height: 24)
             
@@ -26,14 +26,14 @@ struct SynergyLabel: View {
                 .frame(width: 12)
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(synergyData.title)
+                Text(chemistryData.title)
                     .font(.Funch.subtitle1)
                     .foregroundStyle(.white)
                 
                 Spacer()
                     .frame(height: 2)
                 
-                Text(synergyData.description)
+                Text(chemistryData.description)
                     .font(.Funch.body)
                     .foregroundStyle(.gray400)
             }
@@ -43,7 +43,7 @@ struct SynergyLabel: View {
     }
 }
 
-extension SynergyLabel {
+extension ChemistryLabel {
     private func findImageResource(from text: String) -> ImageResource {
         switch text {
         case "찾았다, 내 소울메이트!": return .mbti1

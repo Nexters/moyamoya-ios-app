@@ -10,11 +10,44 @@ import SwiftUI
 final class HomeViewModel: ObservableObject {
     
     @Published var state = State()
+    @Published var presentation: State.PresentationState?
     
     /// 상태
     struct State {
         /// 코드 검색 텍스트 필드
         var serachCodeText: String = ""
+        
+        enum PresentationState: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case profile
+        }
+    }
+        
+    enum Action: Equatable {
+        case feedback
+        
+        case presentation(PresentationAction)
+        
+        enum PresentationAction: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case profile
+        }
+    }
+    
+    private let openURL: OpenURLFeature = .init()
+    
+    func send(action: Action) {
+        switch action {
+        case .feedback:
+            openURL.execute(type: .feedback)
+        case let .presentation(presentationAction):
+            switch presentationAction {
+            case .profile:
+                presentation = .profile
+            }
+        }
     }
 }
 
@@ -41,6 +74,9 @@ struct HomeView: View {
                     Spacer()
                         .frame(width: 8)
                     myProfileView
+                        .onTapGesture {
+                            viewModel.send(action: .presentation(.profile))
+                        }
                 }
                 
                 Spacer()
@@ -52,10 +88,19 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
         }
+        .fullScreenCover(item: $viewModel.presentation) { presentation in
+            switch presentation {
+            case .profile:
+                NavigationStack { 
+                    ProfileView()
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     // action
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .font(.system(size: 14, weight: .regular))

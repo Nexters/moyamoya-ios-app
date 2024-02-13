@@ -10,4 +10,8 @@ import Foundation
 struct SearchSubwayStationQuery {
     /// 검색어
     var searchText: String
+    
+    init(searchText: String) {
+        self.searchText = searchText
+    }
 }
