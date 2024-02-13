@@ -32,8 +32,8 @@ struct ProfileChipRow: View {
             Text(type.rawValue)
                 .multilineTextAlignment(.leading)
                 .lineLimit(0)
-                .font(.system(size: 14))
-                .foregroundColor(Color(red: 0.18, green: 0.18, blue: 0.18))
+                .font(.Funch.body)
+                .foregroundStyle(.gray400)
                 .frame(width: 52, alignment: .leading)
             
             flexibleChipView
@@ -59,7 +59,7 @@ struct ProfileChipRow: View {
             let mbti = profile.mbti
             return ChipView(title: mbti)
         case .혈액형:
-            let bloodType = profile.bloodType
+            let bloodType = profile.bloodType + "형"
             return ChipView(title: bloodType)
         case .지하철:
             let subwayName = profile.subwayInfos
