@@ -53,6 +53,17 @@ extension ResponseDTO {
             struct SubwayInfo: Decodable {
                 let name: String
                 let lines: [String]
+                
+                enum CodingKeys: CodingKey {
+                    case name
+                    case lines
+                }
+                
+                init(from decoder: Decoder) throws {
+                    let container: KeyedDecodingContainer<ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.self)
+                    self.name = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.name)
+                    self.lines = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.SubwayInfo.CodingKeys.lines)
+                }
             }
         }
         
