@@ -17,6 +17,7 @@ struct FunchDropDownMenu: View {
     init(selectedData: Binding<String>, data: [String]) {
         self._selectedData = selectedData
         self.data = data
+        self.selectedData = data.first ?? ""
     }
     
     /// Dropdown이 활성화 되어 있는지 나타내는 변수
