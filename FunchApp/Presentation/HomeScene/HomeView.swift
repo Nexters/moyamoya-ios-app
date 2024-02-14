@@ -54,10 +54,6 @@ final class HomeViewModel: ObservableObject {
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     
-    init() {
-        UINavigationBar.appearance().backgroundColor = .orange
-    }
-    
     var body: some View {
         ZStack {
             Color.gray900
