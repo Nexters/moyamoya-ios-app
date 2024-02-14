@@ -51,7 +51,7 @@ final class ProfileRepositoryTests: XCTestCase {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
         
-        let testableId = "65bdd58cebe5db753688b9fb"
+        let testableId = "65ccd1bcffc89209ea09ce40"
         let query = FetchUserQuery(id: testableId)
         
         repository?.fetchProfileId(userQuery: query) { result in
@@ -75,7 +75,7 @@ final class ProfileRepositoryTests: XCTestCase {
         // mock으로 나중에 뺄게요
         let query = CreateUserQuery(
             name: "박당근",
-            major: "backend",
+            major: "designer",
             clubs: ["nexters"],
             bloodType: "A",
             subwayStationName: ["건대입구"],
