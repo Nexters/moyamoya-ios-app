@@ -35,7 +35,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
     let createProfileUseCase: CreateProfileUseCase = .init()
-    let openURL: OpenURLFeature = .init()
+    let openURL: OpenURL = .init()
     
     func send(action: Action) {
         switch action {

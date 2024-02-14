@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OpenURLFeature {
+final class OpenURL {
     
     enum URLType: String {
         case feedback = "https://www.naver.com"

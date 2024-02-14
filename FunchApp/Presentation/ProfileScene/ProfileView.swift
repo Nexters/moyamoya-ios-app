@@ -12,7 +12,7 @@ struct ProfileView: View {
     
     let profile: Profile = .testableValue
     
-    private let openURL: OpenURLFeature = .init()
+    private let openURL: OpenURL = .init()
     
     var body: some View {
         ZStack {

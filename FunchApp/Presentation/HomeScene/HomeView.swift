@@ -36,7 +36,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    private let openURL: OpenURLFeature = .init()
+    private let openURL: OpenURL = .init()
     
     func send(action: Action) {
         switch action {

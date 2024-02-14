@@ -37,7 +37,7 @@
 		1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */; };
 		1A7B837C2B7A067D007408D7 /* ApplicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */; };
 		1A7B83812B7A07E6007408D7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
-		1A7B83832B7A1682007408D7 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* Feedback.swift */; };
+		1A7B83832B7A1682007408D7 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* OpenURL.swift */; };
 		1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */; };
 		1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B862B5D605400A080F2 /* MatchingRepository.swift */; };
 		1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
@@ -166,7 +166,7 @@
 		1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUseCase.swift; sourceTree = "<group>"; };
 		1A7B83802B7A07E6007408D7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
-		1A7B83822B7A1682007408D7 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		1A7B83822B7A1682007408D7 /* OpenURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
@@ -309,20 +309,12 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		1A7B83842B7A1684007408D7 /* Features */ = {
+		1A7B83852B7A16B3007408D7 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				1A7B83852B7A16B3007408D7 /* ToolbarFeature */,
+				1A7B83822B7A1682007408D7 /* OpenURL.swift */,
 			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		1A7B83852B7A16B3007408D7 /* ToolbarFeature */ = {
-			isa = PBXGroup;
-			children = (
-				1A7B83822B7A1682007408D7 /* Feedback.swift */,
-			);
-			path = ToolbarFeature;
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		1A87EAE02B691D050059F80A /* Repositories */ = {
@@ -401,7 +393,6 @@
 		1ACE49512B5B9D8D00024336 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1A7B83842B7A1684007408D7 /* Features */,
 				1ACE49682B5BA09700024336 /* UseCase */,
 				1ACE49672B5BA07400024336 /* Interfaces */,
 				1ACE49622B5B9F3B00024336 /* Entities */,
@@ -486,6 +477,7 @@
 		1ACE49682B5BA09700024336 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				1A7B83852B7A16B3007408D7 /* Commons */,
 				1A7B837F2B7A07B5007408D7 /* Application */,
 				1ACE496C2B5BA22C00024336 /* Home */,
 				1ACE496F2B5BA27600024336 /* Profile */,
@@ -878,7 +870,7 @@
 				1A792B872B5D605400A080F2 /* MatchingRepository.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepositoryType.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,
-				1A7B83832B7A1682007408D7 /* Feedback.swift in Sources */,
+				1A7B83832B7A1682007408D7 /* OpenURL.swift in Sources */,
 				1ACE498D2B5C111500024336 /* ChipView.swift in Sources */,
 				1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */,
 				1A44AAA72B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift in Sources */,
