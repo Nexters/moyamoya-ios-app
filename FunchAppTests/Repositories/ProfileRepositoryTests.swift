@@ -75,9 +75,9 @@ final class ProfileRepositoryTests: XCTestCase {
         // mock으로 나중에 뺄게요
         let query = CreateUserQuery(
             name: "박당근",
-            birth: "2002-02-15",
             major: "backend",
             clubs: ["nexters"],
+            bloodType: "A",
             subwayStationName: ["건대입구"],
             mbti: "ISTP"
         )

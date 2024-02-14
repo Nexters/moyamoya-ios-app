@@ -45,9 +45,9 @@ final class ProfileEditorViewModel: ObservableObject {
             let majorName = state.profile.majors.map { $0.name }.first ?? "unknown"
             
             let query = CreateUserQuery(name: state.profile.userNickname,
-                                        birth: state.profile.birth,
                                         major: majorName,
                                         clubs: clubNames,
+                                        bloodType: state.profile.bloodType,
                                         subwayStationName: subwayInfoNames,
                                         mbti: state.profile.mbti)
             createProfileUseCase.createProfile(createUserQuery: query) { result in

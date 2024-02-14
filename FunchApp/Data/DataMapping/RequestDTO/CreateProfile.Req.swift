@@ -12,17 +12,17 @@ extension RequestDTO {
         var deviceId = UIDevice.uuidString
         
         var name: String
-        var birth: String
         var major: String
         var clubs: [String]
+        var bloodType: String
         var subwayStations: [String]
         var mbti: String
         
         init(query: CreateUserQuery) {
             self.name = query.name
-            self.birth = query.birth
             self.major = query.major
             self.clubs = query.clubs
+            self.bloodType = query.bloodType
             self.subwayStations = query.subwayStationName
             self.mbti = query.mbti
         }
@@ -30,9 +30,9 @@ extension RequestDTO {
         var toDitionary: DictionaryType {
             [
                 "name": name,
-                "birthDate": birth,
                 "jobGroup": major,
                 "clubs": clubs,
+                "bloodType": bloodType,
                 "subwayStations": subwayStations,
                 "mbti": mbti,
                 "deviceNumber": deviceId,
