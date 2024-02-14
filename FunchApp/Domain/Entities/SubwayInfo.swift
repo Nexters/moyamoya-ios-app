@@ -8,7 +8,7 @@
 import Foundation
 
 /// 지하철 역 정보
-struct SubwayInfo: Hashable {
+struct SubwayInfo: Hashable, Codable {
     /// 지하철 이름
     var name: String
     /// 호선 정보
