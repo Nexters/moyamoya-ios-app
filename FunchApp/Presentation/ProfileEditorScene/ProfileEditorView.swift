@@ -40,19 +40,38 @@ final class ProfileEditorViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .makeProfile:
-            let clubNames = state.profile.clubs.map { $0.name }
+            let majorName = state.profile.majors.map { major in
+                switch major.name {
+                case "개발자": return "developer"
+                case "디자이너": return "designer"
+                default: return "unknown"
+                }
+            }.first ?? "unknown"
+            let clubNames = state.profile.clubs.map { club in
+                switch club.name {
+                case "넥스터즈": return "nexters"
+                case "SOPT": return "sopt"
+                case "Depromeet": return "depromeet"
+                default: return "unknown"
+                }
+            }
+            let bloodType = String(state.profile.bloodType.first ?? "X")
             let subwayInfoNames = state.profile.subwayInfos.map { $0.name }
-            let majorName = state.profile.majors.map { $0.name }.first ?? "unknown"
             
             let query = CreateUserQuery(name: state.profile.userNickname,
                                         major: majorName,
                                         clubs: clubNames,
-                                        bloodType: state.profile.bloodType,
+                                        bloodType: bloodType,
                                         subwayStationName: subwayInfoNames,
                                         mbti: state.profile.mbti)
             createProfileUseCase.createProfile(createUserQuery: query) { result in
                 switch result {
                 case .success(let profile):
+                    // FIXME: applicationUseCase.hasProfile은 main thread에서 한 이유가 있나 ?
+                    DispatchQueue.global().async { [weak self] in
+                        self?.applicationUseCase.profiles.append(profile)
+                    }
+                    
                     DispatchQueue.main.async { [weak self] in
                         guard let self else { return }
                         self.applicationUseCase.hasProfile = true
@@ -72,7 +91,6 @@ struct ProfileEditorView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = ProfileEditorViewModel()
     @State private var buttonIsEnabled: Bool = false
-    @State var profile: Profile = .emptyValue
     
     var body: some View {
         ZStack {
