@@ -32,10 +32,6 @@ extension ResponseDTO {
             let id: String
             /// 멤버 이름
             let name: String
-            /// 멤버 생년 월일 `yyyy-MM-dd`
-            let birth: String
-            /// 나이
-            let age: Int
             /// 혈액형
             let bloodType: String
             /// 직군
@@ -48,32 +44,32 @@ extension ResponseDTO {
             let mbti: String
             /// 해당 유저 코드
             let memberCode: String
+            /// 프로필 조회 회수
+            let viewCount: Int
             
-            enum CodingKeys: CodingKey {
+            enum CodingKeys: String, CodingKey {
                 case id
                 case name
-                case birth
-                case age
                 case bloodType
                 case jobGroup
                 case clubs
-                case subwayStations
+                case subwayStations = "subwayInfos"
                 case mbti
                 case memberCode
+                case viewCount
             }
             
             init(from decoder: Decoder) throws {
                 let container: KeyedDecodingContainer<ResponseDTO.GetProfile.DataClass.CodingKeys> = try decoder.container(keyedBy: ResponseDTO.GetProfile.DataClass.CodingKeys.self)
                 self.id = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.id)
                 self.name = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.name)
-                self.birth = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.birth)
-                self.age = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.age)
                 self.bloodType = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.bloodType)
                 self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.jobGroup)
                 self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.clubs)
                 self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.subwayStations)
                 self.mbti = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.mbti)
                 self.memberCode = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.memberCode)
+                self.viewCount = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.viewCount)
             }
         }
     }
@@ -93,7 +89,6 @@ extension ResponseDTO.GetProfile {
             id: data.id,
             userCode: data.memberCode,
             userNickname: data.name,
-            birth: data.birth,
             majors: majors,
             clubs: clubs,
             mbti: data.mbti,
