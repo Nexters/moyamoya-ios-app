@@ -7,6 +7,8 @@
 
 import Foundation
 
+extension Profile: Codable {}
+
 struct Profile {
     /// 유저 고유 아이디
     var id: String
@@ -29,7 +31,7 @@ struct Profile {
     var viewerShip: String
     
     /// 전공
-    struct Major: Hashable {
+    struct Major: Hashable, Codable {
         /// 전공 이름
         var name: String
         /// 전공 이미지
@@ -37,7 +39,7 @@ struct Profile {
     }
     
     /// 동아리
-    struct Club: Hashable {
+    struct Club: Hashable, Codable {
         /// 동아리 이름
         var name: String
         /// 동아리 이미지
