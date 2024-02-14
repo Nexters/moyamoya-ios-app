@@ -14,8 +14,6 @@ struct Profile {
     var userCode: String
     /// 유저 닉네임
     var userNickname: String
-    /// 생년월일
-    var birth: String
     
     /// 직군
     var majors: [Major]
@@ -54,7 +52,6 @@ extension Profile {
             id: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
-            birth: "20021225",
             majors: [.init(name: "개발자", imageName: "plus")],
             clubs: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
@@ -69,7 +66,6 @@ extension Profile {
             id: "",
             userCode: "",
             userNickname: "",
-            birth: "",
             majors: [],
             clubs: [],
             mbti: "",
