@@ -36,7 +36,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    private let openURL: OpenURLFeature = .init()
+    private let openURL: OpenURL = .init()
     
     func send(action: Action) {
         switch action {
@@ -53,10 +53,6 @@ final class HomeViewModel: ObservableObject {
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
-    
-    init() {
-        UINavigationBar.appearance().backgroundColor = .orange
-    }
     
     var body: some View {
         ZStack {
