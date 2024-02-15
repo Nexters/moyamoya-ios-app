@@ -9,6 +9,8 @@ import Foundation
 
 extension Profile: Codable {}
 
+extension Profile: Equatable {}
+
 struct Profile {
     /// 유저 고유 아이디
     var id: String
