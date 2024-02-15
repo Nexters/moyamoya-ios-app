@@ -23,8 +23,8 @@ struct DefaultFunchButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 16)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
             .background(isEnabled ? .lemon900: .lemon500)
             .opacity(configuration.isPressed && fadeOnPress ? 0.75 : 1)
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
