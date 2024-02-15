@@ -204,15 +204,3 @@ struct ProfileEditorView: View {
         ProfileEditorView()
     }
 }
-
-extension UIDevice {
-    var hasNotch: Bool {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScenes = scenes.first as? UIWindowScene
-        let window = windowScenes?.windows
-        
-        let bottom = window?.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0
-        
-        return bottom > 0
-    }
-}
