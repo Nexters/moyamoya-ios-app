@@ -32,11 +32,17 @@ struct ProfileInputRow: View {
     private(set) var type: ViewType
     /// 입력받는 Profile
     @Binding private(set) var profile: Profile
+    /// 지하철 검색 Action
+    private var subwaySearch: (String) -> ()
     
-    init(type: ViewType, profile: Binding<Profile>) {
+    init(type: ViewType, profile: Binding<Profile>, subwaySearch: @escaping (String) -> () = { _ in }) {
         self.type = type
         self._profile = profile
+        self.subwaySearch = subwaySearch
     }
+    
+    @EnvironmentObject var parent: ProfileEditorViewModel
+    @State var subwayInputText: String = ""
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
@@ -150,12 +156,12 @@ extension ProfileInputRow {
         VStack(spacing: 0) {
             // FIXME: profile editor model 도 넣으면 좋을듯 -> 이 텍스트필드에 subwayInfo로 접근이 불가능
             FunchTextField(
-                onChangeAction: { oldText, newText in
-                    // action
-                },
-                text: $profile.userCode,
+                text: $subwayInputText,
                 placeholderText: "가까운 지하철역 검색",
-                leadingImage: .init(systemName: "magnifyingglass")
+                leadingImage: .init(systemName: "magnifyingglass"),
+                onChange: { _, newText in
+                    subwaySearch(newText)
+                }
             )
             
             Spacer()
@@ -163,12 +169,17 @@ extension ProfileInputRow {
             
             HStack(spacing: 4) {
                 ForEach(subwayRecommendation, id: \.self) { subwayInfo in
-                    Text(subwayInfo.name.applyColorToText(target: profile.userCode, color: .white) ?? AttributedString(subwayInfo.name))
-                        .font(.Funch.body)
-                        .foregroundStyle(.gray500)
-                        .padding(8)
-                        .background(.gray800)
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                    Button {
+                        profile.subwayInfos = [subwayInfo]
+                        subwayInputText = subwayInfo.name
+                    } label: {
+                        Text(subwayInfo.name.applyColorToText(target: subwayInputText, color: .white) ?? AttributedString(subwayInfo.name))
+                            .font(.Funch.body)
+                            .foregroundStyle(.gray500)
+                    }
+                    .padding(8)
+                    .background(.gray800)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 }
                 Spacer()
             }

@@ -136,10 +136,10 @@ struct HomeView: View {
                 text: $viewModel.state.serachCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
+                trailingButtonImage: Image(.iconSearchYellow), 
                 buttonAction: {
                     // FIXME: api 통신
-                },
-                trailingButtonImage: Image(.iconSearchYellow)
+                }
             )
         }
         .padding(.horizontal, 16)

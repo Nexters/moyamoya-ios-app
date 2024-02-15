@@ -7,6 +7,10 @@
 
 import Foundation
 
+extension Profile: Codable {}
+
+extension Profile: Equatable {}
+
 struct Profile {
     /// 유저 고유 아이디
     var id: String
@@ -14,8 +18,6 @@ struct Profile {
     var userCode: String
     /// 유저 닉네임
     var userNickname: String
-    /// 생년월일
-    var birth: String
     
     /// 직군
     var majors: [Major]
@@ -31,7 +33,7 @@ struct Profile {
     var viewerShip: String
     
     /// 전공
-    struct Major: Hashable {
+    struct Major: Hashable, Codable {
         /// 전공 이름
         var name: String
         /// 전공 이미지
@@ -39,7 +41,7 @@ struct Profile {
     }
     
     /// 동아리
-    struct Club: Hashable {
+    struct Club: Hashable, Codable {
         /// 동아리 이름
         var name: String
         /// 동아리 이미지
@@ -54,7 +56,6 @@ extension Profile {
             id: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
-            birth: "20021225",
             majors: [.init(name: "개발자", imageName: "plus")],
             clubs: [.init(name: "넥스터즈", imageName: "plus")],
             mbti: "ESTP",
@@ -69,7 +70,6 @@ extension Profile {
             id: "",
             userCode: "",
             userNickname: "",
-            birth: "",
             majors: [],
             clubs: [],
             mbti: "",

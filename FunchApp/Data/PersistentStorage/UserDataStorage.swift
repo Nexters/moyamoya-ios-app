@@ -17,9 +17,13 @@ final class UserDefaultStorage {
     /// 해당 사용자가 프로필이 존재하는지 유무
     @AppStorage(UserDefaultKeyCase.hasProfile.rawValue)
     var hasProfile: Bool = false
+    
+    @AppStorage(UserDefaultKeyCase.profiles.rawValue)
+    var profiles: [Profile] = []
 }
 
 /// `UserDefaultKeyCase`키 값 정보
 enum UserDefaultKeyCase: String {
     case hasProfile
+    case profiles
 }

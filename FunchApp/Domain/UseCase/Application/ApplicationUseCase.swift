@@ -22,4 +22,9 @@ final class ApplicationUseCase: ApplicationUseCaseType {
         get { userStorage.hasProfile }
         set { userStorage.hasProfile = newValue }
     }
+    
+    var profiles: [Profile] {
+        get { userStorage.profiles }
+        set { userStorage.profiles = newValue }
+    }
 }

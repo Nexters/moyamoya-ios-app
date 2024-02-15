@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class ProfileEditorViewModel: ObservableObject {
     
     @Published var state = State()
@@ -14,6 +15,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     struct State {
         var profile: Profile = .emptyValue
+        var isEnabled: Bool = false
         
         enum PresentationState: Int, Identifiable, Equatable {
             var id: Int { self.rawValue }
@@ -23,6 +25,7 @@ final class ProfileEditorViewModel: ObservableObject {
     }
     
     enum Action: Equatable {
+        case onChangeProfile
         case makeProfile
         case feedback
         
@@ -39,15 +42,40 @@ final class ProfileEditorViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
+        case .onChangeProfile:
+            if !(state.profile.userNickname.isEmpty
+                 || state.profile.majors.isEmpty
+                 || state.profile.clubs.isEmpty
+                 || state.profile.mbti.count < 4
+                 || state.profile.bloodType.isEmpty
+                 || state.profile.subwayInfos.isEmpty) {
+                state.isEnabled = true
+            } else {
+                state.isEnabled = false
+            }
         case .makeProfile:
-            let clubNames = state.profile.clubs.map { $0.name }
+            let majorName = state.profile.majors.map { major in
+                switch major.name {
+                case "개발자": return "developer"
+                case "디자이너": return "designer"
+                default: return "unknown"
+                }
+            }.first ?? "unknown"
+            let clubNames = state.profile.clubs.map { club in
+                switch club.name {
+                case "넥스터즈": return "nexters"
+                case "SOPT": return "sopt"
+                case "Depromeet": return "depromeet"
+                default: return "unknown"
+                }
+            }
+            let bloodType = String(state.profile.bloodType.first ?? "X")
             let subwayInfoNames = state.profile.subwayInfos.map { $0.name }
-            let majorName = state.profile.majors.map { $0.name }.first ?? "unknown"
             
             let query = CreateUserQuery(name: state.profile.userNickname,
-                                        birth: state.profile.birth,
                                         major: majorName,
                                         clubs: clubNames,
+                                        bloodType: bloodType,
                                         subwayStationName: subwayInfoNames,
                                         mbti: state.profile.mbti)
             createProfileUseCase.createProfile(createUserQuery: query) { result in
@@ -56,6 +84,8 @@ final class ProfileEditorViewModel: ObservableObject {
                     DispatchQueue.main.async { [weak self] in
                         guard let self else { return }
                         self.applicationUseCase.hasProfile = true
+                        self.applicationUseCase.profiles.append(profile)
+                        self.presentation = .home
                     }
                 case .failure(_):
                     break
@@ -71,8 +101,6 @@ struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = ProfileEditorViewModel()
-    @State private var buttonIsEnabled: Bool = false
-    @State var profile: Profile = .emptyValue
     
     var body: some View {
         ZStack {
@@ -100,14 +128,7 @@ struct ProfileEditorView: View {
                         Spacer()
                             .frame(height: 24)
                         
-                        VStack(alignment: .leading, spacing: 16) {
-                            ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
-                            ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
-                            ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
-                            ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
-                            ProfileInputRow(type: .혈액형, profile: $viewModel.state.profile)
-                            ProfileInputRow(type: .지하철, profile: $viewModel.state.profile)
-                        }
+                        profileInputRows
                         
                         Spacer()
                             .frame(height: 24)
@@ -118,8 +139,18 @@ struct ProfileEditorView: View {
                     hideKeyboard()
                 }
                 
+                Spacer()
+                    .frame(height: 0)
+                    .keyboardBottomPadding(defaultHeight: UIDevice.current.hasNotch ? 114 : 96)
+            }
+            
+            VStack(spacing: 0) {
+                Spacer()
                 matchingButtonView
             }
+        }
+        .onChange(of: viewModel.state.profile) { _, _ in
+            viewModel.send(action: .onChangeProfile)
         }
         .onReceive(viewModel.$presentation) {
             switch $0 {
@@ -156,22 +187,47 @@ struct ProfileEditorView: View {
         .ignoresSafeArea(edges: .bottom)
     }
     
-    private var matchingButtonView: some View {
-        VStack(spacing: 0) {
-            
-            Button {
-                viewModel.send(action: .makeProfile)
-            } label: {
-                Text("이제 매칭할래요!")
-                    .foregroundStyle(.gray900)
-                    .customFont(.subtitle1)
-                    .frame(maxWidth: .infinity)
+    private var profileInputRows: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
+            Spacer().frame(height: 36)
+            ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
+            Spacer().frame(height: 16)
+            ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
+            Spacer().frame(height: 16)
+            ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
+            Spacer().frame(height: 16)
+            ProfileInputRow(type: .혈액형, profile: $viewModel.state.profile)
+            Spacer().frame(height: 16)
+            ProfileInputRow(type: .지하철, profile: $viewModel.state.profile) { text in
+                /* action */
             }
-            .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
         }
-        .padding(.vertical, 16)
-        .padding(.horizontal, 20)
-        .frame(maxWidth: .infinity)
+    }
+    
+    private var matchingButtonView: some View {
+        HStack(alignment: .bottom, spacing: 0) {
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(height: 16)
+                
+                Button {
+                    viewModel.send(action: .makeProfile)
+                } label: {
+                    Text("이제 매칭할래요!")
+                        .foregroundStyle(.gray900)
+                        .customFont(.subtitle1)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.state.isEnabled))
+                .disabled(!viewModel.state.isEnabled)
+                .padding(.horizontal, 20)
+                
+                Spacer()
+            }
+            .frame(maxHeight: .infinity)
+        }
+        .frame(height: UIDevice.current.hasNotch ? 114 : 96)
         .background(.gray900)
     }
 }
