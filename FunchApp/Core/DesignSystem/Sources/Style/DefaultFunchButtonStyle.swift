@@ -25,7 +25,7 @@ struct DefaultFunchButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
-            .background(isEnabled ? .lemon900: .lemon500)
+            .background(isEnabled ? .lemon500 : .lemon900)
             .opacity(configuration.isPressed && fadeOnPress ? 0.75 : 1)
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
