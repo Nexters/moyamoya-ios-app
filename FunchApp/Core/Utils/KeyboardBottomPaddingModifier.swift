@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension View {
     func keyboardBottomPadding(defaultHeight height: CGFloat) -> some View {
