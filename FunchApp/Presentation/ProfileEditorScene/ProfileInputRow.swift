@@ -159,8 +159,8 @@ extension ProfileInputRow {
                 text: $subwayInputText,
                 placeholderText: "가까운 지하철역 검색",
                 leadingImage: .init(systemName: "magnifyingglass"),
-                onChange: { oldText, newText in
-                    subwaySearch(oldText)
+                onChange: { _, newText in
+                    subwaySearch(newText)
                 }
             )
             
