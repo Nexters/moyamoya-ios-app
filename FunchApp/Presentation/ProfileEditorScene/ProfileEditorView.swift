@@ -118,12 +118,17 @@ struct ProfileEditorView: View {
                         Spacer()
                             .frame(height: 24)
                         
-                        VStack(alignment: .leading, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 0) {
                             ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
+                            Spacer().frame(height: 36)
                             ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
+                            Spacer().frame(height: 16)
                             ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
+                            Spacer().frame(height: 16)
                             ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
+                            Spacer().frame(height: 16)
                             ProfileInputRow(type: .혈액형, profile: $viewModel.state.profile)
+                            Spacer().frame(height: 16)
                             ProfileInputRow(type: .지하철, profile: $viewModel.state.profile)
                         }
                         
@@ -176,7 +181,6 @@ struct ProfileEditorView: View {
     
     private var matchingButtonView: some View {
         VStack(spacing: 0) {
-            
             Button {
                 viewModel.send(action: .makeProfile)
             } label: {
@@ -187,7 +191,8 @@ struct ProfileEditorView: View {
             }
             .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
         }
-        .padding(.vertical, 16)
+        .padding(.top, 16)
+        .padding(.bottom, UIDevice.current.hasNotch ? 34 : 16)
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
         .background(.gray900)
@@ -197,5 +202,17 @@ struct ProfileEditorView: View {
 #Preview {
     NavigationStack {
         ProfileEditorView()
+    }
+}
+
+extension UIDevice {
+    var hasNotch: Bool {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScenes = scenes.first as? UIWindowScene
+        let window = windowScenes?.windows
+        
+        let bottom = window?.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0
+        
+        return bottom > 0
     }
 }
