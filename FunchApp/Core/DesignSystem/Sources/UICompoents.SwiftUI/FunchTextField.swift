@@ -25,7 +25,7 @@ struct FunchTextField: View {
     
     // MARK: - inputs
     /// TextField의 onChange에 들어갈 action
-    var onChangeAction: (String, String) -> Void = { _, _ in }
+    var onChange: (String, String) -> Void = { _, _ in }
     /// Binding
     @Binding var text: String
     /// placeholder
@@ -42,16 +42,16 @@ struct FunchTextField: View {
     var buttonAction: () -> Void = {}
     
     init(
-        onChangeAction: @escaping (String, String) -> Void = { _, _ in },
         text: Binding<String>,
         placeholderText: String = "",
         backgroundColor: Color = .gray800,
         textLimit: Int? = nil,
         leadingImage: Image? = nil,
-        buttonAction: @escaping () -> Void = {},
-        trailingButtonImage: Image? = nil
+        trailingButtonImage: Image? = nil,
+        onChange: @escaping (String, String) -> Void = { _, _ in },
+        buttonAction: @escaping () -> Void = {}
     ) {
-        self.onChangeAction = onChangeAction
+        self.onChange = onChange
         self._text = text
         self.placeholderText = placeholderText
         self.backgroundColor = backgroundColor
@@ -138,7 +138,7 @@ struct FunchTextField: View {
                 isError = false
             }
         default:
-            onChangeAction(oldValue, newValue)
+            onChange(oldValue, newValue)
         }
     }
     
