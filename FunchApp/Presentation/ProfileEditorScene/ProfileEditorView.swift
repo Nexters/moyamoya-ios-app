@@ -141,6 +141,13 @@ struct ProfileEditorView: View {
                     hideKeyboard()
                 }
                 
+                Spacer()
+                    .frame(height: 0)
+                    .keyboardBottomPadding(defaultHeight: UIDevice.current.hasNotch ? 114 : 96)
+            }
+                
+            VStack(spacing: 0) {
+                Spacer()
                 matchingButtonView
             }
         }
@@ -180,21 +187,27 @@ struct ProfileEditorView: View {
     }
     
     private var matchingButtonView: some View {
-        VStack(spacing: 0) {
-            Button {
-                viewModel.send(action: .makeProfile)
-            } label: {
-                Text("이제 매칭할래요!")
-                    .foregroundStyle(.gray900)
-                    .customFont(.subtitle1)
-                    .frame(maxWidth: .infinity)
+        HStack(alignment: .bottom, spacing: 0) {
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(height: 16)
+                
+                Button {
+                    viewModel.send(action: .makeProfile)
+                } label: {
+                    Text("이제 매칭할래요!")
+                        .foregroundStyle(.gray900)
+                        .customFont(.subtitle1)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
+                .padding(.horizontal, 20)
+                
+                Spacer()
             }
-            .buttonStyle(DefaultFunchButtonStyle(isEnabled: buttonIsEnabled))
+            .frame(maxHeight: .infinity)
         }
-        .padding(.top, 16)
-        .padding(.bottom, UIDevice.current.hasNotch ? 34 : 16)
-        .padding(.horizontal, 20)
-        .frame(maxWidth: .infinity)
+        .frame(height: UIDevice.current.hasNotch ? 114 : 96)
         .background(.gray900)
     }
 }
