@@ -34,7 +34,9 @@ final class CreateProfileUseCase {
         profileRepository.createProfile(createUserQuery: createUserQuery) { result in
             switch result {
             case .success(let profile):
-                completion(.success(profile))
+                DispatchQueue.main.async {
+                    completion(.success(profile))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }
