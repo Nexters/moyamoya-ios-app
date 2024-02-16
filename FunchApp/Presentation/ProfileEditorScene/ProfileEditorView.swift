@@ -58,6 +58,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     @Published var shouldBecomeFirstResign: Bool = false
     @Published var subwaySearchText: String = ""
+    
     init() {
         applicationUseCase = .init(userStorage: .shared)
         createProfileUseCase = .init()
@@ -83,7 +84,6 @@ final class ProfileEditorViewModel: ObservableObject {
                     self.send(action: .subwaySearch)
                 }
             }.store(in: &cancellables)
-            
     }
     
     func send(action: Action) {

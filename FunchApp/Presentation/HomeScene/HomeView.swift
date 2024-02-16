@@ -96,7 +96,6 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // action
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
