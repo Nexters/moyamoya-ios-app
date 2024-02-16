@@ -6,33 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 final class ProfileEditorViewModel: ObservableObject {
     
-    @Published var state = State()
-    @Published var presentation: State.PresentationState?
-    
-    struct State: Equatable {
-        var userNickname: String = ""
-        var majors: [Profile.Major] = []
-        var clubs: [Profile.Club] = []
-        var mbti: [String] = .init(repeating: "", count: 4)
-        var bloodType: String = ""
-        var subwaySearchText: String = ""
-        var searchedSubwayInfo: [SubwayInfo] = []
-        var subwayInfo: [SubwayInfo] = []
-        var isEnabled: Bool = false
-        
-        enum PresentationState: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case home
-        }
-    }
-    
-    @Published var shouldBecomeFirstResign: Bool = false
-
     enum Action: Equatable {
         case shouldBecomeFirstResign
         case onChangeProfile
@@ -57,9 +35,56 @@ final class ProfileEditorViewModel: ObservableObject {
         }
     }
     
-    let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
-    let createProfileUseCase: CreateProfileUseCase = .init()
-    let openURL: OpenURL = .init()
+    @Published var state = State()
+    @Published var presentation: State.PresentationState?
+    
+    struct State: Equatable {
+        var userNickname: String = ""
+        var majors: [Profile.Major] = []
+        var clubs: [Profile.Club] = []
+        var mbti: [String] = .init(repeating: "", count: 4)
+        var bloodType: String = ""
+        var subwaySearchText: String = ""
+        var searchedSubwayInfo: [SubwayInfo] = []
+        var subwayInfo: [SubwayInfo] = []
+        var isEnabled: Bool = false
+        
+        enum PresentationState: Int, Identifiable, Equatable {
+            var id: Int { self.rawValue }
+            
+            case home
+        }
+    }
+    
+    @Published var shouldBecomeFirstResign: Bool = false
+    @Published var subwaySearchText: String = ""
+    init() {
+        applicationUseCase = .init(userStorage: .shared)
+        createProfileUseCase = .init()
+        openURL = .init()
+        
+        bind()
+    }
+
+    private let applicationUseCase: ApplicationUseCase
+    private let createProfileUseCase: CreateProfileUseCase
+    private let openURL: OpenURL
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    private func bind() {
+        $subwaySearchText
+            .debounce(for: 0.2, scheduler: DispatchQueue.main)
+            .sink { [weak self] text in
+                guard let self else { return }
+                if text.isEmpty {
+                    self.send(action: .shouldBecomeFirstResign)
+                } else {
+                    self.send(action: .subwaySearch)
+                }
+            }.store(in: &cancellables)
+            
+    }
     
     func send(action: Action) {
         switch action {
@@ -174,8 +199,6 @@ extension ProfileEditorViewModel {
         )
     }
 }
-
-
 
 struct ProfileEditorView: View {
     
