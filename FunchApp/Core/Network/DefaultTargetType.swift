@@ -42,7 +42,7 @@ extension DefaultTargetType: TargetType {
         case .createUserProfile:
             return "/v1/members"
         case .searchSubwayStations(_):
-            return "/v1/subway-stations"
+            return "/v1/subway-stations/search"
         }
     }
     
