@@ -7,10 +7,36 @@
 
 import SwiftUI
 
-struct ProfileView: View {
-    @Environment(\.dismiss) var dismiss
+final class ProfileViewModel: ObservableObject {
     
-    let profile: Profile = .testableValue
+    @Published var state: State = .init()
+    
+    struct State {
+        var profile: Profile = .emptyValue
+    }
+    
+    enum Action {
+        case fetchProfile
+        case feedback
+    }
+    
+    let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
+    let openURL: OpenURL = .init()
+    
+    func send(action: Action) {
+        switch action {
+        case .fetchProfile:
+            state.profile = applicationUseCase.profiles.last ?? .emptyValue
+        case .feedback:
+            openURL.execute(type: .feedback)
+        }
+    }
+}
+
+struct ProfileView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel = ProfileViewModel()
     
     private let openURL: OpenURL = .init()
     
@@ -24,21 +50,21 @@ struct ProfileView: View {
                     .frame(height: 8)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(profile.userCode)
+                    Text(viewModel.state.profile.userCode)
                         .font(.Funch.body)
                         .foregroundStyle(.gray400)
                     
                     Spacer()
                         .frame(height: 2)
                     
-                    Text(profile.userNickname)
+                    Text(viewModel.state.profile.userNickname)
                         .font(.Funch.title2)
                         .foregroundStyle(.white)
                     
                     Spacer()
                         .frame(height: 20)
                     
-                    profileView(profile)
+                    profileView(viewModel.state.profile)
                 }
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
@@ -48,6 +74,9 @@ struct ProfileView: View {
                 
                 Spacer()
             }
+        }
+        .onAppear {
+            viewModel.send(action: .fetchProfile)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -66,9 +95,9 @@ struct ProfileView: View {
             
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    dismiss()
+                    self.dismiss()
                 } label: {
-                    Image(systemName: "xmark")
+                    Image(.iconX)
                         .foregroundColor(.black)
                 }
             }
@@ -89,11 +118,11 @@ struct ProfileView: View {
                                                            subwayInfos: subwayInfos)
         
         VStack(alignment: .leading, spacing: 16) {
-            ProfileChipRow(.직군, profile, isHighlighted: true)
-            ProfileChipRow(.동아리, profile, isHighlighted: false)
-            ProfileChipRow(.MBTI, profile, isHighlighted: false)
-            ProfileChipRow(.혈액형, profile, isHighlighted: true)
-            ProfileChipRow(.지하철, profile, isHighlighted: false)
+            ProfileChipRow(.직군, profile)
+            ProfileChipRow(.동아리, profile)
+            ProfileChipRow(.MBTI, profile)
+            ProfileChipRow(.혈액형, profile)
+            ProfileChipRow(.지하철, profile)
         }
     }
 }

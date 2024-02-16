@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+//struct MBTI {
+//    enum EI: String, RawRepresentable, CaseIterable, Hashable { case E, I }
+//    enum NS: String, RawRepresentable, CaseIterable, Hashable { case N, S }
+//    enum FT: String, RawRepresentable, CaseIterable, Hashable { case F, T }
+//    enum PJ: String, RawRepresentable, CaseIterable, Hashable { case P, J }
+//    
+//    var first: EI
+//    var second: NS
+//    var third: FT
+//    var fourth: PJ
+//    
+//    static let mbtiPairDummy: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
+//    
+//    func toString() -> String {
+//        return first.rawValue + second.rawValue + third.rawValue + fourth.rawValue
+//    }
+//}
+
 struct ProfileMBTIButtonSet: View {
     
     /// 바인딩 할 Profile의 `MBTI`

@@ -13,8 +13,15 @@ final class ProfileEditorViewModel: ObservableObject {
     @Published var state = State()
     @Published var presentation: State.PresentationState?
     
-    struct State {
-        var profile: Profile = .emptyValue
+    struct State: Equatable {
+        var userNickname: String = ""
+        var majors: [Profile.Major] = []
+        var clubs: [Profile.Club] = []
+        var mbti: [String] = .init(repeating: "", count: 4)
+        var bloodType: String = ""
+        var subwaySearchText: String = ""
+        var searchedSubwayInfo: [SubwayInfo] = []
+        var subwayInfo: [SubwayInfo] = []
         var isEnabled: Bool = false
         
         enum PresentationState: Int, Identifiable, Equatable {
@@ -26,6 +33,8 @@ final class ProfileEditorViewModel: ObservableObject {
     
     enum Action: Equatable {
         case onChangeProfile
+        case inputProfile(InputType)
+        case subwaySearch
         case makeProfile
         case feedback
         
@@ -33,6 +42,15 @@ final class ProfileEditorViewModel: ObservableObject {
             var id: Int { self.rawValue }
             
             case home
+        }
+        
+        enum InputType: Equatable {
+            case nickname(String)
+            case major(Profile.Major)
+            case clubs(Profile.Club)
+            case mbti([Int])
+            case bloodType(String)
+            case subway(SubwayInfo)
         }
     }
     
@@ -43,41 +61,58 @@ final class ProfileEditorViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .onChangeProfile:
-            if !(state.profile.userNickname.isEmpty
-                 || state.profile.majors.isEmpty
-                 || state.profile.clubs.isEmpty
-                 || state.profile.mbti.count < 4
-                 || state.profile.bloodType.isEmpty
-                 || state.profile.subwayInfos.isEmpty) {
+            if !(
+                state.userNickname.isEmpty
+                || state.majors.isEmpty
+                || state.clubs.isEmpty
+                || state.mbti.count < 4
+                || state.bloodType.isEmpty
+                || state.subwayInfo.isEmpty
+            ) {
                 state.isEnabled = true
             } else {
                 state.isEnabled = false
             }
-        case .makeProfile:
-            let majorName = state.profile.majors.map { major in
-                switch major.name {
-                case "개발자": return "developer"
-                case "디자이너": return "designer"
-                default: return "unknown"
+            
+        case .inputProfile(let actionType):
+            switch actionType {
+            case .nickname(let inputText):
+                state.userNickname = inputText
+                
+            case .major(let major):
+                state.majors = [major]
+                
+            case .clubs(let club):
+                if let index = state.clubs.firstIndex(of: club) {
+                    state.clubs.remove(at: index)
+                } else {
+                    state.clubs.append(club)
                 }
-            }.first ?? "unknown"
-            let clubNames = state.profile.clubs.map { club in
-                switch club.name {
-                case "넥스터즈": return "nexters"
-                case "SOPT": return "sopt"
-                case "Depromeet": return "depromeet"
-                default: return "unknown"
+                
+            case .mbti(let selection):
+                state.mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
+                
+            case .bloodType(let selectedType):
+                state.bloodType = selectedType
+                
+            case .subway(let subway):
+                state.subwayInfo = [subway]
+                state.subwaySearchText = subway.name
+            }
+        
+        case .subwaySearch:
+            let query = SearchSubwayStationQuery(searchText: state.subwaySearchText)
+            createProfileUseCase.searchSubway(query: query) { result in
+                switch result {
+                case .success(let subwayInfos):
+                    self.state.searchedSubwayInfo = subwayInfos
+                case .failure(_):
+                    self.state.searchedSubwayInfo = []
                 }
             }
-            let bloodType = String(state.profile.bloodType.first ?? "X")
-            let subwayInfoNames = state.profile.subwayInfos.map { $0.name }
             
-            let query = CreateUserQuery(name: state.profile.userNickname,
-                                        major: majorName,
-                                        clubs: clubNames,
-                                        bloodType: bloodType,
-                                        subwayStationName: subwayInfoNames,
-                                        mbti: state.profile.mbti)
+        case .makeProfile:
+            let query = makeCreateUserQuery()
             createProfileUseCase.createProfile(createUserQuery: query) { result in
                 switch result {
                 case .success(let profile):
@@ -91,16 +126,60 @@ final class ProfileEditorViewModel: ObservableObject {
                     break
                 }
             }
+            
         case .feedback:
             openURL.execute(type: .feedback)
         }
     }
 }
 
+extension ProfileEditorViewModel {
+    private func makeCreateUserQuery() -> CreateUserQuery {
+        let major = state.majors.map { major in
+            switch major.name {
+            case "개발자": return "developer"
+            case "디자이너": return "designer"
+            default: return "unknown"
+            }
+        }.first ?? "unknown"
+        let clubs = state.clubs.map { club in
+            switch club.name {
+            case "넥스터즈": return "nexters"
+            case "SOPT": return "sopt"
+            case "Depromeet": return "depromeet"
+            default: return "unknown"
+            }
+        }
+        let bloodType = state.bloodType
+        let subwayInfoNames = state.subwayInfo.map { $0.name }
+        let mbti = state.mbti.reduce("", { $0 + $1 })
+        
+        return CreateUserQuery(
+            name: state.userNickname,
+            major: major,
+            clubs: clubs,
+            bloodType: bloodType,
+            subwayStationName: subwayInfoNames,
+            mbti: mbti
+        )
+    }
+}
+
+
+
 struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = ProfileEditorViewModel()
+    
+    enum InputFields {
+        case major, clubs, mbti
+        case username
+        case bloodType
+        case subway
+    }
+    
+    @FocusState var focused: InputFields?
     
     var body: some View {
         ZStack {
@@ -125,13 +204,7 @@ struct ProfileEditorView: View {
                             .foregroundStyle(.gray300)
                             .customFont(.body)
                         
-                        Spacer()
-                            .frame(height: 24)
-                        
-                        profileInputRows
-                        
-                        Spacer()
-                            .frame(height: 24)
+                        profileInputFields
                     }
                     .padding(.horizontal, 20)
                 }
@@ -149,7 +222,7 @@ struct ProfileEditorView: View {
                 matchingButtonView
             }
         }
-        .onChange(of: viewModel.state.profile) { _, _ in
+        .onChange(of: viewModel.state) { _, _ in
             viewModel.send(action: .onChangeProfile)
         }
         .onReceive(viewModel.$presentation) {
@@ -185,24 +258,6 @@ struct ProfileEditorView: View {
             }
         }
         .ignoresSafeArea(edges: .bottom)
-    }
-    
-    private var profileInputRows: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ProfileInputRow(type: .닉네임, profile: $viewModel.state.profile)
-            Spacer().frame(height: 36)
-            ProfileInputRow(type: .직군, profile: $viewModel.state.profile)
-            Spacer().frame(height: 16)
-            ProfileInputRow(type: .동아리, profile: $viewModel.state.profile)
-            Spacer().frame(height: 16)
-            ProfileInputRow(type: .MBTI, profile: $viewModel.state.profile)
-            Spacer().frame(height: 16)
-            ProfileInputRow(type: .혈액형, profile: $viewModel.state.profile)
-            Spacer().frame(height: 16)
-            ProfileInputRow(type: .지하철, profile: $viewModel.state.profile) { text in
-                /* action */
-            }
-        }
     }
     
     private var matchingButtonView: some View {

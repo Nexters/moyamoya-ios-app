@@ -114,7 +114,7 @@
 		3E28CC672B7E61E000818CD3 /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
 		3E28CC682B7E624F00818CD3 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E28CC622B7D2C1500818CD3 /* Array+.swift */; };
 		3E28CC692B7E627400818CD3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
-		3E28CC6A2B7E628400818CD3 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* Feedback.swift */; };
+		3E28CC6A2B7E628400818CD3 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* OpenURL.swift */; };
 		3E28CC6B2B7E628A00818CD3 /* ApplicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* ApplicationUseCase.swift */; };
 		3E28CC6C2B7E629300818CD3 /* FetchProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
@@ -130,6 +130,7 @@
 		3EA69C2B2B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */; };
 		3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C2C2B5EE591008AE23B /* Text+.swift */; };
 		3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C3E2B64C086008AE23B /* CGFloat+.swift */; };
+		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +225,7 @@
 		3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		3EA69C2C2B5EE591008AE23B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
 		3EA69C3E2B64C086008AE23B /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 				3E1E73F22B713B3A0082386A /* String+.swift */,
 				3E28CC622B7D2C1500818CD3 /* Array+.swift */,
 				3E28CC642B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift */,
+				3EE810672B7F74CE007B8A87 /* ImageResource+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -815,7 +818,7 @@
 				1A87EAE82B691E710059F80A /* Respondable.swift in Sources */,
 				1A87EAF02B691F940059F80A /* CreateProfileUseCase.swift in Sources */,
 				1A87EAFB2B691FB60059F80A /* SearchSubwayStationQuery.swift in Sources */,
-				3E28CC6A2B7E628400818CD3 /* Feedback.swift in Sources */,
+				3E28CC6A2B7E628400818CD3 /* OpenURL.swift in Sources */,
 				1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */,
 				1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */,
 				1A87EAFA2B691FB20059F80A /* MatchingUserQuery.swift in Sources */,
@@ -871,6 +874,7 @@
 				1A7B837C2B7A067D007408D7 /* ApplicationUseCase.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
 				3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */,
+				3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */,
 				1ACE493E2B5B9D0B00024336 /* ContentView.swift in Sources */,
 				1ACE49582B5B9ECE00024336 /* MatchResultView.swift in Sources */,
 				1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */,

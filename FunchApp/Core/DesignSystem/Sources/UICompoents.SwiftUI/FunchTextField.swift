@@ -25,7 +25,11 @@ struct FunchTextField: View {
     
     // MARK: - inputs
     /// TextField의 onChange에 들어갈 action
-    var onChange: (String, String) -> Void = { _, _ in }
+    var onChange: (String, String) -> Void
+    /// onSubmit 동작
+    var onSubmit: () -> Void
+    /// 버튼 터치 액션
+    var onButtonTap: () -> Void = {}
     /// Binding
     @Binding var text: String
     /// placeholder
@@ -38,8 +42,6 @@ struct FunchTextField: View {
     var textLimit: Int?
     /// 우측 버튼에 넣을 이미지
     var trailingButtonImage: Image?
-    /// 버튼 터치 액션
-    var buttonAction: () -> Void = {}
     
     init(
         text: Binding<String>,
@@ -48,10 +50,13 @@ struct FunchTextField: View {
         textLimit: Int? = nil,
         leadingImage: Image? = nil,
         trailingButtonImage: Image? = nil,
+        isFocused: FocusState<Bool>? = nil,
         onChange: @escaping (String, String) -> Void = { _, _ in },
-        buttonAction: @escaping () -> Void = {}
+        onSubmit: @escaping () -> Void = {},
+        onButtonTap: @escaping () -> Void = {}
     ) {
         self.onChange = onChange
+        self.onSubmit = onSubmit
         self._text = text
         self.placeholderText = placeholderText
         self.backgroundColor = backgroundColor
@@ -65,12 +70,16 @@ struct FunchTextField: View {
             self.type = .icon
         }
         else if let trailingButtonImage {
-            self.buttonAction = buttonAction
+            self.onButtonTap = onButtonTap
             self.trailingButtonImage = trailingButtonImage
             self.type = .button
         }
         else {
             self.type = .normal
+        }
+        
+        if let isFocused {
+            self._isFocused = isFocused
         }
     }
     
@@ -155,6 +164,9 @@ struct FunchTextField: View {
         .onChange(of: text) { oldText, newText in
             onTextFieldChangeAction(oldText, newText)
         }
+        .onSubmit {
+            onSubmit()
+        }
     }
     
     /// textField의 leading 쪽에 오는 뷰
@@ -190,7 +202,7 @@ struct FunchTextField: View {
             
         case .button:
             Button {
-                buttonAction()
+                onButtonTap()
             } label: {
                 trailingButtonImage?
                     .resizable()
