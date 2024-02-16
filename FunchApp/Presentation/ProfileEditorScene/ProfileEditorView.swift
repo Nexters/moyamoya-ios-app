@@ -31,7 +31,10 @@ final class ProfileEditorViewModel: ObservableObject {
         }
     }
     
+    @Published var shouldBecomeFirstResign: Bool = false
+
     enum Action: Equatable {
+        case shouldBecomeFirstResign
         case onChangeProfile
         case inputProfile(InputType)
         case subwaySearch
@@ -60,6 +63,9 @@ final class ProfileEditorViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
+        case .shouldBecomeFirstResign:
+            shouldBecomeFirstResign = true
+            
         case .onChangeProfile:
             if !(
                 state.userNickname.isEmpty
@@ -74,8 +80,8 @@ final class ProfileEditorViewModel: ObservableObject {
                 state.isEnabled = false
             }
             
-        case .inputProfile(let actionType):
-            switch actionType {
+        case let .inputProfile(type):
+            switch type {
             case .nickname(let inputText):
                 state.userNickname = inputText
                 
@@ -98,9 +104,12 @@ final class ProfileEditorViewModel: ObservableObject {
             case .subway(let subway):
                 state.subwayInfo = [subway]
                 state.subwaySearchText = subway.name
+                
             }
         
         case .subwaySearch:
+            shouldBecomeFirstResign = true
+            
             let query = SearchSubwayStationQuery(searchText: state.subwaySearchText)
             createProfileUseCase.searchSubway(query: query) { result in
                 switch result {
@@ -129,6 +138,7 @@ final class ProfileEditorViewModel: ObservableObject {
             
         case .feedback:
             openURL.execute(type: .feedback)
+            
         }
     }
 }
@@ -231,6 +241,11 @@ struct ProfileEditorView: View {
                 appCoordinator.paths.removeAll()
             default:
                 break
+            }
+        }
+        .onReceive(viewModel.$shouldBecomeFirstResign) { _ in
+            Task { @MainActor in
+                hideKeyboard()
             }
         }
         .toolbar {
