@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
     
-    @Published var state: State = .init()
+    @Published var state: State = State()
     
     struct State {
         var profile: Profile = .emptyValue

@@ -12,7 +12,8 @@ import Combine
 final class ProfileEditorViewModel: ObservableObject {
     
     enum Action: Equatable {
-//        case shouldBecomeFirstResponder(Bool)
+        case dropDownShouldBecomeFirstResponder(Bool)
+        case keyboardShouldBecomeFirstResponder(Bool)
         case onChangeProfile
         case inputProfile(InputType)
         case subwaySearch
@@ -38,13 +39,15 @@ final class ProfileEditorViewModel: ObservableObject {
     @Published var state = State()
     @Published var presentation: State.PresentationState?
     @Published var subwaySearchText: String = ""
+    @Published var keyboardIsFirstResponder: Bool = false
+    @Published var dropDownIsFirstResponder: Bool = false
     
     struct State: Equatable {
         var userNickname: String = ""
         var majors: [Profile.Major] = []
         var clubs: [Profile.Club] = []
         var mbti: [String] = .init(repeating: "", count: 4)
-        var bloodType: String = ""
+        var bloodType: String = "A"
         var searchedSubwayInfo: [SubwayInfo] = []
         var subwayInfo: [SubwayInfo] = []
         var isEnabled: Bool = false
@@ -83,8 +86,11 @@ final class ProfileEditorViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
-//        case .shouldBecomeFirstResponder(let isFirstResponder):
-//            keyboardIsFirstResponder = isFirstResponder
+        case .dropDownShouldBecomeFirstResponder(let isFirstResponder):
+            dropDownIsFirstResponder = isFirstResponder
+            
+        case .keyboardShouldBecomeFirstResponder(let isFirstResponder):
+            keyboardIsFirstResponder = isFirstResponder
             
         case .onChangeProfile:
             if !(
@@ -106,9 +112,11 @@ final class ProfileEditorViewModel: ObservableObject {
                 state.userNickname = inputText
                 
             case .major(let major):
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 state.majors = [major]
                 
             case .clubs(let club):
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 if let index = state.clubs.firstIndex(of: club) {
                     state.clubs.remove(at: index)
                 } else {
@@ -116,12 +124,15 @@ final class ProfileEditorViewModel: ObservableObject {
                 }
                 
             case .mbti(let selection):
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 state.mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
                 
             case .bloodType(let selectedType):
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 state.bloodType = selectedType
                 
             case .subway(let subway):
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 state.subwayInfo = [subway]
                 subwaySearchText = subway.name
                 
@@ -198,15 +209,6 @@ struct ProfileEditorView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = ProfileEditorViewModel()
     
-    enum InputFields {
-        case major, clubs, mbti
-        case username
-        case bloodType
-        case subway
-    }
-    
-    @FocusState var focused: InputFields?
-    
     var body: some View {
         ZStack {
             Color.gray900
@@ -245,6 +247,14 @@ struct ProfileEditorView: View {
                 matchingButtonView
             }
         }
+        .onTapGesture {
+            viewModel.send(action: .keyboardShouldBecomeFirstResponder(false))
+            viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
+        }
+        .onReceive(viewModel.$keyboardIsFirstResponder) { keyboardIsFirstResponder in
+            guard !keyboardIsFirstResponder else { return }
+            hideKeyboard()
+        }
         .onChange(of: viewModel.state) { _, _ in
             viewModel.send(action: .onChangeProfile)
         }
@@ -256,16 +266,12 @@ struct ProfileEditorView: View {
                 break
             }
         }
-//        .onReceive(viewModel.$keyboardIsFirstResponder) { isFirstResponder in
-//            guard !isFirstResponder else { return }
-//            hideKeyboard()
-//        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     appCoordinator.paths.removeLast()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(.iconArrowBack)
                         .foregroundColor(.black)
                 }
             }
@@ -284,6 +290,7 @@ struct ProfileEditorView: View {
                 }
             }
         }
+        .toolbarBackground(Color.gray900, for: .navigationBar)
         .ignoresSafeArea(edges: .bottom)
     }
     
@@ -366,7 +373,7 @@ extension ProfileEditorView {
             ForEach(Profile.Major.dummies, id: \.self) { major in
                 ChipButton(
                     action: {
-                        viewModel.state.majors = [major]
+                        viewModel.send(action: .inputProfile(.major(major)))
                     },
                     title: major.name,
                     imageName: major.imageName,
@@ -422,15 +429,18 @@ extension ProfileEditorView {
             ForEach(bloodTypes, id: \.self) { bloodType in
                 Button {
                     viewModel.send(action: .inputProfile(.bloodType(bloodType)))
+                    viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
                 } label: {
                     Text(bloodType)
                 }
             }
         } label: {
             HStack(spacing: 0) {
-                Text(viewModel.state.bloodType)
+                Text(viewModel.state.bloodType + "형")
                     .font(.Funch.body)
                     .foregroundStyle(.white)
+                
+                Spacer()
             }
             .padding(.horizontal, 16)
             .frame(height: 56)
@@ -439,12 +449,14 @@ extension ProfileEditorView {
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
-            if focused == .bloodType {
+            if viewModel.dropDownIsFirstResponder {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.white, lineWidth: 1)
             }
         }
-        .focused($focused, equals: .bloodType)
+        .onTapGesture {
+            viewModel.send(action: .dropDownShouldBecomeFirstResponder(true))
+        }
     }
     
     

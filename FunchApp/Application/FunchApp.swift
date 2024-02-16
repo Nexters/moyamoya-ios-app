@@ -15,7 +15,6 @@ struct FunchApp: App {
     
     init() { 
         self.applicationUsecase = ApplicationUseCase(userStorage: .shared)
-        self.applicationUsecase.hasProfile = false
     }
     
     var body: some Scene {
