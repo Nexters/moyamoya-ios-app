@@ -8,7 +8,7 @@
 import UIKit
 
 enum OpenURLType: String {
-    case feedback = "https://www.naver.com"
+    case feedback = "https://docs.google.com/forms/d/e/1FAIpQLSeA-PMJNkLe2mENodWYuPASMaLUBZk_4LSV9MfzyZCHxvBNzw/viewform"
     case appstore = "앱스토어 링크"
 }
 
