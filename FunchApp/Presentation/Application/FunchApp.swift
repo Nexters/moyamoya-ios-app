@@ -12,7 +12,7 @@ struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
     
     @StateObject var container: DIContainer = .init(services: Services())
-    @State var isLoading: Bool = true
+    @State private var isSplashing: Bool = true
     
     var body: some Scene {
         WindowGroup {
@@ -35,16 +35,15 @@ struct FunchApp: App {
                     }
                 }
                 .overlay {
-                    if isLoading {
+                    if isSplashing {
                         SplashViewBuilder(container: container).body
                     }
                 }
             }
-            
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                    withAnimation { isLoading.toggle() }
-                })
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    isSplashing.toggle()
+                }
             }
         }
         .environmentObject(appCoordinator)
