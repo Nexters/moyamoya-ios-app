@@ -9,22 +9,9 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var state = State()
-    @Published var presentation: State.PresentationState?
-    
-    /// 상태
-    struct State {
-        /// 코드 검색 텍스트 필드
-        var serachCodeText: String = ""
-        
-        enum PresentationState: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case profile
-        }
-    }
-        
     enum Action: Equatable {
+        case load
+        case matching
         case feedback
         
         case presentation(PresentationAction)
@@ -36,12 +23,49 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    private let openURL: OpenURLService = .init()
+    enum PresentationState: Int, Identifiable, Equatable {
+        var id: Int { self.rawValue }
+        
+        case profile
+    }
     
+    @Published var presentation: PresentationState?
+    /// 코드 검색 텍스트 필드
+    @Published var serachCodeText: String = ""
+    /// 내 프로필
+    @Published var profile: Profile?
+    
+    private var container: DIContainer
+    private var useCase: HomeUseCaseType
+    
+    init(container: DIContainer, useCase: HomeUseCaseType) {
+        self.container = container
+        self.useCase = useCase
+    }
+
     func send(action: Action) {
         switch action {
+        case .load:
+            useCase.fetchProfile { [weak self] profile in
+                guard let self else { return }
+                self.profile = profile
+            }
+            
+        case .matching:
+            guard let profile else { return }
+            
+            useCase.searchUser(
+                requestId: profile.userCode,
+                targetUserCode: serachCodeText
+            ) { [weak self] otherProfile in
+                guard let self else { return }
+                
+            }
+            
+            break
         case .feedback:
-            openURL.execute(type: .feedback)
+            container.services.openURLSerivce.execute(type: .feedback)
+        
         case let .presentation(presentationAction):
             switch presentationAction {
             case .profile:
@@ -53,7 +77,7 @@ final class HomeViewModel: ObservableObject {
 
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel
     
     var body: some View {
         ZStack {
@@ -84,6 +108,9 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.horizontal, 20)
+        }
+        .onAppear {
+            viewModel.send(action: .load)
         }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
             switch presentation {
@@ -129,12 +156,12 @@ struct HomeView: View {
                 .frame(height: 16)
             
             FunchTextField(
-                text: $viewModel.state.serachCodeText,
+                text: $viewModel.serachCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    // FIXME: api 통신
+                    print("A")
                 }
             )
         }
@@ -224,8 +251,4 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .frame(maxWidth: .infinity)
     }
-}
-
-#Preview {
-    HomeView()
 }

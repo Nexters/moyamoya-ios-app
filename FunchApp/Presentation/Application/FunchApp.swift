@@ -17,7 +17,7 @@ struct FunchApp: App {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
                 if container.services.userService.profiles.isEmpty {
-                    HomeView()
+                    HomeViewBuilder(container: container).body
                 } else {
                     OnboardingView()
                         .navigationDestination(for: AppCoordinatorPathType.self) { type in
