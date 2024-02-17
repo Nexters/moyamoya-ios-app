@@ -16,8 +16,8 @@ protocol HomeUseCaseType {
 
 final class HomeUseCase: HomeUseCaseType {
     
-    private let profileRepository: ProfileRepository
-    private let matchingRepository: MatchingRepository
+    private let profileRepository: ProfileRepositoryType
+    private let matchingRepository: MatchingRepositoryType
     
     init() {
         self.profileRepository = ProfileRepository()

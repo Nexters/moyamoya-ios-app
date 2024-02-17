@@ -6,5 +6,11 @@
 //
 
 import Foundation
+import Moya
 
-protocol MatchingRepositoryType { }
+protocol MatchingRepositoryType {
+    func matchingUser(
+        searchUserQuery: MatchingUserQuery,
+        completion: @escaping (Result<MatchingInfo, MoyaError>) -> Void
+    )
+}
