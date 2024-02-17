@@ -7,20 +7,15 @@
 
 import Foundation
 
-protocol ApplicationUseCaseType {
-    var hasProfile: Bool { get set }
+protocol UserServiceType {
+    var profiles: [Profile] { get set }
 }
 
-final class ApplicationUseCase: ApplicationUseCaseType {
+final class UserService: UserServiceType {
     private let userStorage: UserDefaultStorage
     
     init(userStorage: UserDefaultStorage) {
         self.userStorage = userStorage
-    }
-    
-    var hasProfile: Bool {
-        get { userStorage.hasProfile }
-        set { userStorage.hasProfile = newValue }
     }
     
     var profiles: [Profile] {

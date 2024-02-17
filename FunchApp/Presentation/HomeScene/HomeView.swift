@@ -36,7 +36,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    private let openURL: OpenURL = .init()
+    private let openURL: OpenURLService = .init()
     
     func send(action: Action) {
         switch action {
