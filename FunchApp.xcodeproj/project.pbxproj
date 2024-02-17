@@ -46,6 +46,7 @@
 		1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */; };
 		1A83F0362B80E88300E6EC89 /* OnboardingViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0352B80E88300E6EC89 /* OnboardingViewBuilder.swift */; };
 		1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0372B80E8E200E6EC89 /* SplashViewBuilder.swift */; };
+		1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F03A2B81087D00E6EC89 /* Buildable.swift */; };
 		1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */; };
 		1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B862B5D605400A080F2 /* MatchingRepository.swift */; };
 		1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
@@ -186,6 +187,7 @@
 		1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1A83F0352B80E88300E6EC89 /* OnboardingViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewBuilder.swift; sourceTree = "<group>"; };
 		1A83F0372B80E8E200E6EC89 /* SplashViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewBuilder.swift; sourceTree = "<group>"; };
+		1A83F03A2B81087D00E6EC89 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
@@ -315,12 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				1A7B06932B5D67570024356C /* DictionaryType.swift */,
-				1A7B069B2B5D6D600024356C /* UIDeivce+.swift */,
-				3EA69C0E2B5E9AB2008AE23B /* View+.swift */,
-				3E1E73F22B713B3A0082386A /* String+.swift */,
-				3E28CC622B7D2C1500818CD3 /* Array+.swift */,
-				3E28CC642B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift */,
-				3EE810672B7F74CE007B8A87 /* ImageResource+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -328,6 +324,7 @@
 		1A83F0212B80C56800E6EC89 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				1A83F03A2B81087D00E6EC89 /* Buildable.swift */,
 				1A83F01F2B80C56500E6EC89 /* DIContainer.swift */,
 			);
 			path = Dependency;
@@ -357,6 +354,19 @@
 				1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		1A83F0392B81085D00E6EC89 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B069B2B5D6D600024356C /* UIDeivce+.swift */,
+				3EA69C0E2B5E9AB2008AE23B /* View+.swift */,
+				3E1E73F22B713B3A0082386A /* String+.swift */,
+				3E28CC622B7D2C1500818CD3 /* Array+.swift */,
+				3E28CC642B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift */,
+				3EE810672B7F74CE007B8A87 /* ImageResource+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1A87EAE02B691D050059F80A /* Repositories */ = {
@@ -592,6 +602,7 @@
 				1ACE49812B5BA49600024336 /* Network */,
 				1ACE49872B5BAB7000024336 /* DesignSystem */,
 				1A7B06952B5D675C0024356C /* Utils */,
+				1A83F0392B81085D00E6EC89 /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -936,6 +947,7 @@
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
+				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,

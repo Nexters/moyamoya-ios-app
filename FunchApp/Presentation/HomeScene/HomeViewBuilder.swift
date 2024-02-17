@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct HomeViewBuilder {
-    private var container: DIContainer
+struct HomeViewBuilder: Buildable {
+    var container: DependencyType
     
-    init(container: DIContainer) {
+    init(container: DependencyType) {
         self.container = container
     }
     

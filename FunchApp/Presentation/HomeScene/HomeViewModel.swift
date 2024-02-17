@@ -36,10 +36,10 @@ final class HomeViewModel: ObservableObject {
     /// 내 프로필
     @Published var profile: Profile?
     
-    private var container: DIContainer
+    private var container: DependencyType
     private var useCase: HomeUseCaseType
     
-    init(container: DIContainer, useCase: HomeUseCaseType) {
+    init(container: DependencyType, useCase: HomeUseCaseType) {
         self.container = container
         self.useCase = useCase
     }

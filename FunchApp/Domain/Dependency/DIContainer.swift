@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class DIContainer: ObservableObject {
+protocol DependencyType {
+    var services: ServiceType { get set }
+}
+
+final class DIContainer: DependencyType, ObservableObject {
     var services: ServiceType
     
     init(services: ServiceType) {
