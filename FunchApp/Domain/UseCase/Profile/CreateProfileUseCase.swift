@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class CreateProfileUseCase {
+protocol CreateProfileUseCaseType {
+    func searchSubway(query: SearchSubwayStationQuery, completion: @escaping (Result<[SubwayInfo], Error>) -> Void)
+    func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Profile, Error>) -> Void)
+}
+
+final class CreateProfileUseCase: CreateProfileUseCaseType {
     private let subwayRepository: SubwayStationRepository
     private let profileRepository: ProfileRepository
     

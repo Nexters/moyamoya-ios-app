@@ -5,10 +5,8 @@
 //  Created by 이성민 on 2/17/24.
 //
 
-import Foundation
 import SwiftUI
 import UIKit
-
 import Lottie
 
 struct SplashView: View {

@@ -5,7 +5,7 @@
 //  Created by Geon Woo lee on 1/21/24.
 //
 
-import Foundation
+import SwiftUI
 import Moya
 
 final class SubwayStationRepository: SubwayStationRepositoryType {
@@ -28,9 +28,13 @@ final class SubwayStationRepository: SubwayStationRepositoryType {
         ) { result in
             switch result {
             case .success(let success):
-                completion(.success(success.toDomain()))
+                SwiftUI.Task { @MainActor in
+                    completion(.success(success.toDomain()))
+                }
             case .failure(let failure):
-                completion(.failure(failure))
+                SwiftUI.Task { @MainActor in
+                    completion(.failure(failure))
+                }
             }
         }
     }

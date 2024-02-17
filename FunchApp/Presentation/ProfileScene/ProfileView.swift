@@ -20,8 +20,8 @@ final class ProfileViewModel: ObservableObject {
         case feedback
     }
     
-    let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
-    let openURL: OpenURL = .init()
+    let applicationUseCase: UserService = .init(userStorage: .shared)
+    let openURL: OpenURLService = .init()
     
     func send(action: Action) {
         switch action {
@@ -38,7 +38,7 @@ struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = ProfileViewModel()
     
-    private let openURL: OpenURL = .init()
+    private let openURL: OpenURLService = .init()
     
     var body: some View {
         ZStack {
