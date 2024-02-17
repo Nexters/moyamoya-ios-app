@@ -7,6 +7,13 @@
 
 import Foundation
 
+protocol HomeUseCaseType {
+    func fetchProfile(completion: @escaping (Profile) -> Void)
+    func searchUser(requestId: String,
+                    targetUserCode: String,
+                    completion: @escaping (Profile) -> Void)
+}
+
 final class HomeUseCase {
     
     private let profileRepository: ProfileRepository

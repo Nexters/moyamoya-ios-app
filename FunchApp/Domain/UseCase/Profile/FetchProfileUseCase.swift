@@ -7,7 +7,15 @@
 
 import Foundation
 
-final class FetchProfileUseCase {
+protocol FetchProfileUseCaseType {
+    func fetchProfileFromDeviceId(completion: @escaping (Result<Profile, Error>) -> Void)
+    func fetchProfileFromId(
+        query: FetchUserQuery,
+        completion: @escaping (Result<Profile, Error>) -> Void
+    )
+}
+
+final class FetchProfileUseCase: FetchProfileUseCaseType {
     private let profileRepository: ProfileRepository
     
     init() {
@@ -19,9 +27,11 @@ final class FetchProfileUseCase {
         profileRepository.fetchProfile { result in
             switch result {
             case .success(let profile):
-                completion(.success(profile))
+                Task { @MainActor in
+                    completion(.success(profile))
+                }
             case .failure(let failure):
-                break
+                completion(.failure(failure))
             }
         }
     }
@@ -34,9 +44,11 @@ final class FetchProfileUseCase {
         profileRepository.fetchProfileId(userQuery: query) { result in
             switch result {
             case .success(let profile):
-                completion(.success(profile))
+                Task { @MainActor in
+                    completion(.success(profile))
+                }
             case .failure(let failure):
-                break
+                completion(.failure(failure))
             }
         }
     }

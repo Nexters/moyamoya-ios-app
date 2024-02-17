@@ -36,7 +36,6 @@
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
 		1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */; };
 		1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* UserService.swift */; };
-		1A7B83812B7A07E6007408D7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
 		1A7B83832B7A1682007408D7 /* OpenURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* OpenURLService.swift */; };
 		1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F01F2B80C56500E6EC89 /* DIContainer.swift */; };
 		1A83F0232B80C5A900E6EC89 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0222B80C5A900E6EC89 /* Services.swift */; };
@@ -114,7 +113,6 @@
 		3E28CC652B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E28CC642B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift */; };
 		3E28CC672B7E61E000818CD3 /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
 		3E28CC682B7E624F00818CD3 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E28CC622B7D2C1500818CD3 /* Array+.swift */; };
-		3E28CC692B7E627400818CD3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
 		3E28CC6C2B7E629300818CD3 /* FetchProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
@@ -176,7 +174,6 @@
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
 		1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1A7B837B2B7A067D007408D7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		1A7B83802B7A07E6007408D7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		1A7B83822B7A1682007408D7 /* OpenURLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLService.swift; sourceTree = "<group>"; };
 		1A83F01F2B80C56500E6EC89 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1A83F0222B80C5A900E6EC89 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -546,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				1ACE49782B5BA2F100024336 /* UserDataStorage.swift */,
-				1A7B83802B7A07E6007408D7 /* UserDefault.swift */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -864,7 +860,6 @@
 				1A87EAE42B691E490059F80A /* GetProfileFromDeviceId.Res.swift in Sources */,
 				1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */,
 				1A87EB022B6920030059F80A /* GetProfileFromDeviceId.Req.swift in Sources */,
-				3E28CC692B7E627400818CD3 /* UserDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,7 +906,6 @@
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
-				1A7B83812B7A07E6007408D7 /* UserDefault.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
 				3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */,
 				1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */,

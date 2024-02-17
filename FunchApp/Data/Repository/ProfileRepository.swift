@@ -7,6 +7,7 @@
 
 import UIKit
 import Moya
+import SwiftUI
 
 /// User 본인을 기준으로 하는 repository
 final class ProfileRepository: ProfileRepositoryType {
@@ -30,9 +31,13 @@ final class ProfileRepository: ProfileRepositoryType {
         ) { result in
             switch result {
             case .success(let success):
-                completion(.success(success.toDomain()))
+                SwiftUI.Task { @MainActor in
+                    completion(.success(success.toDomain()))
+                }
             case .failure(let failure):
-                completion(.failure(failure))
+                SwiftUI.Task { @MainActor in
+                    completion(.failure(failure))
+                }
             }
         }
     }
@@ -48,9 +53,13 @@ final class ProfileRepository: ProfileRepositoryType {
         ) { result in
             switch result {
             case .success(let success):
-                completion(.success(success.toDomain()))
+                SwiftUI.Task { @MainActor in
+                    completion(.success(success.toDomain()))
+                }
             case .failure(let failure):
-                completion(.failure(failure))
+                SwiftUI.Task { @MainActor in
+                    completion(.failure(failure))
+                }
             }
         }
     }
@@ -67,9 +76,13 @@ final class ProfileRepository: ProfileRepositoryType {
         ) { result in
             switch result {
             case .success(let success):
-                completion(.success(success.toDomain()))
+                SwiftUI.Task { @MainActor in
+                    completion(.success(success.toDomain()))
+                }
             case .failure(let failure):
-                completion(.failure(failure))
+                SwiftUI.Task { @MainActor in
+                    completion(.failure(failure))
+                }
             }
         }
     }
