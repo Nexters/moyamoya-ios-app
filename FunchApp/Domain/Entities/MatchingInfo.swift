@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct MatchingInfo {
+struct MatchingInfo: Identifiable, Equatable {
+    static func == (lhs: MatchingInfo, rhs: MatchingInfo) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    var id = UUID()
+    
     /// 매칭된 유저의 프로필 정보
     var profile: MatchProfile
     /// 매칭된 유저와 나의 닮은 정도

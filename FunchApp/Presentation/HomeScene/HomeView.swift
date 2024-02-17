@@ -7,83 +7,11 @@
 
 import SwiftUI
 
-final class HomeViewModel: ObservableObject {
-    
-    enum Action: Equatable {
-        case load
-        case matching
-        case feedback
-        
-        case presentation(PresentationAction)
-        
-        enum PresentationAction: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case profile
-            case matchResult
-        }
-    }
-    
-    enum PresentationState: Int, Identifiable, Equatable {
-        var id: Int { self.rawValue }
-        
-        case profile
-        case matchResult
-    }
-    
-    @Published var presentation: PresentationState?
-    /// 코드 검색 텍스트 필드
-    @Published var serachCodeText: String = ""
-    /// 내 프로필
-    @Published var profile: Profile?
-    
-    private var container: DIContainer
-    private var useCase: HomeUseCaseType
-    
-    init(container: DIContainer, useCase: HomeUseCaseType) {
-        self.container = container
-        self.useCase = useCase
-    }
-
-    func send(action: Action) {
-        switch action {
-        case .load:
-            useCase.fetchProfile { [weak self] profile in
-                guard let self else { return }
-                self.profile = profile
-            }
-            
-        case .matching:
-            // !!!: - 임시 테스트용
-            self.send(action: .presentation(.matchResult))
-            
-            guard let profile else { return }
-            
-            useCase.searchUser(
-                requestId: profile.userCode,
-                targetUserCode: serachCodeText
-            ) { [weak self] otherProfile in
-                guard let self else { return }
-                self.send(action: .presentation(.matchResult))
-            }
-        case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
-        
-        case let .presentation(presentationAction):
-            switch presentationAction {
-            case .profile:
-                presentation = .profile
-            case .matchResult:
-                presentation = .matchResult
-            }
-        }
-    }
-}
-
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel: HomeViewModel
     @EnvironmentObject var container: DIContainer
+    
+    @StateObject var viewModel: HomeViewModel
     
     var body: some View {
         ZStack {
@@ -124,7 +52,7 @@ struct HomeView: View {
                 NavigationStack { 
                     ProfileView(viewModel: .init(container: container))
                 }
-            case .matchResult:
+            case let .matchResult(otherProfile):
                 NavigationStack {
                     MatchResultView(viewModel: .init(container: container))
                 }
