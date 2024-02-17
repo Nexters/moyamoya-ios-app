@@ -20,6 +20,7 @@ final class HomeViewModel: ObservableObject {
             var id: Int { self.rawValue }
             
             case profile
+            case matchResult
         }
     }
     
@@ -27,6 +28,7 @@ final class HomeViewModel: ObservableObject {
         var id: Int { self.rawValue }
         
         case profile
+        case matchResult
     }
     
     @Published var presentation: PresentationState?
@@ -70,6 +72,8 @@ final class HomeViewModel: ObservableObject {
             switch presentationAction {
             case .profile:
                 presentation = .profile
+            case .matchResult:
+                presentation = .matchResult
             }
         }
     }
@@ -78,6 +82,7 @@ final class HomeViewModel: ObservableObject {
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: HomeViewModel
+    @EnvironmentObject var container: DIContainer
     
     var body: some View {
         ZStack {
@@ -116,7 +121,11 @@ struct HomeView: View {
             switch presentation {
             case .profile:
                 NavigationStack { 
-                    ProfileView()
+                    ProfileView(viewModel: .init(container: container))
+                }
+            case .matchResult:
+                NavigationStack {
+                    MatchResultView(viewModel: .init(container: container))
                 }
             }
         }
@@ -161,7 +170,7 @@ struct HomeView: View {
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    print("A")
+                    viewModel.send(action: .presentation(.matchResult))
                 }
             )
         }

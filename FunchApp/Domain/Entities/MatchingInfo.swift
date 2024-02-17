@@ -20,7 +20,7 @@ struct MatchingInfo {
     var subwayInfos: [SubwayInfo]
     
     /// 매칭된 상대 프로필
-    struct MatchProfile {
+    struct MatchProfile: Codable {
         /// 이름
         let name: String
         /// 전공
@@ -35,17 +35,19 @@ struct MatchingInfo {
         let subwayNames: [String]
     }
     
-    struct ChemistryInfo: Hashable {
+    struct ChemistryInfo: Hashable, Codable {
         let title: String
         let description: String
     }
     
     /// 추천 정보
-    struct RecommendInfo {
+    struct RecommendInfo: Codable {
         /// 추천 내용
         var title: String
     }
 }
+
+extension MatchingInfo: Codable {}
 
 extension MatchingInfo {
     static var testableValue: MatchingInfo {
@@ -63,5 +65,21 @@ extension MatchingInfo {
             recommendInfos: [.init(title: "")],
             subwayInfos: [.init(name: "상도역", lines: ["7"])]
         )
+    }
+}
+
+extension MatchingInfo {
+    static var empty: MatchingInfo {
+        .init(profile: .empty, 
+              similarity: 0,
+              chemistryInfos: [],
+              recommendInfos: [],
+              subwayInfos: [])
+    }
+}
+
+extension MatchingInfo.MatchProfile {
+    static var empty: MatchingInfo.MatchProfile {
+        .init(name: "", major: "", clubs: [], mbti: "", bloodType: "", subwayNames: [])
     }
 }
