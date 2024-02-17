@@ -337,6 +337,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		1A83F02F2B80E35400E6EC89 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				3E1E740A2B7A22A80082386A /* ChemistryLabel.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		1A87EAE02B691D050059F80A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,7 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACE49572B5B9ECE00024336 /* MatchResultView.swift */,
-				3E1E740A2B7A22A80082386A /* ChemistryLabel.swift */,
+				1A83F02F2B80E35400E6EC89 /* SubViews */,
 				1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */,
 			);
 			path = MatchResultScene;
