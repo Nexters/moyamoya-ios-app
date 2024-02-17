@@ -13,17 +13,10 @@ struct FunchApp: App {
     
     @StateObject var container: DIContainer = .init(services: Services())
     
-    private var applicationUsecase: UserServiceType
-    
-    init() { 
-        self.applicationUsecase = UserService(userStorage: .shared)
-//        self.applicationUsecase.hasProfile = false
-    }
-    
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
-                if applicationUsecase.profiles.isEmpty {
+                if container.services.userService.profiles.isEmpty {
                     HomeView()
                 } else {
                     OnboardingView()
