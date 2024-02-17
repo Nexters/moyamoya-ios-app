@@ -54,6 +54,9 @@ final class HomeViewModel: ObservableObject {
             }
             
         case .matching:
+            // !!!: - 임시 테스트용
+            self.send(action: .presentation(.matchResult))
+            
             guard let profile else { return }
             
             useCase.searchUser(
@@ -61,10 +64,8 @@ final class HomeViewModel: ObservableObject {
                 targetUserCode: serachCodeText
             ) { [weak self] otherProfile in
                 guard let self else { return }
-                
+                self.send(action: .presentation(.matchResult))
             }
-            
-            break
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
         
@@ -170,7 +171,7 @@ struct HomeView: View {
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    viewModel.send(action: .presentation(.matchResult))
+                    viewModel.send(action: .matching)
                 }
             )
         }
