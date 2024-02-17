@@ -32,7 +32,7 @@ final class SubwayStationRepositoryTests: XCTestCase {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 1
         
-        let multipleAvailableValue = "강남" // 강남, 강남구청, 강남대
+        let multipleAvailableValue = "강" // 강남, 강남구청, 강남대
         let query = SearchSubwayStationQuery(searchText: multipleAvailableValue)
 //        let singleAvailableValue = "고속터미널" // 고속터미널
 //        let query = SearchSubwayStationQuery(searchText: singleAvailableValue)
@@ -40,8 +40,10 @@ final class SubwayStationRepositoryTests: XCTestCase {
         repository?.searchSubwayStations(searchSubwayStationQuery: query) { result in
             switch result {
             case .success(let response):
+                dump(response)
                 XCTAssertTrue(true, "잘 받아와지는지 ?")
             case .failure(let failure):
+                dump(failure)
                 XCTFail(failure.localizedDescription)
             }
             expectation.fulfill()

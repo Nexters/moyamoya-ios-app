@@ -52,6 +52,7 @@ final class HomeViewModel: ObservableObject {
 }
 
 struct HomeView: View {
+    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
@@ -95,7 +96,6 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // action
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
@@ -133,7 +133,7 @@ struct HomeView: View {
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
-                buttonAction: {
+                onTapButton: {
                     // FIXME: api 통신
                 }
             )

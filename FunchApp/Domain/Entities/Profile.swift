@@ -100,3 +100,7 @@ extension Profile.Club {
         ]
     }
 }
+
+extension Profile {
+    static let mbtiPair: [[String]] = [["E", "I"], ["N", "S"], ["F", "T"], ["P", "J"]]
+}

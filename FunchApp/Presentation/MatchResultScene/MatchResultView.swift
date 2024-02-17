@@ -94,7 +94,7 @@ struct MatchResultView: View {
             Spacer()
                 .frame(height: 16)
             
-            Image(findSynergyImageResource(from: matchResult.similarity))
+            Image(.findSynergyImageResource(from: matchResult.similarity))
                 .resizable()
                 .frame(minWidth: 136, maxWidth: 200, minHeight: 136, maxHeight: 200)
             
@@ -166,20 +166,6 @@ struct MatchResultView: View {
             ProfileChipRow(.MBTI, profile, isHighlighted: false)
             ProfileChipRow(.혈액형, profile, isHighlighted: true)
             ProfileChipRow(.지하철, profile, isHighlighted: false)
-        }
-    }
-}
-
-extension MatchResultView {
-    /// synergy 정도에 따른 synergyView의 이미지 리소스 타입
-    private func findSynergyImageResource(from percentage: Int) -> ImageResource {
-        switch percentage {
-        case 0...20: return .percent5
-        case 21...40: return .percent4
-        case 41...60: return .percent3
-        case 61...80: return .percent2
-        case 81...100: return .percent1
-        default: return .percent3
         }
     }
 }
