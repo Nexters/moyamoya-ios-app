@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-final class HomeViewBuilder {
-    var container: DIContainer
+struct HomeViewBuilder {
+    private var container: DIContainer
     
     init(container: DIContainer) {
         self.container = container
@@ -17,8 +17,8 @@ final class HomeViewBuilder {
     var body: some View {
         let useCase = HomeUseCase()
         let viewModel = HomeViewModel(container: container, useCase: useCase)
-        let homeView = HomeView(viewModel: viewModel)
+        let view = HomeView(viewModel: viewModel)
         
-        return homeView
+        return view
     }
 }
