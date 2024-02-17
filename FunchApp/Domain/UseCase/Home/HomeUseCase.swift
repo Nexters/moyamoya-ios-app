@@ -28,11 +28,11 @@ final class HomeUseCase {
     func fetchProfile(completion: @escaping (Profile) -> Void) {
         profileRepository.fetchProfile { result in
             switch result {
-            case .success(let profile):
+            case let .success(profile):
                 completion(profile)
             case .failure(_):
-                // TODO: - error handling
-                completion(.testableValue)
+                // !!!: - 에러 핸들링 해야하는데, 아직 기획이 정해진게 없어서 비워둠.
+                break
             }
         }
     }
@@ -45,10 +45,9 @@ final class HomeUseCase {
         matchingRepository.matchingUser(searchUserQuery: searchUserQuery) { result in
             switch result {
             case .success(let success):
-//                completion()
                 break
-            case .failure(let failure):
-//                completion()
+            case .failure(_):
+                // !!!: - 에러 핸들링 해야하는데, 아직 기획이 정해진게 없어서 비워둠.
                 break
             }
         }
