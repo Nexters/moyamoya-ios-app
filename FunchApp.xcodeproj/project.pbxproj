@@ -115,7 +115,6 @@
 		3E28CC672B7E61E000818CD3 /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
 		3E28CC682B7E624F00818CD3 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E28CC622B7D2C1500818CD3 /* Array+.swift */; };
 		3E28CC692B7E627400818CD3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83802B7A07E6007408D7 /* UserDefault.swift */; };
-		3E28CC6B2B7E628A00818CD3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* UserService.swift */; };
 		3E28CC6C2B7E629300818CD3 /* FetchProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */; };
 		3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */; };
 		3EA69C012B5D61E9008AE23B /* DynamicHGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */; };
@@ -323,14 +322,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		1A7B837F2B7A07B5007408D7 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				1A7B837B2B7A067D007408D7 /* UserService.swift */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
 		1A83F0212B80C56800E6EC89 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +335,7 @@
 			children = (
 				1A83F0222B80C5A900E6EC89 /* Services.swift */,
 				1A7B83822B7A1682007408D7 /* OpenURLService.swift */,
+				1A7B837B2B7A067D007408D7 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -509,7 +501,6 @@
 		1ACE49682B5BA09700024336 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				1A7B837F2B7A07B5007408D7 /* Application */,
 				1ACE496C2B5BA22C00024336 /* Home */,
 				1ACE496F2B5BA27600024336 /* Profile */,
 				1ACE496D2B5BA23400024336 /* MatchResult */,
@@ -859,7 +850,6 @@
 				1A87EAEF2B691F900059F80A /* HomeUseCase.swift in Sources */,
 				1A87EAE62B691E6B0059F80A /* ResponseDTO.swift in Sources */,
 				1A87EAFA2B691FB20059F80A /* MatchingUserQuery.swift in Sources */,
-				3E28CC6B2B7E628A00818CD3 /* UserService.swift in Sources */,
 				1A87EB052B69200B0059F80A /* MatchingUser.Req.swift in Sources */,
 				3E28CC6C2B7E629300818CD3 /* FetchProfileUseCase.swift in Sources */,
 				1A87EB042B6920080059F80A /* SearchSubwayStation.Req.swift in Sources */,
