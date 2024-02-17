@@ -7,53 +7,11 @@
 
 import SwiftUI
 
-final class HomeViewModel: ObservableObject {
-    
-    @Published var state = State()
-    @Published var presentation: State.PresentationState?
-    
-    /// 상태
-    struct State {
-        /// 코드 검색 텍스트 필드
-        var serachCodeText: String = ""
-        
-        enum PresentationState: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case profile
-        }
-    }
-        
-    enum Action: Equatable {
-        case feedback
-        
-        case presentation(PresentationAction)
-        
-        enum PresentationAction: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case profile
-        }
-    }
-    
-    private let openURL: OpenURLService = .init()
-    
-    func send(action: Action) {
-        switch action {
-        case .feedback:
-            openURL.execute(type: .feedback)
-        case let .presentation(presentationAction):
-            switch presentationAction {
-            case .profile:
-                presentation = .profile
-            }
-        }
-    }
-}
-
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var container: DIContainer
+    
+    @StateObject var viewModel: HomeViewModel
     
     var body: some View {
         ZStack {
@@ -62,6 +20,7 @@ struct HomeView: View {
             
             VStack(spacing: 0) {
                 codeSearchView
+                    .padding(.top, 8)
                 
                 Spacer()
                     .frame(height: 8)
@@ -85,11 +44,18 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
         }
+        .onAppear {
+            viewModel.send(action: .load)
+        }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
             switch presentation {
             case .profile:
                 NavigationStack { 
-                    ProfileView()
+                    ProfileView(viewModel: .init(container: container))
+                }
+            case let .matchResult(otherProfile):
+                NavigationStack {
+                    MatchResultView(viewModel: .init(container: container))
                 }
             }
         }
@@ -99,11 +65,11 @@ struct HomeView: View {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
+                        .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .background(.black)
+                        .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 12.0))
                 }
                 
@@ -129,12 +95,12 @@ struct HomeView: View {
                 .frame(height: 16)
             
             FunchTextField(
-                text: $viewModel.state.serachCodeText,
+                text: $viewModel.serachCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    // FIXME: api 통신
+                    viewModel.send(action: .matching)
                 }
             )
         }
@@ -224,8 +190,4 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .frame(maxWidth: .infinity)
     }
-}
-
-#Preview {
-    HomeView()
 }
