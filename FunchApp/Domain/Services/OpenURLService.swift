@@ -7,14 +7,17 @@
 
 import UIKit
 
-final class OpenURL {
-    
-    enum URLType: String {
-        case feedback = "https://www.naver.com"
-        case appstore = "앱스토어 링크"
-    }
-    
-    func execute(type: URLType) {
+enum OpenURLType: String {
+    case feedback = "https://www.naver.com"
+    case appstore = "앱스토어 링크"
+}
+
+protocol OpenURLServiceType {
+    func execute(type: OpenURLType)
+}
+
+final class OpenURLService: OpenURLServiceType {
+    func execute(type: OpenURLType) {
         guard let url = URL(string: type.rawValue) else { return }
         guard UIApplication.shared.canOpenURL(url) else { return }
         UIApplication.shared.open(url)

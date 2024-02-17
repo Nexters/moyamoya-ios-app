@@ -11,17 +11,12 @@ import SwiftUI
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
     
-    private var applicationUsecase: ApplicationUseCaseType
-    
-    init() { 
-        self.applicationUsecase = ApplicationUseCase(userStorage: .shared)
-        self.applicationUsecase.hasProfile = false
-    }
+    @StateObject var container: DIContainer = .init(services: Services())
     
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
-                if applicationUsecase.hasProfile {
+                if container.services.userService.profiles.isEmpty {
                     HomeView()
                 } else {
                     OnboardingView()
@@ -39,6 +34,7 @@ struct FunchApp: App {
             }
         }
         .environmentObject(appCoordinator)
+        .environmentObject(container)
         
     }
 }

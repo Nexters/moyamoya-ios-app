@@ -67,9 +67,9 @@ final class ProfileEditorViewModel: ObservableObject {
         bind()
     }
 
-    private let applicationUseCase: ApplicationUseCase
+    private let applicationUseCase: UserService
     private let createProfileUseCase: CreateProfileUseCase
-    private let openURL: OpenURL
+    private let openURL: OpenURLService
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -156,7 +156,6 @@ final class ProfileEditorViewModel: ObservableObject {
                 switch result {
                 case .success(let profile):
                     guard let self else { return }
-                    self.applicationUseCase.hasProfile = true
                     self.applicationUseCase.profiles.append(profile)
                     self.presentation = .home
                     
