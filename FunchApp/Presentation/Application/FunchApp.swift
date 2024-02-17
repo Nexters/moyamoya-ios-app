@@ -19,7 +19,7 @@ struct FunchApp: App {
                 if !container.services.userService.profiles.isEmpty {
                     HomeViewBuilder(container: container).body
                 } else {
-                    OnboardingView()
+                    OnboardingViewBuilder(container: container).body
                         .navigationDestination(for: AppCoordinatorPathType.self) { type in
                             switch type {
                             case let .onboarding(pathType):
