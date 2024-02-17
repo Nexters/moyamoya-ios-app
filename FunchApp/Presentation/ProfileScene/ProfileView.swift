@@ -7,52 +7,12 @@
 
 import SwiftUI
 
-final class ProfileViewModel: ObservableObject {
-    
-    enum Action {
-        case load
-        case loadFailed
-        case feedback
-    }
-    
-    @Published var profile: Profile?
-    @Published var dismiss: Bool = false
-    
-    private var container: DIContainer
-    
-    init(container: DIContainer) {
-        self.container = container
-    }
-    
-    init(profile: Profile, container: DIContainer) {
-        self.profile = profile
-        self.container = container
-    }
-    
-    func send(action: Action) {
-        switch action {
-        case .load:
-            guard let profile = container.services.userService.profiles.last else {
-                self.send(action: .loadFailed)
-                return
-            }
-            self.profile = profile
-            
-        case .loadFailed:
-            dismiss = true
-            
-        case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
-        }
-    }
-}
-
 struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ProfileViewModel
     
-    private let openURL: OpenURLService = .init()
+//    private let openURL: OpenURLService = .init()
     
     var body: some View {
         ZStack {
@@ -96,13 +56,15 @@ struct ProfileView: View {
         .onAppear {
             viewModel.send(action: .load)
         }
-        .onReceive(viewModel.$dismiss) { _ in
-            dismiss()
+        .onReceive(viewModel.$dismiss) { boolean in
+            if boolean {
+                dismiss()
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    openURL.execute(type: .feedback)
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .foregroundStyle(.white)
@@ -116,7 +78,7 @@ struct ProfileView: View {
             
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    self.dismiss()
+                    dismiss()
                 } label: {
                     Image(.iconX)
                         .foregroundColor(.gray400)

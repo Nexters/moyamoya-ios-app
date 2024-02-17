@@ -42,6 +42,8 @@
 		1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */; };
 		1A83F02C2B80E1BD00E6EC89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F02B2B80E1BD00E6EC89 /* HomeViewModel.swift */; };
 		1A83F02E2B80E26B00E6EC89 /* MatchResultViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */; };
+		1A83F0312B80E6CB00E6EC89 /* ProfileViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */; };
+		1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */; };
 		1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */; };
 		1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B862B5D605400A080F2 /* MatchingRepository.swift */; };
 		1A87EAE32B691DF50059F80A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepository.swift */; };
@@ -179,6 +181,8 @@
 		1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewBuilder.swift; sourceTree = "<group>"; };
 		1A83F02B2B80E1BD00E6EC89 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewBuilder.swift; sourceTree = "<group>"; };
+		1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewBuilder.swift; sourceTree = "<group>"; };
+		1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1A87EB062B6A6A430059F80A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileUseCase.swift; sourceTree = "<group>"; };
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
@@ -345,6 +349,14 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		1A83F0342B80E7C700E6EC89 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		1A87EAE02B691D050059F80A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,8 +464,10 @@
 		1ACE495E2B5B9EFF00024336 /* ProfileScene */ = {
 			isa = PBXGroup;
 			children = (
+				1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */,
+				1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */,
 				1ACE49552B5B9E9300024336 /* ProfileView.swift */,
-				1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */,
+				1A83F0342B80E7C700E6EC89 /* SubViews */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -866,6 +880,7 @@
 				3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */,
 				3EA69C032B5D67A3008AE23B /* NoTapEffectButtonStyle.swift in Sources */,
 				3E1E73F32B713B3A0082386A /* String+.swift in Sources */,
+				1A83F0312B80E6CB00E6EC89 /* ProfileViewBuilder.swift in Sources */,
 				1A792B772B5D55F700A080F2 /* ResponseDTO.swift in Sources */,
 				1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */,
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
@@ -896,6 +911,7 @@
 				1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */,
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
+				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
 				1ACE495A2B5B9EDE00024336 /* ProfileEditorView.swift in Sources */,
