@@ -6,5 +6,16 @@
 //
 
 import Foundation
+import Moya
 
-protocol ProfileRepositoryType { }
+protocol ProfileRepositoryType {
+    func fetchProfile(completion: @escaping (Result<Profile, MoyaError>) -> Void)
+    func fetchProfileId(
+        userQuery: FetchUserQuery,
+        completion: @escaping (Result<Profile, MoyaError>) -> Void
+    )
+    func createProfile(
+        createUserQuery: CreateUserQuery,
+        completion: @escaping (Result<Profile, MoyaError>) -> Void
+    )
+}

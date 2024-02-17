@@ -6,5 +6,11 @@
 //
 
 import Foundation
+import Moya
 
-protocol SubwayStationRepositoryType { }
+protocol SubwayStationRepositoryType {
+    func searchSubwayStations(
+        searchSubwayStationQuery: SearchSubwayStationQuery,
+        completion: @escaping (Result<[SubwayInfo], MoyaError>) -> Void
+    )
+}
