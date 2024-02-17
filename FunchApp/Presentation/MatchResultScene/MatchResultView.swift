@@ -24,9 +24,9 @@ final class MatchResultViewModel: ObservableObject {
         case distributeInfo(MatchingInfo)
     }
     
-    var container: DIContainer
+    private var container: DependencyType
     
-    init(container: DIContainer) {
+    init(container: DependencyType) {
         self.container = container
     }
     

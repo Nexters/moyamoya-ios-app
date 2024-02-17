@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct MatchResultViewBuilder {
-    private var container: DIContainer
+struct MatchResultViewBuilder: Buildable {
+    
+    var container: DependencyType
     /// 매칭된 타인의 프로필
     private var otherProfile: Profile
     
     init(
-        container: DIContainer,
+        container: DependencyType,
         otherProfile: Profile
     ) {
         self.container = container
