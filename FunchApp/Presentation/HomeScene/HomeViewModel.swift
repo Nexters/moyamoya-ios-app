@@ -53,8 +53,8 @@ final class HomeViewModel: ObservableObject {
             }
             
         case .matching:
+            presentation = .matchResult(.testableValue)
             guard let profile else { return }
-            
             useCase.searchUser(
                 requestId: profile.userCode,
                 targetUserCode: serachCodeText

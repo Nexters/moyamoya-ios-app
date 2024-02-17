@@ -12,15 +12,18 @@ final class MatchResultViewModel: ObservableObject {
     
     @Published var similarity: Int?
     @Published var chemistryInfos: [MatchingInfo.ChemistryInfo]?
+    
+    @Published var myProfile: Profile = .emptyValue
     @Published var matchedProfile: MatchingInfo.MatchProfile?
     
-    @Published var isEqualMajor: (String, Bool) = ("", false)
-    @Published var isEqualClubs: ([String], Bool) = ([""], false)
-    @Published var isEqualMBTI: (String, Bool) = ("", false)
-    @Published var isEqualBloodType: (String, Bool) = ("", false)
-    @Published var isEqualSubway: ([String], Bool) = ([""], false)
+    @Published var isEqualMajor: Bool = false
+    @Published var isEqualClubs: [Bool] = [false, false]
+    @Published var isEqualMBTI: Bool = false
+    @Published var isEqualBloodType: Bool = false
+    @Published var isEqualSubway: Bool = false
     
     enum Action {
+        case fetchMyProfile
         case fetchMatchResult
         case distributeInfo(MatchingInfo)
         case isEqual(RowType)
@@ -42,6 +45,9 @@ final class MatchResultViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
+        case .fetchMyProfile:
+            myProfile = container.services.userService.profiles.first ?? .emptyValue
+            
         case .fetchMatchResult:
             let matchedResult = container.services.userService.matchedResults.first ?? .empty
             send(action: .distributeInfo(matchedResult))
@@ -52,23 +58,31 @@ final class MatchResultViewModel: ObservableObject {
             matchedProfile = matchedInfo.profile
             
         case let .isEqual(type):
-            let my = container.services.userService.profiles.last ?? .emptyValue
-            let other = container.services.userService.matchedResults.first?.recommendInfos
+            let other = container.services.userService.matchedResults.first?.recommendInfos ?? []
+            
             switch type {
             case .major:
-                my.majors.first == other.
+                let majors = myProfile.majors.map { $0.name == "developer" ? "개발자" : "디자이너" }
+                isEqualMajor = majors.contains(other[0].title)
                 
             case .clubs:
-                
+                let clubs = ["nexters", "sopt", "depromeet"]
+                isEqualClubs = other.map { clubs.contains($0.title.lowercased()) }
                 
             case .mbti:
-                
+                isEqualMBTI = other
+                    .map { $0.title }
+                    .contains(myProfile.mbti)
                 
             case .bloodType:
-                
+                isEqualBloodType = other
+                    .map { $0.title == myProfile.bloodType }
+                    .contains(true)
                 
             case .subway:
-                
+                isEqualSubway = other
+                    .map { $0.title == myProfile.subwayInfos.first?.name ?? "" }
+                    .contains(true)
                 
             }
         }
@@ -248,7 +262,7 @@ struct MatchResultView: View {
     
     private var matchedProfileView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(matchResult.name)
+            Text(viewModel.matchedProfile?.name ?? "")
                 .font(.Funch.title2)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -260,7 +274,7 @@ struct MatchResultView: View {
                 resultRow("직군", profileRow: majorRow)
                 resultRow("동아리", profileRow: clubsRow)
                 resultRow("MBTI", profileRow: mbtiRow)
-                resultRow("혈액형", profileRow: bloodRow)
+                resultRow("혈액형", profileRow: bloodTypeRow)
                 resultRow("지하철", profileRow: subwayRow)
             }
         }
@@ -288,24 +302,24 @@ struct MatchResultView: View {
     
     private var clubsRow: some View {
         DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-            ForEach(clubs, id: \.self) { club in
-                ChipView(title: club, imageName: club)
+            ForEach(viewModel.myProfile.clubs, id: \.self) { club in
+                ChipView(title: club.name, imageName: club.imageName)
             }
         }
     }
     
     private var mbtiRow: some View {
-        ChipView(title: mbti)
+        ChipView(title: viewModel.myProfile.mbti)
     }
     
-    private var bloodRow: some View {
-        ChipView(title: bloodType)
+    private var bloodTypeRow: some View {
+        ChipView(title: viewModel.myProfile.bloodType)
     }
     
     private var subwayRow: some View {
         HStack(spacing: 8) {
-            ForEach(subways, id: \.self) { subwayName in
-                ChipView(title: subwayName)
+            ForEach(viewModel.myProfile.subwayInfos, id: \.self) { subwayName in
+                ChipView(title: subwayName.name)
             }
         }
     }
