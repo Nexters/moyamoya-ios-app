@@ -21,6 +21,7 @@ final class HomeViewModel: ObservableObject {
             var id: Int { self.rawValue }
             
             case profile
+            case matchResult
         }
     }
         
@@ -33,6 +34,7 @@ final class HomeViewModel: ObservableObject {
             var id: Int { self.rawValue }
             
             case profile
+            case matchResult
         }
     }
     
@@ -46,6 +48,9 @@ final class HomeViewModel: ObservableObject {
             switch presentationAction {
             case .profile:
                 presentation = .profile
+                
+            case .matchResult:
+                presentation = .matchResult
             }
         }
     }
@@ -91,6 +96,11 @@ struct HomeView: View {
                 NavigationStack { 
                     ProfileView()
                 }
+                
+            case .matchResult:
+                NavigationStack {
+                    MatchResultView()
+                }
             }
         }
         .toolbar {
@@ -134,7 +144,7 @@ struct HomeView: View {
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    // FIXME: api 통신
+                    
                 }
             )
         }

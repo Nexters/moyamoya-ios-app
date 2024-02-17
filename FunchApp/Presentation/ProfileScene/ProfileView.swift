@@ -98,7 +98,7 @@ struct ProfileView: View {
                     self.dismiss()
                 } label: {
                     Image(.iconX)
-                        .foregroundColor(.black)
+                        .foregroundColor(.gray400)
                 }
             }
         }

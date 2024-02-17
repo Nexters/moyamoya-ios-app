@@ -27,4 +27,9 @@ final class ApplicationUseCase: ApplicationUseCaseType {
         get { userStorage.profiles }
         set { userStorage.profiles = newValue }
     }
+    
+    var matchedResults: [MatchingInfo] {
+        get { userStorage.matchedResults }
+        set { userStorage.matchedResults = newValue }
+    }
 }

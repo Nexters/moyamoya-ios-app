@@ -8,15 +8,39 @@
 import SwiftUI
 import SwiftUIPager
 
-struct MatchResultView: View {
-    /// 매칭 결과물
-    let matchResult: MatchingInfo
+final class MatchResultViewModel: ObservableObject {
     
-    init(matchResult: MatchingInfo = .testableValue) {
-        self.matchResult = matchResult
+    @Published var similarity: Int?
+    @Published var chemistryInfos: [MatchingInfo.ChemistryInfo]?
+    @Published var matchedProfile: MatchingInfo.MatchProfile?
+    
+    enum Action {
+        case fetchMatchResult
+        case distributeInfo(MatchingInfo)
     }
     
+    private let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
+    
+    func send(action: Action) {
+        switch action {
+        case .fetchMatchResult:
+            let matchedResult = applicationUseCase.matchedResults.first ?? .empty
+            send(action: .distributeInfo(matchedResult))
+            
+        case .distributeInfo(let matchedInfo):
+            similarity = matchedInfo.similarity
+            chemistryInfos = matchedInfo.chemistryInfos
+            matchedProfile = matchedInfo.profile
+        }
+    }
+}
+
+struct MatchResultView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel = MatchResultViewModel()
     @StateObject var page: Page = .first()
+    
     private var viewSize: CGSize = UIScreen.main.bounds.size
     
     var body: some View {
@@ -50,15 +74,28 @@ struct MatchResultView: View {
                 .itemSpacing(8)
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    self.dismiss()
+                } label: {
+                    Image(.iconX)
+                        .foregroundColor(.gray400)
+                }
+            }
+        }
+        .onAppear {
+            viewModel.send(action: .fetchMatchResult)
+        }
     }
     
     /// pageIndex에 따른 결과 View
     @ViewBuilder
     private func resultView(_ pageIndex: Int) -> some View {
         switch pageIndex {
-        case 0: synergyView
+        case 0: chemistryView
         case 1: recommendationView
-        case 2: profileView(matchResult.profile)
+        case 2: profileView(viewModel.matchedProfile ?? .empty)
         default: EmptyView()
         }
     }
@@ -79,12 +116,12 @@ struct MatchResultView: View {
     }
     
     /// 시너지 정보를 보여주는 View
-    private var synergyView: some View {
+    private var chemistryView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("우리는 ")
                     .foregroundStyle(.white)
-                Text("\(matchResult.similarity)%")
+                Text("\(viewModel.similarity ?? 0)%")
                     .foregroundStyle(Gradient.funchGradient(type: .lemon500))
                 Text(" 닮았어요")
                     .foregroundStyle(.white)
@@ -94,7 +131,7 @@ struct MatchResultView: View {
             Spacer()
                 .frame(height: 16)
             
-            Image(.findSynergyImageResource(from: matchResult.similarity))
+            Image(.findSynergyImageResource(from: viewModel.similarity ?? 0))
                 .resizable()
                 .frame(minWidth: 136, maxWidth: 200, minHeight: 136, maxHeight: 200)
             
@@ -102,7 +139,7 @@ struct MatchResultView: View {
                 .frame(height: 16)
             
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(matchResult.chemistryInfos, id: \.self) { info in
+                ForEach(viewModel.chemistryInfos ?? [], id: \.self) { info in
                     ChemistryLabel(info: info)
                 }
             }
