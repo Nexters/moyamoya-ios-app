@@ -17,7 +17,6 @@ struct FunchDropDownMenu: View {
     init(selectedData: Binding<String>, data: [String]) {
         self._selectedData = selectedData
         self.data = data
-        self.selectedData = data.first ?? ""
     }
     
     /// Dropdown이 활성화 되어 있는지 나타내는 변수
@@ -26,8 +25,8 @@ struct FunchDropDownMenu: View {
     
     var body: some View {
         Menu {
-            ForEach(data, id: \.self) { dataString in
-                innerMenu(title: dataString)
+            ForEach(0..<data.count, id: \.self) { dataIndex in
+                innerMenu(dataIndex: dataIndex)
             }
         } label: {
             outerMenu
@@ -49,7 +48,7 @@ struct FunchDropDownMenu: View {
     /// 외부에서 보이는 menu UI
     private var outerMenu: some View {
         HStack(spacing: 0) {
-            Text(selectedData == "" ? data.first! : selectedData)
+            Text(selectedData)
                 .font(.Funch.body)
                 .foregroundStyle(.white)
             
@@ -68,12 +67,12 @@ struct FunchDropDownMenu: View {
     }
     
     /// tap 했을 때 보이는 menu들
-    private func innerMenu(title: String) -> some View {
+    private func innerMenu(dataIndex: Int) -> some View {
         Button {
             isShown = false
-            selectedData = title
+            selectedData = data[dataIndex]
         } label: {
-            Text(title)
+            Text(data[dataIndex])
         }
     }
 }

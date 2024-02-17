@@ -18,7 +18,7 @@ extension RequestDTO {
         
         var toDitionary: DictionaryType {
             [
-                "name": searchText,
+                "query": searchText,
             ]
         }
     }

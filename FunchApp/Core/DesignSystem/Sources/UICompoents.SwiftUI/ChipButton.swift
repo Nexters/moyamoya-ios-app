@@ -91,7 +91,7 @@ struct ChipButton: View {
         case .image:
             HStack {
                 VStack {
-                    Image(systemName: imageName)
+                    Image(.findProfileImageResource(from: imageName))
                         .resizable()
                         .frame(width: 18, height: 18)
                 }
