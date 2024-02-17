@@ -17,6 +17,7 @@ enum FunchGradient {
     case lemon900
     case gray300
     case gray900
+    case black
     
     /// 들어가는 색상들
     var stops: [Gradient.Stop] {
@@ -36,6 +37,9 @@ enum FunchGradient {
         case .gray900:
             return [.init(color: .gradientGray9001, location: 0.00),
                     .init(color: .gradientGray9002, location: 1.00)]
+        case .black:
+            return [.init(color: .gradientBlack1, location: 0.61),
+                    .init(color: .gradientBlack2, location: 1.00)]
         }
     }
     
@@ -47,6 +51,7 @@ enum FunchGradient {
         case .lemon900: return .init(x: 0.5, y: 0)
         case .gray300: return .init(x: 0.5, y: 0.97)
         case .gray900: return .init(x: 0.5, y: 0)
+        case .black: return .init(x: 0.5, y: 0)
         }
     }
     
@@ -58,6 +63,7 @@ enum FunchGradient {
         case .lemon900: return .init(x: 0.5, y: 0.86)
         case .gray300: return .init(x: 0.5, y: 1)
         case .gray900: return .init(x: 0.5, y: 0.06)
+        case .black: return .init(x: 0.5, y: 1)
         }
     }
 }
