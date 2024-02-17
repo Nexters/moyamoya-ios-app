@@ -8,49 +8,16 @@
 import SwiftUI
 import SwiftUIPager
 
-final class MatchResultViewModel: ObservableObject {
-    
-    @Published var similarity: Int?
-    @Published var chemistryInfos: [MatchingInfo.ChemistryInfo]?
-    @Published var matchedProfile: MatchingInfo.MatchProfile?
-    //    @Published var isEqualMajor: Bool = false
-    //    @Published var isEqualClubs: Bool = false
-    //    @Published var isEqualMajor: Bool = false
-    //    @Published var isEqualMajor: Bool = false
-    //    @Published var isEqualMajor: Bool = false
-    
-    enum Action {
-        case fetchMatchResult
-        case distributeInfo(MatchingInfo)
-    }
-    
-    var container: DIContainer
-    
-    init(container: DIContainer) {
-        self.container = container
-    }
-    
-    func send(action: Action) {
-        switch action {
-        case .fetchMatchResult:
-            let matchedResult = container.services.userService.matchedResults.first ?? .empty
-            send(action: .distributeInfo(matchedResult))
-            
-        case .distributeInfo(let matchedInfo):
-            similarity = matchedInfo.similarity
-            chemistryInfos = matchedInfo.chemistryInfos
-            matchedProfile = matchedInfo.profile
-        }
-    }
-}
-
 struct MatchResultView: View {
+    /// 매칭 결과물
+    let matchResult: MatchingInfo
     
-    @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: MatchResultViewModel
+    init(matchResult: MatchingInfo = .testableValue) {
+        self.matchResult = matchResult
+    }
+    
     @StateObject var page: Page = .first()
-    
-    var viewSize: CGSize = UIScreen.main.bounds.size
+    private var viewSize: CGSize = UIScreen.main.bounds.size
     
     var body: some View {
         ZStack {
@@ -83,28 +50,15 @@ struct MatchResultView: View {
                 .itemSpacing(8)
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    self.dismiss()
-                } label: {
-                    Image(.iconX)
-                        .foregroundColor(.gray400)
-                }
-            }
-        }
-        .onAppear {
-            viewModel.send(action: .fetchMatchResult)
-        }
     }
     
     /// pageIndex에 따른 결과 View
     @ViewBuilder
     private func resultView(_ pageIndex: Int) -> some View {
         switch pageIndex {
-        case 0: chemistryView
+        case 0: synergyView
         case 1: recommendationView
-        case 2: profileView(viewModel.matchedProfile ?? .empty)
+        case 2: profileView(matchResult.profile)
         default: EmptyView()
         }
     }
@@ -125,12 +79,12 @@ struct MatchResultView: View {
     }
     
     /// 시너지 정보를 보여주는 View
-    private var chemistryView: some View {
+    private var synergyView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("우리는 ")
                     .foregroundStyle(.white)
-                Text("\(viewModel.similarity ?? 0)%")
+                Text("\(matchResult.similarity)%")
                     .foregroundStyle(Gradient.funchGradient(type: .lemon500))
                 Text(" 닮았어요")
                     .foregroundStyle(.white)
@@ -140,7 +94,7 @@ struct MatchResultView: View {
             Spacer()
                 .frame(height: 16)
             
-            Image(.findSynergyImageResource(from: viewModel.similarity ?? 0))
+            Image(.findSynergyImageResource(from: matchResult.similarity))
                 .resizable()
                 .frame(minWidth: 136, maxWidth: 200, minHeight: 136, maxHeight: 200)
             
@@ -148,7 +102,7 @@ struct MatchResultView: View {
                 .frame(height: 16)
             
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(viewModel.chemistryInfos ?? [], id: \.self) { info in
+                ForEach(matchResult.chemistryInfos, id: \.self) { info in
                     ChemistryLabel(info: info)
                 }
             }
@@ -216,8 +170,8 @@ struct MatchResultView: View {
     }
 }
 
-//#Preview {
-//    NavigationStack {
-//        MatchResultView()
-//    }
-//}
+#Preview {
+    NavigationStack {
+        MatchResultView()
+    }
+}

@@ -10,39 +10,26 @@ import SwiftUI
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
-    @StateObject var container: DIContainer = .init(services: Services())
     
-    @State private var isSplashing: Bool = true
+    @StateObject var container: DIContainer = .init(services: Services())
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                NavigationStack(path: $appCoordinator.paths) {
-                    if !container.services.userService.profiles.isEmpty {
-                        HomeViewBuilder(container: container).body
-                    } else {
-                        OnboardingViewBuilder(container: container).body
-                            .navigationDestination(for: AppCoordinatorPathType.self) { type in
-                                switch type {
-                                case let .onboarding(pathType):
-                                    switch pathType {
-                                    case .createProfile:
-                                        ProfileEditorView()
-                                            .navigationBarBackButtonHidden()
-                                    }
+            NavigationStack(path: $appCoordinator.paths) {
+                if container.services.userService.profiles.isEmpty {
+                    HomeView()
+                } else {
+                    OnboardingView()
+                        .navigationDestination(for: AppCoordinatorPathType.self) { type in
+                            switch type {
+                            case let .onboarding(pathType):
+                                switch pathType {
+                                case .createProfile:
+                                    ProfileEditorView()
+                                        .navigationBarBackButtonHidden()
                                 }
                             }
-                    }
-                }
-                .overlay {
-                    if isSplashing {
-                        SplashViewBuilder(container: container).body
-                    }
-                }
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    isSplashing.toggle()
+                        }
                 }
             }
         }

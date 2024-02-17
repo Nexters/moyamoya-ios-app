@@ -18,18 +18,12 @@ final class UserDefaultStorage {
     @AppStorage(UserDefaultKeyCase.hasProfile.rawValue)
     var hasProfile: Bool = false
     
-    /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)
-    var profiles: [Profile] = [.testableValue]
-    
-    /// 유저가 매칭한 결과물
-    @AppStorage(UserDefaultKeyCase.matchedResults.rawValue)
-    var matchedResults: [MatchingInfo] = [.testableValue]
+    var profiles: [Profile] = []
 }
 
 /// `UserDefaultKeyCase`키 값 정보
 enum UserDefaultKeyCase: String {
     case hasProfile
     case profiles
-    case matchedResults
 }
