@@ -29,7 +29,7 @@ struct FunchTextField: View {
     /// onSubmit 동작
     var onSubmit: () -> Void
     /// 버튼 터치 액션
-    var onButtonTap: () -> Void = {}
+    var onTapButton: () -> Void = {}
     /// Binding
     @Binding var text: String
     /// placeholder
@@ -53,7 +53,7 @@ struct FunchTextField: View {
         isFocused: FocusState<Bool>? = nil,
         onChange: @escaping (String, String) -> Void = { _, _ in },
         onSubmit: @escaping () -> Void = {},
-        onButtonTap: @escaping () -> Void = {}
+        onTapButton: @escaping () -> Void = {}
     ) {
         self.onChange = onChange
         self.onSubmit = onSubmit
@@ -70,7 +70,7 @@ struct FunchTextField: View {
             self.type = .icon
         }
         else if let trailingButtonImage {
-            self.onButtonTap = onButtonTap
+            self.onTapButton = onTapButton
             self.trailingButtonImage = trailingButtonImage
             self.type = .button
         }
@@ -202,7 +202,7 @@ struct FunchTextField: View {
             
         case .button:
             Button {
-                onButtonTap()
+                onTapButton()
             } label: {
                 trailingButtonImage?
                     .resizable()

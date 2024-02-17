@@ -133,7 +133,7 @@ struct HomeView: View {
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
-                onButtonTap: {
+                onTapButton: {
                     // FIXME: api 통신
                 }
             )
