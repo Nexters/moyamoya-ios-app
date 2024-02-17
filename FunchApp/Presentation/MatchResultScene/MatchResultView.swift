@@ -13,18 +13,27 @@ final class MatchResultViewModel: ObservableObject {
     @Published var similarity: Int?
     @Published var chemistryInfos: [MatchingInfo.ChemistryInfo]?
     @Published var matchedProfile: MatchingInfo.MatchProfile?
+    //    @Published var isEqualMajor: Bool = false
+    //    @Published var isEqualClubs: Bool = false
+    //    @Published var isEqualMajor: Bool = false
+    //    @Published var isEqualMajor: Bool = false
+    //    @Published var isEqualMajor: Bool = false
     
     enum Action {
         case fetchMatchResult
         case distributeInfo(MatchingInfo)
     }
     
-    private let applicationUseCase: ApplicationUseCase = .init(userStorage: .shared)
+    var container: DIContainer
+    
+    init(container: DIContainer) {
+        self.container = container
+    }
     
     func send(action: Action) {
         switch action {
         case .fetchMatchResult:
-            let matchedResult = applicationUseCase.matchedResults.first ?? .empty
+            let matchedResult = container.services.userService.matchedResults.first ?? .empty
             send(action: .distributeInfo(matchedResult))
             
         case .distributeInfo(let matchedInfo):
@@ -38,10 +47,10 @@ final class MatchResultViewModel: ObservableObject {
 struct MatchResultView: View {
     
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = MatchResultViewModel()
+    @StateObject var viewModel: MatchResultViewModel
     @StateObject var page: Page = .first()
     
-    private var viewSize: CGSize = UIScreen.main.bounds.size
+    var viewSize: CGSize = UIScreen.main.bounds.size
     
     var body: some View {
         ZStack {
@@ -207,8 +216,8 @@ struct MatchResultView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        MatchResultView()
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        MatchResultView()
+//    }
+//}

@@ -57,6 +57,7 @@ final class HomeViewModel: ObservableObject {
 }
 
 struct HomeView: View {
+    @EnvironmentObject var diContainer: DIContainer
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel = HomeViewModel()
     
@@ -94,12 +95,12 @@ struct HomeView: View {
             switch presentation {
             case .profile:
                 NavigationStack { 
-                    ProfileView()
+                    ProfileView(viewModel: .init(container: diContainer))
                 }
                 
             case .matchResult:
                 NavigationStack {
-                    MatchResultView()
+                    MatchResultView(viewModel: .init(container: diContainer))
                 }
             }
         }
@@ -144,7 +145,7 @@ struct HomeView: View {
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
                 onTapButton: {
-                    
+                    viewModel.send(action: .presentation(.matchResult))
                 }
             )
         }

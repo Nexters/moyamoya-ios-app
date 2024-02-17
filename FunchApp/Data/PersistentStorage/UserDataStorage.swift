@@ -20,11 +20,11 @@ final class UserDefaultStorage {
     
     /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)
-    var profiles: [Profile] = []
+    var profiles: [Profile] = [.testableValue]
     
     /// 유저가 매칭한 결과물
     @AppStorage(UserDefaultKeyCase.matchedResults.rawValue)
-    var matchedResults: [MatchingInfo] = []
+    var matchedResults: [MatchingInfo] = [.testableValue]
 }
 
 /// `UserDefaultKeyCase`키 값 정보

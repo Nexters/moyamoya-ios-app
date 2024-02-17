@@ -9,26 +9,29 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
     
-    @Published var state: State = State()
+//    @Published var state: State = State()
     
-    struct State {
-        var profile: Profile = .emptyValue
-    }
+    @Published var profile: Profile = .emptyValue
     
     enum Action {
         case fetchProfile
         case feedback
     }
     
-    let applicationUseCase: UserService = .init(userStorage: .shared)
-    let openURL: OpenURLService = .init()
+//    let applicationUseCase: UserService = .init(userStorage: .shared)
+//    let openURL: OpenURLService = .init()
+    var container: DIContainer
+    init(container: DIContainer) {
+        self.container = container
+    }
     
     func send(action: Action) {
         switch action {
         case .fetchProfile:
-            state.profile = applicationUseCase.profiles.last ?? .emptyValue
+            profile = container.services.userService.profiles.last ?? .emptyValue
+            
         case .feedback:
-            openURL.execute(type: .feedback)
+            container.services.openURLSerivce.execute(type: .feedback)
         }
     }
 }
@@ -36,7 +39,7 @@ final class ProfileViewModel: ObservableObject {
 struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = ProfileViewModel()
+    @StateObject var viewModel: ProfileViewModel
     
     private let openURL: OpenURLService = .init()
     
@@ -50,21 +53,21 @@ struct ProfileView: View {
                     .frame(height: 8)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(viewModel.state.profile.userCode)
+                    Text(viewModel.profile.userCode)
                         .font(.Funch.body)
                         .foregroundStyle(.gray400)
                     
                     Spacer()
                         .frame(height: 2)
                     
-                    Text(viewModel.state.profile.userNickname)
+                    Text(viewModel.profile.userNickname)
                         .font(.Funch.title2)
                         .foregroundStyle(.white)
                     
                     Spacer()
                         .frame(height: 20)
                     
-                    profileView(viewModel.state.profile)
+                    profileView(viewModel.profile)
                 }
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
@@ -129,6 +132,6 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView()
+        ProfileView(viewModel: .init(container: DIContainer(services: Services())))
     }
 }

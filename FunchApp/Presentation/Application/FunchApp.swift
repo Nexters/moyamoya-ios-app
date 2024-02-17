@@ -16,7 +16,7 @@ struct FunchApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $appCoordinator.paths) {
-                if container.services.userService.profiles.isEmpty {
+                if !container.services.userService.profiles.isEmpty {
                     HomeView()
                 } else {
                     OnboardingView()
