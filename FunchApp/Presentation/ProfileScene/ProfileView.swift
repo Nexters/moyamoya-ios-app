@@ -9,26 +9,37 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
     
-//    @Published var state: State = State()
-    
-    @Published var profile: Profile = .emptyValue
-    
     enum Action {
-        case fetchProfile
+        case load
+        case loadFailed
         case feedback
     }
     
-//    let applicationUseCase: UserService = .init(userStorage: .shared)
-//    let openURL: OpenURLService = .init()
-    var container: DIContainer
+    @Published var profile: Profile?
+    @Published var dismiss: Bool = false
+    
+    private var container: DIContainer
+    
     init(container: DIContainer) {
+        self.container = container
+    }
+    
+    init(profile: Profile, container: DIContainer) {
+        self.profile = profile
         self.container = container
     }
     
     func send(action: Action) {
         switch action {
-        case .fetchProfile:
-            profile = container.services.userService.profiles.last ?? .emptyValue
+        case .load:
+            guard let profile = container.services.userService.profiles.last else {
+                self.send(action: .loadFailed)
+                return
+            }
+            self.profile = profile
+            
+        case .loadFailed:
+            dismiss = true
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
@@ -53,21 +64,25 @@ struct ProfileView: View {
                     .frame(height: 8)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(viewModel.profile.userCode)
-                        .font(.Funch.body)
-                        .foregroundStyle(.gray400)
-                    
-                    Spacer()
-                        .frame(height: 2)
-                    
-                    Text(viewModel.profile.userNickname)
-                        .font(.Funch.title2)
-                        .foregroundStyle(.white)
-                    
-                    Spacer()
-                        .frame(height: 20)
-                    
-                    profileView(viewModel.profile)
+                    if let profile = viewModel.profile {
+                        Text(profile.userCode)
+                            .font(.Funch.body)
+                            .foregroundStyle(.gray400)
+                        
+                        Spacer()
+                            .frame(height: 2)
+                        
+                        Text(profile.userNickname)
+                            .font(.Funch.title2)
+                            .foregroundStyle(.white)
+                        
+                        Spacer()
+                            .frame(height: 20)
+                        
+                        profileView(profile)
+                    } else {
+                        Text("프로필을 불러오는 중이에요.")
+                    }
                 }
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
@@ -79,7 +94,10 @@ struct ProfileView: View {
             }
         }
         .onAppear {
-            viewModel.send(action: .fetchProfile)
+            viewModel.send(action: .load)
+        }
+        .onReceive(viewModel.$dismiss) { _ in
+            dismiss()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -127,11 +145,5 @@ struct ProfileView: View {
             ProfileChipRow(.혈액형, profile)
             ProfileChipRow(.지하철, profile)
         }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        ProfileView(viewModel: .init(container: DIContainer(services: Services())))
     }
 }
