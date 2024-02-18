@@ -32,7 +32,7 @@ final class HomeViewModel: ObservableObject {
     
     @Published var presentation: PresentationState?
     /// 코드 검색 텍스트 필드
-    @Published var serachCodeText: String = ""
+    @Published var searchCodeText: String = ""
     /// 내 프로필
     @Published var profile: Profile?
     
@@ -50,18 +50,19 @@ final class HomeViewModel: ObservableObject {
             useCase.fetchProfile { [weak self] profile in
                 guard let self else { return }
                 self.profile = profile
+                self.container.services.userService.profiles.append(profile)
             }
             
         case .matching:
             guard let profile else { return }
-            
             useCase.searchUser(
-                requestId: profile.userCode,
-                targetUserCode: serachCodeText
-            ) { [weak self] otherProfile in
+                requestId: profile.id,
+                targetUserCode: searchCodeText
+            ) { [weak self] matchingInfo in
                 guard let self else { return }
-                presentation = .matchResult(otherProfile)
+                presentation = .matchResult(matchingInfo)
             }
+            
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
         

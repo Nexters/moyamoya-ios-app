@@ -53,9 +53,9 @@ struct HomeView: View {
                 NavigationStack { 
                     ProfileView(viewModel: .init(container: container))
                 }
-            case let .matchResult(otherProfile):
+            case let .matchResult(matchingInfo):
                 NavigationStack {
-                    MatchResultView(viewModel: .init(container: container))
+                    MatchResultView(viewModel: .init(container: container, matchingInfo: matchingInfo))
                 }
             }
         }
@@ -95,7 +95,7 @@ struct HomeView: View {
                 .frame(height: 16)
             
             FunchTextField(
-                text: $viewModel.serachCodeText,
+                text: $viewModel.searchCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 
@@ -117,9 +117,9 @@ struct HomeView: View {
     /// 내 코드가 나타나는 영역
     private var myCodeView: some View {
         HStack(spacing: 0) {
-            Image(systemName: "plus")
+            Image(.code)
+                .resizable()
                 .frame(width: 40, height: 40)
-                .foregroundStyle(.gray400)
             
             Spacer()
                 .frame(width: 12)
@@ -129,7 +129,7 @@ struct HomeView: View {
                     .font(.Funch.body)
                     .foregroundStyle(.gray400)
                 
-                Text("U23S")
+                Text(viewModel.profile?.userCode ?? "----")
                     .font(.Funch.subtitle2)
                     .foregroundStyle(Gradient.funchGradient(type: .lemon500))
             }
@@ -146,8 +146,8 @@ struct HomeView: View {
     /// 내 프로필 영역
     private var myProfileView: some View {
         VStack(spacing: 0) {
-            Image(systemName: "plus")
-                .foregroundStyle(.gray400)
+            Image(.profile)
+                .resizable()
                 .frame(width: 40, height: 40)
             
             Spacer()
@@ -165,9 +165,9 @@ struct HomeView: View {
     /// 프로필 조회수 영역
     private var lookupCountView: some View {
         HStack(spacing: 0) {
-            Image(systemName: "plus")
+            Image(.look)
+                .resizable()
                 .frame(width: 40, height: 40)
-                .foregroundStyle(.gray400)
             
             Spacer()
                 .frame(width: 12)
@@ -177,7 +177,7 @@ struct HomeView: View {
                     .font(.Funch.body)
                     .foregroundStyle(.gray400)
                 
-                Text("00명이 조회했어요.")
+                Text("\(viewModel.profile?.viewerShip ?? "00")명이 조회했어요.")
                     .font(.Funch.subtitle2)
                     .foregroundStyle(.white)
             }

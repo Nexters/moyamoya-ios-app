@@ -13,13 +13,13 @@ protocol Buildable {
     
     var container: DependencyType { get set }
     
-    @ViewBuildableType
+    @ViewBuilder
     var body: Body { get }
 }
 
-@resultBuilder
-enum ViewBuildableType {
-    static func buildBlock(_ components: any View...) -> some View {
-        EmptyView()
-    }
-}
+//@resultBuilder
+//enum ViewBuildableType {
+//    static func buildBlock(_ components: any View...) -> some View {
+//        EmptyView()
+//    }
+//}
