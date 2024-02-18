@@ -51,14 +51,15 @@ struct OnboardingView: View {
                     Text("프로필 생성 시작🚀")
                         .font(.Funch.subtitle2)
                         .foregroundStyle(.gray900)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .padding(24)
+                .frame(width: 172, height: 52)
                 .background(Gradient.funchGradient(type: .lemon500))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(color: .lemon500.opacity(0.7), radius: 4, x: 0, y: 4)
             }
         }
-        
+        .ignoresSafeArea(.all)
     }
 }
 
