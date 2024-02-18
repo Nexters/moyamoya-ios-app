@@ -134,6 +134,7 @@
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
 		3EE810712B8076F5007B8A87 /* Funch_splash_logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */; };
 		3EE810732B8076F9007B8A87 /* Funch_splash_background_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */; };
+		3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
 		3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_background_ani.json; sourceTree = "<group>"; };
+		3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */,
+				3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */,
 				1ACE49572B5B9ECE00024336 /* MatchResultView.swift */,
 				1A83F02F2B80E35400E6EC89 /* SubViews */,
 			);
@@ -926,6 +929,7 @@
 				1A7B06922B5D67250024356C /* SubwayStationRepositoryType.swift in Sources */,
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
+				3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */,
 				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
