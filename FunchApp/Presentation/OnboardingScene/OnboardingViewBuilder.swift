@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct OnboardingViewBuilder {
-    private var container: DIContainer
+struct OnboardingViewBuilder: Buildable {
+    var container: DependencyType
     
-    init(container: DIContainer) {
+    init(container: DependencyType) {
         self.container = container
     }
     

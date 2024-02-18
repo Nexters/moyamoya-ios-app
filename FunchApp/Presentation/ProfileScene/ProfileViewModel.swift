@@ -18,9 +18,9 @@ final class ProfileViewModel: ObservableObject {
     @Published var profile: Profile?
     @Published var dismiss: Bool = false
     
-    private var container: DIContainer
+    private var container: DependencyType
     
-    init(container: DIContainer) {
+    init(container: DependencyType) {
         self.container = container
     }
     

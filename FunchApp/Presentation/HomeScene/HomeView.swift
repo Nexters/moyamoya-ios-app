@@ -53,9 +53,9 @@ struct HomeView: View {
                 NavigationStack { 
                     ProfileView(viewModel: .init(container: container))
                 }
-            case let .matchResult(otherProfile):
+            case let .matchResult(matchingInfo):
                 NavigationStack {
-                    MatchResultView(viewModel: .init(container: container))
+                    MatchResultView(viewModel: .init(container: container, matchingInfo: matchingInfo))
                 }
             }
         }

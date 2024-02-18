@@ -10,9 +10,9 @@ import SwiftUIPager
 
 final class MatchResultViewModel: ObservableObject {
     
-    @Published var similarity: Int?
-    @Published var chemistryInfos: [MatchingInfo.ChemistryInfo]?
-    
+    @Published var similarity: Int = 0
+    @Published var chemistryInfos: [MatchingInfo.ChemistryInfo] = []
+    @Published var otherProfile: MatchingInfo.MatchProfile = .empty
     @Published var myProfile: Profile = .emptyValue
     
     @Published var isEqualMajor: Bool = false
@@ -23,9 +23,9 @@ final class MatchResultViewModel: ObservableObject {
     
     enum Action {
         case fetchMyProfile
-        case fetchMatchResult
+//        case fetchMatchResult(MatchingInfo)
         case distributeMatchingInfos
-        case distributeChemistryInfos(RowType)
+        case distributeOtherProfile(RowType)
         
         enum RowType {
             case major
@@ -36,11 +36,10 @@ final class MatchResultViewModel: ObservableObject {
         }
     }
     
-    var container: DIContainer
-    /// 다른 사람과의 매칭 정보
-    let matchingInfo: MatchingInfo
+    private var container: DependencyType
+    private let matchingInfo: MatchingInfo
     
-    init(container: DIContainer, matchingInfo: MatchingInfo) {
+    init(container: DependencyType, matchingInfo: MatchingInfo) {
         self.container = container
         self.matchingInfo = matchingInfo
     }
@@ -50,15 +49,21 @@ final class MatchResultViewModel: ObservableObject {
         case .fetchMyProfile:
             myProfile = container.services.userService.profiles.first ?? .emptyValue
             
-        case .fetchMatchResult:
-            send(action: .distributeMatchingInfos)
+//        case .fetchMatchResult(matchingInfo):
+//            matchingInfo = matchingInfo
             
         case .distributeMatchingInfos:
             similarity = matchingInfo.similarity
             chemistryInfos = matchingInfo.chemistryInfos
+            otherProfile = matchingInfo.profile
+            send(action: .distributeOtherProfile(.major))
+            send(action: .distributeOtherProfile(.clubs))
+            send(action: .distributeOtherProfile(.mbti))
+            send(action: .distributeOtherProfile(.bloodType))
+            send(action: .distributeOtherProfile(.subway))
             
-        case let .distributeChemistryInfos(type):
-            let otherProfile = container.services.userService.matchedResults.first?.recommendInfos ?? []
+        case let .distributeOtherProfile(type):
+            let otherProfile = matchingInfo.recommendInfos
             
             switch type {
             case .major:
@@ -146,7 +151,8 @@ struct MatchResultView: View {
             }
         }
         .onAppear {
-            viewModel.send(action: .fetchMatchResult)
+            viewModel.send(action: .fetchMyProfile)
+            viewModel.send(action: .distributeMatchingInfos)
         }
     }
     
@@ -182,7 +188,7 @@ struct MatchResultView: View {
             HStack(spacing: 0) {
                 Text("우리는 ")
                     .foregroundStyle(.white)
-                Text("\(viewModel.matchingInfo.similarity)%")
+                Text("\(viewModel.similarity)%")
                     .foregroundStyle(Gradient.funchGradient(type: .lemon500))
                 Text(" 닮았어요")
                     .foregroundStyle(.white)
@@ -192,7 +198,7 @@ struct MatchResultView: View {
             Spacer()
                 .frame(height: 16)
             
-            Image(.findSynergyImageResource(from: viewModel.matchingInfo.similarity))
+            Image(.findSynergyImageResource(from: viewModel.similarity))
                 .resizable()
                 .frame(minWidth: 136, maxWidth: 200, minHeight: 136, maxHeight: 200)
             
@@ -200,7 +206,7 @@ struct MatchResultView: View {
                 .frame(height: 16)
             
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(viewModel.matchingInfo.chemistryInfos, id: \.self) { info in
+                ForEach(viewModel.chemistryInfos, id: \.self) { info in
                     ChemistryLabel(info: info)
                 }
             }
@@ -242,34 +248,9 @@ struct MatchResultView: View {
         }
     }
     
-    /// 상대방의 프로필을 보여주는 View
-    //    @ViewBuilder
-    //    private func profileView(_ matchResult: MatchingInfo.MatchProfile) -> some View {
-    //        let profile: ProfileChipRow.ProfileRowInfo = .init(major: matchResult.major,
-    //                                                           clubs: matchResult.clubs,
-    //                                                           mbti: matchResult.mbti,
-    //                                                           bloodType: matchResult.bloodType,
-    //                                                           subwayInfos: matchResult.subwayNames)
-    //        Text(matchResult.name)
-    //            .font(.Funch.title2)
-    //            .foregroundStyle(.white)
-    //            .frame(maxWidth: .infinity, alignment: .leading)
-    //
-    //        Spacer()
-    //            .frame(height: 20)
-    //
-    //        VStack(alignment: .leading, spacing: 16) {
-    //            ProfileChipRow(.직군, profile, isHighlighted: true)
-    //            ProfileChipRow(.동아리, profile, isHighlighted: false)
-    //            ProfileChipRow(.MBTI, profile, isHighlighted: false)
-    //            ProfileChipRow(.혈액형, profile, isHighlighted: true)
-    //            ProfileChipRow(.지하철, profile, isHighlighted: false)
-    //        }
-    //    }
-    
     private var matchedProfileView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(viewModel.matchingInfo.profile.name)
+            Text(viewModel.otherProfile.name)
                 .font(.Funch.title2)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -304,29 +285,32 @@ struct MatchResultView: View {
     }
     
     private var majorRow: some View {
-        ChipView(title: viewModel.matchingInfo.profile.major, 
-                 imageName: viewModel.matchingInfo.profile.major)
+        ChipView(title: viewModel.otherProfile.major, imageName: viewModel.otherProfile.major)
+            .highlight(viewModel.isEqualMajor)
     }
     
     private var clubsRow: some View {
         DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-            ForEach(viewModel.matchingInfo.profile.clubs, id: \.self) { club in
+            ForEach(viewModel.otherProfile.clubs, id: \.self) { club in
                 ChipView(title: club, imageName: club)
+                    
             }
         }
     }
     
     private var mbtiRow: some View {
-        ChipView(title: viewModel.matchingInfo.profile.mbti)
+        ChipView(title: viewModel.otherProfile.mbti)
+            .highlight(viewModel.isEqualMBTI)
     }
     
     private var bloodTypeRow: some View {
-        ChipView(title: viewModel.matchingInfo.profile.bloodType)
+        ChipView(title: viewModel.otherProfile.bloodType + "형")
+            .highlight(viewModel.isEqualBloodType)
     }
     
     private var subwayRow: some View {
         HStack(spacing: 8) {
-            ForEach(viewModel.matchingInfo.profile.subwayNames, id: \.self) { subwayName in
+            ForEach(viewModel.otherProfile.subwayNames, id: \.self) { subwayName in
                 ChipView(title: subwayName)
             }
         }
@@ -335,8 +319,7 @@ struct MatchResultView: View {
     
 }
 
-//#Preview {
-//    NavigationStack {
-//        MatchResultView()
-//    }
-//}
+#Preview {
+    @StateObject var container = DIContainer(services: Services())
+    return MatchResultView(viewModel: .init(container: container, matchingInfo: .testableValue))
+}

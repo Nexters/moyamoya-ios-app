@@ -36,10 +36,10 @@ final class HomeViewModel: ObservableObject {
     /// 내 프로필
     @Published var profile: Profile?
     
-    private var container: DIContainer
+    private var container: DependencyType
     private var useCase: HomeUseCaseType
     
-    init(container: DIContainer, useCase: HomeUseCaseType) {
+    init(container: DependencyType, useCase: HomeUseCaseType) {
         self.container = container
         self.useCase = useCase
     }
@@ -53,15 +53,15 @@ final class HomeViewModel: ObservableObject {
             }
             
         case .matching:
-            presentation = .matchResult(.testableValue)
             guard let profile else { return }
             useCase.searchUser(
                 requestId: profile.userCode,
                 targetUserCode: serachCodeText
-            ) { [weak self] otherProfile in
+            ) { [weak self] matchingInfo in
                 guard let self else { return }
-                presentation = .matchResult(otherProfile)
+                presentation = .matchResult(matchingInfo)
             }
+            
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
         
