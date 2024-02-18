@@ -133,7 +133,7 @@ extension ResponseDTO.MatchingUser {
             name: data.profile.name,
             major: data.profile.jobGroup,
             clubs: data.profile.clubs,
-            mbti: data.profile.jobGroup,
+            mbti: data.profile.mbti,
             bloodType: data.profile.bloodType,
             subwayNames: data.profile.subwayNames
         )

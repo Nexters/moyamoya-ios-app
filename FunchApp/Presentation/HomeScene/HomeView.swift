@@ -95,7 +95,7 @@ struct HomeView: View {
                 .frame(height: 16)
             
             FunchTextField(
-                text: $viewModel.serachCodeText,
+                text: $viewModel.searchCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
                 trailingButtonImage: Image(.iconSearchYellow), 

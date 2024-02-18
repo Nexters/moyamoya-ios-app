@@ -13,7 +13,6 @@ final class MatchResultViewModel: ObservableObject {
     @Published var similarity: Int = 0
     @Published var chemistryInfos: [MatchingInfo.ChemistryInfo] = []
     @Published var otherProfile: MatchingInfo.MatchProfile = .empty
-    @Published var myProfile: Profile = .emptyValue
     
     @Published var isEqualMajor: Bool = false
     @Published var isEqualClubs: [Bool] = [false, false]
@@ -22,7 +21,6 @@ final class MatchResultViewModel: ObservableObject {
     @Published var isEqualSubway: Bool = false
     
     enum Action {
-        case fetchMyProfile
         case distributeMatchingInfos
         case distributeOtherProfile(RowType)
         
@@ -45,13 +43,11 @@ final class MatchResultViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
-        case .fetchMyProfile:
-            myProfile = container.services.userService.profiles.first ?? .emptyValue
-            
         case .distributeMatchingInfos:
             similarity = matchingInfo.similarity
             chemistryInfos = matchingInfo.chemistryInfos
             otherProfile = matchingInfo.profile
+            
             send(action: .distributeOtherProfile(.major))
             send(action: .distributeOtherProfile(.clubs))
             send(action: .distributeOtherProfile(.mbti))
@@ -59,38 +55,31 @@ final class MatchResultViewModel: ObservableObject {
             send(action: .distributeOtherProfile(.subway))
             
         case let .distributeOtherProfile(type):
-            let otherProfile = matchingInfo.recommendInfos
+            let equalInfo = matchingInfo.recommendInfos.map { $0.title }
+            let otherProfile = matchingInfo.profile
             
             switch type {
             case .major:
-                let myMajors = myProfile.majors.map { $0.name == "developer" ? "개발자" : "디자이너" }
-                isEqualMajor = myMajors.contains(otherProfile[0].title)
+                let major = otherProfile.major
+                isEqualMajor = equalInfo.contains(major)
                 
             case .clubs:
-                let myClubs = myProfile.clubs
-                isEqualClubs = myClubs.map { club in
-                    otherProfile
-                        .map { $0.title }
-                        .contains(club.name)
+                let clubs = otherProfile.clubs
+                isEqualClubs = clubs.map { club in
+                    equalInfo.contains(club)
                 }
                 
             case .mbti:
-                let myMBTI = myProfile.mbti
-                isEqualMBTI = otherProfile
-                    .map { $0.title }
-                    .contains(myMBTI)
+                let mbti = otherProfile.mbti
+                isEqualMBTI = equalInfo.contains(mbti)
                 
             case .bloodType:
-                let myBloodType = myProfile.bloodType
-                isEqualBloodType = otherProfile
-                    .map { $0.title }
-                    .contains(myBloodType)
+                let bloodType = otherProfile.bloodType
+                isEqualBloodType = equalInfo.contains(bloodType)
                 
             case .subway:
-                let mySubway = myProfile.subwayInfos.first?.name ?? ""
-                isEqualSubway = otherProfile
-                    .map { $0.title }
-                    .contains(mySubway)
+                let subway = otherProfile.subwayNames.first ?? ""
+                isEqualSubway = equalInfo.contains(subway)
                 
             }
         }
@@ -147,7 +136,6 @@ struct MatchResultView: View {
             }
         }
         .onAppear {
-            viewModel.send(action: .fetchMyProfile)
             viewModel.send(action: .distributeMatchingInfos)
         }
     }
@@ -286,10 +274,13 @@ struct MatchResultView: View {
     }
     
     private var clubsRow: some View {
-        DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
-            ForEach(viewModel.otherProfile.clubs, id: \.self) { club in
-                ChipView(title: club, imageName: club)
-                    
+        let otherClubs = viewModel.otherProfile.clubs
+        let isEqualClub: [Bool] = viewModel.isEqualClubs
+        
+        return DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
+            ForEach(otherClubs.indices, id: \.self) { index in
+                ChipView(title: otherClubs[index], imageName: otherClubs[index])
+                    .highlight(isEqualClub[index])
             }
         }
     }
@@ -308,6 +299,7 @@ struct MatchResultView: View {
         HStack(spacing: 8) {
             ForEach(viewModel.otherProfile.subwayNames, id: \.self) { subwayName in
                 ChipView(title: subwayName)
+                    .highlight(viewModel.isEqualSubway)
             }
         }
     }

@@ -85,6 +85,7 @@ extension ResponseDTO.GetProfile {
         let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
                 .init(name: name, lines: [])
         }
+        let viewCount = String(data.viewCount)
         return Profile(
             id: data.id,
             userCode: data.memberCode,
@@ -94,6 +95,6 @@ extension ResponseDTO.GetProfile {
             mbti: data.mbti,
             bloodType: data.bloodType,
             subwayInfos: subwayInfos,
-            viewerShip: "0")
+            viewerShip: viewCount)
     }
 }
