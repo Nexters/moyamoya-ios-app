@@ -55,7 +55,7 @@ final class HomeViewModel: ObservableObject {
         case .matching:
             guard let profile else { return }
             useCase.searchUser(
-                requestId: profile.userCode,
+                requestId: profile.id,
                 targetUserCode: serachCodeText
             ) { [weak self] matchingInfo in
                 guard let self else { return }

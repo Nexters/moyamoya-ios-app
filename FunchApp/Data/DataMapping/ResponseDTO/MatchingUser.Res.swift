@@ -63,7 +63,7 @@ extension ResponseDTO {
                     case jobGroup
                     case clubs
                     case mbti
-                    case constellation
+                    case bloodType
                     case subwayNames
                 }
                 
@@ -73,7 +73,7 @@ extension ResponseDTO {
                     self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.jobGroup)
                     self.clubs = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.clubs)
                     self.mbti = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.mbti)
-                    self.bloodType = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.constellation)
+                    self.bloodType = try container.decode(String.self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.bloodType)
                     self.subwayNames = try container.decode([String].self, forKey: ResponseDTO.MatchingUser.DataClass.Profile.CodingKeys.subwayNames)
                 }
             }

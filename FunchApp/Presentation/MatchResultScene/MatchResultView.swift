@@ -23,7 +23,6 @@ final class MatchResultViewModel: ObservableObject {
     
     enum Action {
         case fetchMyProfile
-//        case fetchMatchResult(MatchingInfo)
         case distributeMatchingInfos
         case distributeOtherProfile(RowType)
         
@@ -48,9 +47,6 @@ final class MatchResultViewModel: ObservableObject {
         switch action {
         case .fetchMyProfile:
             myProfile = container.services.userService.profiles.first ?? .emptyValue
-            
-//        case .fetchMatchResult(matchingInfo):
-//            matchingInfo = matchingInfo
             
         case .distributeMatchingInfos:
             similarity = matchingInfo.similarity
