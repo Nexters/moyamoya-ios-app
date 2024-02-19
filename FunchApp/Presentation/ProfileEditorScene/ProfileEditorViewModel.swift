@@ -59,10 +59,10 @@ final class ProfileEditorViewModel: ObservableObject {
     }
     
     private var container: DependencyType
-    private var useCase: CreateProfileUseCase
+    private var useCase: CreateProfileUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
-    init(container: DependencyType, useCase: CreateProfileUseCase) {
+    init(container: DependencyType, useCase: CreateProfileUseCaseType) {
         self.container = container
         self.useCase = useCase
         

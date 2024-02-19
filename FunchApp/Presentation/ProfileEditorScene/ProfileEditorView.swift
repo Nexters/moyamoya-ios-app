@@ -113,6 +113,7 @@ struct ProfileEditorView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.isEnabled))
+                .shadow(color: viewModel.isEnabled ? .lemon500.opacity(0.7) : .clear, radius: 4, x: 0, y: 4)
                 .disabled(!viewModel.isEnabled)
                 .padding(.horizontal, 20)
                 
@@ -310,9 +311,4 @@ extension ProfileEditorView {
     
 }
 
-#Preview {
-    NavigationStack {
-        ProfileEditorView(viewModel: .init(container: DIContainer(services: Services()), useCase: .init()))
-    }
-}
 
