@@ -33,6 +33,30 @@ extension ImageResource {
         case "우리는 최강의 콤비!": return .bloodGood
         case "쿵짝 쿵짜작~이 잘 맞아요": return .bloodGreat
             
+        case SubwayLines.ONE.rawValue: return .subway1
+        case SubwayLines.TWO.rawValue: return .subway2
+        case SubwayLines.THREE.rawValue: return .subway3
+        case SubwayLines.FOUR.rawValue: return .subway4
+        case SubwayLines.FIVE.rawValue: return .subway5
+        case SubwayLines.SIX.rawValue: return .subway6
+        case SubwayLines.SEVEN.rawValue: return .subway7
+        case SubwayLines.EIGHT.rawValue: return .subway8
+        case SubwayLines.NINE.rawValue: return .subway9
+        case SubwayLines.SEOHAE.rawValue: return .subwaySeohae
+        case SubwayLines.AIRPORT.rawValue: return .subwayAirport
+        case SubwayLines.GIMPO.rawValue: return .subwayGimpoGoldline
+        case SubwayLines.UI_SINSEOL.rawValue: return .subwayUiSinseol
+        case SubwayLines.SILLIM.rawValue: return .subwaySillim
+        case SubwayLines.YOUNGIN.rawValue: return .subwayYounginEver
+        case SubwayLines.UIJEONGBU.rawValue: return .subwayUijeongbu
+        case SubwayLines.BUNDANG.rawValue: return .subwaySuinbundang
+        case SubwayLines.GYEONGCHUN.rawValue: return .subwayGyeongchun
+        case SubwayLines.GYEONGUI.rawValue: return .subwayGyeonguiJungang
+        case SubwayLines.GYEONGGANG.rawValue: return .subwayGeonggang
+        case SubwayLines.INCHEON.rawValue: return .subwayIncheon1
+        case SubwayLines.INCHEON_TWO.rawValue: return .subwayIncheon2
+        case SubwayLines.SINBUNDANG.rawValue: return .subwayShinbundang
+            
         default: return .look
         }
     }

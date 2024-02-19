@@ -31,7 +31,7 @@ extension ResponseDTO {
             let similarity: Int
             let chemistryInfos: [ChemistryInfo]
             let matchedInfos: [MatchedInfo]
-            let subwayChemistryInfo: ChemistryInfo
+            let subwayChemistryInfo: ChemistryInfo?
 
             enum CodingKeys: CodingKey {
                 case profile
@@ -47,7 +47,7 @@ extension ResponseDTO {
                 self.similarity = try container.decode(Int.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.similarity)
                 self.chemistryInfos = try container.decode([ResponseDTO.MatchingUser.DataClass.ChemistryInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.chemistryInfos)
                 self.matchedInfos = try container.decode([ResponseDTO.MatchingUser.DataClass.MatchedInfo].self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.matchedInfos)
-                self.subwayChemistryInfo = try container.decode(ResponseDTO.MatchingUser.DataClass.ChemistryInfo.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.subwayChemistryInfo)
+                self.subwayChemistryInfo = try? container.decode(ResponseDTO.MatchingUser.DataClass.ChemistryInfo.self, forKey: ResponseDTO.MatchingUser.DataClass.CodingKeys.subwayChemistryInfo) 
             }
             
             struct Profile: Decodable {
@@ -146,10 +146,13 @@ extension ResponseDTO.MatchingUser {
                 .init(title: info.title)
         }
         
-        let subwayChemistryInfo: MatchingInfo.ChemistryInfo = .init(
-            title: data.subwayChemistryInfo.title,
-            description: data.subwayChemistryInfo.description
-        )
+        var subwayChemistryInfo: MatchingInfo.ChemistryInfo?
+        if let subwayInfo = data.subwayChemistryInfo {
+            subwayChemistryInfo = .init(
+                title: subwayInfo.title,
+                description: subwayInfo.description
+            )
+        } else { subwayChemistryInfo = nil }
         
         return .init(
             profile: profile,

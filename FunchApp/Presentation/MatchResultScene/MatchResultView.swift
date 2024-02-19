@@ -116,6 +116,10 @@ struct MatchResultView: View {
                 ForEach(viewModel.chemistryInfos, id: \.self) { info in
                     ChemistryLabel(info: info)
                 }
+                
+                if let subwayChemistryInfo = viewModel.subwayChemistryInfo {
+                    SubwayChemistryLabel(targetName: viewModel.otherProfile.name, info: subwayChemistryInfo)
+                }
             }
         }
     }

@@ -11,6 +11,7 @@ final class MatchResultViewModel: ObservableObject {
     
     @Published var similarity: Int = 0
     @Published var chemistryInfos: [MatchingInfo.ChemistryInfo] = []
+    @Published var subwayChemistryInfo: MatchingInfo.ChemistryInfo?
     @Published var otherProfile: MatchingInfo.MatchProfile = .empty
     
     @Published var isEqualMajor: Bool = false
@@ -45,6 +46,7 @@ final class MatchResultViewModel: ObservableObject {
         case .distributeMatchingInfos:
             similarity = matchingInfo.similarity
             chemistryInfos = matchingInfo.chemistryInfos
+            subwayChemistryInfo = matchingInfo.subwayChemistryInfo
             otherProfile = matchingInfo.profile
             
             send(action: .distributeOtherProfile(.major))

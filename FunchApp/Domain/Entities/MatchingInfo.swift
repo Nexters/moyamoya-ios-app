@@ -23,7 +23,7 @@ struct MatchingInfo: Identifiable, Equatable {
     /// 추천정보
     var recommendInfos: [RecommendInfo]
     /// 지하철 정보
-    var subwayChemistryInfo: ChemistryInfo
+    var subwayChemistryInfo: ChemistryInfo?
     
     /// 매칭된 상대 프로필
     struct MatchProfile: Codable {
