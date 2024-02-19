@@ -125,7 +125,7 @@ final class ProfileEditorViewModel: ObservableObject {
                 
             case .mbti(let selection):
                 send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
+                state.mbti[selection[0]] = MBTI.pairs[selection[0]][selection[1]]
                 
             case .bloodType(let selectedType):
                 send(action: .keyboardShouldBecomeFirstResponder(false))
@@ -408,8 +408,8 @@ extension ProfileEditorView {
                             action: {
                                 viewModel.send(action: .inputProfile(.mbti([pairIndex, letterIndex])))
                             },
-                            title: Profile.mbtiPair[pairIndex][letterIndex],
-                            isSelected: viewModel.state.mbti.contains(Profile.mbtiPair[pairIndex][letterIndex])
+                            title: MBTI.pairs[pairIndex][letterIndex],
+                            isSelected: viewModel.state.mbti.contains(MBTI.pairs[pairIndex][letterIndex])
                         )
                     }
                 }
