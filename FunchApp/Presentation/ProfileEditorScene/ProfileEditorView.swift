@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel = ProfileEditorViewModel()
+    @StateObject var viewModel: ProfileEditorViewModel
     
     var body: some View {
         ZStack {
@@ -312,7 +312,7 @@ extension ProfileEditorView {
 
 #Preview {
     NavigationStack {
-        ProfileEditorView()
+        ProfileEditorView(viewModel: .init(container: DIContainer(services: Services()), useCase: .init()))
     }
 }
 
