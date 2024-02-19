@@ -65,14 +65,9 @@ final class ProfileEditorViewModel: ObservableObject {
     init(container: DependencyType, useCase: CreateProfileUseCase) {
         self.container = container
         self.useCase = useCase
+        
+        bind()
     }
-//    init() {
-//        applicationUseCase = .init(userStorage: .shared)
-//        createProfileUseCase = .init()
-//        openURL = .init()
-//        
-//        bind()
-//    }
     
     private func bind() {
         $subwaySearchText
