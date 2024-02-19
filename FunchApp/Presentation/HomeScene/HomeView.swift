@@ -51,11 +51,11 @@ struct HomeView: View {
             switch presentation {
             case .profile:
                 NavigationStack { 
-                    ProfileView(viewModel: .init(container: container))
+                    ProfileViewBuilder(container: container).body
                 }
             case let .matchResult(matchingInfo):
                 NavigationStack {
-                    MatchResultView(viewModel: .init(container: container, matchingInfo: matchingInfo))
+                    MatchResultViewBuilder(container: container, matchingInfo: matchingInfo).body
                 }
             }
         }
