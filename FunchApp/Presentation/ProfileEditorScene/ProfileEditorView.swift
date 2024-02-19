@@ -12,9 +12,8 @@ import Combine
 final class ProfileEditorViewModel: ObservableObject {
     
     enum Action: Equatable {
-        case dropDownShouldBecomeFirstResponder(Bool)
-        case keyboardShouldBecomeFirstResponder(Bool)
         case onChangeProfile
+        case focusField(InputField?)
         case inputProfile(InputType)
         case subwaySearch
         case makeProfile
@@ -42,10 +41,13 @@ final class ProfileEditorViewModel: ObservableObject {
         case home
     }
     
+    enum InputField {
+        case nickname, major, clubs, mbti, bloodType, subway
+    }
+    
     @Published var presentation: PresentationState?
     @Published var subwaySearchText: String = ""
-    @Published var keyboardIsFirstResponder: Bool = false
-    @Published var dropDownIsFirstResponder: Bool = false
+    @Published var focusedField: InputField?
     
     @Published var userNickname: String = ""
     @Published var majors: [Profile.Major] = []
@@ -82,11 +84,8 @@ final class ProfileEditorViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
-        case .dropDownShouldBecomeFirstResponder(let isFirstResponder):
-            dropDownIsFirstResponder = isFirstResponder
-            
-        case .keyboardShouldBecomeFirstResponder(let isFirstResponder):
-            keyboardIsFirstResponder = isFirstResponder
+        case .focusField(let inputType):
+            focusedField = inputType
             
         case .onChangeProfile:
             if !(
@@ -104,12 +103,12 @@ final class ProfileEditorViewModel: ObservableObject {
             
         case let .inputProfile(type):
             switch type {
-            case .nickname(let inputText):
+            case .nickname(_):
                 break
                 
             case .major(let major):
                 majors = [major]
-                send(action: .keyboardShouldBecomeFirstResponder(false))
+                send(action: .focusField(.major))
                 
             case .clubs(let club):
                 if let index = clubs.firstIndex(of: club) {
@@ -117,21 +116,21 @@ final class ProfileEditorViewModel: ObservableObject {
                 } else {
                     clubs.append(club)
                 }
-                send(action: .keyboardShouldBecomeFirstResponder(false))
+                send(action: .focusField(.clubs))
                 
             case .mbti(let selection):
                 mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
-                send(action: .keyboardShouldBecomeFirstResponder(false))
+                send(action: .focusField(.mbti))
                 
             case .bloodType(let selectedType):
                 bloodType = selectedType
-                send(action: .keyboardShouldBecomeFirstResponder(false))
+                send(action: .focusField(.bloodType))
                 
             case .subway(let subway):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
                 subwayInfo = [subway]
                 subwaySearchText = subway.name
             }
+            
             send(action: .onChangeProfile)
         
         case .subwaySearch:
@@ -243,12 +242,16 @@ struct ProfileEditorView: View {
             }
         }
         .onTapGesture {
-            viewModel.send(action: .keyboardShouldBecomeFirstResponder(false))
-            viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
+            viewModel.send(action: .focusField(nil))
         }
-        .onReceive(viewModel.$keyboardIsFirstResponder) { keyboardIsFirstResponder in
-            guard !keyboardIsFirstResponder else { return }
-            hideKeyboard()
+        .onReceive(viewModel.$focusedField) { focusField in
+            switch focusField {
+            case .nickname, .subway: break
+            default:
+                DispatchQueue.main.async {
+                    hideKeyboard()
+                }
+            }
         }
         .onReceive(viewModel.$presentation) {
             switch $0 {
@@ -357,6 +360,9 @@ extension ProfileEditorView {
             placeholderText: "최대 9글자",
             textLimit: 9
         )
+        .onTapGesture {
+            viewModel.send(action: .focusField(.nickname))
+        }
         .onChange(of: viewModel.userNickname) { _, _ in
             viewModel.send(action: .onChangeProfile)
         }
@@ -424,7 +430,7 @@ extension ProfileEditorView {
             ForEach(bloodTypes, id: \.self) { bloodType in
                 Button {
                     viewModel.send(action: .inputProfile(.bloodType(bloodType)))
-                    viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
+                    viewModel.send(action: .focusField(nil))
                 } label: {
                     Text(bloodType)
                 }
@@ -444,13 +450,13 @@ extension ProfileEditorView {
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
-            if viewModel.dropDownIsFirstResponder {
+            if viewModel.focusedField == .bloodType {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.white, lineWidth: 1)
             }
         }
         .onTapGesture {
-            viewModel.send(action: .dropDownShouldBecomeFirstResponder(true))
+            viewModel.send(action: .focusField(.bloodType))
         }
     }
     
@@ -465,6 +471,9 @@ extension ProfileEditorView {
                     viewModel.send(action: .subwaySearch)
                 }
             )
+            .onTapGesture {
+                viewModel.send(action: .focusField(.subway))
+            }
             
             Spacer()
                 .frame(height: 4)
@@ -474,6 +483,7 @@ extension ProfileEditorView {
                     ForEach(viewModel.searchedSubwayInfo, id: \.self) { subwayInfo in
                         Button {
                             viewModel.send(action: .inputProfile(.subway(subwayInfo)))
+                            viewModel.send(action: .focusField(nil))
                         } label: {
                             Text(subwayInfo.name.applyColorToText(target: viewModel.subwaySearchText, color: .white) ?? AttributedString(subwayInfo.name))
                                 .font(.Funch.body)
