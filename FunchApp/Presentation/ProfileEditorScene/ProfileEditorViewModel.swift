@@ -9,8 +9,20 @@ import Foundation
 import SwiftUI
 import Combine
 
-@MainActor
 final class ProfileEditorViewModel: ObservableObject {
+    
+    @Published var presentation: PresentationState?
+    @Published var subwaySearchText: String = ""
+    @Published var focusedField: InputField?
+    
+    @Published var userNickname: String = ""
+    @Published var majors: [Profile.Major] = []
+    @Published var clubs: [Profile.Club] = []
+    @Published var mbti: [String] = .init(repeating: "", count: 4)
+    @Published var bloodType: String = "A"
+    @Published var searchedSubwayInfo: [SubwayInfo] = []
+    @Published var subwayInfo: [SubwayInfo] = []
+    @Published var isEnabled: Bool = false
     
     enum Action: Equatable {
         case onChangeProfile
@@ -46,31 +58,21 @@ final class ProfileEditorViewModel: ObservableObject {
         case nickname, major, clubs, mbti, bloodType, subway
     }
     
-    @Published var presentation: PresentationState?
-    @Published var subwaySearchText: String = ""
-    @Published var focusedField: InputField?
-    
-    @Published var userNickname: String = ""
-    @Published var majors: [Profile.Major] = []
-    @Published var clubs: [Profile.Club] = []
-    @Published var mbti: [String] = .init(repeating: "", count: 4)
-    @Published var bloodType: String = "A"
-    @Published var searchedSubwayInfo: [SubwayInfo] = []
-    @Published var subwayInfo: [SubwayInfo] = []
-    @Published var isEnabled: Bool = false
-    
-    init() {
-        applicationUseCase = .init(userStorage: .shared)
-        createProfileUseCase = .init()
-        openURL = .init()
-        
-        bind()
-    }
-
-    private let applicationUseCase: UserService
-    private let createProfileUseCase: CreateProfileUseCase
-    private let openURL: OpenURLService
+    private var container: DependencyType
+    private var useCase: CreateProfileUseCase
     private var cancellables = Set<AnyCancellable>()
+    
+    init(container: DependencyType, useCase: CreateProfileUseCase) {
+        self.container = container
+        self.useCase = useCase
+    }
+//    init() {
+//        applicationUseCase = .init(userStorage: .shared)
+//        createProfileUseCase = .init()
+//        openURL = .init()
+//        
+//        bind()
+//    }
     
     private func bind() {
         $subwaySearchText
@@ -136,7 +138,7 @@ final class ProfileEditorViewModel: ObservableObject {
         
         case .subwaySearch:
             let query = SearchSubwayStationQuery(searchText: subwaySearchText)
-            createProfileUseCase.searchSubway(query: query) { [weak self] result in
+            useCase.searchSubway(query: query) { [weak self] result in
                 guard let self else { return }
                 switch result {
                 case .success(let subwayInfos):
@@ -148,11 +150,11 @@ final class ProfileEditorViewModel: ObservableObject {
             
         case .makeProfile:
             let query = makeCreateUserQuery()
-            createProfileUseCase.createProfile(createUserQuery: query) { [weak self] result in
+            useCase.createProfile(createUserQuery: query) { [weak self] result in
                 switch result {
                 case .success(let profile):
                     guard let self else { return }
-                    self.applicationUseCase.profiles.append(profile)
+                    self.container.services.userService.profiles.append(profile)
                     self.presentation = .home
                     
                 case .failure(_):
@@ -161,7 +163,7 @@ final class ProfileEditorViewModel: ObservableObject {
             }
             
         case .feedback:
-            openURL.execute(type: .feedback)
+            container.services.openURLSerivce.execute(type: .feedback)
             
         }
     }

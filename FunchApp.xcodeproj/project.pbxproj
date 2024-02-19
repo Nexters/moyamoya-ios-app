@@ -136,6 +136,7 @@
 		3EE810732B8076F9007B8A87 /* Funch_splash_background_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */; };
 		3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */; };
 		3EE810782B831865007B8A87 /* ProfileEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */; };
+		3EE8107C2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 		3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_background_ani.json; sourceTree = "<group>"; };
 		3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewModel.swift; sourceTree = "<group>"; };
 		3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewModel.swift; sourceTree = "<group>"; };
+		3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,8 +504,9 @@
 		1ACE49602B5B9F1A00024336 /* ProfileEditorScene */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49592B5B9EDE00024336 /* ProfileEditorView.swift */,
+				3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */,
 				3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */,
+				1ACE49592B5B9EDE00024336 /* ProfileEditorView.swift */,
 			);
 			path = ProfileEditorScene;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE8107C2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift in Sources */,
 				1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */,
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
 				1A44AAA92B67E848006D8894 /* GetProfileFromId.Req.swift in Sources */,
