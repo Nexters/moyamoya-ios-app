@@ -43,9 +43,10 @@ struct MatchResultView: View {
                 }
                 .horizontal()
                 .singlePagination(ratio: 0.33, sensitivity: .custom(0.2))
-                .preferredItemSize(.init(width: viewSize.width * 0.9, height: viewSize.height))
+                .preferredItemSize(.init(width: viewSize.width * 0.92, height: viewSize.height))
                 .itemSpacing(8)
             }
+            .padding(.bottom, 32)
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
