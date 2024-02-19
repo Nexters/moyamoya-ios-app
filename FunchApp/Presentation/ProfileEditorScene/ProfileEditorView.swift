@@ -36,28 +36,25 @@ final class ProfileEditorViewModel: ObservableObject {
         }
     }
     
-    @Published var state = State()
-    @Published var presentation: State.PresentationState?
+    enum PresentationState: Int, Identifiable, Equatable {
+        var id: Int { self.rawValue }
+        
+        case home
+    }
+    
+    @Published var presentation: PresentationState?
     @Published var subwaySearchText: String = ""
     @Published var keyboardIsFirstResponder: Bool = false
     @Published var dropDownIsFirstResponder: Bool = false
     
-    struct State: Equatable {
-        var userNickname: String = ""
-        var majors: [Profile.Major] = []
-        var clubs: [Profile.Club] = []
-        var mbti: [String] = .init(repeating: "", count: 4)
-        var bloodType: String = "A"
-        var searchedSubwayInfo: [SubwayInfo] = []
-        var subwayInfo: [SubwayInfo] = []
-        var isEnabled: Bool = false
-        
-        enum PresentationState: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case home
-        }
-    }
+    @Published var userNickname: String = ""
+    @Published var majors: [Profile.Major] = []
+    @Published var clubs: [Profile.Club] = []
+    @Published var mbti: [String] = .init(repeating: "", count: 4)
+    @Published var bloodType: String = "A"
+    @Published var searchedSubwayInfo: [SubwayInfo] = []
+    @Published var subwayInfo: [SubwayInfo] = []
+    @Published var isEnabled: Bool = false
     
     init() {
         applicationUseCase = .init(userStorage: .shared)
@@ -70,7 +67,6 @@ final class ProfileEditorViewModel: ObservableObject {
     private let applicationUseCase: UserService
     private let createProfileUseCase: CreateProfileUseCase
     private let openURL: OpenURLService
-    
     private var cancellables = Set<AnyCancellable>()
     
     private func bind() {
@@ -94,49 +90,49 @@ final class ProfileEditorViewModel: ObservableObject {
             
         case .onChangeProfile:
             if !(
-                state.userNickname.isEmpty
-                || state.majors.isEmpty
-                || state.clubs.isEmpty
-                || state.mbti.count < 4
-                || state.bloodType.isEmpty
-                || state.subwayInfo.isEmpty
+                userNickname.isEmpty
+                || majors.isEmpty
+                || clubs.isEmpty
+                || mbti.count < 4
+                || bloodType.isEmpty
+                || subwayInfo.isEmpty
             ) {
-                state.isEnabled = true
+                isEnabled = true
             } else {
-                state.isEnabled = false
+                isEnabled = false
             }
             
         case let .inputProfile(type):
             switch type {
             case .nickname(let inputText):
-                state.userNickname = inputText
+                break
                 
             case .major(let major):
+                majors = [major]
                 send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.majors = [major]
                 
             case .clubs(let club):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                if let index = state.clubs.firstIndex(of: club) {
-                    state.clubs.remove(at: index)
+                if let index = clubs.firstIndex(of: club) {
+                    clubs.remove(at: index)
                 } else {
-                    state.clubs.append(club)
+                    clubs.append(club)
                 }
+                send(action: .keyboardShouldBecomeFirstResponder(false))
                 
             case .mbti(let selection):
+                mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
                 send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
                 
             case .bloodType(let selectedType):
+                bloodType = selectedType
                 send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.bloodType = selectedType
                 
             case .subway(let subway):
                 send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.subwayInfo = [subway]
+                subwayInfo = [subway]
                 subwaySearchText = subway.name
-                
             }
+            send(action: .onChangeProfile)
         
         case .subwaySearch:
             let query = SearchSubwayStationQuery(searchText: subwaySearchText)
@@ -144,9 +140,9 @@ final class ProfileEditorViewModel: ObservableObject {
                 guard let self else { return }
                 switch result {
                 case .success(let subwayInfos):
-                    self.state.searchedSubwayInfo = subwayInfos
+                    self.searchedSubwayInfo = subwayInfos
                 case .failure(_):
-                    self.state.searchedSubwayInfo = []
+                    self.searchedSubwayInfo = []
                 }
             }
             
@@ -173,14 +169,14 @@ final class ProfileEditorViewModel: ObservableObject {
 
 extension ProfileEditorViewModel {
     private func makeCreateUserQuery() -> CreateUserQuery {
-        let major = state.majors.map { major in
+        let major = majors.map { major in
             switch major.name {
             case "개발자": return "developer"
             case "디자이너": return "designer"
             default: return "unknown"
             }
         }.first ?? "unknown"
-        let clubs = state.clubs.map { club in
+        let clubs = clubs.map { club in
             switch club.name {
             case "넥스터즈": return "nexters"
             case "SOPT": return "sopt"
@@ -188,12 +184,12 @@ extension ProfileEditorViewModel {
             default: return "unknown"
             }
         }
-        let bloodType = state.bloodType
-        let subwayInfoNames = state.subwayInfo.map { $0.name }
-        let mbti = state.mbti.reduce("", { $0 + $1 })
+        let bloodType = bloodType
+        let subwayInfoNames = subwayInfo.map { $0.name }
+        let mbti = mbti.reduce("", { $0 + $1 })
         
         return CreateUserQuery(
-            name: state.userNickname,
+            name: userNickname,
             major: major,
             clubs: clubs,
             bloodType: bloodType,
@@ -254,9 +250,6 @@ struct ProfileEditorView: View {
             guard !keyboardIsFirstResponder else { return }
             hideKeyboard()
         }
-        .onChange(of: viewModel.state) { _, _ in
-            viewModel.send(action: .onChangeProfile)
-        }
         .onReceive(viewModel.$presentation) {
             switch $0 {
             case .home:
@@ -307,8 +300,8 @@ struct ProfileEditorView: View {
                         .customFont(.subtitle1)
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.state.isEnabled))
-                .disabled(!viewModel.state.isEnabled)
+                .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.isEnabled))
+                .disabled(!viewModel.isEnabled)
                 .padding(.horizontal, 20)
                 
                 Spacer()
@@ -360,10 +353,13 @@ extension ProfileEditorView {
     
     private var userNicknameInputField: some View {
         FunchTextField(
-            text: $viewModel.state.userNickname,
+            text: $viewModel.userNickname,
             placeholderText: "최대 9글자",
             textLimit: 9
         )
+        .onChange(of: viewModel.userNickname) { _, _ in
+            viewModel.send(action: .onChangeProfile)
+        }
     }
     
     
@@ -376,7 +372,7 @@ extension ProfileEditorView {
                     },
                     title: major.name,
                     imageName: major.imageName,
-                    isSelected: viewModel.state.majors.contains(major)
+                    isSelected: viewModel.majors.contains(major)
                 )
             }
         }
@@ -392,7 +388,7 @@ extension ProfileEditorView {
                     },
                     title: club.name,
                     imageName: club.imageName,
-                    isSelected: viewModel.state.clubs.contains(club)
+                    isSelected: viewModel.clubs.contains(club)
                 )
             }
         }
@@ -409,7 +405,7 @@ extension ProfileEditorView {
                                 viewModel.send(action: .inputProfile(.mbti([pairIndex, letterIndex])))
                             },
                             title: Profile.mbtiPair[pairIndex][letterIndex],
-                            isSelected: viewModel.state.mbti.contains(Profile.mbtiPair[pairIndex][letterIndex])
+                            isSelected: viewModel.mbti.contains(Profile.mbtiPair[pairIndex][letterIndex])
                         )
                     }
                 }
@@ -435,7 +431,7 @@ extension ProfileEditorView {
             }
         } label: {
             HStack(spacing: 0) {
-                Text(viewModel.state.bloodType + "형")
+                Text(viewModel.bloodType + "형")
                     .font(.Funch.body)
                     .foregroundStyle(.white)
                 
@@ -475,7 +471,7 @@ extension ProfileEditorView {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 4) {
-                    ForEach(viewModel.state.searchedSubwayInfo, id: \.self) { subwayInfo in
+                    ForEach(viewModel.searchedSubwayInfo, id: \.self) { subwayInfo in
                         Button {
                             viewModel.send(action: .inputProfile(.subway(subwayInfo)))
                         } label: {
