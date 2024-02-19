@@ -6,207 +6,11 @@
 //
 
 import SwiftUI
-import Combine
-
-@MainActor
-final class ProfileEditorViewModel: ObservableObject {
-    
-    enum Action: Equatable {
-        case dropDownShouldBecomeFirstResponder(Bool)
-        case keyboardShouldBecomeFirstResponder(Bool)
-        case onChangeProfile
-        case inputProfile(InputType)
-        case subwaySearch
-        case makeProfile
-        case feedback
-        
-        enum PresentationAction: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case home
-        }
-        
-        enum InputType: Equatable {
-            case nickname(String)
-            case major(Profile.Major)
-            case clubs(Profile.Club)
-            case mbti([Int])
-            case bloodType(String)
-            case subway(SubwayInfo)
-        }
-    }
-    
-    @Published var state = State()
-    @Published var presentation: State.PresentationState?
-    @Published var subwaySearchText: String = ""
-    @Published var keyboardIsFirstResponder: Bool = false
-    @Published var dropDownIsFirstResponder: Bool = false
-    
-    struct State: Equatable {
-        var userNickname: String = ""
-        var majors: [Profile.Major] = []
-        var clubs: [Profile.Club] = []
-        var mbti: [String] = .init(repeating: "", count: 4)
-        var bloodType: String = "A"
-        var searchedSubwayInfo: [SubwayInfo] = []
-        var subwayInfo: [SubwayInfo] = []
-        var isEnabled: Bool = false
-        
-        enum PresentationState: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case home
-        }
-    }
-    
-    init() {
-        applicationUseCase = .init(userStorage: .shared)
-        createProfileUseCase = .init()
-        openURL = .init()
-        
-        bind()
-    }
-
-    private let applicationUseCase: UserService
-    private let createProfileUseCase: CreateProfileUseCase
-    private let openURL: OpenURLService
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    private func bind() {
-        $subwaySearchText
-            .debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .sink { [weak self] text in
-                guard let self else { return }
-                if !text.isEmpty {
-                    self.send(action: .subwaySearch)
-                }
-            }.store(in: &cancellables)
-    }
-    
-    func send(action: Action) {
-        switch action {
-        case .dropDownShouldBecomeFirstResponder(let isFirstResponder):
-            dropDownIsFirstResponder = isFirstResponder
-            
-        case .keyboardShouldBecomeFirstResponder(let isFirstResponder):
-            keyboardIsFirstResponder = isFirstResponder
-            
-        case .onChangeProfile:
-            if !(
-                state.userNickname.isEmpty
-                || state.majors.isEmpty
-                || state.clubs.isEmpty
-                || state.mbti.count < 4
-                || state.bloodType.isEmpty
-                || state.subwayInfo.isEmpty
-            ) {
-                state.isEnabled = true
-            } else {
-                state.isEnabled = false
-            }
-            
-        case let .inputProfile(type):
-            switch type {
-            case .nickname(let inputText):
-                state.userNickname = inputText
-                
-            case .major(let major):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.majors = [major]
-                
-            case .clubs(let club):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                if let index = state.clubs.firstIndex(of: club) {
-                    state.clubs.remove(at: index)
-                } else {
-                    state.clubs.append(club)
-                }
-                
-            case .mbti(let selection):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.mbti[selection[0]] = Profile.mbtiPair[selection[0]][selection[1]]
-                
-            case .bloodType(let selectedType):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.bloodType = selectedType
-                
-            case .subway(let subway):
-                send(action: .keyboardShouldBecomeFirstResponder(false))
-                state.subwayInfo = [subway]
-                subwaySearchText = subway.name
-                
-            }
-        
-        case .subwaySearch:
-            let query = SearchSubwayStationQuery(searchText: subwaySearchText)
-            createProfileUseCase.searchSubway(query: query) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let subwayInfos):
-                    self.state.searchedSubwayInfo = subwayInfos
-                case .failure(_):
-                    self.state.searchedSubwayInfo = []
-                }
-            }
-            
-        case .makeProfile:
-            let query = makeCreateUserQuery()
-            createProfileUseCase.createProfile(createUserQuery: query) { [weak self] result in
-                switch result {
-                case .success(let profile):
-                    guard let self else { return }
-                    self.applicationUseCase.profiles.append(profile)
-                    self.presentation = .home
-                    
-                case .failure(_):
-                    break
-                }
-            }
-            
-        case .feedback:
-            openURL.execute(type: .feedback)
-            
-        }
-    }
-}
-
-extension ProfileEditorViewModel {
-    private func makeCreateUserQuery() -> CreateUserQuery {
-        let major = state.majors.map { major in
-            switch major.name {
-            case "개발자": return "developer"
-            case "디자이너": return "designer"
-            default: return "unknown"
-            }
-        }.first ?? "unknown"
-        let clubs = state.clubs.map { club in
-            switch club.name {
-            case "넥스터즈": return "nexters"
-            case "SOPT": return "sopt"
-            case "Depromeet": return "depromeet"
-            default: return "unknown"
-            }
-        }
-        let bloodType = state.bloodType
-        let subwayInfoNames = state.subwayInfo.map { $0.name }
-        let mbti = state.mbti.reduce("", { $0 + $1 })
-        
-        return CreateUserQuery(
-            name: state.userNickname,
-            major: major,
-            clubs: clubs,
-            bloodType: bloodType,
-            subwayStationName: subwayInfoNames,
-            mbti: mbti
-        )
-    }
-}
 
 struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel = ProfileEditorViewModel()
+    @StateObject var viewModel: ProfileEditorViewModel
     
     var body: some View {
         ZStack {
@@ -247,15 +51,16 @@ struct ProfileEditorView: View {
             }
         }
         .onTapGesture {
-            viewModel.send(action: .keyboardShouldBecomeFirstResponder(false))
-            viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
+            viewModel.send(action: .focusField(nil))
         }
-        .onReceive(viewModel.$keyboardIsFirstResponder) { keyboardIsFirstResponder in
-            guard !keyboardIsFirstResponder else { return }
-            hideKeyboard()
-        }
-        .onChange(of: viewModel.state) { _, _ in
-            viewModel.send(action: .onChangeProfile)
+        .onReceive(viewModel.$focusedField) { focusField in
+            switch focusField {
+            case .nickname, .subway: break
+            default:
+                DispatchQueue.main.async {
+                    hideKeyboard()
+                }
+            }
         }
         .onReceive(viewModel.$presentation) {
             switch $0 {
@@ -307,8 +112,8 @@ struct ProfileEditorView: View {
                         .customFont(.subtitle1)
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.state.isEnabled))
-                .disabled(!viewModel.state.isEnabled)
+                .buttonStyle(DefaultFunchButtonStyle(isEnabled: viewModel.isEnabled))
+                .disabled(!viewModel.isEnabled)
                 .padding(.horizontal, 20)
                 
                 Spacer()
@@ -360,10 +165,16 @@ extension ProfileEditorView {
     
     private var userNicknameInputField: some View {
         FunchTextField(
-            text: $viewModel.state.userNickname,
+            text: $viewModel.userNickname,
             placeholderText: "최대 9글자",
             textLimit: 9
         )
+        .onTapGesture {
+            viewModel.send(action: .focusField(.nickname))
+        }
+        .onChange(of: viewModel.userNickname) { _, _ in
+            viewModel.send(action: .onChangeProfile)
+        }
     }
     
     
@@ -376,7 +187,7 @@ extension ProfileEditorView {
                     },
                     title: major.name,
                     imageName: major.imageName,
-                    isSelected: viewModel.state.majors.contains(major)
+                    isSelected: viewModel.majors.contains(major)
                 )
             }
         }
@@ -392,7 +203,7 @@ extension ProfileEditorView {
                     },
                     title: club.name,
                     imageName: club.imageName,
-                    isSelected: viewModel.state.clubs.contains(club)
+                    isSelected: viewModel.clubs.contains(club)
                 )
             }
         }
@@ -409,7 +220,7 @@ extension ProfileEditorView {
                                 viewModel.send(action: .inputProfile(.mbti([pairIndex, letterIndex])))
                             },
                             title: Profile.mbtiPair[pairIndex][letterIndex],
-                            isSelected: viewModel.state.mbti.contains(Profile.mbtiPair[pairIndex][letterIndex])
+                            isSelected: viewModel.mbti.contains(Profile.mbtiPair[pairIndex][letterIndex])
                         )
                     }
                 }
@@ -428,14 +239,14 @@ extension ProfileEditorView {
             ForEach(bloodTypes, id: \.self) { bloodType in
                 Button {
                     viewModel.send(action: .inputProfile(.bloodType(bloodType)))
-                    viewModel.send(action: .dropDownShouldBecomeFirstResponder(false))
+                    viewModel.send(action: .focusField(nil))
                 } label: {
                     Text(bloodType)
                 }
             }
         } label: {
             HStack(spacing: 0) {
-                Text(viewModel.state.bloodType + "형")
+                Text(viewModel.bloodType + "형")
                     .font(.Funch.body)
                     .foregroundStyle(.white)
                 
@@ -448,13 +259,13 @@ extension ProfileEditorView {
         .background(.gray800)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
-            if viewModel.dropDownIsFirstResponder {
+            if viewModel.focusedField == .bloodType {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.white, lineWidth: 1)
             }
         }
         .onTapGesture {
-            viewModel.send(action: .dropDownShouldBecomeFirstResponder(true))
+            viewModel.send(action: .focusField(.bloodType))
         }
     }
     
@@ -469,15 +280,19 @@ extension ProfileEditorView {
                     viewModel.send(action: .subwaySearch)
                 }
             )
+            .onTapGesture {
+                viewModel.send(action: .focusField(.subway))
+            }
             
             Spacer()
                 .frame(height: 4)
             
             ScrollView(.horizontal) {
                 HStack(spacing: 4) {
-                    ForEach(viewModel.state.searchedSubwayInfo, id: \.self) { subwayInfo in
+                    ForEach(viewModel.searchedSubwayInfo, id: \.self) { subwayInfo in
                         Button {
                             viewModel.send(action: .inputProfile(.subway(subwayInfo)))
+                            viewModel.send(action: .focusField(nil))
                         } label: {
                             Text(subwayInfo.name.applyColorToText(target: viewModel.subwaySearchText, color: .white) ?? AttributedString(subwayInfo.name))
                                 .font(.Funch.body)
@@ -497,7 +312,7 @@ extension ProfileEditorView {
 
 #Preview {
     NavigationStack {
-        ProfileEditorView()
+        ProfileEditorView(viewModel: .init(container: DIContainer(services: Services()), useCase: .init()))
     }
 }
 
