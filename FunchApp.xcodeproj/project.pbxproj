@@ -135,9 +135,9 @@
 		3EE810712B8076F5007B8A87 /* Funch_splash_logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */; };
 		3EE810732B8076F9007B8A87 /* Funch_splash_background_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */; };
 		3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */; };
-		3EE8107E2B8326CF007B8A87 /* MBTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8107D2B8326CF007B8A87 /* MBTI.swift */; };
 		3EE810782B831865007B8A87 /* ProfileEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */; };
 		3EE8107C2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */; };
+		3EE8107E2B8326CF007B8A87 /* MBTIPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8107D2B8326CF007B8A87 /* MBTIPair.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,9 +241,9 @@
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
 		3EE810722B8076F9007B8A87 /* Funch_splash_background_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_background_ani.json; sourceTree = "<group>"; };
 		3EE810752B81D234007B8A87 /* MatchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewModel.swift; sourceTree = "<group>"; };
-		3EE8107D2B8326CF007B8A87 /* MBTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTI.swift; sourceTree = "<group>"; };
 		3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewModel.swift; sourceTree = "<group>"; };
 		3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewBuilder.swift; sourceTree = "<group>"; };
+		3EE8107D2B8326CF007B8A87 /* MBTIPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIPair.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,7 +528,7 @@
 				1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */,
 				1ACE49632B5B9F4A00024336 /* Profile.swift */,
 				1A7B06A12B5D8C710024356C /* MatchingInfo.swift */,
-				3EE8107D2B8326CF007B8A87 /* MBTI.swift */,
+				3EE8107D2B8326CF007B8A87 /* MBTIPair.swift */,
 				1A792B822B5D5A2E00A080F2 /* Request */,
 			);
 			path = Entities;
@@ -961,7 +961,7 @@
 				1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */,
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
-				3EE8107E2B8326CF007B8A87 /* MBTI.swift in Sources */,
+				3EE8107E2B8326CF007B8A87 /* MBTIPair.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,

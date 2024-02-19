@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MBTI: CaseIterable {
+enum MBTIPair: CaseIterable {
     case ei
     case ns
     case ft
@@ -23,7 +23,7 @@ enum MBTI: CaseIterable {
     }
     
     static var pairs: [[String]] {
-        MBTI.allCases.map { $0.value }
+        MBTIPair.allCases.map { $0.value }
     }
     
 }
