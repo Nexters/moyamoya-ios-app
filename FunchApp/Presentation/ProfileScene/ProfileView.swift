@@ -12,8 +12,6 @@ struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ProfileViewModel
     
-//    private let openURL: OpenURLService = .init()
-    
     var body: some View {
         ZStack {
             Color.gray900
@@ -25,20 +23,6 @@ struct ProfileView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     if let profile = viewModel.profile {
-                        Text(profile.userCode)
-                            .font(.Funch.body)
-                            .foregroundStyle(.gray400)
-                        
-                        Spacer()
-                            .frame(height: 2)
-                        
-                        Text(profile.userNickname)
-                            .font(.Funch.title2)
-                            .foregroundStyle(.white)
-                        
-                        Spacer()
-                            .frame(height: 20)
-                        
                         profileView(profile)
                     } else {
                         Text("프로필을 불러오는 중이에요.")
@@ -88,24 +72,68 @@ struct ProfileView: View {
     }
     
     
-    @ViewBuilder
     private func profileView(_ profile: Profile) -> some View {
-        let major: String = profile.majors.map { $0.name }.first ?? ""
-        let clubs: [String] = profile.clubs.map { $0.name }
-        let subwayInfos: [String] = profile.subwayInfos.map { $0.name }
-        
-        let profile: ProfileChipRow.ProfileRowInfo = .init(major: major,
-                                                           clubs: clubs,
-                                                           mbti: profile.mbti,
-                                                           bloodType: profile.bloodType,
-                                                           subwayInfos: subwayInfos)
-        
-        VStack(alignment: .leading, spacing: 16) {
-            ProfileChipRow(.직군, profile)
-            ProfileChipRow(.동아리, profile)
-            ProfileChipRow(.MBTI, profile)
-            ProfileChipRow(.혈액형, profile)
-            ProfileChipRow(.지하철, profile)
+        VStack(alignment: .leading, spacing: 0) {
+            Text(profile.userCode)
+                .font(.Funch.body)
+                .foregroundStyle(.gray400)
+            
+            Spacer()
+                .frame(height: 2)
+            
+            Text(profile.userNickname)
+                .font(.Funch.title2)
+                .foregroundStyle(.white)
+            
+            Spacer()
+                .frame(height: 20)
+            
+            VStack(alignment: .leading, spacing: 16) {
+                profileRow("직군") {
+                    ChipView(title: profile.majors[0].name,
+                             imageName: profile.majors[0].imageName)
+                }
+                
+                profileRow("동아리") {
+                    DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
+                        ForEach(profile.clubs, id: \.self) { club in
+                            ChipView(title: club.name, imageName: club.imageName)
+                        }
+                    }
+                }
+                
+                profileRow("MBTI") {
+                    ChipView(title: profile.mbti)
+                }
+                
+                profileRow("혈액형") {
+                    ChipView(title: profile.bloodType + "형")
+                }
+                
+                profileRow("지하철") {
+                    SubwayChipView(subway: profile.subwayInfos[0])
+                }
+            }
         }
     }
+    
+    private func profileRow(_ label: String, row profileRow: () -> some View) -> some View {
+        HStack(alignment: .top, spacing: 0) {
+            Text(label)
+                .multilineTextAlignment(.leading)
+                .lineLimit(0)
+                .font(.Funch.body)
+                .foregroundStyle(.gray400)
+                .frame(width: 52, height: 48, alignment: .leading)
+            
+            profileRow()
+            
+            Spacer()
+        }
+    }
+}
+
+#Preview {
+    @StateObject var container = DIContainer(services: Services())
+    return ProfileViewBuilder(container: container).body
 }

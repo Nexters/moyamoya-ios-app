@@ -14,7 +14,6 @@
 		1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
 		1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */; };
 		1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
-		1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */; };
 		1A792B6F2B5D3F6B00A080F2 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1A792B6E2B5D3F6B00A080F2 /* Moya */; };
 		1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B702B5D465700A080F2 /* DefaultTargetType.swift */; };
 		1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B732B5D55D400A080F2 /* RequestDTO.swift */; };
@@ -129,6 +128,9 @@
 		3EA69C2B2B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */; };
 		3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C2C2B5EE591008AE23B /* Text+.swift */; };
 		3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C3E2B64C086008AE23B /* CGFloat+.swift */; };
+		3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875502B83C11E00713C64 /* SubwayLines.swift */; };
+		3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */; };
+		3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875542B843EEC00713C64 /* SubwayChipView.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -158,7 +160,6 @@
 		1A4588342B64DE2100FBB841 /* FunchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryTests.swift; sourceTree = "<group>"; };
 		1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayInfo.swift; sourceTree = "<group>"; };
-		1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChipRow.swift; sourceTree = "<group>"; };
 		1A792B702B5D465700A080F2 /* DefaultTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTargetType.swift; sourceTree = "<group>"; };
 		1A792B732B5D55D400A080F2 /* RequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDTO.swift; sourceTree = "<group>"; };
 		1A792B762B5D55F700A080F2 /* ResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDTO.swift; sourceTree = "<group>"; };
@@ -235,6 +236,9 @@
 		3EA69C282B5EDF44008AE23B /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		3EA69C2C2B5EE591008AE23B /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
 		3EA69C3E2B64C086008AE23B /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		3EA875502B83C11E00713C64 /* SubwayLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayLines.swift; sourceTree = "<group>"; };
+		3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChemistryLabel.swift; sourceTree = "<group>"; };
+		3EA875542B843EEC00713C64 /* SubwayChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChipView.swift; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -350,14 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				3E1E740A2B7A22A80082386A /* ChemistryLabel.swift */,
-			);
-			path = SubViews;
-			sourceTree = "<group>";
-		};
-		1A83F0342B80E7C700E6EC89 /* SubViews */ = {
-			isa = PBXGroup;
-			children = (
-				1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */,
+				3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -485,7 +482,6 @@
 				1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */,
 				1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */,
 				1ACE49552B5B9E9300024336 /* ProfileView.swift */,
-				1A83F0342B80E7C700E6EC89 /* SubViews */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -524,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */,
+				3EA875502B83C11E00713C64 /* SubwayLines.swift */,
 				1ACE49632B5B9F4A00024336 /* Profile.swift */,
 				1A7B06A12B5D8C710024356C /* MatchingInfo.swift */,
 				1A792B822B5D5A2E00A080F2 /* Request */,
@@ -643,6 +640,7 @@
 				3E1E73F02B70B3570082386A /* ChipButton.swift */,
 				3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */,
 				3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */,
+				3EA875542B843EEC00713C64 /* SubwayChipView.swift */,
 			);
 			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
@@ -913,6 +911,7 @@
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepositoryType.swift in Sources */,
+				3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */,
 				1A792B852B5D5A5100A080F2 /* CreateUserQuery.swift in Sources */,
 				3EA69C1C2B5ED956008AE23B /* Font+.swift in Sources */,
 				1A792B892B5D62A300A080F2 /* MatchingUserQuery.swift in Sources */,
@@ -953,6 +952,7 @@
 				1ACE498D2B5C111500024336 /* ChipView.swift in Sources */,
 				1ACE49712B5BA29000024336 /* HomeUseCase.swift in Sources */,
 				1A83F0362B80E88300E6EC89 /* OnboardingViewBuilder.swift in Sources */,
+				3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */,
 				1A44AAA72B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift in Sources */,
 				1A7B06982B5D68650024356C /* SearchSubwayStationQuery.swift in Sources */,
 				1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */,
@@ -966,9 +966,9 @@
 				3E1E740B2B7A22A80082386A /* ChemistryLabel.swift in Sources */,
 				3E28CC652B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
+				3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
 				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
-				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
 				1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */,
 				1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */,

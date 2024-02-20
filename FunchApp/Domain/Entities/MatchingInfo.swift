@@ -23,7 +23,7 @@ struct MatchingInfo: Identifiable, Equatable {
     /// 추천정보
     var recommendInfos: [RecommendInfo]
     /// 지하철 정보
-    var subwayInfos: [SubwayInfo]
+    var subwayChemistryInfo: ChemistryInfo?
     
     /// 매칭된 상대 프로필
     struct MatchProfile: Codable {
@@ -38,7 +38,7 @@ struct MatchingInfo: Identifiable, Equatable {
         /// 혈액형
         let bloodType: String
         /// 지하철 정보
-        let subwayNames: [String]
+        let subwayInfos: [SubwayInfo]
     }
     
     struct ChemistryInfo: Hashable, Codable {
@@ -63,13 +63,13 @@ extension MatchingInfo {
                            clubs: Profile.Club.dummies.map { $0.name },
                            mbti: "ENTJ",
                            bloodType: "A",
-                           subwayNames: ["고속터미널"]),
+                           subwayInfos: [.init(name: "고속터미널", lines: ["SEVEN", "NINE"])]),
             similarity: 80,
             chemistryInfos: [.init(title: "찾았다, 내 소울메이트!", description: "ENTJ인 이성민님은 비전을 향해 적극적으로 이끄는 리더 타입!"),
                            .init(title: "서로 다른 점을 찾는 재미", description: "A형인 이성민님은 호기심과 창의력을 갖췄지만 변덕스러워요"),
                            .init(title: "7호선에서 만나요", description: "이성민님도 7호선에 살고 있어요")],
             recommendInfos: [.init(title: "")],
-            subwayInfos: [.init(name: "상도역", lines: ["7"])]
+            subwayChemistryInfo: .init(title: "SEVEN", description: "7호선")
         )
     }
 }
@@ -80,12 +80,18 @@ extension MatchingInfo {
               similarity: 0,
               chemistryInfos: [],
               recommendInfos: [],
-              subwayInfos: [])
+              subwayChemistryInfo: .empty)
     }
 }
 
 extension MatchingInfo.MatchProfile {
     static var empty: MatchingInfo.MatchProfile {
-        .init(name: "", major: "", clubs: [], mbti: "", bloodType: "", subwayNames: [])
+        .init(name: "", major: "", clubs: [], mbti: "", bloodType: "", subwayInfos: [])
+    }
+}
+
+extension MatchingInfo.ChemistryInfo {
+    static var empty: MatchingInfo.ChemistryInfo {
+        .init(title: "", description: "")
     }
 }
