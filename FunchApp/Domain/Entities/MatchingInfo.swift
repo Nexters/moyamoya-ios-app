@@ -38,7 +38,7 @@ struct MatchingInfo: Identifiable, Equatable {
         /// 혈액형
         let bloodType: String
         /// 지하철 정보
-        let subwayNames: [String]
+        let subwayInfos: [SubwayInfo]
     }
     
     struct ChemistryInfo: Hashable, Codable {
@@ -63,7 +63,7 @@ extension MatchingInfo {
                            clubs: Profile.Club.dummies.map { $0.name },
                            mbti: "ENTJ",
                            bloodType: "A",
-                           subwayNames: ["고속터미널"]),
+                           subwayInfos: [.init(name: "고속터미널", lines: ["SEVEN", "NINE"])]),
             similarity: 80,
             chemistryInfos: [.init(title: "찾았다, 내 소울메이트!", description: "ENTJ인 이성민님은 비전을 향해 적극적으로 이끄는 리더 타입!"),
                            .init(title: "서로 다른 점을 찾는 재미", description: "A형인 이성민님은 호기심과 창의력을 갖췄지만 변덕스러워요"),
@@ -86,7 +86,7 @@ extension MatchingInfo {
 
 extension MatchingInfo.MatchProfile {
     static var empty: MatchingInfo.MatchProfile {
-        .init(name: "", major: "", clubs: [], mbti: "", bloodType: "", subwayNames: [])
+        .init(name: "", major: "", clubs: [], mbti: "", bloodType: "", subwayInfos: [])
     }
 }
 

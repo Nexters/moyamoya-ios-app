@@ -79,7 +79,7 @@ final class MatchResultViewModel: ObservableObject {
                 isEqualBloodType = equalInfo.contains(bloodType)
                 
             case .subway:
-                let subway = otherProfile.subwayNames.first ?? ""
+                let subway = otherProfile.subwayInfos.first?.name ?? ""
                 isEqualSubway = equalInfo.contains(subway)
                 
             }

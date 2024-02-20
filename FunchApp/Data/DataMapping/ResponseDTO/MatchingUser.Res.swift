@@ -129,13 +129,16 @@ extension ResponseDTO {
 extension ResponseDTO.MatchingUser {
     func toDomain() -> MatchingInfo {
         
+        let subwayInfos: [SubwayInfo] = data.profile.subwayInfos.map { subwayInfo in
+            .init(name: subwayInfo.name, lines: subwayInfo.lines)
+        }
         let profile = MatchingInfo.MatchProfile(
             name: data.profile.name,
             major: data.profile.jobGroup,
             clubs: data.profile.clubs,
             mbti: data.profile.mbti,
             bloodType: data.profile.bloodType,
-            subwayNames: data.profile.subwayInfos.map { $0.name }
+            subwayInfos: subwayInfos
         )
         
         let chemistryInfos = data.chemistryInfos.map { info -> MatchingInfo.ChemistryInfo in

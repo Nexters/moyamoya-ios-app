@@ -97,7 +97,7 @@ struct ProfileView: View {
                 profileRow("동아리") {
                     DynamicHGrid(itemSpacing: 8, lineSpacing: 8) {
                         ForEach(profile.clubs, id: \.self) { club in
-                            ChipView(title: club.name, imageName: club.name)
+                            ChipView(title: club.name, imageName: club.imageName)
                         }
                     }
                 }

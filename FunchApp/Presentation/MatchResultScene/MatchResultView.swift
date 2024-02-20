@@ -224,8 +224,8 @@ struct MatchResultView: View {
     
     private var subwayRow: some View {
         HStack(spacing: 8) {
-            ForEach(viewModel.otherProfile.subwayNames, id: \.self) { subwayName in
-                ChipView(title: subwayName)
+            ForEach(viewModel.otherProfile.subwayInfos, id: \.self) { subway in
+                SubwayChipView(subway: subway)
                     .highlight(viewModel.isEqualSubway)
             }
         }
