@@ -131,6 +131,7 @@
 		3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA69C3E2B64C086008AE23B /* CGFloat+.swift */; };
 		3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875502B83C11E00713C64 /* SubwayLines.swift */; };
 		3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */; };
+		3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875542B843EEC00713C64 /* SubwayChipView.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -239,6 +240,7 @@
 		3EA69C3E2B64C086008AE23B /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
 		3EA875502B83C11E00713C64 /* SubwayLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayLines.swift; sourceTree = "<group>"; };
 		3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChemistryLabel.swift; sourceTree = "<group>"; };
+		3EA875542B843EEC00713C64 /* SubwayChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChipView.swift; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				3E1E73F02B70B3570082386A /* ChipButton.swift */,
 				3E1E73F82B7465680082386A /* FunchDropDownMenu.swift */,
 				3E1E740C2B7A73590082386A /* ChipViewHighlighter.swift */,
+				3EA875542B843EEC00713C64 /* SubwayChipView.swift */,
 			);
 			path = UICompoents.SwiftUI;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				3E1E740B2B7A22A80082386A /* ChemistryLabel.swift in Sources */,
 				3E28CC652B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
+				3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
 				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
 				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
