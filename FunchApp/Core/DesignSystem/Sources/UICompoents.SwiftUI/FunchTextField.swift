@@ -140,7 +140,7 @@ struct FunchTextField: View {
         case .maxLength:
             guard let textLimit else { return }
             if value.count > textLimit {
-                text += ""
+                text = String(text.prefix(textLimit))
                 isError = true
             }
             else if value.count < textLimit {
