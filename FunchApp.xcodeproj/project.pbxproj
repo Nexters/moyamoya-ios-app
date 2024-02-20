@@ -1148,6 +1148,9 @@
 		1ACE49472B5B9D0D00024336 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = FunchIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";
@@ -1176,6 +1179,9 @@
 		1ACE49482B5B9D0D00024336 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = FunchIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";

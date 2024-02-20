@@ -111,7 +111,7 @@ struct ProfileView: View {
                 }
                 
                 profileRow("지하철") {
-                    SubwayChipView(subway: profile.subwayInfos[0])
+                    SubwayChipView(subway: profile.subwayInfos.first ?? .empty)
                 }
             }
         }

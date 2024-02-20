@@ -17,4 +17,5 @@ struct SubwayInfo: Hashable, Codable {
 
 extension SubwayInfo {
     static var testableValue: SubwayInfo = .init(name: "고속터미널", lines: ["3", "7", "9"])
+    static var empty: SubwayInfo = .init(name: "", lines: [])
 }
