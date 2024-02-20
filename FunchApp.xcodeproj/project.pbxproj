@@ -14,7 +14,6 @@
 		1A44AAAE2B67F218006D8894 /* MatchingUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */; };
 		1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45882E2B64D70700FBB841 /* SearchUser.Res.swift */; };
 		1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */; };
-		1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */; };
 		1A792B6F2B5D3F6B00A080F2 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1A792B6E2B5D3F6B00A080F2 /* Moya */; };
 		1A792B712B5D465700A080F2 /* DefaultTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B702B5D465700A080F2 /* DefaultTargetType.swift */; };
 		1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A792B732B5D55D400A080F2 /* RequestDTO.swift */; };
@@ -161,7 +160,6 @@
 		1A4588342B64DE2100FBB841 /* FunchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4588362B64DE2100FBB841 /* ProfileRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryTests.swift; sourceTree = "<group>"; };
 		1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayInfo.swift; sourceTree = "<group>"; };
-		1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChipRow.swift; sourceTree = "<group>"; };
 		1A792B702B5D465700A080F2 /* DefaultTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTargetType.swift; sourceTree = "<group>"; };
 		1A792B732B5D55D400A080F2 /* RequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDTO.swift; sourceTree = "<group>"; };
 		1A792B762B5D55F700A080F2 /* ResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDTO.swift; sourceTree = "<group>"; };
@@ -361,14 +359,6 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		1A83F0342B80E7C700E6EC89 /* SubViews */ = {
-			isa = PBXGroup;
-			children = (
-				1A792B6B2B5CD10800A080F2 /* ProfileChipRow.swift */,
-			);
-			path = SubViews;
-			sourceTree = "<group>";
-		};
 		1A83F0392B81085D00E6EC89 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,7 +482,6 @@
 				1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */,
 				1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */,
 				1ACE49552B5B9E9300024336 /* ProfileView.swift */,
-				1A83F0342B80E7C700E6EC89 /* SubViews */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -980,7 +969,6 @@
 				3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
 				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
-				1A792B6C2B5CD10800A080F2 /* ProfileChipRow.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
 				1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */,
 				1A87EB0C2B6E0FA10059F80A /* FetchUserQuery.swift in Sources */,
