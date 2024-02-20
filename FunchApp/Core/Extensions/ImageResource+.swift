@@ -38,30 +38,30 @@ extension ImageResource {
     }
     
     static func findSubwayImageResource(from text: String) -> ImageResource {
-        switch text {
-        case SubwayLines.ONE.rawValue: return .subway1
-        case SubwayLines.TWO.rawValue: return .subway2
-        case SubwayLines.THREE.rawValue: return .subway3
-        case SubwayLines.FOUR.rawValue: return .subway4
-        case SubwayLines.FIVE.rawValue: return .subway5
-        case SubwayLines.SIX.rawValue: return .subway6
-        case SubwayLines.SEVEN.rawValue: return .subway7
-        case SubwayLines.EIGHT.rawValue: return .subway8
-        case SubwayLines.NINE.rawValue: return .subway9
-        case SubwayLines.SEOHAE.rawValue: return .subwaySeohae
-        case SubwayLines.AIRPORT.rawValue: return .subwayAirport
-        case SubwayLines.GIMPO.rawValue: return .subwayGimpoGoldline
-        case SubwayLines.UI_SINSEOL.rawValue: return .subwayUiSinseol
-        case SubwayLines.SILLIM.rawValue: return .subwaySillim
-        case SubwayLines.YOUNGIN.rawValue: return .subwayYounginEver
-        case SubwayLines.UIJEONGBU.rawValue: return .subwayUijeongbu
-        case SubwayLines.BUNDANG.rawValue: return .subwaySuinbundang
-        case SubwayLines.GYEONGCHUN.rawValue: return .subwayGyeongchun
-        case SubwayLines.GYEONGUI.rawValue: return .subwayGyeonguiJungang
-        case SubwayLines.GYEONGGANG.rawValue: return .subwayGeonggang
-        case SubwayLines.INCHEON.rawValue: return .subwayIncheon1
-        case SubwayLines.INCHEON_TWO.rawValue: return .subwayIncheon2
-        case SubwayLines.SINBUNDANG.rawValue: return .subwayShinbundang
+        switch text.lowercased() {
+        case SubwayLines.one.rawValue: return .subway1
+        case SubwayLines.two.rawValue: return .subway2
+        case SubwayLines.three.rawValue: return .subway3
+        case SubwayLines.four.rawValue: return .subway4
+        case SubwayLines.five.rawValue: return .subway5
+        case SubwayLines.six.rawValue: return .subway6
+        case SubwayLines.seven.rawValue: return .subway7
+        case SubwayLines.eight.rawValue: return .subway8
+        case SubwayLines.nine.rawValue: return .subway9
+        case SubwayLines.seohae.rawValue: return .subwaySeohae
+        case SubwayLines.airport.rawValue: return .subwayAirport
+        case SubwayLines.gimpo.rawValue: return .subwayGimpoGoldline
+        case SubwayLines.ui_sinseol.rawValue: return .subwayUiSinseol
+        case SubwayLines.sillim.rawValue: return .subwaySillim
+        case SubwayLines.youngin.rawValue: return .subwayYounginEver
+        case SubwayLines.uijeongbu.rawValue: return .subwayUijeongbu
+        case SubwayLines.bundang.rawValue: return .subwaySuinbundang
+        case SubwayLines.gyeongchun.rawValue: return .subwayGyeongchun
+        case SubwayLines.gyeongui.rawValue: return .subwayGyeonguiJungang
+        case SubwayLines.gyeonggang.rawValue: return .subwayGeonggang
+        case SubwayLines.incheon.rawValue: return .subwayIncheon1
+        case SubwayLines.incheon_two.rawValue: return .subwayIncheon2
+        case SubwayLines.sinbundang.rawValue: return .subwayShinbundang
 
         default: return .iconX
         }
