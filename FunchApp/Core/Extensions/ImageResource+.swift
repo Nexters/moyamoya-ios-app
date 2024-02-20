@@ -33,6 +33,12 @@ extension ImageResource {
         case "우리는 최강의 콤비!": return .bloodGood
         case "쿵짝 쿵짜작~이 잘 맞아요": return .bloodGreat
             
+        default: return .look
+        }
+    }
+    
+    static func findSubwayImageResource(from text: String) -> ImageResource {
+        switch text {
         case SubwayLines.ONE.rawValue: return .subway1
         case SubwayLines.TWO.rawValue: return .subway2
         case SubwayLines.THREE.rawValue: return .subway3
@@ -56,8 +62,8 @@ extension ImageResource {
         case SubwayLines.INCHEON.rawValue: return .subwayIncheon1
         case SubwayLines.INCHEON_TWO.rawValue: return .subwayIncheon2
         case SubwayLines.SINBUNDANG.rawValue: return .subwayShinbundang
-            
-        default: return .look
+
+        default: return .iconX
         }
     }
     
