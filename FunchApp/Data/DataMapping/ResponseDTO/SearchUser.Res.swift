@@ -23,7 +23,7 @@ extension ResponseDTO {
             let isExistTopic: Bool
             let targetProfile: TargetProfile
             
-            /// 별자리 케미
+            /// 혈액형 케미
             struct bloodTypeChemistry: Decodable {
                 let referenceBloodType, targetBloodType: String
                 let isEqualBloodType: Bool

@@ -37,6 +37,36 @@ extension ImageResource {
         }
     }
     
+    static func findSubwayImageResource(from text: String) -> ImageResource {
+        switch text.lowercased() {
+        case SubwayLines.one.rawValue: return .subway1
+        case SubwayLines.two.rawValue: return .subway2
+        case SubwayLines.three.rawValue: return .subway3
+        case SubwayLines.four.rawValue: return .subway4
+        case SubwayLines.five.rawValue: return .subway5
+        case SubwayLines.six.rawValue: return .subway6
+        case SubwayLines.seven.rawValue: return .subway7
+        case SubwayLines.eight.rawValue: return .subway8
+        case SubwayLines.nine.rawValue: return .subway9
+        case SubwayLines.seohae.rawValue: return .subwaySeohae
+        case SubwayLines.airport.rawValue: return .subwayAirport
+        case SubwayLines.gimpo.rawValue: return .subwayGimpoGoldline
+        case SubwayLines.ui_sinseol.rawValue: return .subwayUiSinseol
+        case SubwayLines.sillim.rawValue: return .subwaySillim
+        case SubwayLines.youngin.rawValue: return .subwayYounginEver
+        case SubwayLines.uijeongbu.rawValue: return .subwayUijeongbu
+        case SubwayLines.bundang.rawValue: return .subwaySuinbundang
+        case SubwayLines.gyeongchun.rawValue: return .subwayGyeongchun
+        case SubwayLines.gyeongui.rawValue: return .subwayGyeonguiJungang
+        case SubwayLines.gyeonggang.rawValue: return .subwayGeonggang
+        case SubwayLines.incheon.rawValue: return .subwayIncheon1
+        case SubwayLines.incheon_two.rawValue: return .subwayIncheon2
+        case SubwayLines.sinbundang.rawValue: return .subwayShinbundang
+
+        default: return .iconX
+        }
+    }
+    
     static func findSynergyImageResource(from percentage: Int) -> ImageResource {
         switch percentage {
         case 0...20: return .percent5

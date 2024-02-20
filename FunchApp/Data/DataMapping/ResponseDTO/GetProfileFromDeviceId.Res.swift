@@ -39,7 +39,7 @@ extension ResponseDTO {
             /// 동아리
             let clubs: [String]
             /// 지하철 역
-            let subwayStations: [String]
+            let subwayStations: [SubwayInfo]
             /// mbti
             let mbti: String
             /// 해당 유저 코드
@@ -66,7 +66,7 @@ extension ResponseDTO {
                 self.bloodType = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.bloodType)
                 self.jobGroup = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.jobGroup)
                 self.clubs = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.clubs)
-                self.subwayStations = try container.decode([String].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.subwayStations)
+                self.subwayStations = try container.decode([SubwayInfo].self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.subwayStations)
                 self.mbti = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.mbti)
                 self.memberCode = try container.decode(String.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.memberCode)
                 self.viewCount = try container.decode(Int.self, forKey: ResponseDTO.GetProfile.DataClass.CodingKeys.viewCount)
@@ -82,9 +82,6 @@ extension ResponseDTO.GetProfile {
         let clubs = data.clubs.map { club -> Profile.Club in
             Profile.Club(name: club, imageName: club)
         }
-        let subwayInfos = data.subwayStations.map { name -> SubwayInfo in
-                .init(name: name, lines: [])
-        }
         let viewCount = String(data.viewCount)
         return Profile(
             id: data.id,
@@ -94,7 +91,7 @@ extension ResponseDTO.GetProfile {
             clubs: clubs,
             mbti: data.mbti,
             bloodType: data.bloodType,
-            subwayInfos: subwayInfos,
+            subwayInfos: data.subwayStations,
             viewerShip: viewCount)
     }
 }

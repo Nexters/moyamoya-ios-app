@@ -56,11 +56,11 @@ extension Profile {
             id: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
-            majors: [.init(name: "개발자", imageName: "")],
-            clubs: [.init(name: "넥스터즈", imageName: "")],
+            majors: [.init(name: "개발자", imageName: "developer")],
+            clubs: [.init(name: "넥스터즈", imageName: "nexters")],
             mbti: "ESTP",
             bloodType: "A",
-            subwayInfos: [.init(name: "동대문", lines: ["2"])],
+            subwayInfos: [.init(name: "동대문", lines: ["TWO", "FOUR"])],
             viewerShip: "31"
         )
     }

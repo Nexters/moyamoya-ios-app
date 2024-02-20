@@ -43,9 +43,10 @@ struct MatchResultView: View {
                 }
                 .horizontal()
                 .singlePagination(ratio: 0.33, sensitivity: .custom(0.2))
-                .preferredItemSize(.init(width: viewSize.width * 0.9, height: viewSize.height))
+                .preferredItemSize(.init(width: viewSize.width * 0.92, height: viewSize.height))
                 .itemSpacing(8)
             }
+            .padding(.bottom, 32)
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -114,6 +115,10 @@ struct MatchResultView: View {
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(viewModel.chemistryInfos, id: \.self) { info in
                     ChemistryLabel(info: info)
+                }
+                
+                if let subwayChemistryInfo = viewModel.subwayChemistryInfo {
+                    SubwayChemistryLabel(targetName: viewModel.otherProfile.name, info: subwayChemistryInfo)
                 }
             }
         }
@@ -219,8 +224,8 @@ struct MatchResultView: View {
     
     private var subwayRow: some View {
         HStack(spacing: 8) {
-            ForEach(viewModel.otherProfile.subwayNames, id: \.self) { subwayName in
-                ChipView(title: subwayName)
+            ForEach(viewModel.otherProfile.subwayInfos, id: \.self) { subway in
+                SubwayChipView(subway: subway)
                     .highlight(viewModel.isEqualSubway)
             }
         }
