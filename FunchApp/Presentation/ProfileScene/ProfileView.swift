@@ -51,7 +51,7 @@ struct ProfileView: View {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                         .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
@@ -76,14 +76,14 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(profile.userCode)
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
             
             Spacer()
                 .frame(height: 2)
             
             Text(profile.userNickname)
                 .font(.Funch.title2)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 20)
@@ -123,7 +123,7 @@ struct ProfileView: View {
                 .multilineTextAlignment(.leading)
                 .lineLimit(0)
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
                 .frame(width: 52, height: 48, alignment: .leading)
             
             profileRow()

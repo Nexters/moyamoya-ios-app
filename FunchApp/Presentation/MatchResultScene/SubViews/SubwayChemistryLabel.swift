@@ -19,7 +19,7 @@ struct SubwayChemistryLabel: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            Image(.findChemistryImageResource(from: chemistryData.title))
+            Image(.findSubwayImageResource(from: chemistryData.title))
                 .resizable()
                 .frame(width: 24, height: 24)
             
@@ -29,14 +29,14 @@ struct SubwayChemistryLabel: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text(chemistryData.description + "에서 만나요")
                     .font(.Funch.subtitle1)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 
                 Spacer()
                     .frame(height: 2)
                 
                 Text(targetName + "님도" + chemistryData.description + "에 살고 있어요")
                     .font(.Funch.body)
-                    .foregroundStyle(.gray400)
+                    .foregroundColor(.gray400)
             }
             
             Spacer()

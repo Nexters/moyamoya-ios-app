@@ -78,9 +78,9 @@ struct MatchResultView: View {
     private func pageIndexLabel(_ index: Int) -> some View {
         HStack(spacing: 0) {
             Text("\(index + 1)")
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             Text("/3")
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
         }
         .font(.Funch.caption)
         .padding(.vertical, 2)
@@ -94,11 +94,18 @@ struct MatchResultView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("우리는 ")
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 Text("\(viewModel.similarity)%")
                     .foregroundStyle(Gradient.funchGradient(type: .lemon500))
+                    .overlay {
+                        Gradient.funchGradient(type: .lemon500)
+                            .mask {
+                                Text("\(viewModel.similarity)%")
+                                    .foregroundStyle(Gradient.funchGradient(type: .lemon500))
+                            }
+                    }
                 Text(" 닮았어요")
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
             }
             .font(.Funch.title2)
             
@@ -138,14 +145,14 @@ struct MatchResultView: View {
         VStack(spacing: 0) {
             Text("우리 이런 주제로 대화해봐요")
                 .font(.Funch.title2)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 4)
             
             Text("지금부터 서로에게 집중하는 시간!")
                 .font(.Funch.body)
-                .foregroundStyle(.gray300)
+                .foregroundColor(.gray300)
             
             VStack(spacing: 8) {
                 ForEach(recommendationList, id: \.self) { recommendationText in
@@ -163,7 +170,7 @@ struct MatchResultView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(viewModel.otherProfile.name)
                 .font(.Funch.title2)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Spacer()
@@ -186,7 +193,7 @@ struct MatchResultView: View {
                 .multilineTextAlignment(.leading)
                 .lineLimit(0)
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
                 .frame(width: 52, height: 48, alignment: .leading)
             
             profileRow

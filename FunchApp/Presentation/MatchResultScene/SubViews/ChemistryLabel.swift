@@ -28,14 +28,14 @@ struct ChemistryLabel: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text(chemistryData.title)
                     .font(.Funch.subtitle1)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 
                 Spacer()
                     .frame(height: 2)
                 
                 Text(chemistryData.description)
                     .font(.Funch.body)
-                    .foregroundStyle(.gray400)
+                    .foregroundColor(.gray400)
             }
             
             Spacer()

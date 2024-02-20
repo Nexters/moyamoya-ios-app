@@ -84,7 +84,7 @@ struct ChipButton: View {
         switch type {
         case .text:
             Text(title)
-                .foregroundStyle(isSelected ? .white : .gray400)
+                .foregroundColor(isSelected ? .white : .gray400)
                 .customFont(.subtitle2)
                 .frame(width: 16, height: 24)
             
@@ -100,7 +100,7 @@ struct ChipButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 Text(title)
-                    .foregroundStyle(isSelected ? .white : .gray400)
+                    .foregroundColor(isSelected ? .white : .gray400)
                     .customFont(.body)
             }
         }

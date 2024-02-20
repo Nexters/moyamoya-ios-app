@@ -65,7 +65,7 @@ struct HomeView: View {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                         .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
@@ -82,14 +82,14 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("우리는 잘 맞을까?")
                 .font(.Funch.title2)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 2)
             
             Text("궁합부터 공통점까지 다양한 정보가 기다려요!")
                 .font(.Funch.body)
-                .foregroundStyle(.gray300)
+                .foregroundColor(.gray300)
             
             Spacer()
                 .frame(height: 16)
@@ -127,11 +127,17 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("나의 코드")
                     .font(.Funch.body)
-                    .foregroundStyle(.gray400)
+                    .foregroundColor(.gray400)
                 
                 Text(viewModel.profile?.userCode ?? "----")
                     .font(.Funch.subtitle2)
-                    .foregroundStyle(Gradient.funchGradient(type: .lemon500))
+                    .overlay {
+                        Gradient.funchGradient(type: .lemon500)
+                            .mask {
+                                Text(viewModel.profile?.userCode ?? "----")
+                                    .font(.Funch.subtitle2)
+                            }
+                    }
             }
             
             Spacer()
@@ -155,7 +161,7 @@ struct HomeView: View {
             
             Text("내 프로필")
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
         }
         .frame(width: 101, height: 92)
         .background(.gray800)
@@ -175,11 +181,11 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("내 프로필을")
                     .font(.Funch.body)
-                    .foregroundStyle(.gray400)
+                    .foregroundColor(.gray400)
                 
                 Text("\(viewModel.profile?.viewerShip ?? "00")명이 조회했어요.")
                     .font(.Funch.subtitle2)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
             }
             
             Spacer()

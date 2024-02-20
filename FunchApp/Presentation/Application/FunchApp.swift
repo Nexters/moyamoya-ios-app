@@ -45,9 +45,8 @@ struct FunchApp: App {
                     isSplashing.toggle()
                 }
             }
+            .environmentObject(appCoordinator)
+            .environmentObject(container)
         }
-        .environmentObject(appCoordinator)
-        .environmentObject(container)
-        
     }
 }
