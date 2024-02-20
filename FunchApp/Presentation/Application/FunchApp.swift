@@ -45,9 +45,37 @@ struct FunchApp: App {
                     isSplashing.toggle()
                 }
             }
+            .environmentObject(appCoordinator)
+            .environmentObject(container)
         }
-        .environmentObject(appCoordinator)
-        .environmentObject(container)
+//        .environment(\.appCoordinator, AppCoordinator())
+//        .environment(\.diContainer, DIContainer(services: Services()))
         
+        
+    }
+}
+
+
+struct AppCoordinatorKey: EnvironmentKey {
+    static var defaultValue: AppCoordinator = .init()
+}
+
+extension EnvironmentValues {
+    var appCoordinator: AppCoordinator {
+        get { self[AppCoordinatorKey.self] }
+        set { self[AppCoordinatorKey.self] = newValue }
+    }
+}
+
+
+
+struct DIContainerKey: EnvironmentKey {
+    static var defaultValue: DIContainer = .init(services: Services())
+}
+
+extension EnvironmentValues {
+    var diContainer: DIContainer {
+        get { self[DIContainerKey.self] }
+        set { self[DIContainerKey.self] = newValue }
     }
 }

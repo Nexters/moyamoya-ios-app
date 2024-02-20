@@ -25,14 +25,14 @@ struct ProfileEditorView: View {
                             .frame(height: 8)
                         
                         Text("프로필 만들기")
-                            .foregroundStyle(.white)
+                            .foregroundColor(.white)
                             .customFont(.title2)
                         
                         Spacer()
                             .frame(height: 2)
                         
                         Text("프로필을 바탕으로 매칭을 도와드려요")
-                            .foregroundStyle(.gray300)
+                            .foregroundColor(.gray300)
                             .customFont(.body)
                         
                         profileInputFields
@@ -85,7 +85,7 @@ struct ProfileEditorView: View {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                         .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
@@ -108,7 +108,7 @@ struct ProfileEditorView: View {
                     viewModel.send(action: .makeProfile)
                 } label: {
                     Text("이제 매칭할래요!")
-                        .foregroundStyle(.gray900)
+                        .foregroundColor(.gray900)
                         .customFont(.subtitle1)
                         .frame(maxWidth: .infinity)
                 }
@@ -136,7 +136,7 @@ extension ProfileEditorView {
     ) -> some View {
         HStack(alignment: .top, spacing: 0) {
             Text(type)
-                .foregroundStyle(.gray300)
+                .foregroundColor(.gray300)
                 .customFont(.body)
                 .frame(width: 52, height: 56, alignment: .leading)
             
@@ -173,9 +173,9 @@ extension ProfileEditorView {
         .onTapGesture {
             viewModel.send(action: .focusField(.nickname))
         }
-        .onChange(of: viewModel.userNickname) { _, _ in
+        .onChange(of: viewModel.userNickname, perform: { _ in
             viewModel.send(action: .onChangeProfile)
-        }
+        })
     }
     
     
@@ -249,7 +249,7 @@ extension ProfileEditorView {
             HStack(spacing: 0) {
                 Text(viewModel.bloodType + "형")
                     .font(.Funch.body)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 
                 Spacer()
             }
@@ -297,7 +297,7 @@ extension ProfileEditorView {
                         } label: {
                             Text(subwayInfo.name.applyColorToText(target: viewModel.subwaySearchText, color: .white) ?? AttributedString(subwayInfo.name))
                                 .font(.Funch.body)
-                                .foregroundStyle(.gray500)
+                                .foregroundColor(.gray500)
                         }
                         .padding(8)
                         .background(.gray800)
