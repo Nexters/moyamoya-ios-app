@@ -404,7 +404,6 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
-				3EA8755A2B84DB2C00713C64 /* Config.xcconfig */,
 				3EA69C242B5EDA19008AE23B /* Info.plist */,
 				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
@@ -607,6 +606,7 @@
 		1ACE49842B5BAB5000024336 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3EA8755A2B84DB2C00713C64 /* Config.xcconfig */,
 				1ACE49812B5BA49600024336 /* Network */,
 				1ACE49872B5BAB7000024336 /* DesignSystem */,
 				1A7B06952B5D675C0024356C /* Utils */,
@@ -992,6 +992,7 @@
 /* Begin XCBuildConfiguration section */
 		1A45883B2B64DE2100FBB841 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA8755A2B84DB2C00713C64 /* Config.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1011,6 +1012,7 @@
 		};
 		1A45883C2B64DE2100FBB841 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA8755A2B84DB2C00713C64 /* Config.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1149,6 +1151,7 @@
 		};
 		1ACE49472B5B9D0D00024336 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA8755A2B84DB2C00713C64 /* Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1177,6 +1180,7 @@
 		};
 		1ACE49482B5B9D0D00024336 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA8755A2B84DB2C00713C64 /* Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
