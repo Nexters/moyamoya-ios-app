@@ -239,6 +239,7 @@
 		3EA875502B83C11E00713C64 /* SubwayLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayLines.swift; sourceTree = "<group>"; };
 		3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChemistryLabel.swift; sourceTree = "<group>"; };
 		3EA875542B843EEC00713C64 /* SubwayChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChipView.swift; sourceTree = "<group>"; };
+		3EA8755A2B84DB2C00713C64 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -403,6 +404,7 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
+				3EA8755A2B84DB2C00713C64 /* Config.xcconfig */,
 				3EA69C242B5EDA19008AE23B /* Info.plist */,
 				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
