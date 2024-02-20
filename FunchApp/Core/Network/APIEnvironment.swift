@@ -17,11 +17,20 @@ enum APIEnvironment {
     var urlString: String {
         switch self {
         case .develop:
-            return "http://ec2-3-37-160-167.ap-northeast-2.compute.amazonaws.com/api"
+            return Bundle.findStringFromObject(ofDictionaryKey: "BASE_URL") + "api"
         case .prodiction:
             return ""
         case .staging:
             return ""
         }
+    }
+}
+
+extension Bundle {
+    static func findStringFromObject(ofDictionaryKey key: String) -> String {
+        guard let domain = Bundle.main.object(forInfoDictionaryKey: key) as? String else {
+            return ""
+        }
+        return domain
     }
 }

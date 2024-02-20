@@ -113,3 +113,4 @@ iOSInjectionProject/
 # 개인 커스텀
 *.DS_Store
 FunchApp/Core/Network/APIEnvironment.swift
+*.xcconfig
