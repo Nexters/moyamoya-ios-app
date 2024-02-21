@@ -87,6 +87,7 @@
 		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
 		1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
+		1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E52B8692C8001E0237 /* ServiceType.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -205,6 +206,7 @@
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
 		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
 		1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubway.Res.swift; sourceTree = "<group>"; };
+		1A8F12E52B8692C8001E0237 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			children = (
 				1A83F03A2B81087D00E6EC89 /* Buildable.swift */,
 				1A83F01F2B80C56500E6EC89 /* DIContainer.swift */,
+				1A8F12E52B8692C8001E0237 /* ServiceType.swift */,
 			);
 			path = Dependency;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 		1ACE494E2B5B9D7800024336 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1A83F0242B80C5B000E6EC89 /* Services */,
 				1ACE497E2B5BA45800024336 /* Repository */,
 				1ACE497B2B5BA39D00024336 /* DataMapping */,
 				1ACE497A2B5BA38200024336 /* PersistentStorage */,
@@ -464,7 +468,6 @@
 		1ACE49512B5B9D8D00024336 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1A83F0242B80C5B000E6EC89 /* Services */,
 				1A83F0212B80C56800E6EC89 /* Dependency */,
 				1ACE49682B5BA09700024336 /* UseCase */,
 				1ACE49672B5BA07400024336 /* Interfaces */,
@@ -988,6 +991,7 @@
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
+				1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */,
 				1ACE49792B5BA2F100024336 /* UserDataStorage.swift in Sources */,
 				3E1E740B2B7A22A80082386A /* ChemistryLabel.swift in Sources */,
 				3E28CC652B7E131900818CD3 /* KeyboardBottomPaddingModifier.swift in Sources */,
@@ -1181,7 +1185,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = FunchIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				ENABLE_PREVIEWS = YES;
@@ -1219,7 +1223,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = FunchIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"FunchApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				ENABLE_PREVIEWS = YES;

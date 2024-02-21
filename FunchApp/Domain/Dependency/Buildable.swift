@@ -16,10 +16,3 @@ protocol Buildable {
     @ViewBuilder
     var body: Body { get }
 }
-
-//@resultBuilder
-//enum ViewBuildableType {
-//    static func buildBlock(_ components: any View...) -> some View {
-//        EmptyView()
-//    }
-//}
