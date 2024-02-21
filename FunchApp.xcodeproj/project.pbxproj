@@ -136,6 +136,9 @@
 		3EA875662B8645AE00713C64 /* DeleteProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */; };
 		3EA875682B86492B00713C64 /* DeleteProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */; };
 		3EA8756A2B8654E000713C64 /* DeleteProfileQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */; };
+		3EA8756C2B8656EF00713C64 /* DeleteProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */; };
+		3EA8756D2B86570B00713C64 /* DeleteProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875612B86434800713C64 /* DeleteProfile.Req.swift */; };
+		3EA8756E2B86571000713C64 /* DeleteProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -864,17 +867,20 @@
 				3E1E73EF2B7071030082386A /* SubwayStationRepositoryTests.swift in Sources */,
 				1A87EAEA2B691F2D0059F80A /* DefaultTargetType.swift in Sources */,
 				1A87EAF42B691FA20059F80A /* SubwayStationRepositoryType.swift in Sources */,
+				3EA8756C2B8656EF00713C64 /* DeleteProfileUseCase.swift in Sources */,
 				1A87EAF72B691FA90059F80A /* Profile.swift in Sources */,
 				1A87EAF52B691FA50059F80A /* MatchingRepositoryType.swift in Sources */,
 				1A87EAF92B691FB00059F80A /* CreateUserQuery.swift in Sources */,
 				1A87EADE2B691C510059F80A /* SubwayStationRepository.swift in Sources */,
 				1A87EAE72B691E6D0059F80A /* RequestDTO.swift in Sources */,
 				1A87EAEC2B691F420059F80A /* DictionaryType.swift in Sources */,
+				3EA8756E2B86571000713C64 /* DeleteProfile.Res.swift in Sources */,
 				1A87EB032B6920050059F80A /* GetProfileFromId.Req.swift in Sources */,
 				1A87EAFE2B691FF80059F80A /* SearchUser.Res.swift in Sources */,
 				1A87EAEE2B691F470059F80A /* View+.swift in Sources */,
 				3E28CC682B7E624F00818CD3 /* Array+.swift in Sources */,
 				1A87EAED2B691F450059F80A /* UIDeivce+.swift in Sources */,
+				3EA8756D2B86570B00713C64 /* DeleteProfile.Req.swift in Sources */,
 				1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */,
 				1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */,
 				3E28CC672B7E61E000818CD3 /* SearchSubway.Res.swift in Sources */,
