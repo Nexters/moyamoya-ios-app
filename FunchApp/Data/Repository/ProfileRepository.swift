@@ -86,4 +86,9 @@ final class ProfileRepository: ProfileRepositoryType {
             }
         }
     }
+    
+    func deleteProfile(completion: @escaping (Result<Void, MoyaError>) -> Void) {
+        completion(.success(()))
+        // TODO: 삭제 api 연결
+    }
 }

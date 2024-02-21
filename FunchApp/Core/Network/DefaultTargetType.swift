@@ -20,6 +20,8 @@ enum DefaultTargetType {
     case searchSubwayStations(parameters: DictionaryType)
     /// 타인 프로필 검색
     case matchingUser(parameters: DictionaryType)
+    /// 프로필 삭제
+    case deleteUserProfile
 }
 
 extension DefaultTargetType: TargetType {
@@ -43,6 +45,8 @@ extension DefaultTargetType: TargetType {
             return "/v1/members"
         case .searchSubwayStations(_):
             return "/v1/subway-stations/search"
+        case .deleteUserProfile:
+            return "v1/"
         }
     }
     
@@ -54,7 +58,8 @@ extension DefaultTargetType: TargetType {
             return .get
             
         case .createUserProfile(_),
-                .matchingUser(_):
+                .matchingUser(_),
+                .deleteUserProfile:
             return .post
             
         }
@@ -62,7 +67,7 @@ extension DefaultTargetType: TargetType {
 
     var task: Task {
         switch self {
-        case .getUserProfileFromId(_):
+        case .getUserProfileFromId(_), .deleteUserProfile:
             return .requestPlain
             
         case .getUserProfileFromDeviceId(let parameters),

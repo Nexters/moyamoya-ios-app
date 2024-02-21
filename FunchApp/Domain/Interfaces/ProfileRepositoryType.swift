@@ -18,4 +18,5 @@ protocol ProfileRepositoryType {
         createUserQuery: CreateUserQuery,
         completion: @escaping (Result<Profile, MoyaError>) -> Void
     )
+    func deleteProfile(completion: @escaping (Result<Void, MoyaError>) -> Void)
 }
