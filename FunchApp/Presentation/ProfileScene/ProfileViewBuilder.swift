@@ -15,7 +15,8 @@ struct ProfileViewBuilder: Buildable {
     }
     
     var body: some View {
-        let viewModel = ProfileViewModel(container: container)
+        let useCase = DeleteProfileUseCase()
+        let viewModel = ProfileViewModel(container: container, useCase: useCase)
         let view = ProfileView(viewModel: viewModel)
         
         return view

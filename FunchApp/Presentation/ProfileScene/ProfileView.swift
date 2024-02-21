@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileViewModel
     
     @State private var showingAlert: Bool = false
@@ -48,8 +49,18 @@ struct ProfileView: View {
             }
         }
         .alert("프로필 삭제하기", isPresented: $showingAlert, actions: {
-            Button(role: .cancel, action: { print("test") }, label: { Text("취소하기") })
-            Button(role: .destructive, action: { print("deleted") }, label: { Text("삭제하기") })
+            Button(role: .cancel) {
+                showingAlert = false
+            } label: {
+                Text("취소하기")
+            }
+            
+            Button(role: .destructive) {
+                viewModel.send(action: .deleteProfile)
+                // viewModel과 연결
+            } label: {
+                Text("삭제하기")
+            }
         }, message: {
             Text("기존 프로필이 삭제되고 복구가 불가능해요.\n정말 삭제하실 건가요?")
         })
@@ -59,6 +70,14 @@ struct ProfileView: View {
         .onReceive(viewModel.$dismiss) { boolean in
             if boolean {
                 dismiss()
+            }
+        }
+        .onReceive(viewModel.$presentation) { presentation in
+            switch presentation {
+            case .onboarding:
+                appCoordinator.paths.removeAll()
+            default:
+                break
             }
         }
         .toolbar {

@@ -12,16 +12,24 @@ final class ProfileViewModel: ObservableObject {
     enum Action {
         case load
         case loadFailed
+        case deleteProfile
         case feedback
     }
     
+    enum PresentationState {
+        case onboarding
+    }
+    
+    @Published var presentation: PresentationState?
     @Published var profile: Profile?
     @Published var dismiss: Bool = false
     
     private var container: DependencyType
+    private var useCase: DeleteProfileUseCaseType
     
-    init(container: DependencyType) {
+    init(container: DependencyType, useCase: DeleteProfileUseCaseType) {
         self.container = container
+        self.useCase = useCase
     }
     
     func send(action: Action) {
@@ -35,6 +43,18 @@ final class ProfileViewModel: ObservableObject {
             
         case .loadFailed:
             dismiss = true
+            
+        case .deleteProfile:
+            useCase.deleteProfile { result in
+                switch result {
+                case .success(_):
+                    self.container.services.userService.profiles = []
+                    self.presentation = .onboarding
+                case .failure(_):
+                    // 실패했을때는 어떤 처리 ...? 또 알러트 ??
+                    break
+                }
+            }
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
