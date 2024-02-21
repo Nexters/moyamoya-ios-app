@@ -47,6 +47,9 @@ struct HomeView: View {
         .onAppear {
             viewModel.send(action: .load)
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
             switch presentation {
             case .profile:
