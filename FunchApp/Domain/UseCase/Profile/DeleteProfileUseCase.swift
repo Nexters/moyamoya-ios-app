@@ -8,7 +8,10 @@
 import Foundation
 
 protocol DeleteProfileUseCaseType {
-    func deleteProfile(completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteProfile(
+        requestId: String,
+        completion: @escaping (Result<String, Error>) -> Void
+    )
 }
 
 final class DeleteProfileUseCase: DeleteProfileUseCaseType {
@@ -18,12 +21,16 @@ final class DeleteProfileUseCase: DeleteProfileUseCaseType {
         self.profileRepository = ProfileRepository()
     }
     
-    func deleteProfile(completion: @escaping (Result<Void, Error>) -> Void) {
-        profileRepository.deleteProfile { result in
+    func deleteProfile(
+        requestId: String,
+        completion: @escaping (Result<String, Error>) -> Void
+    ) {
+        let query = DeleteProfileQuery(profileId: requestId)
+        profileRepository.deleteProfile(userQuery: query) { result in
             switch result {
-            case .success(let result):
-                DispatchQueue.main.async {
-                    completion(.success(result))
+            case .success(let deletedId):
+                Task { @MainActor in
+                    completion(.success(deletedId))
                 }
             case .failure(let error):
                 completion(.failure(error))

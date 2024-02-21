@@ -45,9 +45,15 @@ final class ProfileViewModel: ObservableObject {
             dismiss = true
             
         case .deleteProfile:
-            useCase.deleteProfile { result in
+            guard let userId = profile?.id else {
+                // TODO: 내가 프로필이 없다면 ?
+                return
+            }
+            useCase.deleteProfile(requestId: userId) { result in
                 switch result {
-                case .success(_):
+                case .success(let deletedId):
+                    // TODO: profiles 중에서 deletedId를 찾아 없애는 작업 필요
+                    // TODO: UserDefaults에서 Profile 형태가 아닌 Profile.id 형태로 저장 필요
                     self.container.services.userService.profiles = []
                     self.presentation = .onboarding
                 case .failure(_):
