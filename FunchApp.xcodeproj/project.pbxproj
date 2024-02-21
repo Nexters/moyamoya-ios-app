@@ -131,7 +131,11 @@
 		3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875502B83C11E00713C64 /* SubwayLines.swift */; };
 		3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */; };
 		3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875542B843EEC00713C64 /* SubwayChipView.swift */; };
+		3EA875622B86434800713C64 /* DeleteProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875612B86434800713C64 /* DeleteProfile.Req.swift */; };
+		3EA875642B86447B00713C64 /* DeleteProfileQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */; };
 		3EA875662B8645AE00713C64 /* DeleteProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */; };
+		3EA875682B86492B00713C64 /* DeleteProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */; };
+		3EA8756A2B8654E000713C64 /* DeleteProfileQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -241,7 +245,10 @@
 		3EA875522B83C4EE00713C64 /* SubwayChemistryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChemistryLabel.swift; sourceTree = "<group>"; };
 		3EA875542B843EEC00713C64 /* SubwayChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayChipView.swift; sourceTree = "<group>"; };
 		3EA8755A2B84DB2C00713C64 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		3EA875612B86434800713C64 /* DeleteProfile.Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfile.Req.swift; sourceTree = "<group>"; };
+		3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfileQuery.swift; sourceTree = "<group>"; };
 		3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteProfileUseCase.swift; sourceTree = "<group>"; };
+		3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfile.Res.swift; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -288,6 +295,7 @@
 				1A44AAA82B67E848006D8894 /* GetProfileFromId.Req.swift */,
 				1A792B8A2B5D62BE00A080F2 /* MatchingUser.Req.swift */,
 				1A7B06992B5D68AC0024356C /* SearchSubwayStation.Req.swift */,
+				3EA875612B86434800713C64 /* DeleteProfile.Req.swift */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 				1ACE497C2B5BA3B600024336 /* CreateProfile.Res.swift */,
 				1A44AAAD2B67F218006D8894 /* MatchingUser.Res.swift */,
 				1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */,
+				3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -322,6 +331,7 @@
 				1A792B882B5D62A300A080F2 /* MatchingUserQuery.swift */,
 				1A7B06972B5D68650024356C /* SearchSubwayStationQuery.swift */,
 				1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */,
+				3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -869,6 +879,7 @@
 				1A87EB012B6920010059F80A /* CreateProfile.Req.swift in Sources */,
 				3E28CC672B7E61E000818CD3 /* SearchSubway.Res.swift in Sources */,
 				1A87EADF2B691C510059F80A /* MatchingRepository.swift in Sources */,
+				3EA8756A2B8654E000713C64 /* DeleteProfileQuery.swift in Sources */,
 				1A87EAF82B691FAC0059F80A /* MatchingInfo.swift in Sources */,
 				1A87EAFC2B691FEA0059F80A /* UserDataStorage.swift in Sources */,
 				1A87EAE92B691E730059F80A /* Requestable.swift in Sources */,
@@ -898,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA875622B86434800713C64 /* DeleteProfile.Req.swift in Sources */,
 				3EE8107C2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift in Sources */,
 				1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */,
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
@@ -923,10 +935,12 @@
 				3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1A83F02C2B80E1BD00E6EC89 /* HomeViewModel.swift in Sources */,
+				3EA875682B86492B00713C64 /* DeleteProfile.Res.swift in Sources */,
 				1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* CreateProfile.Res.swift in Sources */,
 				1A83F02E2B80E26B00E6EC89 /* MatchResultViewBuilder.swift in Sources */,
 				1A83F0232B80C5A900E6EC89 /* Services.swift in Sources */,
+				3EA875642B86447B00713C64 /* DeleteProfileQuery.swift in Sources */,
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
 				3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */,
