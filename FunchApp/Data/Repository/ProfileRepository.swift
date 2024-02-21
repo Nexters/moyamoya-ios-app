@@ -42,7 +42,7 @@ final class ProfileRepository: ProfileRepositoryType {
         }
     }
     
-    /// 내 프로필 디바이스 기반 정보 조회
+    /// 내 프로필 Id 기반 정보 조회
     func fetchProfileId(
         userQuery: FetchUserQuery,
         completion: @escaping (Result<Profile, MoyaError>) -> Void
@@ -87,8 +87,25 @@ final class ProfileRepository: ProfileRepositoryType {
         }
     }
     
-    func deleteProfile(completion: @escaping (Result<Void, MoyaError>) -> Void) {
-        completion(.success(()))
-        // TODO: 삭제 api 연결
+    func deleteProfile(
+        userQuery: DeleteProfileQuery,
+        completion: @escaping (Result<String, MoyaError>) -> Void
+    ) {
+        let requestDTO = RequestDTO.DeleteProfile(query: userQuery)
+        apiClient.request(
+            ResponseDTO.DeleteProfile.self,
+            target: .deleteUserProfile(path: requestDTO.path)
+        ) { result in
+            switch result {
+            case .success(let success):
+                SwiftUI.Task { @MainActor in
+                    completion(.success(success.toDomain()))
+                }
+            case .failure(let failure):
+                SwiftUI.Task { @MainActor in
+                    completion(.failure(failure))
+                }
+            }
+        }
     }
 }

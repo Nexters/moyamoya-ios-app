@@ -9,9 +9,9 @@ import Foundation
 
 struct DeleteProfileQuery {
     /// 삭제할 프로필 id
-    var profileId: Int
+    var profileId: String
     
-    init(profileId: Int) {
+    init(profileId: String) {
         self.profileId = profileId
     }
 }
