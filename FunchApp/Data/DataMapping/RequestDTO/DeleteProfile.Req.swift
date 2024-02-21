@@ -10,7 +10,7 @@ import Foundation
 extension RequestDTO {
     struct DeleteProfile: Requestable {
         
-        var profileId: Int
+        var profileId: String
         
         init(query: DeleteProfileQuery) {
             profileId = query.profileId
