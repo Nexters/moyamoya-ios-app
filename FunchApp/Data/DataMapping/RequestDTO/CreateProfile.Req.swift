@@ -9,7 +9,7 @@ import UIKit
 
 extension RequestDTO {
     struct CreateUserProfileDTO: Requestable {
-        var deviceId = UIDevice.uuidString
+        var deviceId: String { UIDevice.uuidString }
         
         var name: String
         var major: String

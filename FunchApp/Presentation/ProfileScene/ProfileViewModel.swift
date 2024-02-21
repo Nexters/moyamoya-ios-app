@@ -45,19 +45,12 @@ final class ProfileViewModel: ObservableObject {
             dismiss = true
             
         case .deleteProfile:
-            useCase.deleteProfile { result in
-                switch result {
-                case .success(_):
-                    self.container.services.userService.profiles = []
-                    self.presentation = .onboarding
-                case .failure(_):
-                    // 실패했을때는 어떤 처리 ...? 또 알러트 ??
-                    break
-                }
-            }
+            self.container.services.userService.profiles = []
+            self.presentation = .onboarding
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
+            
         }
     }
 }

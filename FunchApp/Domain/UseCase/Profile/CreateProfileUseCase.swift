@@ -36,6 +36,7 @@ final class CreateProfileUseCase: CreateProfileUseCaseType {
     
     /// 본인 프로필 생성
     func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Profile, Error>) -> Void) {
+        // FIXME: - 쿼리를 받고 있는데, 쿼리에서 일반 데이터를 받아서 여기서 쿼리 구현해주세요.
         profileRepository.createProfile(createUserQuery: createUserQuery) { result in
             switch result {
             case .success(let profile):

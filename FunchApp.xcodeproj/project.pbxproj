@@ -87,6 +87,7 @@
 		1A87EB0D2B6E10A40059F80A /* FetchUserQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */; };
 		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
 		1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
+		1A8F12E42B86181B001E0237 /* DeleteProfileUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E32B86181B001E0237 /* DeleteProfileUseCaseType.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -197,6 +198,7 @@
 		1A87EB0B2B6E0FA10059F80A /* FetchUserQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserQuery.swift; sourceTree = "<group>"; };
 		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
 		1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubway.Res.swift; sourceTree = "<group>"; };
+		1A8F12E32B86181B001E0237 /* DeleteProfileUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfileUseCaseType.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			children = (
 				1ACE49692B5BA19200024336 /* CreateProfileUseCase.swift */,
 				1A87EB092B6E0DCC0059F80A /* FetchProfileUseCase.swift */,
+				1A8F12E32B86181B001E0237 /* DeleteProfileUseCaseType.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 				1A7B06902B5D669A0024356C /* SubwayStationRepository.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */,
+				1A8F12E42B86181B001E0237 /* DeleteProfileUseCaseType.swift in Sources */,
 				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,

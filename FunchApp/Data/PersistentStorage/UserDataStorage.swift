@@ -14,9 +14,9 @@ final class UserDefaultStorage {
     
     private init() {}
 
-    /// 해당 사용자가 프로필이 존재하는지 유무
-    @AppStorage(UserDefaultKeyCase.hasProfile.rawValue)
-    var hasProfile: Bool = false
+    /// 해당 디바이스에서 몇번의 아이디가 생성되었는지 여부 (delete api 없어서 임시)
+    @AppStorage(UserDefaultKeyCase.profileMakeCount.rawValue)
+    var profileMakeCount: Int = 1
     
     /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)
@@ -29,7 +29,7 @@ final class UserDefaultStorage {
 
 /// `UserDefaultKeyCase`키 값 정보
 enum UserDefaultKeyCase: String {
-    case hasProfile
+    case profileMakeCount
     case profiles
     case matchedResults
 }

@@ -10,9 +10,11 @@ import Foundation
 protocol UserServiceType {
     var profiles: [Profile] { get set }
     var matchedResults: [MatchingInfo] { get set }
+    var profileMakeCount: Int { get }
 }
 
 final class UserService: UserServiceType {
+    
     private let userStorage: UserDefaultStorage
     
     init(userStorage: UserDefaultStorage) {
@@ -27,5 +29,9 @@ final class UserService: UserServiceType {
     var matchedResults: [MatchingInfo] {
         get { userStorage.matchedResults }
         set { userStorage.matchedResults = newValue }
+    }
+    
+    var profileMakeCount: Int {
+        get { userStorage.profileMakeCount }
     }
 }
