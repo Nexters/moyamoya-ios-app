@@ -10,33 +10,60 @@ import SwiftUI
 struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileViewModel
+    
+    @State private var showingAlert: Bool = false
     
     var body: some View {
         ZStack {
             Color.gray900
                 .ignoresSafeArea(.all)
             
-            VStack {
-                Spacer()
-                    .frame(height: 8)
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    if let profile = viewModel.profile {
-                        profileView(profile)
-                    } else {
-                        Text("프로필을 불러오는 중이에요.")
+            ScrollView {
+                VStack {
+                    Spacer()
+                        .frame(height: 8)
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        if let profile = viewModel.profile {
+                            profileView(profile)
+                        } else {
+                            Text("프로필을 불러오는 중이에요.")
+                        }
                     }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 20)
+                    .background(.gray800)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.horizontal, 24)
+                    
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    deleteUserButton
+                    
+                    Spacer()
+                        .frame(height: 30)
                 }
-                .padding(.horizontal, 24)
-                .padding(.vertical, 20)
-                .background(.gray800)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(.horizontal, 24)
-                
-                Spacer()
             }
         }
+        .alert("프로필 삭제하기", isPresented: $showingAlert, actions: {
+            Button(role: .cancel) {
+                showingAlert = false
+            } label: {
+                Text("취소하기")
+            }
+            
+            Button(role: .destructive) {
+                viewModel.send(action: .deleteProfile)
+                // viewModel과 연결
+            } label: {
+                Text("삭제하기")
+            }
+        }, message: {
+            Text("기존 프로필이 삭제되고 복구가 불가능해요.\n정말 삭제하실 건가요?")
+        })
         .onAppear {
             viewModel.send(action: .load)
         }
@@ -45,13 +72,21 @@ struct ProfileView: View {
                 dismiss()
             }
         }
+        .onReceive(viewModel.$presentation) { presentation in
+            switch presentation {
+            case .onboarding:
+                appCoordinator.paths.removeAll()
+            default:
+                break
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                         .customFont(.body)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
@@ -69,6 +104,7 @@ struct ProfileView: View {
                 }
             }
         }
+        .toolbarBackground(Color.gray900, for: .navigationBar)
     }
     
     
@@ -76,14 +112,14 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(profile.userCode)
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
             
             Spacer()
                 .frame(height: 2)
             
             Text(profile.userNickname)
                 .font(.Funch.title2)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 20)
@@ -123,13 +159,28 @@ struct ProfileView: View {
                 .multilineTextAlignment(.leading)
                 .lineLimit(0)
                 .font(.Funch.body)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
                 .frame(width: 52, height: 48, alignment: .leading)
             
             profileRow()
             
             Spacer()
         }
+    }
+    
+    private var deleteUserButton: some View {
+        Button {
+            showingAlert = true
+        } label: {
+            Text("프로필 삭제하기")
+                .font(.Funch.body)
+                .foregroundColor(.white)
+                .frame(maxHeight: .infinity)
+        }
+        .padding(.horizontal, 12)
+        .background(.gray800)
+        .frame(height: 36)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 

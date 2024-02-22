@@ -19,7 +19,7 @@ struct SubwayChipView: View {
         HStack(alignment: .center, spacing: 0) {
             Text(subway.name)
                 .font(.Funch.body)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
                 .frame(width: 4)

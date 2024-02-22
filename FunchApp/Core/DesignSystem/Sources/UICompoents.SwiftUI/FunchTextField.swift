@@ -135,19 +135,19 @@ struct FunchTextField: View {
     /// textField에 변화가 있을 때 필요한 action들이 다를 것이기 때문에,
     /// 글자 수 제한이 필요한 경우는 직접 구현해두었고,
     /// 그 외에는 직접 필요한 action을 구현하면 됩니다.
-    private func onTextFieldChangeAction(_ oldValue: String, _ newValue: String) {
+    private func onTextFieldChangeAction(_ value: String) {
         switch type {
         case .maxLength:
             guard let textLimit else { return }
-            if newValue.count > textLimit {
-                text = oldValue
+            if value.count > textLimit {
+                text = String(text.prefix(textLimit))
                 isError = true
             }
-            else if newValue.count < textLimit {
+            else if value.count < textLimit {
                 isError = false
             }
         default:
-            onChange(oldValue, newValue)
+            break
         }
     }
     
@@ -156,14 +156,14 @@ struct FunchTextField: View {
         TextField(
             "",
             text: $text,
-            prompt: Text(placeholderText).foregroundStyle(.gray400)
+            prompt: Text(placeholderText).foregroundColor(.gray400)
         )
         .focused($isFocused)
-        .foregroundStyle(.white)
+        .foregroundColor(.white)
         .font(.Funch.body)
-        .onChange(of: text) { oldText, newText in
-            onTextFieldChangeAction(oldText, newText)
-        }
+        .onChange(of: text, perform: { value in
+            onTextFieldChangeAction(value)
+        })
         .onSubmit {
             onSubmit()
         }
@@ -176,7 +176,7 @@ struct FunchTextField: View {
         case .icon:
             leadingImage?
                 .resizable()
-                .foregroundStyle(.gray500)
+                .foregroundColor(.gray500)
                 .frame(width: 24, height: 24)
                 .padding(.trailing, 8)
         default:
@@ -192,9 +192,9 @@ struct FunchTextField: View {
             if let textLimit {
                 HStack(spacing: 0) {
                     Text("\(text.count)")
-                        .foregroundStyle(textCountColor)
+                        .foregroundColor(textCountColor)
                     Text("/\(textLimit)")
-                        .foregroundStyle(textLimitColor)
+                        .foregroundColor(textLimitColor)
                 }
                 .font(.Funch.body)
                 .padding(.trailing, 8)
@@ -206,7 +206,7 @@ struct FunchTextField: View {
             } label: {
                 trailingButtonImage?
                     .resizable()
-                    .foregroundStyle(.yellow500)
+                    .foregroundColor(.yellow500)
                     .frame(width: 24, height: 24)
                     .padding(8)
                     .background(.gray500)

@@ -84,6 +84,7 @@ final class ProfileRepositoryTests: XCTestCase {
         repository?.createProfile(createUserQuery: query) { result in
             switch result {
             case .success(let response):
+                dump(response)
                 XCTAssertTrue(true, "일단 api 성공하는지만 체크")
             case .failure(let failure):
                 XCTFail(failure.localizedDescription)
@@ -92,6 +93,25 @@ final class ProfileRepositoryTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 5)
+    }
+    
+    /// 유저 삭제
+    func test_deleteProfile() {
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 1
+        
+        /// createProfile 로 생성된 id로 삭제 테스트
+        let query = DeleteProfileQuery(profileId: "65d61fcf1cd2ab69d9f3f69e")
+        repository?.deleteProfile(userQuery: query, completion: { result in
+            switch result {
+            case .success(let response):
+                dump(response)
+                XCTAssertTrue(true, "일단 api 성공하는지만 체크")
+            case .failure(let failure):
+                XCTFail(failure.localizedDescription)
+            }
+            expectation.fulfill()
+        })
     }
 
 }

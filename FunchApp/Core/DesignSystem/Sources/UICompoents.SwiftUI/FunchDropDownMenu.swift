@@ -50,7 +50,7 @@ struct FunchDropDownMenu: View {
         HStack(spacing: 0) {
             Text(selectedData)
                 .font(.Funch.body)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
             
             Spacer()
             
@@ -59,7 +59,7 @@ struct FunchDropDownMenu: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 8)
-                .foregroundStyle(.gray400)
+                .foregroundColor(.gray400)
         }
         .padding(.horizontal, 16)
         .frame(height: 56)

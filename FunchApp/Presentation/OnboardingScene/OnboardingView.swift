@@ -18,14 +18,14 @@ struct OnboardingView: View {
             VStack(spacing: 0) {
                 Text("친구와 프로필 매칭하기")
                     .font(.Funch.body)
-                    .foregroundStyle(.gray300)
+                    .foregroundColor(.gray300)
                 
                 Spacer()
                     .frame(height: 2)
                 
                 Text("우리 사이의 공통점을 찾아요")
                     .font(.Funch.title1)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 
                 Spacer()
                     .frame(height: 28)
@@ -40,7 +40,7 @@ struct OnboardingView: View {
                 
                 Text("1분만에 프로필 만들고 매칭해보기")
                     .font(.Funch.body)
-                    .foregroundStyle(.gray300)
+                    .foregroundColor(.gray300)
                 
                 Spacer()
                     .frame(height: 8)
@@ -50,7 +50,7 @@ struct OnboardingView: View {
                 } label: {
                     Text("프로필 생성 시작🚀")
                         .font(.Funch.subtitle2)
-                        .foregroundStyle(.gray900)
+                        .foregroundColor(.gray900)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(width: 172, height: 52)
