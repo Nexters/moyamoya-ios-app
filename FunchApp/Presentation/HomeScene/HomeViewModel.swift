@@ -25,6 +25,8 @@ final class HomeViewModel: ObservableObject {
     @Published var searchCodeText: String = ""
     /// 내 프로필
     @Published var profile: Profile?
+    /// 매치 실패 시 알러트
+    @Published var showingAlert: Bool = false
     
     private var container: DependencyType
     private var useCase: HomeUseCaseType
@@ -48,9 +50,14 @@ final class HomeViewModel: ObservableObject {
             useCase.matchingProfile(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
-            ) { [weak self] matchingInfo in
+            ) { [weak self] result in
                 guard let self else { return }
-                presentation = .matchResult(matchingInfo)
+                switch result {
+                case .success(let matchingInfo):
+                    presentation = .matchResult(matchingInfo)
+                case .failure(_):
+                    showingAlert = true
+                }
             }
             
         case .feedback:

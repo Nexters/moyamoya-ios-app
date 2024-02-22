@@ -72,6 +72,13 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
         }
+        .alert("존재하지 않는 사용자입니다", isPresented: $viewModel.showingAlert, actions: {
+            Button {
+                // do not action
+            } label: {
+                Text("닫기")
+            }
+        })
         .onAppear {
             viewModel.send(action: .load)
         }

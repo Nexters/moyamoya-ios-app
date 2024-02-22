@@ -11,7 +11,7 @@ protocol HomeUseCaseType {
     func fetchProfile(completion: @escaping (Profile) -> Void)
     func matchingProfile(requestId: String,
                     targetUserCode: String,
-                    completion: @escaping (MatchingInfo) -> Void)
+                    completion: @escaping (Result<MatchingInfo, Error>) -> Void)
 }
 
 final class HomeUseCase: HomeUseCaseType {
@@ -42,16 +42,15 @@ final class HomeUseCase: HomeUseCaseType {
     /// `상대 프로필` 매칭
     func matchingProfile(requestId: String,
                     targetUserCode: String,
-                    completion: @escaping (MatchingInfo) -> Void) {
+                    completion: @escaping (Result<MatchingInfo, Error>) -> Void) {
         let searchUserQuery = MatchingUserQuery(requestId: requestId, targetUserCode: targetUserCode)
         matchingRepository.matchingUser(searchUserQuery: searchUserQuery) { result in
             switch result {
             case .success(let success):
                 self.bingoMBTIRepository.save(mbti: success.profile.mbti)
-                completion(success)
-            case .failure(_):
-                // !!!: - 에러 핸들링 해야하는데, 아직 기획이 정해진게 없어서 비워둠.
-                break
+                completion(.success(success))
+            case .failure(let failure):
+                completion(.failure(failure))
             }
         }
     }

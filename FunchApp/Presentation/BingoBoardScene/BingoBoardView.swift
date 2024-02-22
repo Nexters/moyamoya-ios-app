@@ -57,10 +57,6 @@ struct BingoBoardView: View {
                             boardCell(mbti.rawValue)
                                 .frame(width: (geometry.size.width - 40 - 24) / 4,
                                        height: (geometry.size.width - 40 - 24) / 4)
-                                .onTapGesture {
-                                    print(mbti.rawValue)
-                                    save(mbti: mbti.rawValue)
-                                }
                         }
                     }
                     
