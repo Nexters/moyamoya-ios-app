@@ -46,16 +46,16 @@ struct HomeView: View {
                 
                 HStack(spacing: 0) {
                     Button {
-                        viewModel.send(action: .releaseNote)
+                        viewModel.send(action: .presentation(.mbtiCollection))
                     } label: {
-                        releaseNoteView
+                        bingoMBTIBoardView
                     }
                     .padding(.trailing, 8)
                     
                     Button {
-                        viewModel.send(action: .presentation(.mbtiCollection))
+                        viewModel.send(action: .appstore)
                     } label: {
-                        bingoMBTIBoardView
+                        appstoreView
                     }
                     .padding(.trailing, 8)
                     
@@ -232,6 +232,42 @@ struct HomeView: View {
         .frame(maxWidth: .infinity)
     }
     
+    private var bingoMBTIBoardView: some View {
+        VStack(spacing: 0) {
+            Image(.iconMatching)
+                .resizable()
+                .frame(width: 40, height: 40)
+            
+            Spacer()
+                .frame(height: 8)
+            
+            Text("MBTI 컬렉션")
+                .font(.Funch.body)
+                .foregroundColor(.gray400)
+        }
+        .frame(width: 101, height: 92)
+        .background(.gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
+    private var appstoreView: some View {
+        VStack(spacing: 0) {
+            Text("🌐")
+                .font(.system(size: 40))
+            
+            Spacer()
+                .frame(height: 8)
+            
+            Text("리뷰 남기러가기")
+                .font(.Funch.body)
+                .foregroundColor(.gray400)
+        }
+        .frame(height: 92)
+        .frame(maxWidth: .infinity)
+        .background(.gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
     private var releaseNoteView: some View {
         VStack(spacing: 0) {
             Text("🚀")
@@ -249,21 +285,5 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }
     
-    private var bingoMBTIBoardView: some View {
-        VStack(spacing: 0) {
-            Text("🎹")
-                .font(.system(size: 40))
-            
-            Spacer()
-                .frame(height: 8)
-            
-            Text("MBTI 컬렉션")
-                .font(.Funch.body)
-                .foregroundColor(.gray400)
-        }
-        .frame(height: 92)
-        .frame(maxWidth: .infinity)
-        .background(.gray800)
-        .clipShape(RoundedRectangle(cornerRadius: 16.0))
-    }
+    
 }

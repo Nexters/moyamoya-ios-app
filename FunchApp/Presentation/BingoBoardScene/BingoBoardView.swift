@@ -95,6 +95,7 @@ struct BingoBoardView: View {
             
             Text(mbti)
                 .font(.Funch.title1)
+                .minimumScaleFactor(0.5)
                 .foregroundColor(.white)
                 .padding()
         }
