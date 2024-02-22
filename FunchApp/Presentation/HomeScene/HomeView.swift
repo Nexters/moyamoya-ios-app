@@ -29,10 +29,11 @@ struct HomeView: View {
                     myCodeView
                     Spacer()
                         .frame(width: 8)
-                    myProfileView
-                        .onTapGesture {
-                            viewModel.send(action: .presentation(.profile))
-                        }
+                    Button {
+                        viewModel.send(action: .presentation(.profile))
+                    } label: {
+                        myProfileView
+                    }
                 }
                 
                 Spacer()
@@ -41,12 +42,39 @@ struct HomeView: View {
                 lookupCountView
                 
                 Spacer()
+                    .frame(height: 8)
+                
+                HStack(spacing: 0) {
+                    Button {
+                        viewModel.send(action: .presentation(.mbtiCollection))
+                    } label: {
+                        bingoMBTIBoardView
+                    }
+                    .padding(.trailing, 8)
+                    
+                    Button {
+                        viewModel.send(action: .appstore)
+                    } label: {
+                        appstoreView
+                    }
+                    .padding(.trailing, 8)
+                    
+                    Button {
+                        viewModel.send(action: .releaseNote)
+                    } label: {
+                        releaseNoteView
+                    }
+                    
+                    Spacer()
+                }
+                
+                Spacer()
             }
             .padding(.horizontal, 20)
         }
         .alert("존재하지 않는 사용자입니다", isPresented: $viewModel.showingAlert, actions: {
             Button {
-                print("test")
+                // do not action
             } label: {
                 Text("닫기")
             }
@@ -66,6 +94,10 @@ struct HomeView: View {
             case let .matchResult(matchingInfo):
                 NavigationStack {
                     MatchResultViewBuilder(container: container, matchingInfo: matchingInfo).body
+                }
+            case .mbtiCollection:
+                NavigationStack {
+                    BingoBoardView()
                 }
             }
         }
@@ -206,4 +238,59 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .frame(maxWidth: .infinity)
     }
+    
+    private var bingoMBTIBoardView: some View {
+        VStack(spacing: 0) {
+            Image(.iconMatching)
+                .resizable()
+                .frame(width: 40, height: 40)
+            
+            Spacer()
+                .frame(height: 8)
+            
+            Text("MBTI 컬렉션")
+                .font(.Funch.body)
+                .foregroundColor(.gray400)
+        }
+        .frame(width: 101, height: 92)
+        .background(.gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
+    private var appstoreView: some View {
+        VStack(spacing: 0) {
+            Text("🌐")
+                .font(.system(size: 40))
+            
+            Spacer()
+                .frame(height: 8)
+            
+            Text("리뷰 남기러가기")
+                .font(.Funch.body)
+                .foregroundColor(.gray400)
+        }
+        .frame(height: 92)
+        .frame(maxWidth: .infinity)
+        .background(.gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
+    private var releaseNoteView: some View {
+        VStack(spacing: 0) {
+            Text("🚀")
+                .font(.system(size: 40))
+            
+            Spacer()
+                .frame(height: 8)
+            
+            Text("릴리즈노트")
+                .font(.Funch.body)
+                .foregroundColor(.gray400)
+        }
+        .frame(width: 101, height: 92)
+        .background(.gray800)
+        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
+    
 }

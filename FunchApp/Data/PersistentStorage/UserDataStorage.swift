@@ -25,6 +25,17 @@ final class UserDefaultStorage {
     /// 유저가 매칭한 결과물
     @AppStorage(UserDefaultKeyCase.matchedResults.rawValue)
     var matchedResults: [MatchingInfo] = []
+    
+    /// 빙고보드 딕셔너리
+    /// - e.g ["istp": 4, "enfj": 1]
+    var bingoMBTIBoard: [String: Int]? {
+        get {
+            UserDefaults.standard.dictionary(
+                forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue
+            ) as? [String: Int]
+        }
+        set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue) }
+    }
 }
 
 /// `UserDefaultKeyCase`키 값 정보
@@ -32,4 +43,5 @@ enum UserDefaultKeyCase: String {
     case hasProfile
     case profiles
     case matchedResults
+    case bingoMBTIBoard
 }

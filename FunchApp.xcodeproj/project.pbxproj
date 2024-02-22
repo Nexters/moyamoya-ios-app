@@ -88,6 +88,12 @@
 		1A87EB0F2B6E1CC20059F80A /* MatchingRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */; };
 		1A87EB4B2B6FEF2A0059F80A /* SearchSubway.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */; };
 		1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E52B8692C8001E0237 /* ServiceType.swift */; };
+		1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E72B8780A1001E0237 /* HomePresentation.swift */; };
+		1A8F12EA2B8784B8001E0237 /* ProfileEditorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */; };
+		1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */; };
+		1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EE2B87A258001E0237 /* MBTI.swift */; };
+		1A8F12F12B87A33C001E0237 /* BingoBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */; };
+		1A8F12F42B87A914001E0237 /* BingoMBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -207,6 +213,12 @@
 		1A87EB0E2B6E1CC20059F80A /* MatchingRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRepositoryTests.swift; sourceTree = "<group>"; };
 		1A87EB4A2B6FEF2A0059F80A /* SearchSubway.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubway.Res.swift; sourceTree = "<group>"; };
 		1A8F12E52B8692C8001E0237 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		1A8F12E72B8780A1001E0237 /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
+		1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorPresentation.swift; sourceTree = "<group>"; };
+		1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardView.swift; sourceTree = "<group>"; };
+		1A8F12EE2B87A258001E0237 /* MBTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTI.swift; sourceTree = "<group>"; };
+		1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardUseCase.swift; sourceTree = "<group>"; };
+		1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoMBTIRepository.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -401,6 +413,22 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		1A8F12ED2B878A63001E0237 /* BingoBoardScene */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */,
+			);
+			path = BingoBoardScene;
+			sourceTree = "<group>";
+		};
+		1A8F12F22B87A345001E0237 /* BingoBoard */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */,
+			);
+			path = BingoBoard;
+			sourceTree = "<group>";
+		};
 		1ACE492F2B5B9D0B00024336 = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +478,7 @@
 				1ACE495E2B5B9EFF00024336 /* ProfileScene */,
 				1ACE495F2B5B9F1100024336 /* MatchResultScene */,
 				1ACE49602B5B9F1A00024336 /* ProfileEditorScene */,
+				1A8F12ED2B878A63001E0237 /* BingoBoardScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -491,6 +520,7 @@
 				1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */,
 				1A83F02B2B80E1BD00E6EC89 /* HomeViewModel.swift */,
 				1ACE49532B5B9E6400024336 /* HomeView.swift */,
+				1A8F12E72B8780A1001E0237 /* HomePresentation.swift */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -522,6 +552,7 @@
 				3EE8107B2B8318EC007B8A87 /* ProfileEditorViewBuilder.swift */,
 				3EE810772B831865007B8A87 /* ProfileEditorViewModel.swift */,
 				1ACE49592B5B9EDE00024336 /* ProfileEditorView.swift */,
+				1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */,
 			);
 			path = ProfileEditorScene;
 			sourceTree = "<group>";
@@ -538,6 +569,7 @@
 		1ACE49622B5B9F3B00024336 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				1A8F12EE2B87A258001E0237 /* MBTI.swift */,
 				1A45883D2B64EAD600FBB841 /* SubwayInfo.swift */,
 				3EA875502B83C11E00713C64 /* SubwayLines.swift */,
 				1ACE49632B5B9F4A00024336 /* Profile.swift */,
@@ -562,6 +594,7 @@
 			children = (
 				1ACE496C2B5BA22C00024336 /* Home */,
 				1ACE496F2B5BA27600024336 /* Profile */,
+				1A8F12F22B87A345001E0237 /* BingoBoard */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -608,6 +641,7 @@
 				1ACE497F2B5BA46600024336 /* ProfileRepository.swift */,
 				1A792B862B5D605400A080F2 /* MatchingRepository.swift */,
 				1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */,
+				1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -935,6 +969,7 @@
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
+				1A8F12F12B87A33C001E0237 /* BingoBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepositoryType.swift in Sources */,
 				3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */,
@@ -948,6 +983,7 @@
 				1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* CreateProfile.Res.swift in Sources */,
 				1A83F02E2B80E26B00E6EC89 /* MatchResultViewBuilder.swift in Sources */,
+				1A8F12EA2B8784B8001E0237 /* ProfileEditorPresentation.swift in Sources */,
 				1A83F0232B80C5A900E6EC89 /* Services.swift in Sources */,
 				3EA875642B86447B00713C64 /* DeleteProfileQuery.swift in Sources */,
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
@@ -957,6 +993,7 @@
 				3EA69C0F2B5E9AB2008AE23B /* View+.swift in Sources */,
 				3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */,
 				1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */,
+				1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
 				3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */,
 				3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */,
@@ -966,6 +1003,7 @@
 				3EA875662B8645AE00713C64 /* DeleteProfileUseCase.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */,
+				1A8F12F42B87A914001E0237 /* BingoMBTIRepository.swift in Sources */,
 				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
@@ -989,6 +1027,8 @@
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
+				1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */,
+				1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
 				1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MatchingInfo: Identifiable, Equatable {
+struct MatchingInfo: Identifiable, Hashable {
     static func == (lhs: MatchingInfo, rhs: MatchingInfo) -> Bool {
         lhs.id == rhs.id
     }
@@ -26,7 +26,7 @@ struct MatchingInfo: Identifiable, Equatable {
     var subwayChemistryInfo: ChemistryInfo?
     
     /// 매칭된 상대 프로필
-    struct MatchProfile: Codable {
+    struct MatchProfile: Hashable, Codable {
         /// 이름
         let name: String
         /// 전공
@@ -47,7 +47,7 @@ struct MatchingInfo: Identifiable, Equatable {
     }
     
     /// 추천 정보
-    struct RecommendInfo: Codable {
+    struct RecommendInfo: Hashable, Codable {
         /// 추천 내용
         var title: String
     }

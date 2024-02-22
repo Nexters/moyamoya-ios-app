@@ -65,7 +65,7 @@ extension Profile {
         )
     }
     
-    static var emptyValue: Profile {
+    static var empty: Profile {
         return Profile(
             id: "",
             userCode: "",

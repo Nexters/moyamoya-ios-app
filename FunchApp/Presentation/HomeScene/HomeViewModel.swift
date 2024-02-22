@@ -12,25 +12,15 @@ final class HomeViewModel: ObservableObject {
     enum Action: Equatable {
         case load
         case matching
+        
         case feedback
+        case appstore
+        case releaseNote
         
-        case presentation(PresentationAction)
-        
-        enum PresentationAction: Equatable, Identifiable {
-            var id: UUID { UUID() }
-            
-            case profile
-        }
+        case presentation(HomePresentation)
     }
     
-    enum PresentationState: Equatable, Identifiable {
-        var id: UUID { UUID() }
-        
-        case profile
-        case matchResult(MatchingInfo)
-    }
-    
-    @Published var presentation: PresentationState?
+    @Published var presentation: HomePresentation?
     /// 코드 검색 텍스트 필드
     @Published var searchCodeText: String = ""
     /// 내 프로필
@@ -57,7 +47,7 @@ final class HomeViewModel: ObservableObject {
             
         case .matching:
             guard let profile else { return }
-            useCase.searchUser(
+            useCase.matchingProfile(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
             ) { [weak self] result in
@@ -72,12 +62,16 @@ final class HomeViewModel: ObservableObject {
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
-        
-        case let .presentation(presentationAction):
-            switch presentationAction {
-            case .profile:
-                presentation = .profile
-            }
+            
+        case .appstore:
+            container.services.openURLSerivce.execute(type: .appstore)
+            
+        case .releaseNote:
+            container.services.openURLSerivce.execute(type: .releaseNote)
+            
+        case let .presentation(presentation):
+            self.presentation = presentation
+            
         }
     }
 }
