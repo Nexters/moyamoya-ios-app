@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
-    @StateObject var container: DIContainer = .init(services: Services())
+    @StateObject private var container: DIContainer = .init(services: Services())
     
     @State private var isSplashing: Bool = true
     
@@ -36,7 +36,10 @@ struct FunchApp: App {
                 }
                 .overlay {
                     if isSplashing {
-                        SplashViewBuilder(container: container).body
+                        withAnimation(.easeOut) {
+                            SplashViewBuilder(container: container).body
+                        }
+                        
                     }
                 }
             }

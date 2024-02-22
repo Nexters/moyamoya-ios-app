@@ -22,4 +22,3 @@ enum AppCoordinatorPathType: Hashable {
 enum OnboardingPathType: Hashable {
     case createProfile
 }
-

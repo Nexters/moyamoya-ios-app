@@ -5,24 +5,10 @@
 //  Created by 이성민 on 2/19/24.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
 final class ProfileEditorViewModel: ObservableObject {
-    
-    @Published var presentation: PresentationState?
-    @Published var subwaySearchText: String = ""
-    @Published var focusedField: InputField?
-    
-    @Published var userNickname: String = ""
-    @Published var majors: [Profile.Major] = []
-    @Published var clubs: [Profile.Club] = []
-    @Published var mbti: [String] = .init(repeating: "", count: 4)
-    @Published var bloodType: String = "A"
-    @Published var searchedSubwayInfo: [SubwayInfo] = []
-    @Published var subwayInfo: [SubwayInfo] = []
-    @Published var isEnabled: Bool = false
     
     enum Action: Equatable {
         case onChangeProfile
@@ -31,12 +17,6 @@ final class ProfileEditorViewModel: ObservableObject {
         case subwaySearch
         case makeProfile
         case feedback
-        
-        enum PresentationAction: Int, Identifiable, Equatable {
-            var id: Int { self.rawValue }
-            
-            case home
-        }
         
         enum InputType: Equatable {
             case nickname(String)
@@ -48,15 +28,22 @@ final class ProfileEditorViewModel: ObservableObject {
         }
     }
     
-    enum PresentationState: Int, Identifiable, Equatable {
-        var id: Int { self.rawValue }
-        
-        case home
-    }
-    
     enum InputField {
         case nickname, major, clubs, mbti, bloodType, subway
     }
+    
+    @Published var subwaySearchText: String = ""
+    @Published var focusedField: InputField?
+    
+    @Published var userNickname: String = ""
+    @Published var majors: [Profile.Major] = []
+    @Published var clubs: [Profile.Club] = []
+    @Published var mbti: [String] = .init(repeating: "", count: 4)
+    @Published var bloodType: String = "A"
+    @Published var searchedSubwayInfo: [SubwayInfo] = []
+    @Published var subwayInfo: [SubwayInfo] = []
+    @Published var isEnabled: Bool = false
+    @Published var presentation: ProfileEditorPresentation?
     
     private var container: DependencyType
     private var useCase: CreateProfileUseCaseType
