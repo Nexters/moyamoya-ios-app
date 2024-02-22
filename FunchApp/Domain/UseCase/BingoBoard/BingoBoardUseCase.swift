@@ -8,11 +8,17 @@
 import Foundation
 
 final class BingoBoardUseCase {
-    let userStorage = UserDefaultStorage.shared
+    private let repository: BingoMBTIRepository
     
-    init() {}
+    init() {
+        self.repository = BingoMBTIRepository()
+    }
     
-    func load() {
-        
+    func count(mbti: String) -> Int {
+        repository.count(mbti: mbti)
+    }
+    
+    func save(mbti: String) {
+        repository.save(mbti: mbti)
     }
 }

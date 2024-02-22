@@ -28,8 +28,12 @@ final class UserDefaultStorage {
     
     /// 빙고보드 딕셔너리
     /// - e.g ["istp": 4, "enfj": 1]
-    var bingoMBTIBoard: [String: Any]? {
-        get { UserDefaults.standard.dictionary(forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue) }
+    var bingoMBTIBoard: [String: Int]? {
+        get {
+            UserDefaults.standard.dictionary(
+                forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue
+            ) as? [String: Int]
+        }
         set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue) }
     }
 }

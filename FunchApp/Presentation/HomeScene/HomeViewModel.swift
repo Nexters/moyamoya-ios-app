@@ -12,7 +12,10 @@ final class HomeViewModel: ObservableObject {
     enum Action: Equatable {
         case load
         case matching
+        
         case feedback
+        case appstore
+        case releaseNote
         
         case presentation(HomePresentation)
     }
@@ -52,6 +55,12 @@ final class HomeViewModel: ObservableObject {
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)
+            
+        case .appstore:
+            container.services.openURLSerivce.execute(type: .appstore)
+            
+        case .releaseNote:
+            container.services.openURLSerivce.execute(type: .releaseNote)
             
         case let .presentation(presentation):
             self.presentation = presentation

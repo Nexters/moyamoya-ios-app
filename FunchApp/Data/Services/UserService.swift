@@ -10,13 +10,14 @@ import Foundation
 protocol UserServiceType {
     var profiles: [Profile] { get set }
     var matchedResults: [MatchingInfo] { get set }
+    var bingoMBTIBoard: [String: Int] { get set }
 }
 
 final class UserService: UserServiceType {
     private let userStorage: UserDefaultStorage
     
-    init(userStorage: UserDefaultStorage) {
-        self.userStorage = userStorage
+    init() {
+        self.userStorage = .shared
     }
     
     var profiles: [Profile] {
@@ -27,5 +28,10 @@ final class UserService: UserServiceType {
     var matchedResults: [MatchingInfo] {
         get { userStorage.matchedResults }
         set { userStorage.matchedResults = newValue }
+    }
+    
+    var bingoMBTIBoard: [String: Int] {
+        get { userStorage.bingoMBTIBoard ?? [:] }
+        set { userStorage.bingoMBTIBoard = newValue }
     }
 }

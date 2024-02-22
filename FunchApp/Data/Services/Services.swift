@@ -13,6 +13,6 @@ final class Services: ServiceType {
     
     init() {
         self.openURLSerivce = OpenURLService()
-        self.userService = UserService(userStorage: .shared)
+        self.userService = UserService()
     }
 }
