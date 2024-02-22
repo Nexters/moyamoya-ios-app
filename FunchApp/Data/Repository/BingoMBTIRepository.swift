@@ -32,4 +32,8 @@ class BingoMBTIRepository {
         
         services.bingoMBTIBoard = dictionary
     }
+    
+    func profile() -> Profile {
+        return services.profiles.last ?? .empty
+    }
 }

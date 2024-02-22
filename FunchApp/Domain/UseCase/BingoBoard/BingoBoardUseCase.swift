@@ -21,4 +21,8 @@ final class BingoBoardUseCase {
     func save(mbti: String) {
         repository.save(mbti: mbti)
     }
+    
+    func profile() -> Profile {
+        repository.profile()
+    }
 }

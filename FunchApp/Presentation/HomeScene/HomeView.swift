@@ -53,7 +53,7 @@ struct HomeView: View {
                     .padding(.trailing, 8)
                     
                     Button {
-                        viewModel.send(action: .releaseNote)
+                        viewModel.send(action: .presentation(.mbtiCollection))
                     } label: {
                         bingoMBTIBoardView
                     }
@@ -87,6 +87,10 @@ struct HomeView: View {
             case let .matchResult(matchingInfo):
                 NavigationStack {
                     MatchResultViewBuilder(container: container, matchingInfo: matchingInfo).body
+                }
+            case .mbtiCollection:
+                NavigationStack {
+                    BingoBoardView()
                 }
             }
         }
