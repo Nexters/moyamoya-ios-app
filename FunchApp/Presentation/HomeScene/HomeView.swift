@@ -48,7 +48,7 @@ struct HomeView: View {
                     Button {
                         viewModel.send(action: .presentation(.mbtiCollection))
                     } label: {
-                        bingoMBTIBoardView
+                        mbtiBoardView
                     }
                     .padding(.trailing, 8)
                     
@@ -97,7 +97,7 @@ struct HomeView: View {
                 }
             case .mbtiCollection:
                 NavigationStack {
-                    BingoBoardView()
+                    MBTIBoardView()
                 }
             }
         }
@@ -239,7 +239,7 @@ struct HomeView: View {
         .frame(maxWidth: .infinity)
     }
     
-    private var bingoMBTIBoardView: some View {
+    private var mbtiBoardView: some View {
         VStack(spacing: 0) {
             Image(.iconMatching)
                 .resizable()

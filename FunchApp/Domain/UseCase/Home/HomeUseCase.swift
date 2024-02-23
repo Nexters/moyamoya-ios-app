@@ -18,12 +18,12 @@ final class HomeUseCase: HomeUseCaseType {
     
     private let profileRepository: ProfileRepositoryType
     private let matchingRepository: MatchingRepositoryType
-    private let bingoMBTIRepository: BingoMBTIRepository
+    private let mbtiRepository: MBTIRepository
     
     init() {
         self.profileRepository = ProfileRepository()
         self.matchingRepository = MatchingRepository()
-        self.bingoMBTIRepository = BingoMBTIRepository()
+        self.mbtiRepository = MBTIRepository()
     }
     
     /// `본인 프로필` 정보
@@ -47,7 +47,7 @@ final class HomeUseCase: HomeUseCaseType {
         matchingRepository.matchingUser(searchUserQuery: searchUserQuery) { result in
             switch result {
             case .success(let success):
-                self.bingoMBTIRepository.save(mbti: success.profile.mbti)
+                self.mbtiRepository.save(mbti: success.profile.mbti)
                 completion(.success(success))
             case .failure(let failure):
                 completion(.failure(failure))

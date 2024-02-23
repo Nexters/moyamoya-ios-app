@@ -1,5 +1,5 @@
 //
-//  BingoMBTIRepository.swift
+//  MBTIRepository.swift
 //  FunchApp
 //
 //  Created by Geon Woo lee on 2/23/24.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-class BingoMBTIRepository {
+class MBTIRepository {
     
     private let services: UserService
     
     init() {
         self.services = UserService()
         
-        self.dictionary = services.bingoMBTIBoard
+        self.dictionary = services.mbtiBoard
     }
     
     private var dictionary: [String: Int] = [:]
@@ -30,7 +30,7 @@ class BingoMBTIRepository {
             dictionary[mbti] = 1
         }
         
-        services.bingoMBTIBoard = dictionary
+        services.mbtiBoard = dictionary
     }
     
     func profile() -> Profile {

@@ -1,5 +1,5 @@
 //
-//  BingoBoardView.swift
+//  mbtiBoardView.swift
 //  FunchApp
 //
 //  Created by Geon Woo lee on 2/22/24.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-class BingoBoardViewModel: ObservableObject {
+class MBTIBoardViewModel: ObservableObject {
     
     enum Action {
         case load
     }
     
-    private let useCase: BingoBoardUseCase
+    private let useCase: MBTIBoardUseCase
     
-    init(useCase: BingoBoardUseCase) {
+    init(useCase: MBTIBoardUseCase) {
         self.useCase = useCase
     }
     
@@ -27,11 +27,11 @@ class BingoBoardViewModel: ObservableObject {
     }
 }
 
-struct BingoBoardView: View {
+struct MBTIBoardView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    private let useCase = BingoBoardUseCase()
+    private let useCase = MBTIBoardUseCase()
     private let mbties = MBTI.allCases
     
     var body: some View {
@@ -108,7 +108,7 @@ struct BingoBoardView: View {
 
 #Preview {
     NavigationStack {
-        BingoBoardView()
+        MBTIBoardView()
     }
 }
 
