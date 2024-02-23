@@ -90,7 +90,7 @@
 		1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E52B8692C8001E0237 /* ServiceType.swift */; };
 		1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E72B8780A1001E0237 /* HomePresentation.swift */; };
 		1A8F12EA2B8784B8001E0237 /* ProfileEditorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */; };
-		1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */; };
+		1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */; };
 		1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EE2B87A258001E0237 /* MBTI.swift */; };
 		1A8F12F12B87A33C001E0237 /* BingoBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */; };
 		1A8F12F42B87A914001E0237 /* BingoMBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */; };
@@ -215,7 +215,7 @@
 		1A8F12E52B8692C8001E0237 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		1A8F12E72B8780A1001E0237 /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
 		1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorPresentation.swift; sourceTree = "<group>"; };
-		1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardView.swift; sourceTree = "<group>"; };
+		1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardView.swift; sourceTree = "<group>"; };
 		1A8F12EE2B87A258001E0237 /* MBTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTI.swift; sourceTree = "<group>"; };
 		1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardUseCase.swift; sourceTree = "<group>"; };
 		1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoMBTIRepository.swift; sourceTree = "<group>"; };
@@ -413,12 +413,12 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		1A8F12ED2B878A63001E0237 /* BingoBoardScene */ = {
+		1A8F12ED2B878A63001E0237 /* MBTIBoardScene */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */,
+				1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */,
 			);
-			path = BingoBoardScene;
+			path = MBTIBoardScene;
 			sourceTree = "<group>";
 		};
 		1A8F12F22B87A345001E0237 /* BingoBoard */ = {
@@ -478,7 +478,7 @@
 				1ACE495E2B5B9EFF00024336 /* ProfileScene */,
 				1ACE495F2B5B9F1100024336 /* MatchResultScene */,
 				1ACE49602B5B9F1A00024336 /* ProfileEditorScene */,
-				1A8F12ED2B878A63001E0237 /* BingoBoardScene */,
+				1A8F12ED2B878A63001E0237 /* MBTIBoardScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1028,7 +1028,7 @@
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */,
-				1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */,
+				1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
 				1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */,
