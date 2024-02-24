@@ -147,6 +147,7 @@
 		3EA8756D2B86570B00713C64 /* DeleteProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875612B86434800713C64 /* DeleteProfile.Req.swift */; };
 		3EA8756E2B86571000713C64 /* DeleteProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */; };
 		3ED755192B88A87700529084 /* MBTIBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */; };
+		3ED7551B2B89F66C00529084 /* MBTIBoardViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -268,6 +269,7 @@
 		3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteProfileUseCase.swift; sourceTree = "<group>"; };
 		3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfile.Res.swift; sourceTree = "<group>"; };
 		3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardViewModel.swift; sourceTree = "<group>"; };
+		3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardViewBuilder.swift; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			children = (
 				1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */,
 				3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */,
+				3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */,
 			);
 			path = MBTIBoardScene;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */,
 				1A44AAA72B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift in Sources */,
 				1A7B06982B5D68650024356C /* SearchSubwayStationQuery.swift in Sources */,
+				3ED7551B2B89F66C00529084 /* MBTIBoardViewBuilder.swift in Sources */,
 				1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */,
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepository.swift in Sources */,

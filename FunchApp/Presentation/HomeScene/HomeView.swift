@@ -97,7 +97,7 @@ struct HomeView: View {
                 }
             case .mbtiCollection:
                 NavigationStack {
-                    MBTIBoardView()
+                    MBTIBoardViewBuilder(container: container).body
                 }
             }
         }

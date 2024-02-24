@@ -17,7 +17,7 @@ class MBTIRepository {
         self.mbtiBoardDictionary = services.mbtiBoard
     }
     
-    private var mbtiBoardDictionary: [String: Int] = [:]
+    private var mbtiBoardDictionary: [String: Int]
     
     func count(mbti: String) -> Int {
         return mbtiBoardDictionary[mbti] ?? 0

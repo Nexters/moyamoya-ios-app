@@ -10,6 +10,7 @@ import SwiftUI
 struct MBTIBoardView: View {
     
     @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel: MBTIBoardViewModel
     
     private let useCase = MBTIBoardUseCase()
     private let mbties = MBTI.allCases
@@ -57,6 +58,9 @@ struct MBTIBoardView: View {
         }
         .toolbarBackground(Color.gray900, for: .navigationBar)
         .ignoresSafeArea(edges: .bottom)
+        .onAppear {
+            viewModel.send(action: .load)
+        }
     }
     
     func boardCell(_ mbti: String) -> some View {
@@ -88,7 +92,7 @@ struct MBTIBoardView: View {
 
 #Preview {
     NavigationStack {
-        MBTIBoardView()
+        MBTIBoardView(viewModel: .init(useCase: .init()))
     }
 }
 
