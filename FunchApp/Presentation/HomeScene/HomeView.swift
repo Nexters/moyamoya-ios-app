@@ -64,8 +64,6 @@ struct HomeView: View {
                     } label: {
                         releaseNoteView
                     }
-                    
-                    Spacer()
                 }
                 
                 Spacer()
