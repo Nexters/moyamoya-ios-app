@@ -428,12 +428,12 @@
 			path = MBTIBoardScene;
 			sourceTree = "<group>";
 		};
-		1A8F12F22B87A345001E0237 /* BingoBoard */ = {
+		1A8F12F22B87A345001E0237 /* MBTIBoard */ = {
 			isa = PBXGroup;
 			children = (
 				1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */,
 			);
-			path = BingoBoard;
+			path = MBTIBoard;
 			sourceTree = "<group>";
 		};
 		1A8F12FB2B8A068E001E0237 /* Subway */ = {
@@ -616,7 +616,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACE496F2B5BA27600024336 /* Profile */,
-				1A8F12F22B87A345001E0237 /* BingoBoard */,
+				1A8F12F22B87A345001E0237 /* MBTIBoard */,
 				1A8F12FB2B8A068E001E0237 /* Subway */,
 				1A8F12FE2B8A1531001E0237 /* Matching */,
 			);
@@ -654,9 +654,6 @@
 		1ACE497E2B5BA45800024336 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE497F2B5BA46600024336 /* ProfileRepository.swift */,
-				1A792B862B5D605400A080F2 /* MatchingRepository.swift */,
-				1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */,
 				1A8F12F32B87A914001E0237 /* MBTIRepository.swift */,
 				1ACE497F2B5BA46600024336 /* ProfileRepositoryImpl.swift */,
 				1A792B862B5D605400A080F2 /* MatchingRepositoryImpl.swift */,

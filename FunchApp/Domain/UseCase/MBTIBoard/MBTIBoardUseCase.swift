@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class MBTIBoardUseCase {
+protocol MBTIBoardUseCase {
+    func count(mbti: String) -> Int
+    func save(mbti: String)
+    func profile() -> Profile
+}
+
+final class DefaultMBTIBoardUseCase: MBTIBoardUseCase {
     private let repository: MBTIRepository
     
     init() {

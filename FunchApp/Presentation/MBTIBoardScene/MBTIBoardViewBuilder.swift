@@ -15,8 +15,7 @@ struct MBTIBoardViewBuilder: Buildable {
     }
     
     var body: some View {
-        let useCase = MBTIBoardUseCase()
-        let viewModel = MBTIBoardViewModel(useCase: useCase)
+        let viewModel = MBTIBoardViewModel()
         let view = MBTIBoardView(viewModel: viewModel)
         
         return view

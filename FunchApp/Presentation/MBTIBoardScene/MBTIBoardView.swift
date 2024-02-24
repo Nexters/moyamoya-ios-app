@@ -12,8 +12,7 @@ struct MBTIBoardView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: MBTIBoardViewModel
     
-    private let useCase = MBTIBoardUseCase()
-    private let mbties = MBTI.allCases
+//    private let mbties = MBTI.allCases
     
     var body: some View {
         ZStack {
@@ -85,19 +84,4 @@ struct MBTIBoardView: View {
                 .padding()
         }
     }
-    
-    func save(mbti: String) {
-        useCase.save(mbti: mbti)
-    }
-    
-    func count(_ mbti: String) -> Int {
-        useCase.count(mbti: mbti)
-    }
 }
-
-#Preview {
-    NavigationStack {
-        MBTIBoardView(viewModel: .init(useCase: .init()))
-    }
-}
-
