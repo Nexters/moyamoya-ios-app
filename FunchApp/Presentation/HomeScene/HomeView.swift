@@ -86,7 +86,7 @@ struct HomeView: View {
         .fullScreenCover(item: $viewModel.presentation) { presentation in
             switch presentation {
             case .profile:
-                NavigationStack { 
+                NavigationStack {
                     ProfileViewBuilder(container: container).body
                 }
             case let .matchResult(matchingInfo):
@@ -138,7 +138,7 @@ struct HomeView: View {
                 text: $viewModel.searchCodeText,
                 placeholderText: "친구 코드를 입력하고 매칭하기",
                 backgroundColor: .gray700,
-                trailingButtonImage: Image(.iconSearchYellow), 
+                trailingButtonImage: Image(.iconSearchYellow),
                 onTapButton: {
                     viewModel.send(action: .matching)
                 }
