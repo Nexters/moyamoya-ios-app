@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class HomeViewModel: ObservableObject {
     
@@ -29,21 +30,25 @@ final class HomeViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     
     private var container: DependencyType
-    private var useCase: HomeUseCaseType
+    private var useCase = HomeUseCase()
     
-    init(container: DependencyType, useCase: HomeUseCaseType) {
+    init(container: DependencyType) {
         self.container = container
-        self.useCase = useCase
     }
 
+    var cancellables = Set<AnyCancellable>()
+    
     func send(action: Action) {
         switch action {
         case .load:
-            useCase.fetchProfile { [weak self] profile in
-                guard let self else { return }
-                self.profile = profile
-                self.container.services.userService.profiles.append(profile)
-            }
+            useCase.fetchProfile()
+                .sink { _ in
+
+                } receiveValue: { [weak self] profile in
+                    guard let self else { return }
+                    self.profile = profile
+                    self.container.services.userService.profiles.append(profile)
+                }.store(in: &cancellables)
             
         case .matching:
             guard let profile else { return }

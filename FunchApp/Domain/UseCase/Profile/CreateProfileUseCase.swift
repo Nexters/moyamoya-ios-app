@@ -6,45 +6,23 @@
 //
 
 import Foundation
+import Combine
 
-protocol CreateProfileUseCaseType {
-    func searchSubway(query: SearchSubwayStationQuery, completion: @escaping (Result<[SubwayInfo], Error>) -> Void)
-    func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Profile, Error>) -> Void)
+protocol CreateProfileUseCase {
+    func createProfile(query: CreateUserQuery)-> AnyPublisher<Profile, RepositoryError>
 }
 
-final class CreateProfileUseCase: CreateProfileUseCaseType {
-    private let subwayRepository: SubwayStationRepository
+final class DefaultCreateProfileUseCase: CreateProfileUseCase {
     private let profileRepository: ProfileRepository
     
     init() {
-        self.subwayRepository = SubwayStationRepository()
         self.profileRepository = ProfileRepository()
     }
     
-    func searchSubway(query: SearchSubwayStationQuery, completion: @escaping (Result<[SubwayInfo], Error>) -> Void) {
-        subwayRepository.searchSubwayStations(searchSubwayStationQuery: query) { result in
-            switch result {
-            case .success(let subwayInfos):
-                DispatchQueue.main.async {
-                    completion(.success(subwayInfos))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
     /// 본인 프로필 생성
-    func createProfile(createUserQuery: CreateUserQuery, completion: @escaping (Result<Profile, Error>) -> Void) {
-        profileRepository.createProfile(createUserQuery: createUserQuery) { result in
-            switch result {
-            case .success(let profile):
-                DispatchQueue.main.async {
-                    completion(.success(profile))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+    func createProfile(query: CreateUserQuery)-> AnyPublisher<Profile, RepositoryError> {
+        profileRepository.createProfile(query: query)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }

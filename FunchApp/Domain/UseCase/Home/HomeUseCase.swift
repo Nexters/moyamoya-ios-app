@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol HomeUseCaseType {
     func fetchProfile(completion: @escaping (Profile) -> Void)
@@ -14,7 +15,7 @@ protocol HomeUseCaseType {
                     completion: @escaping (Result<MatchingInfo, Error>) -> Void)
 }
 
-final class HomeUseCase: HomeUseCaseType {
+final class HomeUseCase {
     
     private let profileRepository: ProfileRepositoryType
     private let matchingRepository: MatchingRepositoryType
@@ -27,16 +28,10 @@ final class HomeUseCase: HomeUseCaseType {
     }
     
     /// `본인 프로필` 정보
-    func fetchProfile(completion: @escaping (Profile) -> Void) {
-        profileRepository.fetchProfile { result in
-            switch result {
-            case let .success(profile):
-                completion(profile)
-            case .failure(_):
-                // !!!: - 에러 핸들링 해야하는데, 아직 기획이 정해진게 없어서 비워둠.
-                break
-            }
-        }
+    func fetchProfile() -> AnyPublisher<Profile, RepositoryError> {
+        profileRepository.fetchProfile()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     /// `상대 프로필` 매칭

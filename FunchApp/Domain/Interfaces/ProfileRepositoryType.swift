@@ -5,21 +5,12 @@
 //  Created by Geon Woo lee on 1/20/24.
 //
 
-import Foundation
 import Moya
+import Combine
 
 protocol ProfileRepositoryType {
-    func fetchProfile(completion: @escaping (Result<Profile, MoyaError>) -> Void)
-    func fetchProfileId(
-        userQuery: FetchUserQuery,
-        completion: @escaping (Result<Profile, MoyaError>) -> Void
-    )
-    func createProfile(
-        createUserQuery: CreateUserQuery,
-        completion: @escaping (Result<Profile, MoyaError>) -> Void
-    )
-    func deleteProfile(
-        userQuery: DeleteProfileQuery,
-        completion: @escaping (Result<String, MoyaError>) -> Void
-    )
+    func fetchProfile() -> AnyPublisher<Profile, RepositoryError>
+    func fetchProfile(query: FetchUserQuery) -> AnyPublisher<Profile, RepositoryError>
+    func createProfile(query: CreateUserQuery) -> AnyPublisher<Profile, RepositoryError>
+    func deleteProfile(query: DeleteProfileQuery) -> AnyPublisher<String, RepositoryError>
 }
