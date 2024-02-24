@@ -6,50 +6,31 @@
 //
 
 import Foundation
+import Combine
 
-protocol FetchProfileUseCaseType {
-    func fetchProfileFromDeviceId(completion: @escaping (Result<Profile, Error>) -> Void)
-    func fetchProfileFromId(
-        query: FetchUserQuery,
-        completion: @escaping (Result<Profile, Error>) -> Void
-    )
+protocol FetchProfileUseCase {
+    func fetchProfileFromDeviceId() -> AnyPublisher<Profile, RepositoryError>
+    func fetchProfileFromId(query: FetchUserQuery) -> AnyPublisher<Profile, RepositoryError>
 }
 
-final class FetchProfileUseCase: FetchProfileUseCaseType {
-    private let profileRepository: ProfileRepository
+final class DefaultFetchProfileUseCase: FetchProfileUseCase {
+    private let repository: ProfileRepository
     
     init() {
-        self.profileRepository = ProfileRepository()
+        self.repository = ProfileRepositoryImpl()
     }
     
     /// 디바이스 기반으로 id 조회
-    func fetchProfileFromDeviceId(completion: @escaping (Result<Profile, Error>) -> Void) {
-        profileRepository.fetchProfile { result in
-            switch result {
-            case .success(let profile):
-                Task { @MainActor in
-                    completion(.success(profile))
-                }
-            case .failure(let failure):
-                completion(.failure(failure))
-            }
-        }
+    func fetchProfileFromDeviceId() -> AnyPublisher<Profile, RepositoryError> {
+        repository.fetchProfile()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     /// 프로필 아이디 기반으로 조회
-    func fetchProfileFromId(
-        query: FetchUserQuery,
-        completion: @escaping (Result<Profile, Error>) -> Void
-    ) {
-        profileRepository.fetchProfileId(userQuery: query) { result in
-            switch result {
-            case .success(let profile):
-                Task { @MainActor in
-                    completion(.success(profile))
-                }
-            case .failure(let failure):
-                completion(.failure(failure))
-            }
-        }
+    func fetchProfileFromId(query: FetchUserQuery) -> AnyPublisher<Profile, RepositoryError> {
+        repository.fetchProfile(query: query)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }

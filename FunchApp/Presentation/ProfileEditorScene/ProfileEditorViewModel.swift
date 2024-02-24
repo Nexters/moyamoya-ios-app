@@ -46,12 +46,19 @@ final class ProfileEditorViewModel: ObservableObject {
     @Published var presentation: ProfileEditorPresentation?
     
     private var container: DependencyType
-    private var useCase: CreateProfileUseCaseType
+    private var useCase = UseCase()
+    
+    struct UseCase {
+        var createProfile = DefaultCreateProfileUseCase()
+        var searchSubway = DefaultSearchSubwayUseCase()
+    }
+    
     private var cancellables = Set<AnyCancellable>()
     
-    init(container: DependencyType, useCase: CreateProfileUseCaseType) {
+    
+    
+    init(container: DependencyType) {
         self.container = container
-        self.useCase = useCase
         
         bind()
     }
@@ -120,29 +127,27 @@ final class ProfileEditorViewModel: ObservableObject {
         
         case .subwaySearch:
             let query = SearchSubwayStationQuery(searchText: subwaySearchText)
-            useCase.searchSubway(query: query) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let subwayInfos):
+            useCase.searchSubway.execute(query: query)
+                .sink { [weak self] completion in
+                    guard let self else { return }
+                    if case .failure = completion {
+                        self.searchedSubwayInfo = []
+                    }
+                } receiveValue: { [weak self] subwayInfos in
+                    guard let self else { return }
                     self.searchedSubwayInfo = subwayInfos
-                case .failure(_):
-                    self.searchedSubwayInfo = []
-                }
-            }
+                }.store(in: &cancellables)
             
         case .makeProfile:
             let query = makeCreateUserQuery()
-            useCase.createProfile(createUserQuery: query) { [weak self] result in
-                switch result {
-                case .success(let profile):
+            useCase.createProfile.createProfile(query: query)
+                .sink { _ in
+                    
+                } receiveValue: { [weak self] profile in
                     guard let self else { return }
                     self.container.services.userService.profiles.append(profile)
                     self.presentation = .home
-                    
-                case .failure(_):
-                    break
-                }
-            }
+                }.store(in: &cancellables)
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)

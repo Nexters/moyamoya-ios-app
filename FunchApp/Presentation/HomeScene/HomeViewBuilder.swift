@@ -15,8 +15,7 @@ struct HomeViewBuilder: Buildable {
     }
     
     var body: some View {
-        let useCase = HomeUseCase()
-        let viewModel = HomeViewModel(container: container, useCase: useCase)
+        let viewModel = HomeViewModel(container: container)
         let view = HomeView(viewModel: viewModel)
         
         return view

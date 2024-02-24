@@ -6,35 +6,24 @@
 //
 
 import Foundation
+import Combine
 
-protocol DeleteProfileUseCaseType {
-    func deleteProfile(
-        requestId: String,
-        completion: @escaping (Result<String, Error>) -> Void
-    )
+protocol DeleteProfileUseCase {
+    func execute(requestId: String) -> AnyPublisher<String, RepositoryError>
 }
 
-final class DeleteProfileUseCase: DeleteProfileUseCaseType {
-    private let profileRepository: ProfileRepositoryType
+final class DefaultDeleteProfileUseCase: DeleteProfileUseCase {
+    
+    private let profileRepository: ProfileRepository
     
     init() {
-        self.profileRepository = ProfileRepository()
+        self.profileRepository = ProfileRepositoryImpl()
     }
     
-    func deleteProfile(
-        requestId: String,
-        completion: @escaping (Result<String, Error>) -> Void
-    ) {
+    func execute(requestId: String) -> AnyPublisher<String, RepositoryError> {
         let query = DeleteProfileQuery(profileId: requestId)
-        profileRepository.deleteProfile(userQuery: query) { result in
-            switch result {
-            case .success(let deletedId):
-                Task { @MainActor in
-                    completion(.success(deletedId))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        return profileRepository.deleteProfile(query: query)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
