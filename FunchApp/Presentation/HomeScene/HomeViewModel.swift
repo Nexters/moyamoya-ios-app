@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class HomeViewModel: ObservableObject {
     
@@ -29,36 +30,49 @@ final class HomeViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     
     private var container: DependencyType
-    private var useCase: HomeUseCaseType
+    private var useCase = UseCase()
     
-    init(container: DependencyType, useCase: HomeUseCaseType) {
+    struct UseCase {
+        let fetchProfile = DefaultFetchProfileUseCase()
+        let matching = DefaultMatchingUseCase()
+    }
+    
+    init(container: DependencyType) {
         self.container = container
-        self.useCase = useCase
     }
 
+    var cancellables = Set<AnyCancellable>()
+    
     func send(action: Action) {
         switch action {
         case .load:
-            useCase.fetchProfile { [weak self] profile in
-                guard let self else { return }
-                self.profile = profile
-                self.container.services.userService.profiles.append(profile)
-            }
+            useCase.fetchProfile.fetchProfileFromDeviceId()
+                .sink { _ in
+
+                } receiveValue: { [weak self] profile in
+                    guard let self else { return }
+                    self.profile = profile
+                    self.container.services.userService.profiles.append(profile)
+                }.store(in: &cancellables)
             
         case .matching:
             guard let profile else { return }
-            useCase.matchingProfile(
+            let query = MatchingUserQuery(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
-            ) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let matchingInfo):
-                    presentation = .matchResult(matchingInfo)
-                case .failure(_):
-                    showingAlert = true
-                }
-            }
+            )
+            
+            useCase.matching.execute(query: query)
+                .sink { [weak self] completion in
+                    guard let self else { return }
+                    if case .failure = completion {
+                        self.showingAlert = true
+                    }
+
+                } receiveValue: { [weak self] matchingInfo in
+                    guard let self else { return }
+                    self.presentation = .matchResult(matchingInfo)
+                }.store(in: &cancellables)
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)

@@ -16,8 +16,7 @@ struct ProfileEditorViewBuilder: Buildable {
     }
     
     var body: some View {
-        let useCase = CreateProfileUseCase()
-        let viewModel = ProfileEditorViewModel(container: container, useCase: useCase)
+        let viewModel = ProfileEditorViewModel(container: container)
         let view = ProfileEditorView(viewModel: viewModel)
         
         return view
