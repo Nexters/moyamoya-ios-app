@@ -14,23 +14,23 @@ class MBTIRepository {
     init() {
         self.services = UserService()
         
-        self.dictionary = services.mbtiBoard
+        self.mbtiBoardDictionary = services.mbtiBoard
     }
     
-    private var dictionary: [String: Int] = [:]
+    private var mbtiBoardDictionary: [String: Int] = [:]
     
     func count(mbti: String) -> Int {
-        return dictionary[mbti] ?? 0
+        return mbtiBoardDictionary[mbti] ?? 0
     }
     
     func save(mbti: String) {
-        if let count = dictionary[mbti] {
-            dictionary.updateValue(count + 1, forKey: mbti)
+        if let count = mbtiBoardDictionary[mbti] {
+            mbtiBoardDictionary.updateValue(count + 1, forKey: mbti)
         } else {
-            dictionary[mbti] = 1
+            mbtiBoardDictionary[mbti] = 1
         }
         
-        services.mbtiBoard = dictionary
+        services.mbtiBoard = mbtiBoardDictionary
     }
     
     func profile() -> Profile {

@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-class MBTIBoardViewModel: ObservableObject {
-    
-    enum Action {
-        case load
-    }
-    
-    private let useCase: MBTIBoardUseCase
-    
-    init(useCase: MBTIBoardUseCase) {
-        self.useCase = useCase
-    }
-    
-    func send(action: Action) {
-        switch action {
-        case .load:
-            break
-        }
-    }
-}
-
 struct MBTIBoardView: View {
     
     @Environment(\.dismiss) var dismiss
