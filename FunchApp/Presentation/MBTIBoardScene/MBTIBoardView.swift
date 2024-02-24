@@ -16,26 +16,32 @@ struct MBTIBoardView: View {
     private let mbties = MBTI.allCases
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Color.gray900
-                    .ignoresSafeArea(.all)
-                
-                VStack(alignment: .leading) {
+        ZStack {
+            Color.gray900
+                .ignoresSafeArea(.all)
+            
+            GeometryReader { geometry in
+                VStack(alignment: .leading, spacing: 0) {
+                    Spacer()
+                        .frame(height: 8)
+                    
                     Text("달성기록")
                         .font(.Funch.title2)
                         .foregroundColor(.white)
-                        .padding(.top, 8)
-                        .padding(.bottom, 2)
                     
-                    Text("\(useCase.profile().userNickname)님이 매칭한 친구들이에요")
+                    Spacer()
+                        .frame(height: 2)
+                    
+                    Text("\(viewModel.profile.userNickname)님이 매칭한 친구들이에요")
                         .font(.Funch.body)
                         .foregroundColor(.gray300)
-                        .padding(.bottom, 24)
-                        
+                    
+                    Spacer()
+                        .frame(height: 24)
+                    
                     LazyVGrid(columns: [.init(.adaptive(minimum: 74))]) {
-                        ForEach(mbties, id: \.rawValue) { mbti in
-                            boardCell(mbti.rawValue)
+                        ForEach(viewModel.mbtiTiles, id: \.0) { (mbti, opacity) in
+                            boardCell(mbti, opacity: opacity)
                                 .frame(width: (geometry.size.width - 40 - 24) / 4,
                                        height: (geometry.size.width - 40 - 24) / 4)
                         }
@@ -63,9 +69,8 @@ struct MBTIBoardView: View {
         }
     }
     
-    func boardCell(_ mbti: String) -> some View {
-        let opacity = Double(count(mbti)) * 0.2
-        return ZStack {
+    func boardCell(_ mbti: String, opacity: CGFloat) -> some View {
+        ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .fill(
                     opacity == 0

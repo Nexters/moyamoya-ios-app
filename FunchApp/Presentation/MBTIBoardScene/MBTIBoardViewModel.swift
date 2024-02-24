@@ -13,6 +13,9 @@ class MBTIBoardViewModel: ObservableObject {
         case load
     }
     
+    @Published var profile: Profile = .empty
+    @Published var mbtiTiles: [(String, CGFloat)] = []
+    
     private let useCase: MBTIBoardUseCase
     
     init(useCase: MBTIBoardUseCase) {
@@ -22,7 +25,11 @@ class MBTIBoardViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            break
+            profile = useCase.profile()
+            mbtiTiles = MBTI.allCases.map { mbti in
+                let opacity = CGFloat(useCase.count(mbti: mbti.rawValue)) * 0.2
+                return (mbti.rawValue, opacity)
+            }
         }
     }
 }
