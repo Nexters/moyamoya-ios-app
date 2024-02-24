@@ -30,7 +30,12 @@ final class HomeViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     
     private var container: DependencyType
-    private var useCase = HomeUseCase()
+    private var useCase = UseCase()
+    
+    struct UseCase {
+        let fetchProfile = DefaultFetchProfileUseCase()
+        let matching = DefaultMatchingUseCase()
+    }
     
     init(container: DependencyType) {
         self.container = container
@@ -41,7 +46,7 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            useCase.fetchProfile()
+            useCase.fetchProfile.fetchProfileFromDeviceId()
                 .sink { _ in
 
                 } receiveValue: { [weak self] profile in
@@ -52,18 +57,22 @@ final class HomeViewModel: ObservableObject {
             
         case .matching:
             guard let profile else { return }
-            useCase.matchingProfile(
+            let query = MatchingUserQuery(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
-            ) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let matchingInfo):
-                    presentation = .matchResult(matchingInfo)
-                case .failure(_):
-                    showingAlert = true
-                }
-            }
+            )
+            
+            useCase.matching.execute(query: query)
+                .sink { [weak self] completion in
+                    guard let self else { return }
+                    if case .failure = completion {
+                        self.showingAlert = true
+                    }
+
+                } receiveValue: { [weak self] matchingInfo in
+                    guard let self else { return }
+                    self.presentation = .matchResult(matchingInfo)
+                }.store(in: &cancellables)
             
         case .feedback:
             container.services.openURLSerivce.execute(type: .feedback)

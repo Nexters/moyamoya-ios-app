@@ -14,10 +14,10 @@ protocol DeleteProfileUseCase {
 
 final class DefaultDeleteProfileUseCase: DeleteProfileUseCase {
     
-    private let profileRepository: ProfileRepositoryType
+    private let profileRepository: ProfileRepository
     
     init() {
-        self.profileRepository = ProfileRepository()
+        self.profileRepository = ProfileRepositoryImpl()
     }
     
     func execute(requestId: String) -> AnyPublisher<String, RepositoryError> {

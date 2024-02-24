@@ -16,7 +16,7 @@ final class DefaultCreateProfileUseCase: CreateProfileUseCase {
     private let profileRepository: ProfileRepository
     
     init() {
-        self.profileRepository = ProfileRepository()
+        self.profileRepository = ProfileRepositoryImpl()
     }
     
     /// 본인 프로필 생성

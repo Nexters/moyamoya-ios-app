@@ -17,7 +17,7 @@ final class DefaultFetchProfileUseCase: FetchProfileUseCase {
     private let repository: ProfileRepository
     
     init() {
-        self.repository = ProfileRepository()
+        self.repository = ProfileRepositoryImpl()
     }
     
     /// 디바이스 기반으로 id 조회

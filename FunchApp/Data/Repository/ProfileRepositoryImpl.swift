@@ -15,7 +15,7 @@ enum RepositoryError: Error {
 }
 
 /// User 본인을 기준으로 하는 repository
-final class ProfileRepository: ProfileRepositoryType {
+final class ProfileRepositoryImpl: ProfileRepository {
     
     private let apiClient: APIClient
     
