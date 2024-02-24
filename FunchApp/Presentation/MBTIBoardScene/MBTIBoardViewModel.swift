@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MBTIBoardViewModel: ObservableObject {
+final class MBTIBoardViewModel: ObservableObject {
     
     enum Action {
         case load
