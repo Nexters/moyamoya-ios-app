@@ -27,8 +27,9 @@ class MBTIBoardViewModel: ObservableObject {
         case .load:
             profile = useCase.profile()
             mbtiTiles = MBTI.allCases.map { mbti in
-                let opacity = CGFloat(useCase.count(mbti: mbti.rawValue)) * 0.2
-                return (mbti.rawValue, opacity)
+                let mbti = mbti.rawValue.uppercased()
+                let opacity = CGFloat(useCase.count(mbti: mbti)) * 0.2
+                return (mbti, opacity)
             }
         }
     }
