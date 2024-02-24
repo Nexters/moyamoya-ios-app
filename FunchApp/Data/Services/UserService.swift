@@ -10,7 +10,7 @@ import Foundation
 protocol UserServiceType {
     var profiles: [Profile] { get set }
     var matchedResults: [MatchingInfo] { get set }
-    var bingoMBTIBoard: [String: Int] { get set }
+    var mbtiBoard: [String: Int] { get set }
 }
 
 final class UserService: UserServiceType {
@@ -30,8 +30,8 @@ final class UserService: UserServiceType {
         set { userStorage.matchedResults = newValue }
     }
     
-    var bingoMBTIBoard: [String: Int] {
-        get { userStorage.bingoMBTIBoard ?? [:] }
-        set { userStorage.bingoMBTIBoard = newValue }
+    var mbtiBoard: [String: Int] {
+        get { userStorage.mbtiBoard ?? [:] }
+        set { userStorage.mbtiBoard = newValue }
     }
 }

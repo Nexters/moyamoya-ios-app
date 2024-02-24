@@ -89,10 +89,10 @@
 		1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E52B8692C8001E0237 /* ServiceType.swift */; };
 		1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E72B8780A1001E0237 /* HomePresentation.swift */; };
 		1A8F12EA2B8784B8001E0237 /* ProfileEditorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */; };
-		1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */; };
+		1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */; };
 		1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EE2B87A258001E0237 /* MBTI.swift */; };
-		1A8F12F12B87A33C001E0237 /* BingoBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */; };
-		1A8F12F42B87A914001E0237 /* BingoMBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */; };
+		1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */; };
+		1A8F12F42B87A914001E0237 /* MBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* MBTIRepository.swift */; };
 		1A8F12FA2B8A068A001E0237 /* SearchSubwayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */; };
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
@@ -146,6 +146,8 @@
 		3EA8756C2B8656EF00713C64 /* DeleteProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */; };
 		3EA8756D2B86570B00713C64 /* DeleteProfile.Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875612B86434800713C64 /* DeleteProfile.Req.swift */; };
 		3EA8756E2B86571000713C64 /* DeleteProfile.Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */; };
+		3ED755192B88A87700529084 /* MBTIBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */; };
+		3ED7551B2B89F66C00529084 /* MBTIBoardViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */; };
 		3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE810672B7F74CE007B8A87 /* ImageResource+.swift */; };
 		3EE8106B2B806DC6007B8A87 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EE8106A2B806DC6007B8A87 /* Lottie */; };
 		3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8106D2B80705D007B8A87 /* SplashView.swift */; };
@@ -215,10 +217,10 @@
 		1A8F12E52B8692C8001E0237 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		1A8F12E72B8780A1001E0237 /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
 		1A8F12E92B8784B8001E0237 /* ProfileEditorPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorPresentation.swift; sourceTree = "<group>"; };
-		1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardView.swift; sourceTree = "<group>"; };
+		1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardView.swift; sourceTree = "<group>"; };
 		1A8F12EE2B87A258001E0237 /* MBTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTI.swift; sourceTree = "<group>"; };
-		1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoBoardUseCase.swift; sourceTree = "<group>"; };
-		1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoMBTIRepository.swift; sourceTree = "<group>"; };
+		1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardUseCase.swift; sourceTree = "<group>"; };
+		1A8F12F32B87A914001E0237 /* MBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepository.swift; sourceTree = "<group>"; };
 		1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayUseCase.swift; sourceTree = "<group>"; };
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,8 @@
 		3EA875632B86447B00713C64 /* DeleteProfileQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfileQuery.swift; sourceTree = "<group>"; };
 		3EA875652B8645AE00713C64 /* DeleteProfileUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteProfileUseCase.swift; sourceTree = "<group>"; };
 		3EA875672B86492B00713C64 /* DeleteProfile.Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProfile.Res.swift; sourceTree = "<group>"; };
+		3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardViewModel.swift; sourceTree = "<group>"; };
+		3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardViewBuilder.swift; sourceTree = "<group>"; };
 		3EE810672B7F74CE007B8A87 /* ImageResource+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageResource+.swift"; sourceTree = "<group>"; };
 		3EE8106D2B80705D007B8A87 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3EE810702B8076F5007B8A87 /* Funch_splash_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Funch_splash_logo.json; sourceTree = "<group>"; };
@@ -414,18 +418,20 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		1A8F12ED2B878A63001E0237 /* BingoBoardScene */ = {
+		1A8F12ED2B878A63001E0237 /* MBTIBoardScene */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F12EB2B878A54001E0237 /* BingoBoardView.swift */,
+				1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */,
+				3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */,
+				3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */,
 			);
-			path = BingoBoardScene;
+			path = MBTIBoardScene;
 			sourceTree = "<group>";
 		};
 		1A8F12F22B87A345001E0237 /* BingoBoard */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F12F02B87A33C001E0237 /* BingoBoardUseCase.swift */,
+				1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */,
 			);
 			path = BingoBoard;
 			sourceTree = "<group>";
@@ -495,7 +501,7 @@
 				1ACE495E2B5B9EFF00024336 /* ProfileScene */,
 				1ACE495F2B5B9F1100024336 /* MatchResultScene */,
 				1ACE49602B5B9F1A00024336 /* ProfileEditorScene */,
-				1A8F12ED2B878A63001E0237 /* BingoBoardScene */,
+				1A8F12ED2B878A63001E0237 /* MBTIBoardScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -648,10 +654,13 @@
 		1ACE497E2B5BA45800024336 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				1ACE497F2B5BA46600024336 /* ProfileRepository.swift */,
+				1A792B862B5D605400A080F2 /* MatchingRepository.swift */,
+				1A7B068F2B5D669A0024356C /* SubwayStationRepository.swift */,
+				1A8F12F32B87A914001E0237 /* MBTIRepository.swift */,
 				1ACE497F2B5BA46600024336 /* ProfileRepositoryImpl.swift */,
 				1A792B862B5D605400A080F2 /* MatchingRepositoryImpl.swift */,
 				1A7B068F2B5D669A0024356C /* SubwayStationRepositoryImpl.swift */,
-				1A8F12F32B87A914001E0237 /* BingoMBTIRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -966,6 +975,7 @@
 				1A45882F2B64D70700FBB841 /* SearchUser.Res.swift in Sources */,
 				1ACE49542B5B9E6400024336 /* HomeView.swift in Sources */,
 				1A44AAA92B67E848006D8894 /* GetProfileFromId.Req.swift in Sources */,
+				3ED755192B88A87700529084 /* MBTIBoardViewModel.swift in Sources */,
 				1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */,
 				3EA69C2D2B5EE591008AE23B /* Text+.swift in Sources */,
 				3EA69BFF2B5C342F008AE23B /* FunchTextField.swift in Sources */,
@@ -978,7 +988,7 @@
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
-				1A8F12F12B87A33C001E0237 /* BingoBoardUseCase.swift in Sources */,
+				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepository.swift in Sources */,
 				3EA875512B83C11E00713C64 /* SubwayLines.swift in Sources */,
@@ -1014,7 +1024,7 @@
 				3EA875662B8645AE00713C64 /* DeleteProfileUseCase.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */,
-				1A8F12F42B87A914001E0237 /* BingoMBTIRepository.swift in Sources */,
+				1A8F12F42B87A914001E0237 /* MBTIRepository.swift in Sources */,
 				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,
@@ -1032,13 +1042,14 @@
 				3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */,
 				1A44AAA72B67E81F006D8894 /* GetProfileFromDeviceId.Req.swift in Sources */,
 				1A7B06982B5D68650024356C /* SearchSubwayStationQuery.swift in Sources */,
+				3ED7551B2B89F66C00529084 /* MBTIBoardViewBuilder.swift in Sources */,
 				1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */,
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepositoryImpl.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */,
-				1A8F12EC2B878A54001E0237 /* BingoBoardView.swift in Sources */,
+				1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,
 				1ACE496A2B5BA19200024336 /* CreateProfileUseCase.swift in Sources */,
 				1A8F12E62B8692C8001E0237 /* ServiceType.swift in Sources */,

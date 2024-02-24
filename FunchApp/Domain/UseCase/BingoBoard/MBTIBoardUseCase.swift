@@ -1,5 +1,5 @@
 //
-//  BingoBoardUseCase.swift
+//  MBTIBoardUseCase.swift
 //  FunchApp
 //
 //  Created by Geon Woo lee on 2/23/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class BingoBoardUseCase {
-    private let repository: BingoMBTIRepository
+final class MBTIBoardUseCase {
+    private let repository: MBTIRepository
     
     init() {
-        self.repository = BingoMBTIRepository()
+        self.repository = MBTIRepository()
     }
     
     func count(mbti: String) -> Int {

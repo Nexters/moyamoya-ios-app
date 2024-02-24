@@ -28,13 +28,13 @@ final class UserDefaultStorage {
     
     /// 빙고보드 딕셔너리
     /// - e.g ["istp": 4, "enfj": 1]
-    var bingoMBTIBoard: [String: Int]? {
+    var mbtiBoard: [String: Int]? {
         get {
             UserDefaults.standard.dictionary(
-                forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue
+                forKey: UserDefaultKeyCase.mbtiBoard.rawValue
             ) as? [String: Int]
         }
-        set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.bingoMBTIBoard.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.mbtiBoard.rawValue) }
     }
 }
 
@@ -43,5 +43,5 @@ enum UserDefaultKeyCase: String {
     case hasProfile
     case profiles
     case matchedResults
-    case bingoMBTIBoard
+    case mbtiBoard
 }

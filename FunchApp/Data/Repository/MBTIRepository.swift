@@ -1,5 +1,5 @@
 //
-//  BingoMBTIRepository.swift
+//  MBTIRepository.swift
 //  FunchApp
 //
 //  Created by Geon Woo lee on 2/23/24.
@@ -7,30 +7,30 @@
 
 import Foundation
 
-class BingoMBTIRepository {
+class MBTIRepository {
     
     private let services: UserService
     
     init() {
         self.services = UserService()
         
-        self.dictionary = services.bingoMBTIBoard
+        self.mbtiBoardDictionary = services.mbtiBoard
     }
     
-    private var dictionary: [String: Int] = [:]
+    private var mbtiBoardDictionary: [String: Int]
     
     func count(mbti: String) -> Int {
-        return dictionary[mbti] ?? 0
+        return mbtiBoardDictionary[mbti] ?? 0
     }
     
     func save(mbti: String) {
-        if let count = dictionary[mbti] {
-            dictionary.updateValue(count + 1, forKey: mbti)
+        if let count = mbtiBoardDictionary[mbti] {
+            mbtiBoardDictionary.updateValue(count + 1, forKey: mbti)
         } else {
-            dictionary[mbti] = 1
+            mbtiBoardDictionary[mbti] = 1
         }
         
-        services.bingoMBTIBoard = dictionary
+        services.mbtiBoard = mbtiBoardDictionary
     }
     
     func profile() -> Profile {

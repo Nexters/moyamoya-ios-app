@@ -16,7 +16,7 @@ struct FunchApp: App {
     
     var body: some Scene {
 //        WindowGroup {
-//            BingoBoardView()
+//            mbtiBoardView()
 //        }
         WindowGroup {
             ZStack {
