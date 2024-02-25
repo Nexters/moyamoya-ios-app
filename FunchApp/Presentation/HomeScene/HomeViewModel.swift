@@ -72,6 +72,11 @@ final class HomeViewModel: ObservableObject {
             guard let profile else { return }
             guard searchCodeText.count == 4 else { return }
             
+            guard searchCodeText != profile.userCode else {
+                self.send(action: .presentation(.easterEgg))
+                return
+            }
+            
             let query = MatchingUserQuery(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
