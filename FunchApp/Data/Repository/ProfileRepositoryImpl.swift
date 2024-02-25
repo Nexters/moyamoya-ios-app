@@ -20,7 +20,7 @@ final class ProfileRepositoryImpl: ProfileRepository {
     private let apiClient: APIClient
     
     init() {
-        apiClient = APIClient()
+        apiClient = APIClient.shared
     }
     
     /// 내 프로필 디바이스 기반 정보 조회
@@ -34,8 +34,8 @@ final class ProfileRepositoryImpl: ProfileRepository {
                 switch result {
                 case .success(let success):
                     promise(.success(success.toDomain()))
-                case .failure(let failure):
-//                    promise(.failure(failure))
+                case .failure(_):
+                    promise(.failure(.message("프로필 정보 조회를 실패했어요.")))
                     break
                 }
             }
