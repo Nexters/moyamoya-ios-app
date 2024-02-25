@@ -27,8 +27,13 @@ final class ProfileViewModel: ObservableObject {
     
     private var container: DependencyType
     private var useCase: DeleteProfileUseCase
+    private var inject = Inject()
     
     private var cancellables = Set<AnyCancellable>()
+    
+    struct Inject {
+        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+    }
     
     init(container: DependencyType, useCase: DeleteProfileUseCase) {
         self.container = container
@@ -64,7 +69,11 @@ final class ProfileViewModel: ObservableObject {
                 .store(in: &cancellables)
             
         case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
+            do {
+                try inject.openUrl.feedback()
+            } catch {
+                
+            }
         }
     }
 }

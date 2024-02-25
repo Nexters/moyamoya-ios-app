@@ -12,7 +12,7 @@ class MBTIRepository {
     private let services: UserService
     
     init() {
-        self.services = UserService()
+        self.services = UserService.shared
         
         self.mbtiBoardDictionary = services.mbtiBoard
     }

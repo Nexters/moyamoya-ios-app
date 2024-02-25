@@ -31,10 +31,15 @@ final class HomeViewModel: ObservableObject {
     
     private var container: DependencyType
     private var useCase = UseCase()
+    private var inject = Inject()
     
     struct UseCase {
         let fetchProfile = DefaultFetchProfileUseCase()
         let matching = DefaultMatchingUseCase()
+    }
+    
+    struct Inject {
+        let openUrl: OpenURLProviderType = OpenURLProvider.shared
     }
     
     init(container: DependencyType) {
@@ -75,13 +80,25 @@ final class HomeViewModel: ObservableObject {
                 }.store(in: &cancellables)
             
         case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
+            do {
+                try inject.openUrl.feedback()
+            } catch {
+                
+            }
             
         case .appstore:
-            container.services.openURLSerivce.execute(type: .appstore)
+            do {
+                try inject.openUrl.appstore()
+            } catch {
+                
+            }
             
         case .releaseNote:
-            container.services.openURLSerivce.execute(type: .releaseNote)
+            do {
+                try inject.openUrl.releaseNote()
+            } catch {
+                
+            }
             
         case let .presentation(presentation):
             self.presentation = presentation
