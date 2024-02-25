@@ -47,15 +47,18 @@ final class ProfileEditorViewModel: ObservableObject {
     
     private var container: DependencyType
     private var useCase = UseCase()
+    private var inject = Inject()
     
     struct UseCase {
         var createProfile = DefaultCreateProfileUseCase()
         var searchSubway = DefaultSearchSubwayUseCase()
     }
     
+    struct Inject {
+        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+    }
+    
     private var cancellables = Set<AnyCancellable>()
-    
-    
     
     init(container: DependencyType) {
         self.container = container
@@ -150,7 +153,11 @@ final class ProfileEditorViewModel: ObservableObject {
                 }.store(in: &cancellables)
             
         case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
+            do {
+                try inject.openUrl.feedback()
+            } catch {
+                
+            }
             
         }
     }

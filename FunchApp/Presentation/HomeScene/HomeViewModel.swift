@@ -10,7 +10,7 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    enum Action: Equatable {
+    enum Action {
         case load
         case matching
         
@@ -19,6 +19,7 @@ final class HomeViewModel: ObservableObject {
         case releaseNote
         
         case presentation(HomePresentation)
+        case alert(Alert)
     }
     
     @Published var presentation: HomePresentation?
@@ -26,15 +27,27 @@ final class HomeViewModel: ObservableObject {
     @Published var searchCodeText: String = ""
     /// 내 프로필
     @Published var profile: Profile?
-    /// 매치 실패 시 알러트
-    @Published var showingAlert: Bool = false
+    
+    // MARK: - Alert
+    @Published var showsAlert: Bool = false
+    @Published var alertMessage: Alert?
+    
+    enum Alert {
+        case failedMatchingProfile(String)
+        case failedFeedback(String)
+    }
     
     private var container: DependencyType
     private var useCase = UseCase()
+    private var inject = Inject()
     
     struct UseCase {
         let fetchProfile = DefaultFetchProfileUseCase()
         let matching = DefaultMatchingUseCase()
+    }
+    
+    struct Inject {
+        let openUrl: OpenURLProviderType = OpenURLProvider.shared
     }
     
     init(container: DependencyType) {
@@ -57,6 +70,13 @@ final class HomeViewModel: ObservableObject {
             
         case .matching:
             guard let profile else { return }
+            guard searchCodeText.count == 4 else { return }
+            
+            guard searchCodeText != profile.userCode else {
+                self.send(action: .presentation(.easterEgg))
+                return
+            }
+            
             let query = MatchingUserQuery(
                 requestId: profile.id,
                 targetUserCode: searchCodeText
@@ -66,7 +86,8 @@ final class HomeViewModel: ObservableObject {
                 .sink { [weak self] completion in
                     guard let self else { return }
                     if case .failure = completion {
-                        self.showingAlert = true
+                        // !!!: 이거 failure 처리 어떻게 할건지 고민
+                        self.send(action: .alert(.failedMatchingProfile("프로필 조회에 실패했어요.")))
                     }
 
                 } receiveValue: { [weak self] matchingInfo in
@@ -75,17 +96,32 @@ final class HomeViewModel: ObservableObject {
                 }.store(in: &cancellables)
             
         case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
+            do {
+                try inject.openUrl.feedback()
+            } catch let error {
+                self.send(action: .alert(.failedFeedback(error.localizedDescription)))
+            }
             
         case .appstore:
-            container.services.openURLSerivce.execute(type: .appstore)
+            do {
+                try inject.openUrl.appstore()
+            } catch {
+                
+            }
             
         case .releaseNote:
-            container.services.openURLSerivce.execute(type: .releaseNote)
+            do {
+                try inject.openUrl.releaseNote()
+            } catch {
+                
+            }
             
         case let .presentation(presentation):
             self.presentation = presentation
             
+        case let .alert(type):
+            showsAlert = true
+            alertMessage = type
         }
     }
 }

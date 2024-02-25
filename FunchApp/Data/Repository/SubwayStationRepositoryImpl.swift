@@ -14,7 +14,7 @@ final class SubwayStationRepositoryImpl: SubwayStationRepository {
     private let apiClient: APIClient
     
     init() {
-        apiClient = APIClient()
+        apiClient = APIClient.shared
     }
     
     /// `지하철역` 검색
@@ -29,9 +29,8 @@ final class SubwayStationRepositoryImpl: SubwayStationRepository {
                 switch result {
                 case .success(let success):
                     promise(.success(success.toDomain()))
-                case .failure(let failure):
-                    //                    promise(.failure(failure))
-                    break
+                case .failure(_):
+                    promise(.success([]))
                 }
             }
         }.eraseToAnyPublisher()

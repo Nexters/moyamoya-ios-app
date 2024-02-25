@@ -15,6 +15,12 @@ final class ProfileViewModel: ObservableObject {
         case loadFailed
         case deleteProfile
         case feedback
+        case alert(Alert)
+    }
+    
+    enum Alert {
+        case deleteProile
+        case feedbackFailed(String)
     }
     
     enum PresentationState {
@@ -24,11 +30,21 @@ final class ProfileViewModel: ObservableObject {
     @Published var presentation: PresentationState?
     @Published var profile: Profile?
     @Published var dismiss: Bool = false
+    @Published var alertMessage: Alert?
+
+    // MAKR: - Alert
+    @Published var showsAlert: Bool = false
+    @Published var alertFeedbackFailed: Bool = false
     
     private var container: DependencyType
     private var useCase: DeleteProfileUseCase
+    private var inject = Inject()
     
     private var cancellables = Set<AnyCancellable>()
+    
+    struct Inject {
+        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+    }
     
     init(container: DependencyType, useCase: DeleteProfileUseCase) {
         self.container = container
@@ -48,10 +64,7 @@ final class ProfileViewModel: ObservableObject {
             dismiss = true
             
         case .deleteProfile:
-            guard let userId = profile?.id else {
-                // TODO: 내가 프로필이 없다면 ?
-                return
-            }
+            guard let userId = profile?.id else { return }
             
             useCase.execute(requestId: userId)
                 .sink { _ in
@@ -64,7 +77,17 @@ final class ProfileViewModel: ObservableObject {
                 .store(in: &cancellables)
             
         case .feedback:
-            container.services.openURLSerivce.execute(type: .feedback)
+            do {
+                try inject.openUrl.feedback()
+            } catch let error {
+                showsAlert = true
+                alertMessage = .feedbackFailed(error.localizedDescription)
+            }
+            
+        case let .alert(type):
+            showsAlert = true
+            alertMessage = type
         }
+        
     }
 }
