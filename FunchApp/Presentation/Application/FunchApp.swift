@@ -15,9 +15,6 @@ struct FunchApp: App {
     @State private var isSplashing: Bool = true
     
     var body: some Scene {
-//        WindowGroup {
-//            mbtiBoardView()
-//        }
         WindowGroup {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {

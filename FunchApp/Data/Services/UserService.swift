@@ -14,9 +14,11 @@ protocol UserServiceType {
 }
 
 final class UserService: UserServiceType {
+    static let shared = UserService()
+    
     private let userStorage: UserDefaultStorage
     
-    init() {
+    private init() {
         self.userStorage = .shared
     }
     

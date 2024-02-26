@@ -12,8 +12,6 @@ struct MBTIBoardView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: MBTIBoardViewModel
     
-//    private let mbties = MBTI.allCases
-    
     var body: some View {
         ZStack {
             Color.gray900

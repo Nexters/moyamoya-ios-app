@@ -35,7 +35,6 @@
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
 		1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */; };
 		1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* UserService.swift */; };
-		1A7B83832B7A1682007408D7 /* OpenURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83822B7A1682007408D7 /* OpenURLService.swift */; };
 		1A83F0202B80C56500E6EC89 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F01F2B80C56500E6EC89 /* DIContainer.swift */; };
 		1A83F0232B80C5A900E6EC89 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0222B80C5A900E6EC89 /* Services.swift */; };
 		1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */; };
@@ -95,6 +94,10 @@
 		1A8F12F42B87A914001E0237 /* MBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* MBTIRepository.swift */; };
 		1A8F12FA2B8A068A001E0237 /* SearchSubwayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */; };
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
+		1A8F13042B8B7791001E0237 /* OpenURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */; };
+		1A8F13072B8B7D8C001E0237 /* OpenURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */; };
+		1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */; };
+		1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -198,7 +201,6 @@
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
 		1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1A7B837B2B7A067D007408D7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		1A7B83822B7A1682007408D7 /* OpenURLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLService.swift; sourceTree = "<group>"; };
 		1A83F01F2B80C56500E6EC89 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1A83F0222B80C5A900E6EC89 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewBuilder.swift; sourceTree = "<group>"; };
@@ -223,6 +225,10 @@
 		1A8F12F32B87A914001E0237 /* MBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepository.swift; sourceTree = "<group>"; };
 		1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayUseCase.swift; sourceTree = "<group>"; };
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
+		1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLProvider.swift; sourceTree = "<group>"; };
+		1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLError.swift; sourceTree = "<group>"; };
+		1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLPath.swift; sourceTree = "<group>"; };
+		1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggView.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -380,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				1A83F0222B80C5A900E6EC89 /* Services.swift */,
-				1A7B83822B7A1682007408D7 /* OpenURLService.swift */,
 				1A7B837B2B7A067D007408D7 /* UserService.swift */,
 			);
 			path = Services;
@@ -452,6 +457,32 @@
 			path = Matching;
 			sourceTree = "<group>";
 		};
+		1A8F13022B8B7710001E0237 /* Inject */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F13052B8B7AC4001E0237 /* OpenURL */,
+			);
+			path = Inject;
+			sourceTree = "<group>";
+		};
+		1A8F13052B8B7AC4001E0237 /* OpenURL */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */,
+				1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */,
+				1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */,
+			);
+			path = OpenURL;
+			sourceTree = "<group>";
+		};
+		1A8F130C2B8B8FD4001E0237 /* EasterEggScene */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */,
+			);
+			path = EasterEggScene;
+			sourceTree = "<group>";
+		};
 		1ACE492F2B5B9D0B00024336 = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +533,7 @@
 				1ACE495F2B5B9F1100024336 /* MatchResultScene */,
 				1ACE49602B5B9F1A00024336 /* ProfileEditorScene */,
 				1A8F12ED2B878A63001E0237 /* MBTIBoardScene */,
+				1A8F130C2B8B8FD4001E0237 /* EasterEggScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -680,6 +712,7 @@
 				1ACE49872B5BAB7000024336 /* DesignSystem */,
 				1A7B06952B5D675C0024356C /* Utils */,
 				1A83F0392B81085D00E6EC89 /* Extensions */,
+				1A8F13022B8B7710001E0237 /* Inject */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -985,6 +1018,7 @@
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
+				1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */,
 				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepository.swift in Sources */,
@@ -1010,11 +1044,13 @@
 				3EA69C0F2B5E9AB2008AE23B /* View+.swift in Sources */,
 				1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */,
 				3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */,
+				1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */,
 				1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */,
 				1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
 				3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */,
 				3EE810682B7F74CE007B8A87 /* ImageResource+.swift in Sources */,
+				1A8F13072B8B7D8C001E0237 /* OpenURLError.swift in Sources */,
 				1ACE49582B5B9ECE00024336 /* MatchResultView.swift in Sources */,
 				1A7B06922B5D67250024356C /* SubwayStationRepository.swift in Sources */,
 				1A7B06902B5D669A0024356C /* SubwayStationRepositoryImpl.swift in Sources */,
@@ -1033,7 +1069,6 @@
 				1A792B872B5D605400A080F2 /* MatchingRepositoryImpl.swift in Sources */,
 				1ACE49662B5BA06D00024336 /* ProfileRepository.swift in Sources */,
 				1ACE49562B5B9E9300024336 /* ProfileView.swift in Sources */,
-				1A7B83832B7A1682007408D7 /* OpenURLService.swift in Sources */,
 				1ACE498D2B5C111500024336 /* ChipView.swift in Sources */,
 				1A83F0362B80E88300E6EC89 /* OnboardingViewBuilder.swift in Sources */,
 				3EA875532B83C4EE00713C64 /* SubwayChemistryLabel.swift in Sources */,
@@ -1044,6 +1079,7 @@
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepositoryImpl.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
+				1A8F13042B8B7791001E0237 /* OpenURLProvider.swift in Sources */,
 				1A83F03B2B81087D00E6EC89 /* Buildable.swift in Sources */,
 				1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */,
 				1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */,
@@ -1260,7 +1296,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.korea.app.funch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1298,7 +1334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.korea.app.funch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

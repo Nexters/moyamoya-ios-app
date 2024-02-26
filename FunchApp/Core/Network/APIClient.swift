@@ -9,9 +9,11 @@ import Foundation
 import Moya
 
 final class APIClient {
+    static let shared = APIClient()
+    
     private let provider: MoyaProvider<DefaultTargetType>
 
-    init() {
+    private init() {
         provider = MoyaProvider<DefaultTargetType>()
     }
     

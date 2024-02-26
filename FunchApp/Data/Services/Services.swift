@@ -8,11 +8,9 @@
 import Foundation
 
 final class Services: ServiceType {
-    var openURLSerivce: OpenURLServiceType
     var userService: UserServiceType
     
     init() {
-        self.openURLSerivce = OpenURLService()
-        self.userService = UserService()
+        self.userService = UserService.shared
     }
 }

@@ -70,11 +70,29 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
         }
-        .alert("존재하지 않는 사용자입니다", isPresented: $viewModel.showingAlert, actions: {
-            Button {
-                // do not action
-            } label: {
-                Text("닫기")
+        .alert("", isPresented: $viewModel.showsAlert, actions: {
+            switch viewModel.alertMessage {
+            case .failedMatchingProfile(_):
+                Button(role: .cancel) {
+                } label: {
+                    Text("OK")
+                }
+            case .failedFeedback(_):
+                Button(role: .cancel) {
+                } label: {
+                    Text("OK")
+                }
+            case .none:
+                EmptyView()
+            }
+        }, message: {
+            switch viewModel.alertMessage {
+            case let .failedMatchingProfile(message):
+                Text(message)
+            case let .failedFeedback(message):
+                Text(message)
+            case .none:
+                EmptyView()
             }
         })
         .onAppear {
@@ -96,6 +114,10 @@ struct HomeView: View {
             case .mbtiCollection:
                 NavigationStack {
                     MBTIBoardViewBuilder(container: container).body
+                }
+            case .easterEgg:
+                NavigationStack {
+                    EasterEggView()
                 }
             }
         }
