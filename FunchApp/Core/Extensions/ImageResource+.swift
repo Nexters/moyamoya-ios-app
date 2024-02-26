@@ -77,4 +77,27 @@ extension ImageResource {
         default: return .percent3
         }
     }
+    
+    static func findMBTIImageResource(from mbti: String) -> [ImageResource] {
+        switch mbti {
+        case MBTI.infp.rawValue: return [.infpDisabled, .infpActive]
+        case MBTI.infj.rawValue: return [.infjDisabled, .infjActive]
+        case MBTI.intp.rawValue: return [.intpDisabled, .intpActive]
+        case MBTI.intj.rawValue: return [.intjDisabled, .intjActive]
+        case MBTI.istp.rawValue: return [.istpDisabled, .istpActive]
+        case MBTI.istj.rawValue: return [.istjDisabled, .istjActive]
+        case MBTI.isfp.rawValue: return [.isfpDisabled, .isfpActive]
+        case MBTI.isfj.rawValue: return [.isfjDisabled, .isfjActive]
+        case MBTI.enfp.rawValue: return [.enfpDisabled, .enfpActive]
+        case MBTI.enfj.rawValue: return [.enfjDisabled, .enfjActive]
+        case MBTI.entp.rawValue: return [.entpDisabled, .entpActive]
+        case MBTI.entj.rawValue: return [.entjDisabled, .entjActive]
+        case MBTI.estp.rawValue: return [.estpDisabled, .estpActive]
+        case MBTI.estj.rawValue: return [.estjDisabled, .estjActive]
+        case MBTI.esfp.rawValue: return [.esfpDisabled, .esfpActive]
+        case MBTI.esfj.rawValue: return [.esfjDisabled, .esfjActive]
+            
+        default: return []
+        }
+    }
 }
