@@ -20,6 +20,7 @@ final class HomeViewModel: ObservableObject {
         
         case presentation(HomePresentation)
         case alert(Alert)
+        case share
     }
     
     @Published var presentation: HomePresentation?
@@ -27,6 +28,8 @@ final class HomeViewModel: ObservableObject {
     @Published var searchCodeText: String = ""
     /// 내 프로필
     @Published var profile: Profile?
+    /// 액티비티 아이템
+    @Published var activityItem: ActivityItem?
     
     // MARK: - Alert
     @Published var showsAlert: Bool = false
@@ -122,6 +125,10 @@ final class HomeViewModel: ObservableObject {
         case let .alert(type):
             showsAlert = true
             alertMessage = type
+            
+        case .share:
+            activityItem = .init(items: "펀치앱 바로가기")
+            break
         }
     }
 }

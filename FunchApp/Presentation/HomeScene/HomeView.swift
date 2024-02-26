@@ -70,6 +70,7 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
         }
+        .activitySheet($viewModel.activityItem)
         .alert("", isPresented: $viewModel.showsAlert, actions: {
             switch viewModel.alertMessage {
             case .failedMatchingProfile(_):
@@ -203,6 +204,16 @@ struct HomeView: View {
             }
             
             Spacer()
+            
+            Button {
+                viewModel.send(action: .share)
+            } label: {
+                Image(systemName: "square.and.arrow.up.circle.fill")
+                    .resizable()
+                    .frame(width: 28, height: 28)
+                    .foregroundColor(.lemon500)
+            }
+            
         }
         .padding(.horizontal, 16)
         .frame(height: 92)
