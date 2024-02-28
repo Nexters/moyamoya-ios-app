@@ -96,7 +96,7 @@
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
 		1A8F13042B8B7791001E0237 /* OpenURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */; };
 		1A8F13072B8B7D8C001E0237 /* OpenURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */; };
-		1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */; };
+		1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */; };
 		1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
@@ -227,7 +227,7 @@
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
 		1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLProvider.swift; sourceTree = "<group>"; };
 		1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLError.swift; sourceTree = "<group>"; };
-		1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLPath.swift; sourceTree = "<group>"; };
+		1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStringSet.swift; sourceTree = "<group>"; };
 		1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggView.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
@@ -460,6 +460,7 @@
 		1A8F13022B8B7710001E0237 /* Inject */ = {
 			isa = PBXGroup;
 			children = (
+				1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */,
 				1A8F13052B8B7AC4001E0237 /* OpenURL */,
 			);
 			path = Inject;
@@ -470,7 +471,6 @@
 			children = (
 				1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */,
 				1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */,
-				1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */,
 			);
 			path = OpenURL;
 			sourceTree = "<group>";
@@ -1018,7 +1018,7 @@
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
-				1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */,
+				1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */,
 				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepository.swift in Sources */,

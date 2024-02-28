@@ -29,6 +29,7 @@ struct EasterEggView: View {
                     Text("이스터에그")
                         .font(.Funch.title2)
                         .foregroundColor(.white)
+                        .padding(.top, 8)
                         .padding(.leading, 20)
                         .padding(.bottom, 2)
                     
@@ -49,7 +50,7 @@ struct EasterEggView: View {
                             Text("이스터에그를 발견하셨나요?")
                             Text("피드백 보내기 버튼을 통해")
                             Text("1. 이스터에그를 발견했다는 사실과")
-                            Text("2. 연락가능한 이메일을 알려주세요.")
+                            Text("2. 연락 가능한 이메일을 알려주세요.")
                             Text("우리팀이 제공하는")
                             Text("작은 선물을 보내드립니다.🍀")
                         }

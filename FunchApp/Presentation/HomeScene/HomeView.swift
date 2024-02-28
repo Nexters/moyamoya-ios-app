@@ -203,6 +203,16 @@ struct HomeView: View {
             }
             
             Spacer()
+            
+            ShareLink(
+                item: viewModel.shareLink.item,
+                message: viewModel.shareLink.message(userCode: viewModel.profile?.userCode ?? "")
+            ) {
+                Image(systemName: "square.and.arrow.up.circle.fill")
+                    .resizable()
+                    .frame(width: 28, height: 28)
+                    .foregroundColor(.lemon500)
+            }
         }
         .padding(.horizontal, 16)
         .frame(height: 92)
