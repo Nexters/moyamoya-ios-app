@@ -19,15 +19,15 @@ final class OpenURLProvider: OpenURLProviderType {
     private init() {}
     
     func feedback() throws {
-        try execute(urlString: OpenURLPath.feedback.rawValue)
+        try execute(urlString: LinkStringSet.feedback.rawValue)
     }
     
     func appstore() throws {
-        try execute(urlString: OpenURLPath.appstore.rawValue)
+        try execute(urlString: LinkStringSet.appstore.rawValue)
     }
     
     func releaseNote() throws {
-        try execute(urlString: OpenURLPath.releaseNote.rawValue)
+        try execute(urlString: LinkStringSet.releaseNote.rawValue)
     }
     
     private func execute(urlString: String) throws {

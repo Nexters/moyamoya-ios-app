@@ -96,9 +96,8 @@
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
 		1A8F13042B8B7791001E0237 /* OpenURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */; };
 		1A8F13072B8B7D8C001E0237 /* OpenURLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */; };
-		1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */; };
+		1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */; };
 		1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */; };
-		1A8F13102B8CB544001E0237 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F130F2B8CB544001E0237 /* ActivityView.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -228,9 +227,8 @@
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
 		1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLProvider.swift; sourceTree = "<group>"; };
 		1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLError.swift; sourceTree = "<group>"; };
-		1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLPath.swift; sourceTree = "<group>"; };
+		1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStringSet.swift; sourceTree = "<group>"; };
 		1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggView.swift; sourceTree = "<group>"; };
-		1A8F130F2B8CB544001E0237 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -462,6 +460,7 @@
 		1A8F13022B8B7710001E0237 /* Inject */ = {
 			isa = PBXGroup;
 			children = (
+				1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */,
 				1A8F13052B8B7AC4001E0237 /* OpenURL */,
 			);
 			path = Inject;
@@ -472,7 +471,6 @@
 			children = (
 				1A8F13062B8B7D8C001E0237 /* OpenURLError.swift */,
 				1A8F13032B8B7791001E0237 /* OpenURLProvider.swift */,
-				1A8F13082B8B7DAB001E0237 /* OpenURLPath.swift */,
 			);
 			path = OpenURL;
 			sourceTree = "<group>";
@@ -740,7 +738,6 @@
 		1ACE498E2B5C111A00024336 /* UICompoents.SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F130F2B8CB544001E0237 /* ActivityView.swift */,
 				1ACE498C2B5C111500024336 /* ChipView.swift */,
 				3EA69BFE2B5C342E008AE23B /* FunchTextField.swift */,
 				3EA69C002B5D61E9008AE23B /* DynamicHGrid.swift */,
@@ -1021,7 +1018,7 @@
 				1A792B742B5D55D400A080F2 /* RequestDTO.swift in Sources */,
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
-				1A8F13092B8B7DAB001E0237 /* OpenURLPath.swift in Sources */,
+				1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */,
 				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepository.swift in Sources */,
@@ -1095,7 +1092,6 @@
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
 				3EA875552B843EEC00713C64 /* SubwayChipView.swift in Sources */,
 				1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */,
-				1A8F13102B8CB544001E0237 /* ActivityView.swift in Sources */,
 				1A87EB0A2B6E0DCC0059F80A /* FetchProfileUseCase.swift in Sources */,
 				1A45883E2B64EAD600FBB841 /* SubwayInfo.swift in Sources */,
 				1A7B069C2B5D6D600024356C /* UIDeivce+.swift in Sources */,

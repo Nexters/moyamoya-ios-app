@@ -28,12 +28,28 @@ final class HomeViewModel: ObservableObject {
     @Published var searchCodeText: String = ""
     /// 내 프로필
     @Published var profile: Profile?
-    /// 액티비티 아이템
-    @Published var activityItem: ActivityItem?
     
     // MARK: - Alert
     @Published var showsAlert: Bool = false
     @Published var alertMessage: Alert?
+    
+    var shareLink = ShareLink()
+    
+    /// 외부에 공유하기 기능
+    struct ShareLink {
+        var item = LinkStringSet.appstore.rawValue
+        
+        func message(userCode: String) -> Text {
+            let string = """
+            
+            너랑나랑 펀치할래?
+            
+            🌱 초대코드: \(userCode)
+            """
+            
+            return Text(string)
+        }
+    }
     
     enum Alert {
         case failedMatchingProfile(String)
@@ -51,6 +67,7 @@ final class HomeViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let shareLink = ShareLinkProvider.shared
     }
     
     init(container: DependencyType) {
@@ -127,7 +144,9 @@ final class HomeViewModel: ObservableObject {
             alertMessage = type
             
         case .share:
-            activityItem = .init(items: "펀치앱 바로가기")
+            let urlString = "https://apps.apple.com/kr/app/%ED%99%A9%EA%B8%88%ED%8E%80%EC%B9%98/id6478166971"
+            let url = URL(string: urlString)
+            
             break
         }
     }
