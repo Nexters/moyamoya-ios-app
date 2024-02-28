@@ -13,6 +13,7 @@ final class HomeViewModel: ObservableObject {
     enum Action {
         case load
         case matching
+        case saveMBTI(String)
         
         case feedback
         case appstore
@@ -44,6 +45,7 @@ final class HomeViewModel: ObservableObject {
     struct UseCase {
         let fetchProfile = DefaultFetchProfileUseCase()
         let matching = DefaultMatchingUseCase()
+        let mbti = DefaultMBTIBoardUseCase()
     }
     
     struct Inject {
@@ -89,11 +91,15 @@ final class HomeViewModel: ObservableObject {
                         // !!!: 이거 failure 처리 어떻게 할건지 고민
                         self.send(action: .alert(.failedMatchingProfile("프로필 조회에 실패했어요.")))
                     }
-
+                    
                 } receiveValue: { [weak self] matchingInfo in
                     guard let self else { return }
                     self.presentation = .matchResult(matchingInfo)
+                    self.send(action: .saveMBTI(matchingInfo.profile.mbti))
                 }.store(in: &cancellables)
+            
+        case let .saveMBTI(mbti):
+            useCase.mbti.save(mbti: mbti)
             
         case .feedback:
             do {

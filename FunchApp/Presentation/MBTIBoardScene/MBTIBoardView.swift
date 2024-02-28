@@ -22,25 +22,33 @@ struct MBTIBoardView: View {
                     Spacer()
                         .frame(height: 8)
                     
-                    Text("달성기록")
+                    Text("수집 도감")
                         .font(.Funch.title2)
                         .foregroundColor(.white)
                     
                     Spacer()
                         .frame(height: 2)
                     
-                    Text("\(viewModel.profile.userNickname)님이 매칭한 친구들이에요")
+                    Text("\(viewModel.profile.userNickname)님이 매칭한 친구들이에요!")
                         .font(.Funch.body)
                         .foregroundColor(.gray300)
                     
                     Spacer()
-                        .frame(height: 24)
+                        .frame(height: 40)
+                    
+                    Text("MBTI")
+                        .font(.Funch.subtitle2)
+                        .foregroundColor(.gray400)
+                    
+                    Spacer()
+                        .frame(height: 12)
                     
                     LazyVGrid(columns: [.init(.adaptive(minimum: 74))]) {
                         ForEach(viewModel.mbtiTiles, id: \.0) { (mbti, opacity) in
                             boardCell(mbti, opacity: opacity)
                                 .frame(width: (geometry.size.width - 40 - 24) / 4,
                                        height: (geometry.size.width - 40 - 24) / 4)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
                     }
                     
@@ -67,19 +75,16 @@ struct MBTIBoardView: View {
     }
     
     func boardCell(_ mbti: String, opacity: CGFloat) -> some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .fill(
-                    opacity == 0
-                    ? Color.gray800
-                    : Color.lemon500.opacity(opacity)
-                )
-            
-            Text(mbti)
-                .font(.Funch.title1)
-                .minimumScaleFactor(0.5)
-                .foregroundColor(.white)
-                .padding()
+        let imageResource = MBTI(rawValue: mbti.lowercased())?.imageResource ?? []
+        return VStack {
+            if opacity == 0 {
+                Image(imageResource[0])
+            } else {
+                Image(imageResource[1])
+                    .opacity(opacity)
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.gray800)
     }
 }

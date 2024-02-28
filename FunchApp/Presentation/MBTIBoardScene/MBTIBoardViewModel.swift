@@ -16,21 +16,24 @@ final class MBTIBoardViewModel: ObservableObject {
     @Published var profile: Profile = .empty
     @Published var mbtiTiles: [(String, CGFloat)] = []
     
+    private let container: DependencyType
     private let useCase = UseCase()
     
     struct UseCase {
         let mbtiBoard = DefaultMBTIBoardUseCase()
     }
     
-    init() {}
+    init(container: DependencyType) {
+        self.container = container
+    }
     
     func send(action: Action) {
         switch action {
         case .load:
-            profile = useCase.mbtiBoard.profile()
+            profile = container.services.userService.profiles.last ?? .empty
             mbtiTiles = MBTI.allCases.map { mbti in
                 let mbti = mbti.rawValue.uppercased()
-                let opacity = CGFloat(useCase.mbtiBoard.count(mbti: mbti)) * 0.2
+                let opacity = CGFloat(useCase.mbtiBoard.count(mbti: mbti)) * 0.34
                 return (mbti, opacity)
             }
         }
