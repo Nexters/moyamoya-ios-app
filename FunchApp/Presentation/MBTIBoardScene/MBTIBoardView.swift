@@ -75,7 +75,7 @@ struct MBTIBoardView: View {
     }
     
     func boardCell(_ mbti: String, opacity: CGFloat) -> some View {
-        let imageResource = ImageResource.findMBTIImageResource(from: mbti.lowercased())
+        let imageResource = MBTI(rawValue: mbti.lowercased())?.imageResource ?? []
         return VStack {
             if opacity == 0 {
                 Image(imageResource[0])
