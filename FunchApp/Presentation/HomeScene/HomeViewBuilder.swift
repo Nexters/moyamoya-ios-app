@@ -21,3 +21,4 @@ struct HomeViewBuilder: Buildable {
         return view
     }
 }
+
