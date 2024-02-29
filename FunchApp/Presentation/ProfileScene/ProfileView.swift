@@ -61,7 +61,7 @@ struct ProfileView: View {
                     Text("삭제하기")
                 }
                 
-            case .feedbackFailed(let string):
+            case .feedbackFailed(_):
                 Button(role: .cancel) {
                     
                 } label: {

@@ -45,7 +45,6 @@ final class ProfileEditorViewModel: ObservableObject {
     @Published var isEnabled: Bool = false
     @Published var presentation: ProfileEditorPresentation?
     
-    private var container: DependencyType
     private var useCase = UseCase()
     private var inject = Inject()
     
@@ -56,13 +55,12 @@ final class ProfileEditorViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let userService = UserService.shared
     }
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(container: DependencyType) {
-        self.container = container
-        
+    init() {
         bind()
     }
     
@@ -148,7 +146,7 @@ final class ProfileEditorViewModel: ObservableObject {
                     
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
-                    self.container.services.userService.profiles.append(profile)
+                    self.inject.userService.profiles.append(profile)
                     self.presentation = .home
                 }.store(in: &cancellables)
             

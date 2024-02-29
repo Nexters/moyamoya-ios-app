@@ -10,7 +10,9 @@ import SwiftUI
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
-    @StateObject private var container: DIContainer = .init(services: Services())
+//    @StateObject private var container: DIContainer = .init(services: Services())
+    
+    private var userService = UserService.shared
     
     @State private var isSplashing: Bool = true
     
@@ -18,7 +20,7 @@ struct FunchApp: App {
         WindowGroup {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
-                    if !container.services.userService.profiles.isEmpty {
+                    if !userService.profiles.isEmpty {
                         HomeViewBuilder().body
                     } else {
                         OnboardingViewBuilder().body
@@ -27,7 +29,7 @@ struct FunchApp: App {
                                 case let .onboarding(pathType):
                                     switch pathType {
                                     case .createProfile:
-                                        ProfileEditorViewBuilder(container: container).body
+                                        ProfileEditorViewBuilder().body
                                             .navigationBarBackButtonHidden()
                                     }
                                 }
@@ -49,7 +51,6 @@ struct FunchApp: App {
                 }
             }
             .environmentObject(appCoordinator)
-            .environmentObject(container)
         }
     }
 }

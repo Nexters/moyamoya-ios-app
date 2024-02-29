@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-struct ProfileEditorViewBuilder: Buildable {
-    
-    var container: DependencyType
-    
-    init(container: DependencyType) {
-        self.container = container
-    }
+struct ProfileEditorViewBuilder {
     
     var body: some View {
-        let viewModel = ProfileEditorViewModel(container: container)
+        let viewModel = ProfileEditorViewModel()
         let view = ProfileEditorView(viewModel: viewModel)
         
         return view
