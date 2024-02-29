@@ -11,12 +11,8 @@ struct EasterEggView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @StateObject private var viewModel: EasterEggViewModel
-    
-    init(viewModel: EasterEggViewModel) {
-        self._viewModel = .init(wrappedValue: viewModel)
-    }
-    
+    @StateObject var viewModel: EasterEggViewModel
+
     var body: some View {
         ZStack {
             Color.gray900
