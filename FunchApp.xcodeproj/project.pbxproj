@@ -87,7 +87,7 @@
 		1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */; };
 		1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12EE2B87A258001E0237 /* MBTI.swift */; };
 		1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */; };
-		1A8F12F42B87A914001E0237 /* MBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* MBTIRepository.swift */; };
+		1A8F12F42B87A914001E0237 /* MBTIRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* MBTIRepositoryImpl.swift */; };
 		1A8F12FA2B8A068A001E0237 /* SearchSubwayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */; };
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
 		1A8F13042B8B7791001E0237 /* OpenURLInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLInject.swift */; };
@@ -96,6 +96,8 @@
 		1AC781192B90E3F000E298E3 /* EasterEggViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC781182B90E3F000E298E3 /* EasterEggViewModel.swift */; };
 		1AC7811B2B90E42000E298E3 /* EasterEggViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7811A2B90E42000E298E3 /* EasterEggViewBuilder.swift */; };
 		1AC7811C2B90E5C400E298E3 /* LinkStringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */; };
+		1AC7811E2B90E72200E298E3 /* MBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7811D2B90E72200E298E3 /* MBTIRepository.swift */; };
+		1AC781202B90E81500E298E3 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7811F2B90E81500E298E3 /* RepositoryError.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -216,7 +218,7 @@
 		1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardView.swift; sourceTree = "<group>"; };
 		1A8F12EE2B87A258001E0237 /* MBTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTI.swift; sourceTree = "<group>"; };
 		1A8F12F02B87A33C001E0237 /* MBTIBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIBoardUseCase.swift; sourceTree = "<group>"; };
-		1A8F12F32B87A914001E0237 /* MBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepository.swift; sourceTree = "<group>"; };
+		1A8F12F32B87A914001E0237 /* MBTIRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepositoryImpl.swift; sourceTree = "<group>"; };
 		1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayUseCase.swift; sourceTree = "<group>"; };
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
 		1A8F13032B8B7791001E0237 /* OpenURLInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLInject.swift; sourceTree = "<group>"; };
@@ -224,6 +226,8 @@
 		1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggView.swift; sourceTree = "<group>"; };
 		1AC781182B90E3F000E298E3 /* EasterEggViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggViewModel.swift; sourceTree = "<group>"; };
 		1AC7811A2B90E42000E298E3 /* EasterEggViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggViewBuilder.swift; sourceTree = "<group>"; };
+		1AC7811D2B90E72200E298E3 /* MBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepository.swift; sourceTree = "<group>"; };
+		1AC7811F2B90E81500E298E3 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -402,9 +406,9 @@
 		1A8F12ED2B878A63001E0237 /* MBTIBoardScene */ = {
 			isa = PBXGroup;
 			children = (
+				3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */,
 				1A8F12EB2B878A54001E0237 /* MBTIBoardView.swift */,
 				3ED755182B88A87700529084 /* MBTIBoardViewModel.swift */,
-				3ED7551A2B89F66C00529084 /* MBTIBoardViewBuilder.swift */,
 			);
 			path = MBTIBoardScene;
 			sourceTree = "<group>";
@@ -437,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				1A8F13052B8B7AC4001E0237 /* OpenURL */,
+				1A7B837B2B7A067D007408D7 /* UserService.swift */,
 			);
 			path = Inject;
 			sourceTree = "<group>";
@@ -457,6 +462,14 @@
 				1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */,
 			);
 			path = EasterEggScene;
+			sourceTree = "<group>";
+		};
+		1AC781212B90E81800E298E3 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				1AC7811F2B90E81500E298E3 /* RepositoryError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		1ACE492F2B5B9D0B00024336 = {
@@ -517,7 +530,6 @@
 		1ACE494E2B5B9D7800024336 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1A7B837B2B7A067D007408D7 /* UserService.swift */,
 				1ACE497E2B5BA45800024336 /* Repository */,
 				1ACE497B2B5BA39D00024336 /* DataMapping */,
 				1ACE497A2B5BA38200024336 /* PersistentStorage */,
@@ -615,6 +627,7 @@
 				1ACE49652B5BA06D00024336 /* ProfileRepository.swift */,
 				1A792B8C2B5D653B00A080F2 /* MatchingRepository.swift */,
 				1A7B06912B5D67250024356C /* SubwayStationRepository.swift */,
+				1AC7811D2B90E72200E298E3 /* MBTIRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -661,10 +674,11 @@
 		1ACE497E2B5BA45800024336 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F12F32B87A914001E0237 /* MBTIRepository.swift */,
+				1A8F12F32B87A914001E0237 /* MBTIRepositoryImpl.swift */,
 				1ACE497F2B5BA46600024336 /* ProfileRepositoryImpl.swift */,
 				1A792B862B5D605400A080F2 /* MatchingRepositoryImpl.swift */,
 				1A7B068F2B5D669A0024356C /* SubwayStationRepositoryImpl.swift */,
+				1AC781212B90E81800E298E3 /* Error */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -996,6 +1010,7 @@
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
 				1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */,
+				1AC781202B90E81500E298E3 /* RepositoryError.swift in Sources */,
 				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
 				1A792B8D2B5D653B00A080F2 /* MatchingRepository.swift in Sources */,
@@ -1004,6 +1019,7 @@
 				3EA69C1C2B5ED956008AE23B /* Font+.swift in Sources */,
 				1A792B892B5D62A300A080F2 /* MatchingUserQuery.swift in Sources */,
 				3EE8106E2B80705D007B8A87 /* SplashView.swift in Sources */,
+				1AC7811E2B90E72200E298E3 /* MBTIRepository.swift in Sources */,
 				1ACE49642B5B9F4A00024336 /* Profile.swift in Sources */,
 				1A83F02C2B80E1BD00E6EC89 /* HomeViewModel.swift in Sources */,
 				3EA875682B86492B00713C64 /* DeleteProfile.Res.swift in Sources */,
@@ -1033,7 +1049,7 @@
 				3EA875662B8645AE00713C64 /* DeleteProfileUseCase.swift in Sources */,
 				3E1E73FC2B74AC510082386A /* Gradient+.swift in Sources */,
 				3EE810762B81D234007B8A87 /* MatchResultViewModel.swift in Sources */,
-				1A8F12F42B87A914001E0237 /* MBTIRepository.swift in Sources */,
+				1A8F12F42B87A914001E0237 /* MBTIRepositoryImpl.swift in Sources */,
 				1A83F0332B80E6E000E6EC89 /* ProfileViewModel.swift in Sources */,
 				3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */,
 				1A44AAAA2B67EF42006D8894 /* GetProfileFromDeviceId.Res.swift in Sources */,

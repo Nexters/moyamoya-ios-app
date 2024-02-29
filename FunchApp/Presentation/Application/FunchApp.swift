@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+final class DIContainer: ObservableObject {
+    let profileRepository = ProfileRepositoryImpl()
+    let mbtiRepository = MBTIRepositoryImpl()
+    let matchingRepository = MatchingRepositoryImpl()
+    let subwayStationRepository = SubwayStationRepositoryImpl()
+}
+
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
+    @StateObject private var diContainer = DIContainer()
     
     private var userService = UserService.shared
     
@@ -20,7 +28,7 @@ struct FunchApp: App {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
                     if !userService.profiles.isEmpty {
-                        HomeViewBuilder().body
+                        HomeViewBuilder(diContainer: diContainer).body
                     } else {
                         OnboardingViewBuilder().body
                             .navigationDestination(for: AppCoordinatorPathType.self) { type in
@@ -50,6 +58,7 @@ struct FunchApp: App {
                 }
             }
             .environmentObject(appCoordinator)
+            .environmentObject(diContainer)
         }
     }
 }

@@ -56,13 +56,13 @@ final class HomeViewModel: ObservableObject {
         case failedFeedback(String)
     }
     
-    private var useCase = UseCase()
+    private var useCase: UseCase
     private var inject = Inject()
     
     struct UseCase {
-        let fetchProfile = DefaultFetchProfileUseCase()
-        let matching = DefaultMatchingUseCase()
-        let mbti = DefaultMBTIBoardUseCase()
+        let fetchProfile: DefaultFetchProfileUseCase
+        let matching: DefaultMatchingUseCase
+        let mbti: DefaultMBTIBoardUseCase
     }
     
     struct Inject {
@@ -70,6 +70,9 @@ final class HomeViewModel: ObservableObject {
         let userServies = UserService.shared
     }
     
+    init(useCase: UseCase) {
+        self.useCase = useCase
+    }
 
     var cancellables = Set<AnyCancellable>()
     

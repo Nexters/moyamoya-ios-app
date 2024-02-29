@@ -16,11 +16,11 @@ final class MBTIBoardViewModel: ObservableObject {
     @Published var profile: Profile = .empty
     @Published var mbtiTiles: [(String, CGFloat)] = []
     
-    private let useCase = UseCase()
+    private let useCase: UseCase
     private let inject = Inject()
     
     struct UseCase {
-        let mbtiBoard = DefaultMBTIBoardUseCase()
+        let mbtiBoard: DefaultMBTIBoardUseCase
     }
     
     struct Inject {
@@ -28,7 +28,9 @@ final class MBTIBoardViewModel: ObservableObject {
         let userService = UserService.shared
     }
     
-    init() {}
+    init(useCase: UseCase) {
+        self.useCase = useCase
+    }
     
     func send(action: Action) {
         switch action {
