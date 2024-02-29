@@ -56,7 +56,6 @@ final class HomeViewModel: ObservableObject {
         case failedFeedback(String)
     }
     
-//    private var container: DependencyType
     private var useCase = UseCase()
     private var inject = Inject()
     
@@ -71,9 +70,6 @@ final class HomeViewModel: ObservableObject {
         let userServies = UserService.shared
     }
     
-//    init(container: DIContainer) {
-//        self.container = container
-//    }
 
     var cancellables = Set<AnyCancellable>()
     
@@ -87,7 +83,6 @@ final class HomeViewModel: ObservableObject {
                     guard let self else { return }
                     self.profile = profile
                     self.inject.userServies.profiles.append(profile)
-//                    self.container.services.userService.profiles.append(profile)
                 }.store(in: &cancellables)
             
         case .matching:
@@ -108,7 +103,6 @@ final class HomeViewModel: ObservableObject {
                 .sink { [weak self] completion in
                     guard let self else { return }
                     if case .failure = completion {
-                        // !!!: 이거 failure 처리 어떻게 할건지 고민
                         self.send(action: .alert(.failedMatchingProfile("프로필 조회에 실패했어요.")))
                     }
                     

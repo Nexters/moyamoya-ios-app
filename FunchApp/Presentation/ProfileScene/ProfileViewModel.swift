@@ -36,7 +36,6 @@ final class ProfileViewModel: ObservableObject {
     @Published var showsAlert: Bool = false
     @Published var alertFeedbackFailed: Bool = false
     
-//    private var container: DependencyType
     private var useCase: DeleteProfileUseCase
     private var inject = Inject()
     

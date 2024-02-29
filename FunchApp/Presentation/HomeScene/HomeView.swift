@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-//    @EnvironmentObject var container: DIContainer
     
     @StateObject var viewModel: HomeViewModel
     
