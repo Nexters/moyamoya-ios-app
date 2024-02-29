@@ -61,7 +61,7 @@ struct ProfileView: View {
                     Text("삭제하기")
                 }
                 
-            case .feedbackFailed(let string):
+            case .feedbackFailed(_):
                 Button(role: .cancel) {
                     
                 } label: {
@@ -200,9 +200,4 @@ struct ProfileView: View {
         .frame(height: 36)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-}
-
-#Preview {
-    @StateObject var container = DIContainer(services: Services())
-    return ProfileViewBuilder(container: container).body
 }

@@ -15,8 +15,8 @@ protocol MatchingUseCase {
 final class DefaultMatchingUseCase: MatchingUseCase {
     private let repository: MatchingRepository
     
-    init() {
-        self.repository = MatchingRepositoryImpl()
+    init(repository: MatchingRepository) {
+        self.repository = repository
     }
     
     func execute(query: MatchingUserQuery) -> AnyPublisher<MatchingInfo, RepositoryError> {

@@ -37,3 +37,4 @@ final class UserService: UserServiceType {
         set { userStorage.mbtiBoard = newValue }
     }
 }
+

@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol MBTIRepository {
-    func count(mbti: String) -> Int
-    func save(mbti: String)
-}
-
 /// 유저가 mbti board를 확인할 때의 repository
 final class MBTIRepositoryImpl: MBTIRepository {
     

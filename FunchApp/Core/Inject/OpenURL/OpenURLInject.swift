@@ -7,14 +7,18 @@
 
 import UIKit
 
-protocol OpenURLProviderType {
+protocol OpenURLInject {
     func feedback() throws
     func appstore() throws
     func releaseNote() throws
 }
 
-final class OpenURLProvider: OpenURLProviderType {
-    static let shared = OpenURLProvider()
+enum OpenURLError: Error {
+    case error(String)
+}
+
+final class OpenURLImplement: OpenURLInject {
+    static let shared = OpenURLImplement()
     
     private init() {}
     

@@ -33,11 +33,15 @@ final class MatchResultViewModel: ObservableObject {
         }
     }
     
-    private var container: DependencyType
     private let matchingInfo: MatchingInfo
+    private var inject = Inject()
     
-    init(container: DependencyType, matchingInfo: MatchingInfo) {
-        self.container = container
+    struct Inject {
+        let openUrl: OpenURLInject = OpenURLImplement.shared
+        let userServies = UserService.shared
+    }
+    
+    init(matchingInfo: MatchingInfo) {
         self.matchingInfo = matchingInfo
     }
     

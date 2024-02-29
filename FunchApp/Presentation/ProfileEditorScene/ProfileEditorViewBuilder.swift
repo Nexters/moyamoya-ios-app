@@ -7,18 +7,35 @@
 
 import SwiftUI
 
-struct ProfileEditorViewBuilder: Buildable {
+struct ProfileEditorViewBuilder {
     
-    var container: DependencyType
+    private var diContainer: DIContainer
     
-    init(container: DependencyType) {
-        self.container = container
+    init(diContainer: DIContainer) {
+        self.diContainer = diContainer
     }
     
     var body: some View {
-        let viewModel = ProfileEditorViewModel(container: container)
+        let viewModel = makeViewModel()
         let view = ProfileEditorView(viewModel: viewModel)
         
         return view
+    }
+    
+    private func makeViewModel() -> ProfileEditorViewModel {
+        .init(
+            useCase: .init(
+                createProfile: makeDefaultCreateProfileUseCase(),
+                searchSubway: makeDefaultSearchSubwayUseCase()
+            )
+        )
+    }
+    
+    private func makeDefaultCreateProfileUseCase() -> DefaultCreateProfileUseCase {
+        return .init(profileRepository: diContainer.profileRepository)
+    }
+    
+    private func makeDefaultSearchSubwayUseCase() -> DefaultSearchSubwayUseCase {
+        return .init(repository: diContainer.subwayStationRepository)
     }
 }

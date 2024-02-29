@@ -21,7 +21,6 @@ final class HomeViewModel: ObservableObject {
         
         case presentation(HomePresentation)
         case alert(Alert)
-        case share
     }
     
     @Published var presentation: HomePresentation?
@@ -34,7 +33,7 @@ final class HomeViewModel: ObservableObject {
     @Published var showsAlert: Bool = false
     @Published var alertMessage: Alert?
     
-    var shareLink = ShareLink()
+    private(set) var shareLink = ShareLink()
     
     /// 외부에 공유하기 기능
     struct ShareLink {
@@ -57,22 +56,22 @@ final class HomeViewModel: ObservableObject {
         case failedFeedback(String)
     }
     
-    private var container: DependencyType
-    private var useCase = UseCase()
+    private var useCase: UseCase
     private var inject = Inject()
     
     struct UseCase {
-        let fetchProfile = DefaultFetchProfileUseCase()
-        let matching = DefaultMatchingUseCase()
-        let mbti = DefaultMBTIBoardUseCase()
+        let fetchProfile: DefaultFetchProfileUseCase
+        let matching: DefaultMatchingUseCase
+        let mbti: DefaultMBTIBoardUseCase
     }
     
     struct Inject {
-        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let openUrl: OpenURLInject = OpenURLImplement.shared
+        let userServies = UserService.shared
     }
     
-    init(container: DependencyType) {
-        self.container = container
+    init(useCase: UseCase) {
+        self.useCase = useCase
     }
 
     var cancellables = Set<AnyCancellable>()
@@ -86,7 +85,7 @@ final class HomeViewModel: ObservableObject {
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
                     self.profile = profile
-                    self.container.services.userService.profiles.append(profile)
+                    self.inject.userServies.profiles.append(profile)
                 }.store(in: &cancellables)
             
         case .matching:
@@ -107,7 +106,6 @@ final class HomeViewModel: ObservableObject {
                 .sink { [weak self] completion in
                     guard let self else { return }
                     if case .failure = completion {
-                        // !!!: 이거 failure 처리 어떻게 할건지 고민
                         self.send(action: .alert(.failedMatchingProfile("프로필 조회에 실패했어요.")))
                     }
                     
@@ -148,11 +146,6 @@ final class HomeViewModel: ObservableObject {
             showsAlert = true
             alertMessage = type
             
-        case .share:
-            let urlString = "https://apps.apple.com/kr/app/%ED%99%A9%EA%B8%88%ED%8E%80%EC%B9%98/id6478166971"
-            let url = URL(string: urlString)
-            
-            break
         }
     }
 }

@@ -237,11 +237,4 @@ struct MatchResultView: View {
             }
         }
     }
-    
-    
-}
-
-#Preview {
-    @StateObject var container = DIContainer(services: Services())
-    return MatchResultView(viewModel: .init(container: container, matchingInfo: .testableValue))
 }

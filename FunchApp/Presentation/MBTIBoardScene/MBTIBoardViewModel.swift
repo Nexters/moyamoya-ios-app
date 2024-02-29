@@ -16,21 +16,26 @@ final class MBTIBoardViewModel: ObservableObject {
     @Published var profile: Profile = .empty
     @Published var mbtiTiles: [(String, CGFloat)] = []
     
-    private let container: DependencyType
-    private let useCase = UseCase()
+    private let useCase: UseCase
+    private let inject = Inject()
     
     struct UseCase {
-        let mbtiBoard = DefaultMBTIBoardUseCase()
+        let mbtiBoard: DefaultMBTIBoardUseCase
     }
     
-    init(container: DependencyType) {
-        self.container = container
+    struct Inject {
+        let openUrl: OpenURLInject = OpenURLImplement.shared
+        let userService = UserService.shared
+    }
+    
+    init(useCase: UseCase) {
+        self.useCase = useCase
     }
     
     func send(action: Action) {
         switch action {
         case .load:
-            profile = container.services.userService.profiles.last ?? .empty
+            profile = inject.userService.profiles.last ?? .empty
             mbtiTiles = MBTI.allCases.map { mbti in
                 let mbti = mbti.rawValue.uppercased()
                 let opacity = CGFloat(useCase.mbtiBoard.count(mbti: mbti)) * 0.34

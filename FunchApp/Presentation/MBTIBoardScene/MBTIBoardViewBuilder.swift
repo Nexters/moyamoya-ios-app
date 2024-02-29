@@ -7,17 +7,28 @@
 
 import SwiftUI
 
-struct MBTIBoardViewBuilder: Buildable {
-    var container: DependencyType
+struct MBTIBoardViewBuilder {
     
-    init(container: DependencyType) {
-        self.container = container
+    private var diContainer: DIContainer
+    
+    init(diContainer: DIContainer) {
+        self.diContainer = diContainer
     }
     
     var body: some View {
-        let viewModel = MBTIBoardViewModel(container: container)
+        let viewModel = makeViewModel()
         let view = MBTIBoardView(viewModel: viewModel)
         
         return view
+    }
+    
+    private func makeViewModel() -> MBTIBoardViewModel {
+        return .init(
+            useCase: .init(mbtiBoard: makeDefaultMBTIBoardUseCase())
+        )
+    }
+
+    private func makeDefaultMBTIBoardUseCase() -> DefaultMBTIBoardUseCase {
+        return .init(repository: diContainer.mbtiRepository)
     }
 }

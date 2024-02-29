@@ -16,8 +16,8 @@ final class DefaultDeleteProfileUseCase: DeleteProfileUseCase {
     
     private let profileRepository: ProfileRepository
     
-    init() {
-        self.profileRepository = ProfileRepositoryImpl()
+    init(profileRepository: ProfileRepository) {
+        self.profileRepository = profileRepository
     }
     
     func execute(requestId: String) -> AnyPublisher<String, RepositoryError> {

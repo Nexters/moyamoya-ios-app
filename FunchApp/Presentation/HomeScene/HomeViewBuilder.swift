@@ -7,18 +7,41 @@
 
 import SwiftUI
 
-struct HomeViewBuilder: Buildable {
-    var container: DependencyType
+final class HomeViewBuilder {
     
-    init(container: DependencyType) {
-        self.container = container
+    private var diContainer: DIContainer
+    
+    init(diContainer: DIContainer) {
+        self.diContainer = diContainer
     }
     
     var body: some View {
-        let viewModel = HomeViewModel(container: container)
+        let viewModel = makeViewModel()
         let view = HomeView(viewModel: viewModel)
         
         return view
+    }
+    
+    private func makeViewModel() -> HomeViewModel {
+        return .init(
+            useCase: .init(
+                fetchProfile: makeDefaultFetchProfileUseCase(),
+                matching: makeDefaultMatchingUseCase(),
+                mbti: makeDefaultMBTIBoardUseCase()
+            )
+        )
+    }
+    
+    private func makeDefaultFetchProfileUseCase() -> DefaultFetchProfileUseCase {
+        return .init(repository: diContainer.profileRepository)
+    }
+    
+    private func makeDefaultMatchingUseCase() -> DefaultMatchingUseCase {
+        return .init(repository: diContainer.matchingRepository)
+    }
+    
+    private func makeDefaultMBTIBoardUseCase() -> DefaultMBTIBoardUseCase {
+        return .init(repository: diContainer.mbtiRepository)
     }
 }
 

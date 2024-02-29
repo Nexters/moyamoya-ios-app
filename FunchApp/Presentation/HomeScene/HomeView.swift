@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @EnvironmentObject var container: DIContainer
+    @EnvironmentObject var diContainer: DIContainer
     
     @StateObject var viewModel: HomeViewModel
     
@@ -105,19 +105,19 @@ struct HomeView: View {
             switch presentation {
             case .profile:
                 NavigationStack {
-                    ProfileViewBuilder(container: container).body
+                    ProfileViewBuilder(container: diContainer).body
                 }
             case let .matchResult(matchingInfo):
                 NavigationStack {
-                    MatchResultViewBuilder(container: container, matchingInfo: matchingInfo).body
+                    MatchResultViewBuilder(matchingInfo: matchingInfo).body
                 }
             case .mbtiCollection:
                 NavigationStack {
-                    MBTIBoardViewBuilder(container: container).body
+                    MBTIBoardViewBuilder(diContainer: diContainer).body
                 }
             case .easterEgg:
                 NavigationStack {
-                    EasterEggView()
+                    EasterEggViewBuilder().body
                 }
             }
         }

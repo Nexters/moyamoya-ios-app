@@ -15,8 +15,8 @@ protocol MBTIBoardUseCase {
 final class DefaultMBTIBoardUseCase: MBTIBoardUseCase {
     private let repository: MBTIRepository
     
-    init() {
-        self.repository = MBTIRepositoryImpl()
+    init(repository: MBTIRepository) {
+        self.repository = repository
     }
     
     /// 입력 mbti와 매치 수 반환

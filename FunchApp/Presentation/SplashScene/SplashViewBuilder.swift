@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-struct SplashViewBuilder: Buildable {
-    var container: DependencyType
-    
-    init(container: DependencyType) {
-        self.container = container
-    }
-    
+struct SplashViewBuilder {
     var body: some View {
         SplashView()
     }

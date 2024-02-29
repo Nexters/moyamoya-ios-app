@@ -10,10 +10,6 @@ import Moya
 import SwiftUI
 import Combine
 
-enum RepositoryError: Error {
-    case message(String)
-}
-
 /// User 본인을 기준으로 하는 repository
 final class ProfileRepositoryImpl: ProfileRepository {
     

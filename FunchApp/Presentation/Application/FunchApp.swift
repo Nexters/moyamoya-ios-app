@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+final class DIContainer: ObservableObject {
+    let profileRepository = ProfileRepositoryImpl()
+    let mbtiRepository = MBTIRepositoryImpl()
+    let matchingRepository = MatchingRepositoryImpl()
+    let subwayStationRepository = SubwayStationRepositoryImpl()
+}
+
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
-    @StateObject private var container: DIContainer = .init(services: Services())
+    @StateObject private var diContainer = DIContainer()
+    
+    private var userService = UserService.shared
     
     @State private var isSplashing: Bool = true
     
@@ -18,16 +27,16 @@ struct FunchApp: App {
         WindowGroup {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
-                    if !container.services.userService.profiles.isEmpty {
-                        HomeViewBuilder(container: container).body
+                    if !userService.profiles.isEmpty {
+                        HomeViewBuilder(diContainer: diContainer).body
                     } else {
-                        OnboardingViewBuilder(container: container).body
+                        OnboardingViewBuilder().body
                             .navigationDestination(for: AppCoordinatorPathType.self) { type in
                                 switch type {
                                 case let .onboarding(pathType):
                                     switch pathType {
                                     case .createProfile:
-                                        ProfileEditorViewBuilder(container: container).body
+                                        ProfileEditorViewBuilder(diContainer: diContainer).body
                                             .navigationBarBackButtonHidden()
                                     }
                                 }
@@ -37,7 +46,7 @@ struct FunchApp: App {
                 .overlay {
                     if isSplashing {
                         withAnimation(.easeOut) {
-                            SplashViewBuilder(container: container).body
+                            SplashViewBuilder().body
                         }
                         
                     }
@@ -49,7 +58,7 @@ struct FunchApp: App {
                 }
             }
             .environmentObject(appCoordinator)
-            .environmentObject(container)
+            .environmentObject(diContainer)
         }
     }
 }

@@ -11,12 +11,8 @@ struct EasterEggView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    private var inject = Inject()
-    
-    struct Inject {
-        var openUrl = OpenURLProvider.shared
-    }
-    
+    @StateObject var viewModel: EasterEggViewModel
+
     var body: some View {
         ZStack {
             Color.gray900
@@ -75,7 +71,7 @@ struct EasterEggView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     do {
-                        try inject.openUrl.feedback()
+                        try viewModel.inject.openUrl.feedback()
                     } catch { }
                 } label: {
                     Text("피드백 보내기")
@@ -89,11 +85,5 @@ struct EasterEggView: View {
             }
         }
         
-    }
-}
-
-#Preview {
-    NavigationStack {
-        EasterEggView()
     }
 }
