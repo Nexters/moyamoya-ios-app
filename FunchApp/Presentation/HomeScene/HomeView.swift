@@ -117,7 +117,7 @@ struct HomeView: View {
                 }
             case .easterEgg:
                 NavigationStack {
-                    EasterEggView()
+                    EasterEggViewBuilder().body
                 }
             }
         }

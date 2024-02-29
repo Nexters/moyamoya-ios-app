@@ -11,10 +11,10 @@ struct EasterEggView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    private var inject = Inject()
+    @StateObject private var viewModel: EasterEggViewModel
     
-    struct Inject {
-        var openUrl = OpenURLImplement.shared
+    init(viewModel: EasterEggViewModel) {
+        self._viewModel = .init(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -75,7 +75,7 @@ struct EasterEggView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     do {
-                        try inject.openUrl.feedback()
+                        try viewModel.inject.openUrl.feedback()
                     } catch { }
                 } label: {
                     Text("피드백 보내기")
@@ -89,11 +89,5 @@ struct EasterEggView: View {
             }
         }
         
-    }
-}
-
-#Preview {
-    NavigationStack {
-        EasterEggView()
     }
 }
