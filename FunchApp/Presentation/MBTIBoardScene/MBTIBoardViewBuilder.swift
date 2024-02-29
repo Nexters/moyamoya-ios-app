@@ -7,15 +7,10 @@
 
 import SwiftUI
 
-struct MBTIBoardViewBuilder: Buildable {
-    var container: DependencyType
-    
-    init(container: DependencyType) {
-        self.container = container
-    }
+struct MBTIBoardViewBuilder {
     
     var body: some View {
-        let viewModel = MBTIBoardViewModel(container: container)
+        let viewModel = MBTIBoardViewModel()
         let view = MBTIBoardView(viewModel: viewModel)
         
         return view

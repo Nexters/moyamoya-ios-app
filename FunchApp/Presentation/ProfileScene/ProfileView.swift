@@ -201,8 +201,3 @@ struct ProfileView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
-
-#Preview {
-    @StateObject var container = DIContainer(services: Services())
-    return ProfileViewBuilder(container: container).body
-}

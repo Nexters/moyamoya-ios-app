@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct ProfileViewBuilder: Buildable {
-    var container: DependencyType
+struct ProfileViewBuilder {
+//    var container: DependencyType
     
-    init(container: DependencyType) {
-        self.container = container
-    }
+//    init(container: DependencyType) {
+//        self.container = container
+//    }
     
     var body: some View {
         let useCase = DefaultDeleteProfileUseCase()
-        let viewModel = ProfileViewModel(container: container, useCase: useCase)
+        let viewModel = ProfileViewModel(useCase: useCase)
         let view = ProfileView(viewModel: viewModel)
         
         return view

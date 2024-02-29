@@ -56,7 +56,7 @@ final class HomeViewModel: ObservableObject {
         case failedFeedback(String)
     }
     
-    private var container: DependencyType
+//    private var container: DependencyType
     private var useCase = UseCase()
     private var inject = Inject()
     
@@ -68,11 +68,12 @@ final class HomeViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let userServies = UserService.shared
     }
     
-    init(container: DependencyType) {
-        self.container = container
-    }
+//    init(container: DIContainer) {
+//        self.container = container
+//    }
 
     var cancellables = Set<AnyCancellable>()
     
@@ -85,7 +86,8 @@ final class HomeViewModel: ObservableObject {
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
                     self.profile = profile
-                    self.container.services.userService.profiles.append(profile)
+                    self.inject.userServies.profiles.append(profile)
+//                    self.container.services.userService.profiles.append(profile)
                 }.store(in: &cancellables)
             
         case .matching:

@@ -19,7 +19,7 @@ struct FunchApp: App {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
                     if !container.services.userService.profiles.isEmpty {
-                        HomeViewBuilder(container: container).body
+                        HomeViewBuilder().body
                     } else {
                         OnboardingViewBuilder(container: container).body
                             .navigationDestination(for: AppCoordinatorPathType.self) { type in
