@@ -43,7 +43,7 @@ final class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     struct Inject {
-        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let openUrl: OpenURLInject = OpenURLImplement.shared
         let userServies = UserService.shared
     }
     

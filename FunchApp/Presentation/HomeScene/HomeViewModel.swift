@@ -67,7 +67,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     struct Inject {
-        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let openUrl: OpenURLInject = OpenURLImplement.shared
         let userServies = UserService.shared
     }
     

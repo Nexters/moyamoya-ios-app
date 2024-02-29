@@ -8,12 +8,6 @@
 import SwiftUI
 
 struct ProfileViewBuilder {
-//    var container: DependencyType
-    
-//    init(container: DependencyType) {
-//        self.container = container
-//    }
-    
     var body: some View {
         let useCase = DefaultDeleteProfileUseCase()
         let viewModel = ProfileViewModel(useCase: useCase)

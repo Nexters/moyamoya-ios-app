@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileEditorViewBuilder {
-    
     var body: some View {
         let viewModel = ProfileEditorViewModel()
         let view = ProfileEditorView(viewModel: viewModel)

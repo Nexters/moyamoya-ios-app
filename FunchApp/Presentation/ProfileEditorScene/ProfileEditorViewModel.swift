@@ -54,7 +54,7 @@ final class ProfileEditorViewModel: ObservableObject {
     }
     
     struct Inject {
-        let openUrl: OpenURLProviderType = OpenURLProvider.shared
+        let openUrl: OpenURLInject = OpenURLImplement.shared
         let userService = UserService.shared
     }
     

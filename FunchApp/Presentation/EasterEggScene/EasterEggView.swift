@@ -14,7 +14,7 @@ struct EasterEggView: View {
     private var inject = Inject()
     
     struct Inject {
-        var openUrl = OpenURLProvider.shared
+        var openUrl = OpenURLImplement.shared
     }
     
     var body: some View {

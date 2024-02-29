@@ -16,7 +16,6 @@ struct MatchResultViewBuilder {
     }
     
     var body: some View {
-        // !!!: - 매칭 프로필에 다른 사람 프로필 넣어주세요.
         let viewModel = MatchResultViewModel(matchingInfo: matchingInfo)
         let view = MatchResultView(viewModel: viewModel)
         

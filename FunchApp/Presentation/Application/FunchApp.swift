@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
-//    @StateObject private var container: DIContainer = .init(services: Services())
     
     private var userService = UserService.shared
     
