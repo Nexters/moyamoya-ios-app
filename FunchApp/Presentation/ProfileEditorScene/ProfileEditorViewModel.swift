@@ -45,12 +45,12 @@ final class ProfileEditorViewModel: ObservableObject {
     @Published var isEnabled: Bool = false
     @Published var presentation: ProfileEditorPresentation?
     
-    private var useCase = UseCase()
+    private var useCase: UseCase
     private var inject = Inject()
     
     struct UseCase {
-        var createProfile = DefaultCreateProfileUseCase()
-        var searchSubway = DefaultSearchSubwayUseCase()
+        var createProfile: DefaultCreateProfileUseCase
+        var searchSubway: DefaultSearchSubwayUseCase
     }
     
     struct Inject {
@@ -60,7 +60,9 @@ final class ProfileEditorViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(useCase: UseCase) {
+        self.useCase = useCase
+        
         bind()
     }
     

@@ -36,7 +36,7 @@ struct FunchApp: App {
                                 case let .onboarding(pathType):
                                     switch pathType {
                                     case .createProfile:
-                                        ProfileEditorViewBuilder().body
+                                        ProfileEditorViewBuilder(diContainer: diContainer).body
                                             .navigationBarBackButtonHidden()
                                     }
                                 }

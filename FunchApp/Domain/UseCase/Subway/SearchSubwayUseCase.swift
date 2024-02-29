@@ -15,8 +15,8 @@ protocol SearchSubwayUseCase {
 final class DefaultSearchSubwayUseCase {
     private let repository: SubwayStationRepository
     
-    init() {
-        self.repository = SubwayStationRepositoryImpl()
+    init(repository: SubwayStationRepository) {
+        self.repository = repository
     }
     
     func execute(query: SearchSubwayStationQuery) -> AnyPublisher<[SubwayInfo], RepositoryError> {

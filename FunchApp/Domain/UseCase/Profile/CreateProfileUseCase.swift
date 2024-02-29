@@ -15,8 +15,8 @@ protocol CreateProfileUseCase {
 final class DefaultCreateProfileUseCase: CreateProfileUseCase {
     private let profileRepository: ProfileRepository
     
-    init() {
-        self.profileRepository = ProfileRepositoryImpl()
+    init(profileRepository: ProfileRepository) {
+        self.profileRepository = profileRepository
     }
     
     /// 본인 프로필 생성
