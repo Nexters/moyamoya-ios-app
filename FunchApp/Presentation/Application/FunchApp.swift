@@ -21,7 +21,7 @@ struct FunchApp: App {
                     if !container.services.userService.profiles.isEmpty {
                         HomeViewBuilder().body
                     } else {
-                        OnboardingViewBuilder(container: container).body
+                        OnboardingViewBuilder().body
                             .navigationDestination(for: AppCoordinatorPathType.self) { type in
                                 switch type {
                                 case let .onboarding(pathType):
@@ -37,7 +37,7 @@ struct FunchApp: App {
                 .overlay {
                     if isSplashing {
                         withAnimation(.easeOut) {
-                            SplashViewBuilder(container: container).body
+                            SplashViewBuilder().body
                         }
                         
                     }
