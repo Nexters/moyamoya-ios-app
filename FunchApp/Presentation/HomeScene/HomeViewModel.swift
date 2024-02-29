@@ -21,7 +21,6 @@ final class HomeViewModel: ObservableObject {
         
         case presentation(HomePresentation)
         case alert(Alert)
-        case share
     }
     
     @Published var presentation: HomePresentation?
@@ -34,7 +33,7 @@ final class HomeViewModel: ObservableObject {
     @Published var showsAlert: Bool = false
     @Published var alertMessage: Alert?
     
-    var shareLink = ShareLink()
+    private(set) var shareLink = ShareLink()
     
     /// 외부에 공유하기 기능
     struct ShareLink {
@@ -148,11 +147,6 @@ final class HomeViewModel: ObservableObject {
             showsAlert = true
             alertMessage = type
             
-        case .share:
-            let urlString = "https://apps.apple.com/kr/app/%ED%99%A9%EA%B8%88%ED%8E%80%EC%B9%98/id6478166971"
-            let url = URL(string: urlString)
-            
-            break
         }
     }
 }
