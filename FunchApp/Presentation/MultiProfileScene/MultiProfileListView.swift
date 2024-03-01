@@ -41,7 +41,6 @@ struct MultiProfileListView: View {
                         Text("조회수 " + profile.viewerShip)
                             .font(.Funch.body)
                             .foregroundColor(.gray400)
-                        
                     }
                     
                     Spacer()
@@ -50,6 +49,7 @@ struct MultiProfileListView: View {
                         Image(systemName: "checkmark.circle")
                     }
                 }
+                .contentShape(Rectangle())
                 .onTapGesture {
                     viewModel.send(action: .selection(profile))
                 }
