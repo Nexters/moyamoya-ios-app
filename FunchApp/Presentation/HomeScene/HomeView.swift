@@ -120,7 +120,7 @@ struct HomeView: View {
                 }
             case .easterEgg:
                 NavigationStack {
-                    EasterEggViewBuilder().body
+                    EasterEggViewBuilder(diContainer: diContainer).body
                 }
             }
         }

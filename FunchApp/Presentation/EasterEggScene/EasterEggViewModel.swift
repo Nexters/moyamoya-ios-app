@@ -9,11 +9,22 @@ import SwiftUI
 
 final class EasterEggViewModel: ObservableObject {
     
-    private(set) var inject = Inject()
-    
-    struct Inject {
-        var openUrl = OpenURLImplement()
+    enum Action {
+        case feedback
     }
     
-    init() { }
+    private var inject: DIContainer.Inject
+    
+    init(inject: DIContainer.Inject) {
+        self.inject = inject
+    }
+
+    func send(action: Action) {
+        switch action {
+        case .feedback:
+            do {
+                try inject.openUrl.feedback()
+            } catch { }
+        }
+    }
 }

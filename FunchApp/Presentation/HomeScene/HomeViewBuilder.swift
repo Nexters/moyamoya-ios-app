@@ -28,11 +28,8 @@ final class HomeViewBuilder {
                 fetchProfile: makeDefaultFetchProfileUseCase(),
                 matching: makeDefaultMatchingUseCase(),
                 mbti: makeDefaultMBTIBoardUseCase()
-            ),
-            inject: .init(
-                openUrl: diContainer.inject.openUrl,
-                userServies: diContainer.inject.userStorage
-            )
+            ), 
+            inject: diContainer.inject
         )
     }
     
