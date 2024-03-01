@@ -68,11 +68,12 @@ final class ProfileViewModel: ObservableObject {
             useCase.execute(requestId: userId)
                 .sink { _ in
                     
-                } receiveValue: { [weak self] deletedId in
+                } receiveValue: { [weak self] _ in
                     guard let self else { return }
                     guard let profile else { return }
                     
                     self.inject.userStorage.profiles.remove(profile)
+                    self.inject.userStorage.selectionProfile = nil
                     
                     if self.inject.userStorage.profiles.count == 0 {
                         self.presentation = .onboarding

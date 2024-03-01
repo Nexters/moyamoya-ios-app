@@ -107,6 +107,9 @@ struct HomeView: View {
                 NavigationStack {
                     ProfileViewBuilder(diContainer: diContainer).body
                 }
+                .onDisappear {
+                    viewModel.send(action: .load)
+                }
             case let .matchResult(matchingInfo):
                 NavigationStack {
                     MatchResultViewBuilder(

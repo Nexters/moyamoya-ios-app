@@ -76,8 +76,39 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            if let selectionProfile = inject.userStorage.selectionProfile,
-               selectionProfile.userCode != profile?.userCode {
+            guard let selectionProfile = inject.userStorage.selectionProfile else {
+                // 저장된 유저 코드가 없다면
+                useCase.fetchProfile.fetchProfileFromDeviceId()
+                    .sink { _ in
+
+                    } receiveValue: { [weak self] profile in
+                        guard let self else { return }
+                        self.profile = profile
+                        self.inject.userStorage.profiles.insert(profile)
+                        self.inject.userStorage.selectionProfile = profile
+                    }.store(in: &cancellables)
+                return
+            }
+            
+            if !inject.userStorage.profiles.isEmpty {
+                // 멀티 프로필이 하나라도 존재한다면
+                
+                if selectionProfile.userCode != profile?.userCode {
+                    // 유저코드가 변경되었다면
+                    self.profile = selectionProfile
+//                    inject.userStorage.selectionProfile = self.profile
+//                    let query: FetchUserQuery = .init(id: selectionProfile.userId)
+//                    useCase.fetchProfile.fetchProfileFromId(query: query)
+//                        .sink { _ in
+//
+//                        } receiveValue: { [weak self] profile in
+//                            guard let self else { return }
+//                            self.profile = profile
+//                        }.store(in: &cancellables)
+                } else {
+                    
+                }
+            } else {
                 let query: FetchUserQuery = .init(id: selectionProfile.userId)
                 useCase.fetchProfile.fetchProfileFromId(query: query)
                     .sink { _ in
@@ -86,18 +117,32 @@ final class HomeViewModel: ObservableObject {
                         guard let self else { return }
                         self.profile = profile
                     }.store(in: &cancellables)
-                
-            } else if inject.userStorage.selectionProfile == nil {
-                useCase.fetchProfile.fetchProfileFromDeviceId()
-                    .sink { _ in
-
-                    } receiveValue: { [weak self] profile in
-                        guard let self else { return }
-                        self.profile = profile
-                        self.inject.userStorage.profiles.insert(profile)
-                    }.store(in: &cancellables)
-                
             }
+//            
+//            if let selectionProfile = inject.userStorage.selectionProfile,
+//               selectionProfile.userCode != profile?.userCode {
+//                let query: FetchUserQuery = .init(id: selectionProfile.userId)
+//                useCase.fetchProfile.fetchProfileFromId(query: query)
+//                    .sink { _ in
+//
+//                    } receiveValue: { [weak self] profile in
+//                        guard let self else { return }
+//                        self.profile = profile
+//                    }.store(in: &cancellables)
+//                
+//            } else if !inject.userStorage.profiles.isEmpty {
+//                self.profile = inject.userStorage.profiles.randomElement()
+//            } else if inject.userStorage.selectionProfile == nil {
+//                useCase.fetchProfile.fetchProfileFromDeviceId()
+//                    .sink { _ in
+//
+//                    } receiveValue: { [weak self] profile in
+//                        guard let self else { return }
+//                        self.profile = profile
+//                        self.inject.userStorage.profiles.insert(profile)
+//                    }.store(in: &cancellables)
+//                
+//            }
             
         case .matching:
             guard let profile else { return }
