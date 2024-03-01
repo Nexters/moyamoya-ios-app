@@ -127,7 +127,7 @@ struct HomeView: View {
                 }
             case .multiProfile:
                 NavigationStack {
-                    MultiProfileListView(viewModel: .init(inject: diContainer.inject))
+                    MultiProfileListViewBuilder(diContainer: diContainer).body
                 }
                 .onDisappear {
                     viewModel.send(action: .load)
