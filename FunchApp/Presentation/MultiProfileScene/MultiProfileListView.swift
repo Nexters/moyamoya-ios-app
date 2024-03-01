@@ -159,7 +159,6 @@ struct MultiProfileListView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    print("A")
                     viewModel.send(action: .presentation(.create))
                 } label: {
                     Image(systemName: "plus")
@@ -170,3 +169,4 @@ struct MultiProfileListView: View {
         }
     }
 }
+

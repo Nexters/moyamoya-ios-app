@@ -25,6 +25,7 @@ final class ProfileViewModel: ObservableObject {
     
     enum PresentationState {
         case onboarding
+        case home
     }
     
     @Published var presentation: PresentationState?
@@ -52,7 +53,7 @@ final class ProfileViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            guard let profile = inject.userStorage.profiles.first else {
+            guard let profile = inject.userStorage.selectionProfile else {
                 self.send(action: .loadFailed)
                 return
             }
@@ -69,8 +70,16 @@ final class ProfileViewModel: ObservableObject {
                     
                 } receiveValue: { [weak self] deletedId in
                     guard let self else { return }
-                    self.inject.userStorage.profiles = []
-                    self.presentation = .onboarding
+                    guard let profile else { return }
+                    
+                    self.inject.userStorage.profiles.remove(profile)
+                    
+                    if self.inject.userStorage.profiles.count == 0 {
+                        self.presentation = .onboarding
+                    } else {
+                        self.presentation = .home
+                    }
+                    
                 }
                 .store(in: &cancellables)
             
