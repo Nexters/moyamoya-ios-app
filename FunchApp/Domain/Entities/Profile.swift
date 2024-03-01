@@ -7,11 +7,7 @@
 
 import Foundation
 
-extension Profile: Codable {}
-
-extension Profile: Equatable {}
-
-struct Profile {
+struct Profile: Hashable, Codable {
     /// 유저 고유 아이디
     var id: String
     /// 유저코드
@@ -33,7 +29,7 @@ struct Profile {
     var viewerShip: String
     
     /// 프로필 생성 시각
-    var createAt = Date.now
+    var createAt = Date.now    
     
     /// 전공
     struct Major: Hashable, Codable {

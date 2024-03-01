@@ -155,7 +155,7 @@ final class ProfileEditorViewModel: ObservableObject {
             do {
                 try inject.openUrl.feedback()
             } catch {
-                
+             
             }
             
         }

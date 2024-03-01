@@ -34,7 +34,7 @@ final class MBTIBoardViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            profile = inject.userStorage.profiles.last ?? .empty
+            profile = inject.userStorage.profiles.first ?? .empty
             mbtiTiles = MBTI.allCases.map { mbti in
                 let mbti = mbti.rawValue.uppercased()
                 let opacity = CGFloat(useCase.mbtiBoard.count(mbti: mbti)) * 0.34

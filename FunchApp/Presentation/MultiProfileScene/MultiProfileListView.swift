@@ -14,7 +14,7 @@ final class MultiProfileListViewModel: ObservableObject {
     }
     
     @Published var profiles: [Profile] = [.empty, .testableValue]
-    @Published var selection: Profile
+    @Published var selection: Profile = .empty
     
     private var ineject: DIContainer.Inject
     
@@ -23,8 +23,8 @@ final class MultiProfileListViewModel: ObservableObject {
     ) {
         self.ineject = inject
         
-        self.profiles = ineject.userStorage.profiles
-        self.selection = ineject.userStorage.profiles.first!
+        self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
+//        self.selection = ineject.userStorage.profiles.first
     }
     
     func send(action: Action) {

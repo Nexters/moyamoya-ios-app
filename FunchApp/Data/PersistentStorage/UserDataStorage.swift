@@ -15,13 +15,25 @@ protocol UserStorage {
     var matchedResults: [MatchingInfo] { get set }
     /// mbti 보드의 결과
     var mbtiBoard: [String: Int] { get set }
+    /// 멀티프로필 중 현재 선택한 프로필
+    var selectionProfile: Profile? { get set }
 }
 
 
 final class UserDefaultImpl: UserStorage {
     /// 해당 사용자가 프로필이 존재하는지 유무
-    @AppStorage(UserDefaultKeyCase.hasProfile.rawValue)
-    var hasProfile: Bool = false
+//    @AppStorage(UserDefaultKeyCase.selectionProfile.rawValue)
+//    var selectionProfile: Profile? = nil
+    
+    /// 해당 사용자가 프로필이 존재하는지 유무
+    var selectionProfile: Profile? {
+        get {
+            UserDefaults.standard.object(
+                forKey: UserDefaultKeyCase.selectionProfile.rawValue
+            ) as? Profile
+        }
+        set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.selectionProfile.rawValue) }
+    }
     
     /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)
@@ -45,7 +57,7 @@ final class UserDefaultImpl: UserStorage {
 
 /// `UserDefaultKeyCase`키 값 정보
 enum UserDefaultKeyCase: String {
-    case hasProfile
+    case selectionProfile
     case profiles
     case matchedResults
     case mbtiBoard

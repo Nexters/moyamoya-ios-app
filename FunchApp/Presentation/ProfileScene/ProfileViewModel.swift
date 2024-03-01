@@ -52,7 +52,7 @@ final class ProfileViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            guard let profile = inject.userStorage.profiles.last else {
+            guard let profile = inject.userStorage.profiles.first else {
                 self.send(action: .loadFailed)
                 return
             }
