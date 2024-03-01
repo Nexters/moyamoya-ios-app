@@ -32,6 +32,9 @@ struct Profile {
     /// 조회수
     var viewerShip: String
     
+    /// 프로필 생성 시각
+    var createAt = Date.now
+    
     /// 전공
     struct Major: Hashable, Codable {
         /// 전공 이름

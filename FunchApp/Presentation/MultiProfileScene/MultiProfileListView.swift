@@ -10,10 +10,11 @@ import SwiftUI
 final class MultiProfileListViewModel: ObservableObject {
  
     enum Action {
-        case load
+        case selection(Profile)
     }
     
     @Published var profiles: [Profile] = [.empty, .testableValue]
+    @Published var selection: Profile
     
     private var ineject: DIContainer.Inject
     
@@ -21,12 +22,15 @@ final class MultiProfileListViewModel: ObservableObject {
         inject: DIContainer.Inject
     ) {
         self.ineject = inject
+        
+        self.profiles = ineject.userStorage.profiles
+        self.selection = ineject.userStorage.profiles.first!
     }
     
     func send(action: Action) {
         switch action {
-        case .load:
-            self.profiles = ineject.userStorage.profiles
+        case let .selection(profile):
+            self.selection = profile
         }
     }
 }
@@ -46,12 +50,12 @@ struct MultiProfileListView: View {
             Color.gray900
                 .ignoresSafeArea()
             
-            List(ineee, id: \.self) { profile in
+            List(viewModel.profiles, id: \.id) { profile in
                 HStack {
                     VStack(alignment: .leading,
                            spacing: 0) {
                         
-                        Text(profile)
+                        Text(profile.userCode)
                             .font(.Funch.title1)
                             .foregroundStyle(.white)
                             .padding(.bottom, 10)
@@ -61,28 +65,25 @@ struct MultiProfileListView: View {
                     
                     Spacer()
                     
-                    if selection == profile {
+                    if viewModel.selection == profile {
                         Image(systemName: "checkmark.circle")
                     }
                 }
                 .onTapGesture {
-                    selection = profile
+                    viewModel.selection = profile
                 }
                 .listRowBackground(
-                    selection == profile
+                    viewModel.selection == profile
                     ? Color.lemon500
                     : Color.gray800
                 )
             }
             .scrollContentBackground(.hidden)
         }
-        .onAppear {
-            viewModel.send(action: .load)
-        }
     }
 }
 //
-#Preview {
-    @StateObject var diContainer = DIContainer()
-    return MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
-}
+//#Preview {
+//    @StateObject var diContainer = DIContainer()
+//    return MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
+//}
