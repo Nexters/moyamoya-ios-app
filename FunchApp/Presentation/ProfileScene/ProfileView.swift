@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileViewModel
     

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var diContainer: DIContainer
     
