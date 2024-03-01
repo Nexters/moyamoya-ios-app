@@ -495,6 +495,7 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
+				1ACE49522B5B9DAD00024336 /* Application */,
 				3EA69C242B5EDA19008AE23B /* Info.plist */,
 				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
@@ -516,7 +517,6 @@
 		1ACE494B2B5B9D6000024336 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49522B5B9DAD00024336 /* Application */,
 				3EE8106C2B807052007B8A87 /* SplashScene */,
 				1ACE49612B5B9F2600024336 /* OnboardingScene */,
 				1ACE495D2B5B9EF900024336 /* HomeScene */,
@@ -535,7 +535,6 @@
 				1ACE497E2B5BA45800024336 /* Repository */,
 				1ACE497B2B5BA39D00024336 /* DataMapping */,
 				1ACE497A2B5BA38200024336 /* PersistentStorage */,
-				1AC781252B917FC400E298E3 /* Dependency.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -555,6 +554,7 @@
 			children = (
 				1ACE493B2B5B9D0B00024336 /* FunchApp.swift */,
 				1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */,
+				1AC781252B917FC400E298E3 /* Dependency.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
