@@ -29,7 +29,7 @@ struct MBTIBoardView: View {
                     Spacer()
                         .frame(height: 2)
                     
-                    Text("\(viewModel.profile.userNickname)님이 매칭한 친구들이에요!")
+                    Text("해당 기기에서 매칭한 친구들이에요!")
                         .font(.Funch.body)
                         .foregroundColor(.gray300)
                     
