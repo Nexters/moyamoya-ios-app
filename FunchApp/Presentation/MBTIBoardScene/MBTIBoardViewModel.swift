@@ -25,7 +25,7 @@ final class MBTIBoardViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLInject = OpenURLImplement.shared
-        let userService = UserDefaultImplement.shared
+        let userService = UserDefaultImpl.shared
     }
     
     init(useCase: UseCase) {

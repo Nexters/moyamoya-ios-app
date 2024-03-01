@@ -43,7 +43,7 @@ final class ProfileViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLInject = OpenURLImplement.shared
-        var userServies = UserDefaultImplement.shared
+        var userServies = UserDefaultImpl.shared
     }
     
     init(useCase: DeleteProfileUseCase) {

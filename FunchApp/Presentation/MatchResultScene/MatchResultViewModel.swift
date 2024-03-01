@@ -38,7 +38,7 @@ final class MatchResultViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLInject = OpenURLImplement.shared
-        let userServies = UserDefaultImplement.shared
+        let userServies = UserDefaultImpl.shared
     }
     
     init(matchingInfo: MatchingInfo) {

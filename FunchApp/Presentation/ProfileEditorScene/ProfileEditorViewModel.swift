@@ -55,7 +55,7 @@ final class ProfileEditorViewModel: ObservableObject {
     
     struct Inject {
         let openUrl: OpenURLInject = OpenURLImplement.shared
-        let userService = UserDefaultImplement.shared
+        let userService = UserDefaultImpl.shared
     }
     
     private var cancellables = Set<AnyCancellable>()
