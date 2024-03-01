@@ -119,19 +119,31 @@ struct HomeView: View {
                 }
             case .mbtiCollection:
                 NavigationStack {
-                    MultiProfileListView(viewModel: .init(inject: diContainer.inject))
-                }
-                .onDisappear {
-                    viewModel.send(action: .load)
+                    MBTIBoardViewBuilder(diContainer: diContainer).body
                 }
             case .easterEgg:
                 NavigationStack {
                     EasterEggViewBuilder(diContainer: diContainer).body
                 }
+            case .multiProfile:
+                NavigationStack {
+                    MultiProfileListView(viewModel: .init(inject: diContainer.inject))
+                }
+                .onDisappear {
+                    viewModel.send(action: .load)
+                }
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    viewModel.send(action: .presentation(.multiProfile))
+                } label: {
+                    Image(systemName: "person.2")
+                        .resizable()
+                        .foregroundColor(.lemon500)
+                }
+                
                 Button {
                     viewModel.send(action: .feedback)
                 } label: {
@@ -143,7 +155,6 @@ struct HomeView: View {
                         .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 12.0))
                 }
-                
             }
         }
     }

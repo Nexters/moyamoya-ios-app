@@ -76,40 +76,41 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            guard let selectionProfile = inject.userStorage.selectionProfile else {
-                // 저장된 유저 코드가 없다면
-                useCase.fetchProfile.fetchProfileFromDeviceId()
-                    .sink { _ in
-
-                    } receiveValue: { [weak self] profile in
-                        guard let self else { return }
-                        self.profile = profile
-                        self.inject.userStorage.profiles.insert(profile)
-                        self.inject.userStorage.selectionProfile = profile
-                    }.store(in: &cancellables)
-                return
-            }
+            
+//            guard let selectionProfile = inject.userStorage.selectionProfile else {
+//                // 선택한 유저 코드가 없다면
+//                useCase.fetchProfile.fetchProfileFromDeviceId()
+//                    .sink { _ in
+//
+//                    } receiveValue: { [weak self] profile in
+//                        guard let self else { return }
+//                        self.profile = profile
+//                        self.inject.userStorage.profiles.insert(profile)
+//                        self.inject.userStorage.selectionProfile = profile
+//                    }.store(in: &cancellables)
+//                return
+//            }
             
             if !inject.userStorage.profiles.isEmpty {
                 // 멀티 프로필이 하나라도 존재한다면
                 
-                if selectionProfile.userCode != profile?.userCode {
+                if inject.userStorage.selectionProfile == nil {
+                    // 프로필이 삭제되었다면
+                    let random = inject.userStorage.profiles.randomElement()
+                    inject.userStorage.selectionProfile = random
+                    self.profile = random
+                } else if inject.userStorage.selectionProfile?.userCode != profile?.userCode {
                     // 유저코드가 변경되었다면
-                    self.profile = selectionProfile
-//                    inject.userStorage.selectionProfile = self.profile
-//                    let query: FetchUserQuery = .init(id: selectionProfile.userId)
-//                    useCase.fetchProfile.fetchProfileFromId(query: query)
-//                        .sink { _ in
-//
-//                        } receiveValue: { [weak self] profile in
-//                            guard let self else { return }
-//                            self.profile = profile
-//                        }.store(in: &cancellables)
-                } else {
-                    
+                    self.profile = inject.userStorage.selectionProfile
                 }
+                
+//                else {
+//                    let random = inject.userStorage.profiles.randomElement()
+//                    inject.userStorage.selectionProfile = random
+//                    self.profile = random
+//                }
             } else {
-                let query: FetchUserQuery = .init(id: selectionProfile.userId)
+                let query: FetchUserQuery = .init(id: inject.userStorage.selectionProfile?.userId ?? "")
                 useCase.fetchProfile.fetchProfileFromId(query: query)
                     .sink { _ in
 
