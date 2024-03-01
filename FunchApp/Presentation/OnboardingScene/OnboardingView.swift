@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    
     @EnvironmentObject var appCoordinator: AppCoordinator
     
     var body: some View {

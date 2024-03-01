@@ -11,6 +11,7 @@ import SwiftUIPager
 struct MatchResultView: View {
     
     @Environment(\.dismiss) var dismiss
+    
     @StateObject var viewModel: MatchResultViewModel
     @StateObject var page: Page = .first()
     

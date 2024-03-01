@@ -10,6 +10,7 @@ import SwiftUI
 struct MBTIBoardView: View {
     
     @Environment(\.dismiss) var dismiss
+    
     @StateObject var viewModel: MBTIBoardViewModel
     
     var body: some View {

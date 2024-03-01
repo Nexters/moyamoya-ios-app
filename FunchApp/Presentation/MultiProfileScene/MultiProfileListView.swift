@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct MultiProfileListView: View {
     
     @Environment(\.dismiss) var dismiss
