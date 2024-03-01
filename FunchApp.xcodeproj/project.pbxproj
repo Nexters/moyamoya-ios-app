@@ -98,6 +98,7 @@
 		1AC7811C2B90E5C400E298E3 /* LinkStringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */; };
 		1AC7811E2B90E72200E298E3 /* MBTIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7811D2B90E72200E298E3 /* MBTIRepository.swift */; };
 		1AC781202B90E81500E298E3 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC7811F2B90E81500E298E3 /* RepositoryError.swift */; };
+		1AC781262B917FC400E298E3 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC781252B917FC400E298E3 /* Dependency.swift */; };
 		1ACE493C2B5B9D0B00024336 /* FunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE493B2B5B9D0B00024336 /* FunchApp.swift */; };
 		1ACE49402B5B9D0D00024336 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE493F2B5B9D0D00024336 /* Image.xcassets */; };
 		1ACE49432B5B9D0D00024336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE49422B5B9D0D00024336 /* Preview Assets.xcassets */; };
@@ -228,6 +229,7 @@
 		1AC7811A2B90E42000E298E3 /* EasterEggViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggViewBuilder.swift; sourceTree = "<group>"; };
 		1AC7811D2B90E72200E298E3 /* MBTIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepository.swift; sourceTree = "<group>"; };
 		1AC7811F2B90E81500E298E3 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
+		1AC781252B917FC400E298E3 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		1ACE49382B5B9D0B00024336 /* FunchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACE493B2B5B9D0B00024336 /* FunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunchApp.swift; sourceTree = "<group>"; };
 		1ACE493F2B5B9D0D00024336 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				1ACE497E2B5BA45800024336 /* Repository */,
 				1ACE497B2B5BA39D00024336 /* DataMapping */,
 				1ACE497A2B5BA38200024336 /* PersistentStorage */,
+				1AC781252B917FC400E298E3 /* Dependency.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				1A7B06942B5D67570024356C /* DictionaryType.swift in Sources */,
 				1ACE495C2B5B9EF200024336 /* OnboardingView.swift in Sources */,
 				1A8F12FA2B8A068A001E0237 /* SearchSubwayUseCase.swift in Sources */,
+				1AC781262B917FC400E298E3 /* Dependency.swift in Sources */,
 				1AC781192B90E3F000E298E3 /* EasterEggViewModel.swift in Sources */,
 				3EA69C3F2B64C086008AE23B /* CGFloat+.swift in Sources */,
 				1A792B812B5D581600A080F2 /* Requestable.swift in Sources */,

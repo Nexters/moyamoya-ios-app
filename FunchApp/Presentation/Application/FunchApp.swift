@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-final class DIContainer: ObservableObject {
-    let profileRepository = ProfileRepositoryImpl()
-    let mbtiRepository = MBTIRepositoryImpl()
-    let matchingRepository = MatchingRepositoryImpl()
-    let subwayStationRepository = SubwayStationRepositoryImpl()
-}
-
 @main
 struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
