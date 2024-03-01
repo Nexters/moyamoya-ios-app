@@ -15,8 +15,8 @@ final class ProfileRepositoryImpl: ProfileRepository {
     
     private let apiClient: APIClient
     
-    init() {
-        apiClient = APIClient.shared
+    init(apiClient: APIClient) {
+        self.apiClient = apiClient
     }
     
     /// 내 프로필 디바이스 기반 정보 조회
