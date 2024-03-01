@@ -7,18 +7,45 @@
 
 import SwiftUI
 
+//final class MultiProfileListViewBuilder {
+//    
+//    private var diContainer: DIContainer
+//    
+//    init(diContainer: DIContainer) {
+//        self.diContainer = diContainer
+//    }
+//    
+//    var body: some View {
+//        let viewModel = MultiProfileListViewModel(inject: <#T##DIContainer.Inject#>)
+//        let view = MultiProfileListView(viewModel: viewModel)
+//        
+//        return view
+//    }
+//}
+
+enum MultiProfileListPresentation: Hashable, Identifiable {
+    var id: Int { hashValue }
+    
+    case create
+    case home
+}
+
+
 final class MultiProfileListViewModel: ObservableObject {
     
     enum Action {
         case selection(Profile)
-        case feedback
+        case presentation(MultiProfileListPresentation)
     }
     
+    @Published var presentation: MultiProfileListPresentation?
+    /// 프로필 목록
     @Published var profiles: [Profile] = [.empty, .testableValue]
+    /// 유저가 선택한 프로필
     @Published var selection: Profile?
     
     private var ineject: DIContainer.Inject
-    
+
     init(inject: DIContainer.Inject) {
         self.ineject = inject
         self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
@@ -34,10 +61,8 @@ final class MultiProfileListViewModel: ObservableObject {
             ineject.userStorage.selectionProfile = profile
             self.selection = profile
         
-        case .feedback:
-            do {
-               try ineject.openUrl.feedback()
-            } catch { }
+        case let .presentation(presentation):
+            self.presentation = presentation
         }
     }
 }
@@ -45,7 +70,10 @@ final class MultiProfileListViewModel: ObservableObject {
 struct MultiProfileListView: View {
     
     @Environment(\.dismiss) var dismiss
-
+    
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var diContainer: DIContainer
+    
     @StateObject var viewModel: MultiProfileListViewModel
     
     var body: some View {
@@ -83,6 +111,24 @@ struct MultiProfileListView: View {
             }
             .scrollContentBackground(.hidden)
         }
+        .fullScreenCover(item: $viewModel.presentation) { presentation in
+            switch presentation {
+            case .create:
+                NavigationStack {
+                    ProfileEditorViewBuilder(diContainer: diContainer).body
+                }
+            case .home:
+                EmptyView()
+            }
+        }
+        .onReceive(viewModel.$presentation) {
+            switch $0 {
+            case .home:
+                appCoordinator.paths.removeAll()
+            default:
+                break
+            }
+        }
         .toolbarBackground(Color.gray900, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
@@ -96,15 +142,12 @@ struct MultiProfileListView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    viewModel.send(action: .feedback)
+                    print("A")
+                    viewModel.send(action: .presentation(.create))
                 } label: {
-                    Text("피드백 보내기")
-                        .foregroundColor(.white)
-                        .customFont(.body)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .background(.gray800)
-                        .clipShape(RoundedRectangle(cornerRadius: 12.0))
+                    Image(systemName: "plus")
+                        .resizable()
+                        .foregroundColor(.lemon500)
                 }
             }
         }

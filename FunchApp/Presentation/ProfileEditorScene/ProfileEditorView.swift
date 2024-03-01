@@ -11,6 +11,7 @@ struct ProfileEditorView: View {
     
     @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileEditorViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -65,7 +66,7 @@ struct ProfileEditorView: View {
         .onReceive(viewModel.$presentation) {
             switch $0 {
             case .home:
-                appCoordinator.paths.removeAll()
+                dismiss()
             default:
                 break
             }
@@ -73,7 +74,7 @@ struct ProfileEditorView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    appCoordinator.paths.removeLast()
+                    dismiss()
                 } label: {
                     Image(.iconArrowBack)
                         .foregroundColor(.black)

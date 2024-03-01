@@ -87,7 +87,7 @@ final class HomeViewModel: ObservableObject {
                         self.profile = profile
                     }.store(in: &cancellables)
                 
-            } else {
+            } else if inject.userStorage.selectionProfile == nil {
                 useCase.fetchProfile.fetchProfileFromDeviceId()
                     .sink { _ in
 
