@@ -34,6 +34,7 @@ enum MultiProfileListPresentation: Hashable, Identifiable {
 final class MultiProfileListViewModel: ObservableObject {
     
     enum Action {
+        case load
         case selection(Profile)
         case presentation(MultiProfileListPresentation)
     }
@@ -48,15 +49,17 @@ final class MultiProfileListViewModel: ObservableObject {
 
     init(inject: DIContainer.Inject) {
         self.ineject = inject
-        self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
-        
-        self.selection = ineject.userStorage.selectionProfile == nil
-        ? self.profiles.first
-        : self.ineject.userStorage.selectionProfile
     }
     
     func send(action: Action) {
         switch action {
+        case .load:
+            self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
+            
+            self.selection = ineject.userStorage.selectionProfile == nil
+            ? self.profiles.first
+            : self.ineject.userStorage.selectionProfile
+            
         case let .selection(profile):
             ineject.userStorage.selectionProfile = profile
             self.selection = profile
@@ -89,9 +92,17 @@ struct MultiProfileListView: View {
                         Text(profile.userCode)
                             .font(.Funch.title1)
                             .foregroundStyle(.white)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 8)
                         
-                        Text("닉네임")
+                        Text("닉네임 " + profile.userNickname)
+                            .font(.Funch.body)
+                            .foregroundColor(.gray400)
+                            .padding(.bottom, 4)
+                        
+                        Text("조회수 " + profile.viewerShip)
+                            .font(.Funch.body)
+                            .foregroundColor(.gray400)
+                        
                     }
                     
                     Spacer()
@@ -111,11 +122,17 @@ struct MultiProfileListView: View {
             }
             .scrollContentBackground(.hidden)
         }
+        .onAppear {
+            viewModel.send(action: .load)
+        }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
             switch presentation {
             case .create:
                 NavigationStack {
                     ProfileEditorViewBuilder(diContainer: diContainer).body
+                }
+                .onDisappear {
+                    viewModel.send(action: .load)
                 }
             case .home:
                 EmptyView()
