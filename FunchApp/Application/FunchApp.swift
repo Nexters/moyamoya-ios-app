@@ -12,15 +12,13 @@ struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
     @StateObject private var diContainer = DIContainer()
     
-    private var userService = UserDefaultImpl()
-    
     @State private var isSplashing: Bool = true
     
     var body: some Scene {
         WindowGroup {
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
-                    if !userService.profiles.isEmpty {
+                    if !diContainer.inject.userStorage.profiles.isEmpty {
                         HomeViewBuilder(diContainer: diContainer).body
                     } else {
                         OnboardingViewBuilder().body
@@ -46,7 +44,7 @@ struct FunchApp: App {
                 }
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.35) {
                     isSplashing.toggle()
                 }
             }
