@@ -30,6 +30,7 @@ final class MultiProfileListViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case let .selection(profile):
+            ineject.userStorage.selectionProfile = profile
             self.selection = profile
         }
     }
@@ -69,7 +70,7 @@ struct MultiProfileListView: View {
                     }
                 }
                 .onTapGesture {
-                    viewModel.selection = profile
+                    viewModel.send(action: .selection(profile))
                 }
                 .listRowBackground(
                     viewModel.selection == profile

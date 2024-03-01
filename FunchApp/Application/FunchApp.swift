@@ -16,7 +16,7 @@ struct FunchApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
+//            MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
                     if !diContainer.inject.userStorage.profiles.isEmpty {

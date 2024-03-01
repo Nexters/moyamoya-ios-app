@@ -21,19 +21,10 @@ protocol UserStorage {
 
 
 final class UserDefaultImpl: UserStorage {
-//    init() {
-//        profiles = []
-//    }
-    
-    /// 해당 사용자가 프로필이 존재하는지 유무
-    var selectionProfile: Profile? {
-        get {
-            UserDefaults.standard.object(
-                forKey: UserDefaultKeyCase.selectionProfile.rawValue
-            ) as? Profile
-        }
-        set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.selectionProfile.rawValue) }
-    }
+
+    /// 멀티프로필 중 사용자가 선택한 프로필
+    @AppStorage(UserDefaultKeyCase.selectionProfile.rawValue)
+    var selectionProfile: Profile? = nil
     
     /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)

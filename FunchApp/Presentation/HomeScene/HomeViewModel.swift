@@ -75,14 +75,27 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            useCase.fetchProfile.fetchProfileFromDeviceId()
-                .sink { _ in
+            if let selectionProfile = inject.userStorage.selectionProfile {
+                let query: FetchUserQuery = .init(id: selectionProfile.userId)
+                useCase.fetchProfile.fetchProfileFromId(query: query)
+                    .sink { _ in
 
-                } receiveValue: { [weak self] profile in
-                    guard let self else { return }
-                    self.profile = profile
-                    self.inject.userStorage.profiles.insert(profile)
-                }.store(in: &cancellables)
+                    } receiveValue: { [weak self] profile in
+                        guard let self else { return }
+                        self.profile = profile
+                    }.store(in: &cancellables)
+                
+            } else {
+                useCase.fetchProfile.fetchProfileFromDeviceId()
+                    .sink { _ in
+
+                    } receiveValue: { [weak self] profile in
+                        guard let self else { return }
+                        self.profile = profile
+                        self.inject.userStorage.profiles.insert(profile)
+                    }.store(in: &cancellables)
+                
+            }
             
         case .matching:
             guard let profile else { return }
