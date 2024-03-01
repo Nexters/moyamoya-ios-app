@@ -117,7 +117,9 @@ struct HomeView: View {
             case .mbtiCollection:
                 NavigationStack {
                     MultiProfileListView(viewModel: .init(inject: diContainer.inject))
-//                    MBTIBoardViewBuilder(diContainer: diContainer).body
+                }
+                .onDisappear {
+                    viewModel.send(action: .load)
                 }
             case .easterEgg:
                 NavigationStack {

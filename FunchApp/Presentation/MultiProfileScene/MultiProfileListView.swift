@@ -11,6 +11,7 @@ final class MultiProfileListViewModel: ObservableObject {
     
     enum Action {
         case selection(Profile)
+        case feedback
     }
     
     @Published var profiles: [Profile] = [.empty, .testableValue]
@@ -32,18 +33,20 @@ final class MultiProfileListViewModel: ObservableObject {
         case let .selection(profile):
             ineject.userStorage.selectionProfile = profile
             self.selection = profile
+        
+        case .feedback:
+            do {
+               try ineject.openUrl.feedback()
+            } catch { }
         }
     }
 }
 
 struct MultiProfileListView: View {
     
-    @StateObject var viewModel: MultiProfileListViewModel
     @Environment(\.dismiss) var dismiss
-    
-    init(viewModel: MultiProfileListViewModel) {
-        self._viewModel = .init(wrappedValue: viewModel)
-    }
+
+    @StateObject var viewModel: MultiProfileListViewModel
     
     var body: some View {
         ZStack {
@@ -93,7 +96,7 @@ struct MultiProfileListView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-//                    viewModel.send(action: .feedback)
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .foregroundColor(.white)

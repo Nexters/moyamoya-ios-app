@@ -18,6 +18,7 @@ final class HomeViewModel: ObservableObject {
         case feedback
         case appstore
         case releaseNote
+        case update
         
         case presentation(HomePresentation)
         case alert(Alert)
@@ -75,7 +76,8 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            if let selectionProfile = inject.userStorage.selectionProfile {
+            if let selectionProfile = inject.userStorage.selectionProfile,
+               selectionProfile.userCode != profile?.userCode {
                 let query: FetchUserQuery = .init(id: selectionProfile.userId)
                 useCase.fetchProfile.fetchProfileFromId(query: query)
                     .sink { _ in
@@ -147,6 +149,10 @@ final class HomeViewModel: ObservableObject {
             } catch {
                 
             }
+            
+        case .update:
+            
+            break
             
         case let .presentation(presentation):
             self.presentation = presentation
