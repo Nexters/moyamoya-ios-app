@@ -34,14 +34,13 @@ final class MatchResultViewModel: ObservableObject {
     }
     
     private let matchingInfo: MatchingInfo
-    private var inject = Inject()
+    private var inject: DIContainer.Inject
     
-    struct Inject {
-        let openUrl: OpenURLInject = OpenURLImplement.shared
-        let userServies = UserService.shared
-    }
-    
-    init(matchingInfo: MatchingInfo) {
+    init(
+        inject: DIContainer.Inject,
+        matchingInfo: MatchingInfo
+    ) {
+        self.inject = inject
         self.matchingInfo = matchingInfo
     }
     
