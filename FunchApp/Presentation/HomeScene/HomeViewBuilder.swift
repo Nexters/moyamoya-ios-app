@@ -28,7 +28,8 @@ final class HomeViewBuilder {
                 fetchProfile: makeDefaultFetchProfileUseCase(),
                 matching: makeDefaultMatchingUseCase(),
                 mbti: makeDefaultMBTIBoardUseCase()
-            )
+            ), 
+            inject: diContainer.inject
         )
     }
     

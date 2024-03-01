@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct EasterEggViewBuilder {
+    var diContainer: DIContainer
+    
+    init(diContainer: DIContainer) {
+        self.diContainer = diContainer
+    }
+    
     var body: some View {
-        let viewModel = EasterEggViewModel()
+        let viewModel = EasterEggViewModel(inject: diContainer.inject)
         let view = EasterEggView(viewModel: viewModel)
         
         return view

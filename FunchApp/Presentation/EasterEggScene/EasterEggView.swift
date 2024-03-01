@@ -70,9 +70,7 @@ struct EasterEggView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    do {
-                        try viewModel.inject.openUrl.feedback()
-                    } catch { }
+                    viewModel.send(action: .feedback)
                 } label: {
                     Text("피드백 보내기")
                         .foregroundColor(.white)

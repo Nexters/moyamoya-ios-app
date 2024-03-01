@@ -13,8 +13,8 @@ final class MatchingRepositoryImpl: MatchingRepository {
     
     private let apiClient: APIClient
     
-    init() {
-        apiClient = APIClient.shared
+    init(apiClient: APIClient) {
+        self.apiClient = apiClient
     }
     
     func matchingUser(query: MatchingUserQuery) -> AnyPublisher<MatchingInfo, RepositoryError> {

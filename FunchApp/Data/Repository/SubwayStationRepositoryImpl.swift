@@ -13,8 +13,8 @@ final class SubwayStationRepositoryImpl: SubwayStationRepository {
     
     private let apiClient: APIClient
     
-    init() {
-        apiClient = APIClient.shared
+    init(apiClient: APIClient) {
+        self.apiClient = apiClient
     }
     
     /// `지하철역` 검색

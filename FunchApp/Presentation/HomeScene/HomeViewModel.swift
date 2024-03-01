@@ -57,7 +57,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     private var useCase: UseCase
-    private var inject = Inject()
+    private var inject: DIContainer.Inject
     
     struct UseCase {
         let fetchProfile: DefaultFetchProfileUseCase
@@ -65,13 +65,9 @@ final class HomeViewModel: ObservableObject {
         let mbti: DefaultMBTIBoardUseCase
     }
     
-    struct Inject {
-        let openUrl: OpenURLInject = OpenURLImplement.shared
-        let userServies = UserService.shared
-    }
-    
-    init(useCase: UseCase) {
+    init(useCase: UseCase, inject: DIContainer.Inject) {
         self.useCase = useCase
+        self.inject = inject
     }
 
     var cancellables = Set<AnyCancellable>()
@@ -85,7 +81,7 @@ final class HomeViewModel: ObservableObject {
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
                     self.profile = profile
-                    self.inject.userServies.profiles.append(profile)
+                    self.inject.userStorage.profiles.append(profile)
                 }.store(in: &cancellables)
             
         case .matching:

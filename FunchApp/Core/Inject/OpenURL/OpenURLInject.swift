@@ -18,10 +18,6 @@ enum OpenURLError: Error {
 }
 
 final class OpenURLImplement: OpenURLInject {
-    static let shared = OpenURLImplement()
-    
-    private init() {}
-    
     func feedback() throws {
         try execute(urlString: LinkStringSet.feedback.rawValue)
     }
