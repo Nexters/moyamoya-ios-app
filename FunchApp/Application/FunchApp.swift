@@ -14,9 +14,12 @@ struct FunchApp: App {
     
     @State private var isSplashing: Bool = true
     
+    init() {
+        setupNavigationBarAppearance()
+    }
+    
     var body: some Scene {
         WindowGroup {
-//            MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
             ZStack {
                 NavigationStack(path: $appCoordinator.paths) {
                     if !diContainer.inject.userStorage.profiles.isEmpty {
@@ -55,3 +58,17 @@ struct FunchApp: App {
     }
 }
 
+extension FunchApp {
+    private func setupNavigationBarAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray900
+        ]
+        navigationBarAppearance.backgroundColor = UIColor.gray900
+        navigationBarAppearance.shadowColor = .clear
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+    }
+}
