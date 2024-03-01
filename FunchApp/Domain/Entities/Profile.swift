@@ -7,13 +7,17 @@
 
 import Foundation
 
-extension Profile: Codable {}
+struct Profile: Hashable, Codable, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.userCode)
+    }
 
-extension Profile: Equatable {}
-
-struct Profile {
     /// 유저 고유 아이디
-    var id: String
+    var userId: String
     /// 유저코드
     var userCode: String
     /// 유저 닉네임
@@ -31,6 +35,9 @@ struct Profile {
     var subwayInfos: [SubwayInfo]
     /// 조회수
     var viewerShip: String
+    
+    /// 프로필 생성 시각
+    var createAt = Date.now    
     
     /// 전공
     struct Major: Hashable, Codable {
@@ -53,7 +60,7 @@ extension Profile {
     /// 작업에 있어 테스트 가능한 값 (테스트 코드에 사용하면 안됩니다.)
     static var testableValue: Profile {
         return Profile(
-            id: "65bdd58cebe5db753688b9fb",
+            userId: "65bdd58cebe5db753688b9fb",
             userCode: "#2X87T",
             userNickname: "넥스터즈다모임",
             majors: [.init(name: "개발자", imageName: "developer")],
@@ -67,7 +74,7 @@ extension Profile {
     
     static var empty: Profile {
         return Profile(
-            id: "",
+            userId: "",
             userCode: "",
             userNickname: "",
             majors: [],

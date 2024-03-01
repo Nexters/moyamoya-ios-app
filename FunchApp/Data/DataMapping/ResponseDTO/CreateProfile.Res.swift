@@ -95,7 +95,7 @@ extension ResponseDTO.CreateProfile {
                     .init(name: subway.name, lines: subway.lines)
             }
         return Profile(
-            id: data.id,
+            userId: data.id,
             userCode: data.userCode,
             userNickname: data.name,
             majors: majors,

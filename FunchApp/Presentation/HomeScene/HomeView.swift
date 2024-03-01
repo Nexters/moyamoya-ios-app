@@ -107,6 +107,9 @@ struct HomeView: View {
                 NavigationStack {
                     ProfileViewBuilder(diContainer: diContainer).body
                 }
+                .onDisappear {
+                    viewModel.send(action: .load)
+                }
             case let .matchResult(matchingInfo):
                 NavigationStack {
                     MatchResultViewBuilder(
@@ -122,10 +125,25 @@ struct HomeView: View {
                 NavigationStack {
                     EasterEggViewBuilder(diContainer: diContainer).body
                 }
+            case .multiProfile:
+                NavigationStack {
+                    MultiProfileListViewBuilder(diContainer: diContainer).body
+                }
+                .onDisappear {
+                    viewModel.send(action: .load)
+                }
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    viewModel.send(action: .presentation(.multiProfile))
+                } label: {
+                    Image(systemName: "person.2")
+                        .resizable()
+                        .foregroundColor(.lemon500)
+                }
+                
                 Button {
                     viewModel.send(action: .feedback)
                 } label: {
@@ -137,7 +155,6 @@ struct HomeView: View {
                         .background(.gray800)
                         .clipShape(RoundedRectangle(cornerRadius: 12.0))
                 }
-                
             }
         }
     }

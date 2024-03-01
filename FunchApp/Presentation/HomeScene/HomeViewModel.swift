@@ -18,6 +18,7 @@ final class HomeViewModel: ObservableObject {
         case feedback
         case appstore
         case releaseNote
+        case update
         
         case presentation(HomePresentation)
         case alert(Alert)
@@ -75,15 +76,28 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            useCase.fetchProfile.fetchProfileFromDeviceId()
-                .sink { _ in
+            if !inject.userStorage.profiles.isEmpty {
+                // 멀티 프로필이 하나라도 존재한다면
+                
+                if inject.userStorage.selectionProfile == nil {
+                    // 프로필이 삭제되었다면
+                    let random = inject.userStorage.profiles.randomElement()
+                    inject.userStorage.selectionProfile = random
+                    self.profile = random
+                } else if inject.userStorage.selectionProfile?.userCode != profile?.userCode {
+                    // 유저코드가 변경되었다면
+                    self.profile = inject.userStorage.selectionProfile
+                }
+            } else {
+                let query: FetchUserQuery = .init(id: inject.userStorage.selectionProfile?.userId ?? "")
+                useCase.fetchProfile.fetchProfileFromId(query: query)
+                    .sink { _ in
 
-                } receiveValue: { [weak self] profile in
-                    guard let self else { return }
-                    self.profile = profile
-                    self.inject.userStorage.profiles.append(profile)
-                }.store(in: &cancellables)
-            
+                    } receiveValue: { [weak self] profile in
+                        guard let self else { return }
+                        self.profile = profile
+                    }.store(in: &cancellables)
+            }
         case .matching:
             guard let profile else { return }
             guard searchCodeText.count == 4 else { return }
@@ -94,7 +108,7 @@ final class HomeViewModel: ObservableObject {
             }
             
             let query = MatchingUserQuery(
-                requestId: profile.id,
+                requestId: profile.userId,
                 targetUserCode: searchCodeText
             )
             
@@ -134,6 +148,10 @@ final class HomeViewModel: ObservableObject {
             } catch {
                 
             }
+            
+        case .update:
+            
+            break
             
         case let .presentation(presentation):
             self.presentation = presentation

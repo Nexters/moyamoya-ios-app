@@ -38,7 +38,7 @@ final class ProfileRepositoryImpl: ProfileRepository {
         }.eraseToAnyPublisher()
     }
     
-    /// 쿼리 기반 프로필 생성
+    /// 내 프로필 코드 기반 정보 조회
     func fetchProfile(query: FetchUserQuery) -> AnyPublisher<Profile, RepositoryError> {
         return Future { promise in
             self.apiClient.request(

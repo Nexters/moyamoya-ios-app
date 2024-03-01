@@ -94,6 +94,8 @@ struct ProfileView: View {
             switch presentation {
             case .onboarding:
                 appCoordinator.paths.removeAll()
+            case .home:
+                dismiss()
             default:
                 break
             }

@@ -84,7 +84,7 @@ extension ResponseDTO.GetProfile {
         }
         let viewCount = String(data.viewCount)
         return Profile(
-            id: data.id,
+            userId: data.id,
             userCode: data.memberCode,
             userNickname: data.name,
             majors: majors,
