@@ -8,9 +8,8 @@
 import Foundation
 import SwiftUI
 
-final class UserDefaultStorage {
-    
-    static let shared: UserDefaultStorage = UserDefaultStorage()
+final class UserDefaultImplement: UserDefaultInject {
+    static let shared: UserDefaultImplement = UserDefaultImplement()
     
     private init() {}
 
@@ -28,11 +27,11 @@ final class UserDefaultStorage {
     
     /// 빙고보드 딕셔너리
     /// - e.g ["istp": 4, "enfj": 1]
-    var mbtiBoard: [String: Int]? {
+    var mbtiBoard: [String: Int] {
         get {
             UserDefaults.standard.dictionary(
                 forKey: UserDefaultKeyCase.mbtiBoard.rawValue
-            ) as? [String: Int]
+            ) as? [String: Int] ?? [:]
         }
         set { UserDefaults.standard.set(newValue, forKey: UserDefaultKeyCase.mbtiBoard.rawValue) }
     }

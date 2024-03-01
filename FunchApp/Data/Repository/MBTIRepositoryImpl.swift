@@ -10,11 +10,11 @@ import Foundation
 /// 유저가 mbti board를 확인할 때의 repository
 final class MBTIRepositoryImpl: MBTIRepository {
     
-    private let services: UserService
+    private let services: UserDefaultImplement
     private var mbtiBoardDictionary: [String: Int]
     
     init() {
-        self.services = UserService.shared
+        self.services = UserDefaultImplement.shared as! UserDefaultImplement
         self.mbtiBoardDictionary = services.mbtiBoard
     }
     

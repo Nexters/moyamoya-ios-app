@@ -34,7 +34,7 @@
 		1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B069D2B5D702D0024356C /* APIEnvironment.swift */; };
 		1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B06A12B5D8C710024356C /* MatchingInfo.swift */; };
 		1A7B837A2B79E0BA007408D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */; };
-		1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* UserService.swift */; };
+		1A7B837C2B7A067D007408D7 /* UserDefaultInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B837B2B7A067D007408D7 /* UserDefaultInject.swift */; };
 		1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */; };
 		1A83F02C2B80E1BD00E6EC89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F02B2B80E1BD00E6EC89 /* HomeViewModel.swift */; };
 		1A83F02E2B80E26B00E6EC89 /* MatchResultViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */; };
@@ -201,7 +201,7 @@
 		1A7B069D2B5D702D0024356C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		1A7B06A12B5D8C710024356C /* MatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingInfo.swift; sourceTree = "<group>"; };
 		1A7B83792B79E0BA007408D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		1A7B837B2B7A067D007408D7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		1A7B837B2B7A067D007408D7 /* UserDefaultInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultInject.swift; sourceTree = "<group>"; };
 		1A83F0272B80D74200E6EC89 /* HomeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewBuilder.swift; sourceTree = "<group>"; };
 		1A83F02B2B80E1BD00E6EC89 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1A83F02D2B80E26B00E6EC89 /* MatchResultViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewBuilder.swift; sourceTree = "<group>"; };
@@ -443,7 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				1A8F13052B8B7AC4001E0237 /* OpenURL */,
-				1A7B837B2B7A067D007408D7 /* UserService.swift */,
+				1AC7812A2B91D83A00E298E3 /* UserDefault */,
 			);
 			path = Inject;
 			sourceTree = "<group>";
@@ -474,6 +474,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		1AC7812A2B91D83A00E298E3 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B837B2B7A067D007408D7 /* UserDefaultInject.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
 		1ACE492F2B5B9D0B00024336 = {
 			isa = PBXGroup;
 			children = (
@@ -495,8 +503,8 @@
 		1ACE493A2B5B9D0B00024336 /* FunchApp */ = {
 			isa = PBXGroup;
 			children = (
-				1ACE49522B5B9DAD00024336 /* Application */,
 				3EA69C242B5EDA19008AE23B /* Info.plist */,
+				1ACE49522B5B9DAD00024336 /* Application */,
 				1ACE49842B5BAB5000024336 /* Core */,
 				1ACE494E2B5B9D7800024336 /* Data */,
 				1ACE49512B5B9D8D00024336 /* Domain */,
@@ -1042,7 +1050,7 @@
 				1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */,
 				3E1E73F92B7465680082386A /* FunchDropDownMenu.swift in Sources */,
 				1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */,
-				1A7B837C2B7A067D007408D7 /* UserService.swift in Sources */,
+				1A7B837C2B7A067D007408D7 /* UserDefaultInject.swift in Sources */,
 				1A8F12E82B8780A1001E0237 /* HomePresentation.swift in Sources */,
 				1A792B7F2B5D580500A080F2 /* Respondable.swift in Sources */,
 				3E1E740D2B7A73590082386A /* ChipViewHighlighter.swift in Sources */,

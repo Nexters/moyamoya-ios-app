@@ -12,4 +12,8 @@ final class DIContainer: ObservableObject {
     let mbtiRepository = MBTIRepositoryImpl()
     let matchingRepository = MatchingRepositoryImpl()
     let subwayStationRepository = SubwayStationRepositoryImpl()
+    
+    struct Inject {
+        let openUrl: OpenURLInject
+    }
 }
