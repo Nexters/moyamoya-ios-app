@@ -62,7 +62,7 @@ final class ProfileViewModel: ObservableObject {
             dismiss = true
             
         case .deleteProfile:
-            guard let userId = profile?.id else { return }
+            guard let userId = profile?.userId else { return }
             
             useCase.execute(requestId: userId)
                 .sink { _ in

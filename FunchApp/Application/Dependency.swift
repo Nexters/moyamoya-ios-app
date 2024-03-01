@@ -22,10 +22,10 @@ final class DIContainer: ObservableObject {
         self.subwayStationRepository = SubwayStationRepositoryImpl(apiClient: apiClient)
     }
     
-    let inject = Inject()
+    var inject = Inject()
     
     struct Inject {
         var openUrl: OpenURLInject = OpenURLImplement()
         var userStorage: UserStorage = UserDefaultImpl()
-    }   
+    }
 }

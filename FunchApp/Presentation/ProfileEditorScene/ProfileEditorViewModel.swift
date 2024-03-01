@@ -147,7 +147,7 @@ final class ProfileEditorViewModel: ObservableObject {
                     
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
-                    self.inject.userStorage.profiles.append(profile)
+                    self.inject.userStorage.profiles.insert(profile)
                     self.presentation = .home
                 }.store(in: &cancellables)
             

@@ -114,6 +114,7 @@ struct FunchTextField: View {
             leadingView
             
             textField
+                .autocorrectionDisabled()
             
             trailingView
         }
@@ -158,6 +159,7 @@ struct FunchTextField: View {
             text: $text,
             prompt: Text(placeholderText).foregroundColor(.gray400)
         )
+        .autocorrectionDisabled()
         .focused($isFocused)
         .foregroundColor(.white)
         .font(.Funch.body)

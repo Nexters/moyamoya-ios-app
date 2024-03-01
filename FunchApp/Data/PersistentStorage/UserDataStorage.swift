@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol UserStorage {
     /// 유저 프로필 리스트 (멀티 프로필 지원을 위함)
-    var profiles: [Profile] { get set }
+    var profiles: Set<Profile> { get set }
     /// 매칭된 유저의 프로필 리스트
     var matchedResults: [MatchingInfo] { get set }
     /// mbti 보드의 결과
@@ -21,9 +21,9 @@ protocol UserStorage {
 
 
 final class UserDefaultImpl: UserStorage {
-    /// 해당 사용자가 프로필이 존재하는지 유무
-//    @AppStorage(UserDefaultKeyCase.selectionProfile.rawValue)
-//    var selectionProfile: Profile? = nil
+//    init() {
+//        profiles = []
+//    }
     
     /// 해당 사용자가 프로필이 존재하는지 유무
     var selectionProfile: Profile? {
@@ -37,7 +37,7 @@ final class UserDefaultImpl: UserStorage {
     
     /// 유저의 프로필
     @AppStorage(UserDefaultKeyCase.profiles.rawValue)
-    var profiles: [Profile] = []
+    var profiles: Set<Profile> = []
     
     /// 유저가 매칭한 결과물
     @AppStorage(UserDefaultKeyCase.matchedResults.rawValue)

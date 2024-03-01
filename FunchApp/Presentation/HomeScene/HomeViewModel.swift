@@ -81,7 +81,7 @@ final class HomeViewModel: ObservableObject {
                 } receiveValue: { [weak self] profile in
                     guard let self else { return }
                     self.profile = profile
-                    self.inject.userStorage.profiles.append(profile)
+                    self.inject.userStorage.profiles.insert(profile)
                 }.store(in: &cancellables)
             
         case .matching:
@@ -94,7 +94,7 @@ final class HomeViewModel: ObservableObject {
             }
             
             let query = MatchingUserQuery(
-                requestId: profile.id,
+                requestId: profile.userId,
                 targetUserCode: searchCodeText
             )
             

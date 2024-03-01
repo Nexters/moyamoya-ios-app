@@ -8,23 +8,23 @@
 import SwiftUI
 
 final class MultiProfileListViewModel: ObservableObject {
- 
+    
     enum Action {
         case selection(Profile)
     }
     
     @Published var profiles: [Profile] = [.empty, .testableValue]
-    @Published var selection: Profile = .empty
+    @Published var selection: Profile?
     
     private var ineject: DIContainer.Inject
     
-    init(
-        inject: DIContainer.Inject
-    ) {
+    init(inject: DIContainer.Inject) {
         self.ineject = inject
-        
         self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
-//        self.selection = ineject.userStorage.profiles.first
+        
+        self.selection = ineject.userStorage.selectionProfile == nil
+        ? self.profiles.first
+        : self.ineject.userStorage.selectionProfile
     }
     
     func send(action: Action) {
@@ -38,8 +38,7 @@ final class MultiProfileListViewModel: ObservableObject {
 struct MultiProfileListView: View {
     
     @StateObject var viewModel: MultiProfileListViewModel
-    @State var ineee: [String] = ["1", "2", "3"]
-    @State var selection: String = ""
+    @Environment(\.dismiss) var dismiss
     
     init(viewModel: MultiProfileListViewModel) {
         self._viewModel = .init(wrappedValue: viewModel)
@@ -50,7 +49,7 @@ struct MultiProfileListView: View {
             Color.gray900
                 .ignoresSafeArea()
             
-            List(viewModel.profiles, id: \.id) { profile in
+            List(viewModel.profiles, id: \.userCode) { profile in
                 HStack {
                     VStack(alignment: .leading,
                            spacing: 0) {
@@ -59,7 +58,7 @@ struct MultiProfileListView: View {
                             .font(.Funch.title1)
                             .foregroundStyle(.white)
                             .padding(.bottom, 10)
-                            
+                        
                         Text("닉네임")
                     }
                     
@@ -80,10 +79,30 @@ struct MultiProfileListView: View {
             }
             .scrollContentBackground(.hidden)
         }
+        .toolbarBackground(Color.gray900, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(.iconX)
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+//                    viewModel.send(action: .feedback)
+                } label: {
+                    Text("피드백 보내기")
+                        .foregroundColor(.white)
+                        .customFont(.body)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(.gray800)
+                        .clipShape(RoundedRectangle(cornerRadius: 12.0))
+                }
+            }
+        }
     }
 }
-//
-//#Preview {
-//    @StateObject var diContainer = DIContainer()
-//    return MultiProfileListView(viewModel: MultiProfileListViewModel(inject: diContainer.inject))
-//}
