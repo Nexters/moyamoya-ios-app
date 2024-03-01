@@ -14,6 +14,10 @@ struct FunchApp: App {
     
     @State private var isSplashing: Bool = true
     
+    init() {
+        setupNavigationBarAppearance()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -51,5 +55,20 @@ struct FunchApp: App {
             .environmentObject(appCoordinator)
             .environmentObject(diContainer)
         }
+    }
+}
+
+extension FunchApp {
+    private func setupNavigationBarAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray900
+        ]
+        navigationBarAppearance.backgroundColor = UIColor.gray900
+        navigationBarAppearance.shadowColor = .clear
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
 }
