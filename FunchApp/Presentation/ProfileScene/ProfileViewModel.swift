@@ -37,23 +37,22 @@ final class ProfileViewModel: ObservableObject {
     @Published var alertFeedbackFailed: Bool = false
     
     private var useCase: DeleteProfileUseCase
-    private var inject = Inject()
+    private var inject: DIContainer.Inject
     
     private var cancellables = Set<AnyCancellable>()
     
-    struct Inject {
-        let openUrl: OpenURLInject = OpenURLImplement.shared
-        var userServies = UserDefaultImpl.shared
-    }
-    
-    init(useCase: DeleteProfileUseCase) {
+    init(
+        useCase: DeleteProfileUseCase,
+        inject: DIContainer.Inject
+    ) {
         self.useCase = useCase
+        self.inject = inject
     }
     
     func send(action: Action) {
         switch action {
         case .load:
-            guard let profile = inject.userServies.profiles.last else {
+            guard let profile = inject.userStorage.profiles.last else {
                 self.send(action: .loadFailed)
                 return
             }
@@ -70,7 +69,7 @@ final class ProfileViewModel: ObservableObject {
                     
                 } receiveValue: { [weak self] deletedId in
                     guard let self else { return }
-                    self.inject.userServies.profiles = []
+                    self.inject.userStorage.profiles = []
                     self.presentation = .onboarding
                 }
                 .store(in: &cancellables)

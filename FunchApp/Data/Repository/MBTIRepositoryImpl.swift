@@ -14,7 +14,7 @@ final class MBTIRepositoryImpl: MBTIRepository {
     private var mbtiBoardDictionary: [String: Int]
     
     init() {
-        self.services = UserDefaultImpl.shared as! UserDefaultImpl
+        self.services = UserDefaultImpl()
         self.mbtiBoardDictionary = services.mbtiBoard
     }
     

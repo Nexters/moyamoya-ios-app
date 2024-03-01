@@ -12,7 +12,7 @@ struct FunchApp: App {
     @StateObject private var appCoordinator = AppCoordinator()
     @StateObject private var diContainer = DIContainer()
     
-    private var userService = UserDefaultImpl.shared
+    private var userService = UserDefaultImpl()
     
     @State private var isSplashing: Bool = true
     

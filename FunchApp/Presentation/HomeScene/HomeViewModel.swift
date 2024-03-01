@@ -57,7 +57,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     private var useCase: UseCase
-    private var inject = Inject()
+    private var inject: Inject
     
     struct UseCase {
         let fetchProfile: DefaultFetchProfileUseCase
@@ -66,12 +66,13 @@ final class HomeViewModel: ObservableObject {
     }
     
     struct Inject {
-        let openUrl: OpenURLInject = OpenURLImplement.shared
-        var userServies: UserStorage = UserDefaultImpl.shared
+        let openUrl: OpenURLInject
+        var userServies: UserStorage
     }
     
-    init(useCase: UseCase) {
+    init(useCase: UseCase, inject: Inject) {
         self.useCase = useCase
+        self.inject = inject
     }
 
     var cancellables = Set<AnyCancellable>()

@@ -27,7 +27,7 @@ struct ProfileEditorViewBuilder {
             useCase: .init(
                 createProfile: makeDefaultCreateProfileUseCase(),
                 searchSubway: makeDefaultSearchSubwayUseCase()
-            )
+            ), inject: diContainer.inject
         )
     }
     

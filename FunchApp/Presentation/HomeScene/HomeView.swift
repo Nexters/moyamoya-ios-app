@@ -105,11 +105,14 @@ struct HomeView: View {
             switch presentation {
             case .profile:
                 NavigationStack {
-                    ProfileViewBuilder(container: diContainer).body
+                    ProfileViewBuilder(diContainer: diContainer).body
                 }
             case let .matchResult(matchingInfo):
                 NavigationStack {
-                    MatchResultViewBuilder(matchingInfo: matchingInfo).body
+                    MatchResultViewBuilder(
+                        diContainer: diContainer,
+                        matchingInfo: matchingInfo
+                    ).body
                 }
             case .mbtiCollection:
                 NavigationStack {

@@ -14,6 +14,9 @@ final class DIContainer: ObservableObject {
     let subwayStationRepository = SubwayStationRepositoryImpl()
     
     struct Inject {
-        let openUrl: OpenURLInject
+        var openUrl: OpenURLInject = OpenURLImplement()
+        var userStorage: UserStorage = UserDefaultImpl()
     }
+    
+    let inject = Inject()
 }

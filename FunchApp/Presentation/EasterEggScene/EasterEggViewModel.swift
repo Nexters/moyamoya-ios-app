@@ -12,7 +12,7 @@ final class EasterEggViewModel: ObservableObject {
     private(set) var inject = Inject()
     
     struct Inject {
-        var openUrl = OpenURLImplement.shared
+        var openUrl = OpenURLImplement()
     }
     
     init() { }

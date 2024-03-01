@@ -19,10 +19,6 @@ protocol UserStorage {
 
 
 final class UserDefaultImpl: UserStorage {
-    static let shared: UserDefaultImpl = UserDefaultImpl()
-    
-    private init() {}
-
     /// 해당 사용자가 프로필이 존재하는지 유무
     @AppStorage(UserDefaultKeyCase.hasProfile.rawValue)
     var hasProfile: Bool = false
