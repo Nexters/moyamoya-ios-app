@@ -34,13 +34,13 @@ final class MatchResultViewModel: ObservableObject {
     }
     
     private let matchingInfo: MatchingInfo
-    private var inject: DIContainer.Inject
+    private var container: DIContainer
     
     init(
-        inject: DIContainer.Inject,
+        container: DIContainer,
         matchingInfo: MatchingInfo
     ) {
-        self.inject = inject
+        self.container = container
         self.matchingInfo = matchingInfo
     }
     

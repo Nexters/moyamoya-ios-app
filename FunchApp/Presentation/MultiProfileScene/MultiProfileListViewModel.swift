@@ -21,23 +21,23 @@ final class MultiProfileListViewModel: ObservableObject {
     /// 유저가 선택한 프로필
     @Published var selection: Profile?
     
-    private var ineject: DIContainer.Inject
+    private var container: DIContainer
 
-    init(inject: DIContainer.Inject) {
-        self.ineject = inject
+    init(container: DIContainer) {
+        self.container = container
     }
     
     func send(action: Action) {
         switch action {
         case .load:
-            self.profiles = ineject.userStorage.profiles.sorted { $0.createAt > $1.createAt }
+            self.profiles = container.userStorage.profiles.sorted { $0.createAt > $1.createAt }
             
-            self.selection = ineject.userStorage.selectionProfile == nil
+            self.selection = container.userStorage.selectionProfile == nil
             ? self.profiles.first
-            : self.ineject.userStorage.selectionProfile
+            : self.container.userStorage.selectionProfile
             
         case let .selection(profile):
-            ineject.userStorage.selectionProfile = profile
+            container.userStorage.selectionProfile = profile
             self.selection = profile
         
         case let .presentation(presentation):

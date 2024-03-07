@@ -11,7 +11,6 @@ struct ProfileEditorView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileEditorViewModel
         
     var body: some View {

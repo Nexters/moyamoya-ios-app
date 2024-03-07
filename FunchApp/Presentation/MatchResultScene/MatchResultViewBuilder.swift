@@ -9,22 +9,22 @@ import SwiftUI
 
 struct MatchResultViewBuilder {
     
-    private var diContainer: DIContainer
+    private var container: DIContainer
     
     /// 매칭된 타인의 프로필
     private var matchingInfo: MatchingInfo
     
     init(
-        diContainer: DIContainer,
+        _ container: DIContainer,
         matchingInfo: MatchingInfo
     ) {
-        self.diContainer = diContainer
+        self.container = container
         self.matchingInfo = matchingInfo
     }
     
     var body: some View {
         let viewModel = MatchResultViewModel(
-            inject: diContainer.inject,
+            container: container,
             matchingInfo: matchingInfo
         )
         let view = MatchResultView(viewModel: viewModel)

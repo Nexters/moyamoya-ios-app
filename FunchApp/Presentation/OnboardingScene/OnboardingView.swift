@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     
-    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var diContainer: DIContainer
     
     var body: some View {
         ZStack {
@@ -47,7 +47,7 @@ struct OnboardingView: View {
                     .frame(height: 8)
                 
                 Button {
-                    appCoordinator.paths.append(.onboarding(.createProfile))
+                    diContainer.paths.append(.createProfile)
                 } label: {
                     Text("프로필 생성 시작🚀")
                         .font(.Funch.subtitle2)

@@ -11,8 +11,7 @@ struct MultiProfileListView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var appCoordinator: AppCoordinator
-    @EnvironmentObject var diContainer: DIContainer
+    @EnvironmentObject var container: DIContainer
     
     @StateObject var viewModel: MultiProfileListViewModel
     
@@ -66,7 +65,7 @@ struct MultiProfileListView: View {
             switch presentation {
             case .create:
                 NavigationStack {
-                    ProfileEditorViewBuilder(diContainer: diContainer).body
+                    ProfileEditorViewBuilder(container).body
                 }
                 .onDisappear {
                     viewModel.send(action: .load)
@@ -78,7 +77,7 @@ struct MultiProfileListView: View {
         .onReceive(viewModel.$presentation) {
             switch $0 {
             case .home:
-                appCoordinator.paths.removeAll()
+                container.paths.removeAll()
             default:
                 break
             }

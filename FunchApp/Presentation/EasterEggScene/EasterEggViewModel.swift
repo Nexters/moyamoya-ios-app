@@ -13,17 +13,17 @@ final class EasterEggViewModel: ObservableObject {
         case feedback
     }
     
-    private var inject: DIContainer.Inject
+    private(set) var container: DIContainer
     
-    init(inject: DIContainer.Inject) {
-        self.inject = inject
+    init(container: DIContainer) {
+        self.container = container
     }
 
     func send(action: Action) {
         switch action {
         case .feedback:
             do {
-                try inject.openUrl.feedback()
+                try container.openUrl.feedback()
             } catch { }
         }
     }

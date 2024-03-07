@@ -9,14 +9,14 @@ import SwiftUI
 
 final class MultiProfileListViewBuilder {
     
-    private var diContainer: DIContainer
+    private var container: DIContainer
     
-    init(diContainer: DIContainer) {
-        self.diContainer = diContainer
+    init(_ container: DIContainer) {
+        self.container = container
     }
     
     var body: some View {
-        let viewModel = MultiProfileListViewModel(inject: diContainer.inject)
+        let viewModel = MultiProfileListViewModel(container: container)
         let view = MultiProfileListView(viewModel: viewModel)
         
         return view

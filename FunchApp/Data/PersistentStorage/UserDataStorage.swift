@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-protocol UserStorage {
+protocol UserStorageProtocol {
     /// 유저 프로필 리스트 (멀티 프로필 지원을 위함)
     var profiles: Set<Profile> { get set }
     /// 매칭된 유저의 프로필 리스트
@@ -20,7 +20,7 @@ protocol UserStorage {
 }
 
 
-final class UserDefaultImpl: UserStorage {
+final class UserDefaultManager: UserStorageProtocol {
 
     /// 멀티프로필 중 사용자가 선택한 프로필
     @AppStorage(UserDefaultKeyCase.selectionProfile.rawValue)

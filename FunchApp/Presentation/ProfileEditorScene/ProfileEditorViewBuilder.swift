@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ProfileEditorViewBuilder {
     
-    private var diContainer: DIContainer
+    private var container: DIContainer
     
-    init(diContainer: DIContainer) {
-        self.diContainer = diContainer
+    init(_ container: DIContainer) {
+        self.container = container
     }
     
     var body: some View {
@@ -24,19 +24,19 @@ struct ProfileEditorViewBuilder {
     
     private func makeViewModel() -> ProfileEditorViewModel {
         .init(
+            container: container,
             useCase: .init(
                 createProfile: makeDefaultCreateProfileUseCase(),
                 searchSubway: makeDefaultSearchSubwayUseCase()
-            ),
-            inject: diContainer.inject
+            )
         )
     }
     
     private func makeDefaultCreateProfileUseCase() -> DefaultCreateProfileUseCase {
-        return .init(profileRepository: diContainer.profileRepository)
+        return .init(profileRepository: container.dependency.profileRepository)
     }
     
     private func makeDefaultSearchSubwayUseCase() -> DefaultSearchSubwayUseCase {
-        return .init(repository: diContainer.subwayStationRepository)
+        return .init(repository: container.dependency.subwayStationRepository)
     }
 }
