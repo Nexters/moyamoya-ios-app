@@ -38,22 +38,22 @@ final class ProfileViewModel: ObservableObject {
     @Published var alertFeedbackFailed: Bool = false
     
     private var useCase: DeleteProfileUseCase
-    private var inject: DIContainer.Inject
+    private var container: DIContainer
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        useCase: DeleteProfileUseCase,
-        inject: DIContainer.Inject
+        container: DIContainer,
+        useCase: DeleteProfileUseCase
     ) {
+        self.container = container
         self.useCase = useCase
-        self.inject = inject
     }
     
     func send(action: Action) {
         switch action {
         case .load:
-            guard let profile = inject.userStorage.selectionProfile else {
+            guard let profile = container.userStorage.selectionProfile else {
                 self.send(action: .loadFailed)
                 return
             }
@@ -72,10 +72,10 @@ final class ProfileViewModel: ObservableObject {
                     guard let self else { return }
                     guard let profile else { return }
                     
-                    self.inject.userStorage.profiles.remove(profile)
-                    self.inject.userStorage.selectionProfile = nil
+                    self.container.userStorage.profiles.remove(profile)
+                    self.container.userStorage.selectionProfile = nil
                     
-                    if self.inject.userStorage.profiles.count == 0 {
+                    if self.container.userStorage.profiles.count == 0 {
                         self.presentation = .onboarding
                     } else {
                         self.presentation = .home
@@ -86,7 +86,7 @@ final class ProfileViewModel: ObservableObject {
             
         case .feedback:
             do {
-                try inject.openUrl.feedback()
+                try container.openUrl.feedback()
             } catch let error {
                 showsAlert = true
                 alertMessage = .feedbackFailed(error.localizedDescription)

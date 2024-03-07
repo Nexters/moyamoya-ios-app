@@ -24,7 +24,7 @@ struct MatchResultViewBuilder {
     
     var body: some View {
         let viewModel = MatchResultViewModel(
-            inject: container.inject,
+            container: container,
             matchingInfo: matchingInfo
         )
         let view = MatchResultView(viewModel: viewModel)

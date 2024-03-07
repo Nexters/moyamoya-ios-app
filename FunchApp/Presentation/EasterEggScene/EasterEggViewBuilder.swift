@@ -15,7 +15,7 @@ struct EasterEggViewBuilder {
     }
     
     var body: some View {
-        let viewModel = EasterEggViewModel(inject: container.inject)
+        let viewModel = EasterEggViewModel(container: container)
         let view = EasterEggView(viewModel: viewModel)
         
         return view

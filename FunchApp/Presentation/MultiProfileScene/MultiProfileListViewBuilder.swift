@@ -16,7 +16,7 @@ final class MultiProfileListViewBuilder {
     }
     
     var body: some View {
-        let viewModel = MultiProfileListViewModel(inject: container.inject)
+        let viewModel = MultiProfileListViewModel(container: container)
         let view = MultiProfileListView(viewModel: viewModel)
         
         return view

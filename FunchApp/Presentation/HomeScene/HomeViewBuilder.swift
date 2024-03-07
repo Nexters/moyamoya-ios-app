@@ -29,7 +29,7 @@ final class HomeViewBuilder {
                 matching: makeDefaultMatchingUseCase(),
                 mbti: makeDefaultMBTIBoardUseCase()
             ), 
-            inject: container.inject
+            container: container
         )
     }
     

@@ -18,8 +18,8 @@ struct ProfileViewBuilder {
     var body: some View {
         let useCase = DefaultDeleteProfileUseCase(profileRepository: container.dependency.profileRepository)
         let viewModel = ProfileViewModel(
-            useCase: useCase,
-            inject: container.inject
+            container: container,
+            useCase: useCase
         )
         let view = ProfileView(viewModel: viewModel)
         return view

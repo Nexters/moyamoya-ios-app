@@ -18,24 +18,25 @@ final class MBTIBoardViewModel: ObservableObject {
     @Published var mbtiTiles: [(String, CGFloat)] = []
     
     private let useCase: UseCase
-    private let inject: DIContainer.Inject
+    private let container: DIContainer
     
     struct UseCase {
         let mbtiBoard: MBTIBoardUseCase
     }
     
     init(
-        useCase: UseCase,
-        inject: DIContainer.Inject
+        container: DIContainer,
+        useCase: UseCase
+        
     ) {
+        self.container = container
         self.useCase = useCase
-        self.inject = inject
     }
     
     func send(action: Action) {
         switch action {
         case .load:
-            guard let selectionProfile = inject.userStorage.selectionProfile else {
+            guard let selectionProfile = container.userStorage.selectionProfile else {
                 send(action: .loadFailed)
                 return
             }

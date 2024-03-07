@@ -11,6 +11,7 @@ final class DIContainer: ObservableObject {
     @Published var paths: [NavigationDestination] = []
     
     struct Dependency {
+        // !!!: - Services로 분리
         let profileRepository: ProfileRepository
         let mbtiRepository: MBTIRepository
         let matchingRepository: MatchingRepository
@@ -18,6 +19,9 @@ final class DIContainer: ObservableObject {
     }
     
     private(set) var dependency: Dependency
+    
+    private(set) var openUrl: OpenURLProtocol
+    var userStorage: UserStorageProtocol
     
     init() {
         let apiClient = APIClient()
@@ -28,12 +32,9 @@ final class DIContainer: ObservableObject {
             matchingRepository: MatchingRepositoryImpl(apiClient: apiClient),
             subwayStationRepository: SubwayStationRepositoryImpl(apiClient: apiClient)
         )
-    }
-    
-    var inject = Inject()
-    
-    struct Inject {
-        var openUrl: OpenURLProtocol = OpenURLManager()
-        var userStorage: UserStorage = UserDefaultImpl()
+        
+        // !!!: - 데이터 Combine으로 형태로 변환
+        self.userStorage = UserDefaultManager()
+        self.openUrl = OpenURLManager()
     }
 }

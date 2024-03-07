@@ -24,8 +24,8 @@ struct MBTIBoardViewBuilder {
     
     private func makeViewModel() -> MBTIBoardViewModel {
         .init(
-            useCase: .init(mbtiBoard: makeDefaultMBTIBoardUseCase()),
-            inject: container.inject
+            container: container,
+            useCase: .init(mbtiBoard: makeDefaultMBTIBoardUseCase())
         )
     }
 

@@ -24,11 +24,11 @@ struct ProfileEditorViewBuilder {
     
     private func makeViewModel() -> ProfileEditorViewModel {
         .init(
+            container: container,
             useCase: .init(
                 createProfile: makeDefaultCreateProfileUseCase(),
                 searchSubway: makeDefaultSearchSubwayUseCase()
-            ),
-            inject: container.inject
+            )
         )
     }
     

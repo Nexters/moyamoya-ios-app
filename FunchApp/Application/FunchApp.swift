@@ -22,7 +22,7 @@ struct FunchApp: App {
         WindowGroup {
             ZStack {
                 NavigationStack(path: $container.paths) {
-                    if !container.inject.userStorage.profiles.isEmpty {
+                    if !container.userStorage.profiles.isEmpty {
                         HomeViewBuilder(container).body
                     } else {
                         OnboardingViewBuilder().body

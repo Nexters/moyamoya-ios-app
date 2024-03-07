@@ -58,7 +58,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     private var useCase: UseCase
-    private var inject: DIContainer.Inject
+    private var container: DIContainer
     
     struct UseCase {
         let fetchProfile: DefaultFetchProfileUseCase
@@ -66,9 +66,9 @@ final class HomeViewModel: ObservableObject {
         let mbti: DefaultMBTIBoardUseCase
     }
     
-    init(useCase: UseCase, inject: DIContainer.Inject) {
+    init(useCase: UseCase, container: DIContainer) {
         self.useCase = useCase
-        self.inject = inject
+        self.container = container
     }
 
     var cancellables = Set<AnyCancellable>()
@@ -76,17 +76,17 @@ final class HomeViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .load:
-            if !inject.userStorage.profiles.isEmpty {
+            if !container.userStorage.profiles.isEmpty {
                 // 멀티 프로필이 하나라도 존재한다면
                 
-                if inject.userStorage.selectionProfile == nil {
+                if container.userStorage.selectionProfile == nil {
                     // 프로필이 삭제되었다면
-                    let random = inject.userStorage.profiles.randomElement()
-                    inject.userStorage.selectionProfile = random
+                    let random = container.userStorage.profiles.randomElement()
+                    container.userStorage.selectionProfile = random
                     self.profile = random
-                } else if inject.userStorage.selectionProfile?.userCode != profile?.userCode {
+                } else if container.userStorage.selectionProfile?.userCode != profile?.userCode {
                     // 유저코드가 변경되었다면
-                    self.profile = inject.userStorage.selectionProfile
+                    self.profile = container.userStorage.selectionProfile
                     fetchProfile()
                 }
             } else {
@@ -124,21 +124,21 @@ final class HomeViewModel: ObservableObject {
             
         case .feedback:
             do {
-                try inject.openUrl.feedback()
+                try container.openUrl.feedback()
             } catch let error {
                 self.send(action: .alert(.failedFeedback(error.localizedDescription)))
             }
             
         case .appstore:
             do {
-                try inject.openUrl.appstore()
+                try container.openUrl.appstore()
             } catch {
                 
             }
             
         case .releaseNote:
             do {
-                try inject.openUrl.releaseNote()
+                try container.openUrl.releaseNote()
             } catch {
                 
             }
@@ -158,7 +158,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     private func fetchProfile() {
-        let query: FetchUserQuery = .init(id: inject.userStorage.selectionProfile?.userId ?? "")
+        let query: FetchUserQuery = .init(id: container.userStorage.selectionProfile?.userId ?? "")
         useCase.fetchProfile.fetchProfileFromId(query: query)
             .sink { _ in
 
