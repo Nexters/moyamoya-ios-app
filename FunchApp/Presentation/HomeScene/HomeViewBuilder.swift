@@ -9,10 +9,10 @@ import SwiftUI
 
 final class HomeViewBuilder {
     
-    private var diContainer: DIContainer
+    private var container: DIContainer
     
-    init(diContainer: DIContainer) {
-        self.diContainer = diContainer
+    init(_ container: DIContainer) {
+        self.container = container
     }
     
     var body: some View {
@@ -29,20 +29,20 @@ final class HomeViewBuilder {
                 matching: makeDefaultMatchingUseCase(),
                 mbti: makeDefaultMBTIBoardUseCase()
             ), 
-            inject: diContainer.inject
+            inject: container.inject
         )
     }
     
     private func makeDefaultFetchProfileUseCase() -> DefaultFetchProfileUseCase {
-        return .init(repository: diContainer.profileRepository)
+        return .init(repository: container.dependency.profileRepository)
     }
     
     private func makeDefaultMatchingUseCase() -> DefaultMatchingUseCase {
-        return .init(repository: diContainer.matchingRepository)
+        return .init(repository: container.dependency.matchingRepository)
     }
     
     private func makeDefaultMBTIBoardUseCase() -> DefaultMBTIBoardUseCase {
-        return .init(repository: diContainer.mbtiRepository)
+        return .init(repository: container.dependency.mbtiRepository)
     }
 }
 

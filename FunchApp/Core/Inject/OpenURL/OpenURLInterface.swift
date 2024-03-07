@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol OpenURLInject {
+protocol OpenURLInterface {
     func feedback() throws
     func appstore() throws
     func releaseNote() throws
@@ -17,7 +17,7 @@ enum OpenURLError: Error {
     case error(String)
 }
 
-final class OpenURLImplement: OpenURLInject {
+final class OpenURLManager: OpenURLInterface {
     func feedback() throws {
         try execute(urlString: LinkStringSet.feedback.rawValue)
     }

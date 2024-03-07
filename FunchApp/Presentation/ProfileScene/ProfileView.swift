@@ -11,8 +11,8 @@ struct ProfileView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: ProfileViewModel
+    @EnvironmentObject var diContainer: DIContainer
     
     var body: some View {
         ZStack {
@@ -94,7 +94,7 @@ struct ProfileView: View {
         .onReceive(viewModel.$presentation) { presentation in
             switch presentation {
             case .onboarding:
-                appCoordinator.paths.removeAll()
+                diContainer.paths.removeAll()
             case .home:
                 dismiss()
             default:

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MBTIBoardViewBuilder {
     
-    private var diContainer: DIContainer
+    private var container: DIContainer
     
-    init(diContainer: DIContainer) {
-        self.diContainer = diContainer
+    init(_ container: DIContainer) {
+        self.container = container
     }
     
     var body: some View {
@@ -25,11 +25,11 @@ struct MBTIBoardViewBuilder {
     private func makeViewModel() -> MBTIBoardViewModel {
         .init(
             useCase: .init(mbtiBoard: makeDefaultMBTIBoardUseCase()),
-            inject: diContainer.inject
+            inject: container.inject
         )
     }
 
     private func makeDefaultMBTIBoardUseCase() -> DefaultMBTIBoardUseCase {
-        return .init(repository: diContainer.mbtiRepository)
+        return .init(repository: container.dependency.mbtiRepository)
     }
 }

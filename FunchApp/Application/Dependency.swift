@@ -8,24 +8,32 @@
 import SwiftUI
 
 final class DIContainer: ObservableObject {
-    let profileRepository: ProfileRepository
-    let mbtiRepository: MBTIRepository
-    let matchingRepository: MatchingRepository
-    let subwayStationRepository: SubwayStationRepository
+    @Published var paths: [NavigationDestination] = []
+    
+    struct Dependency {
+        let profileRepository: ProfileRepository
+        let mbtiRepository: MBTIRepository
+        let matchingRepository: MatchingRepository
+        let subwayStationRepository: SubwayStationRepository
+    }
+    
+    private(set) var dependency: Dependency
     
     init() {
         let apiClient = APIClient()
         
-        self.profileRepository = ProfileRepositoryImpl(apiClient: apiClient)
-        self.mbtiRepository = MBTIRepositoryImpl()
-        self.matchingRepository = MatchingRepositoryImpl(apiClient: apiClient)
-        self.subwayStationRepository = SubwayStationRepositoryImpl(apiClient: apiClient)
+        self.dependency = Dependency(
+            profileRepository: ProfileRepositoryImpl(apiClient: apiClient),
+            mbtiRepository: MBTIRepositoryImpl(),
+            matchingRepository: MatchingRepositoryImpl(apiClient: apiClient),
+            subwayStationRepository: SubwayStationRepositoryImpl(apiClient: apiClient)
+        )
     }
     
     var inject = Inject()
     
     struct Inject {
-        var openUrl: OpenURLInject = OpenURLImplement()
+        var openUrl: OpenURLInterface = OpenURLManager()
         var userStorage: UserStorage = UserDefaultImpl()
     }
 }

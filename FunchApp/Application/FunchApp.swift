@@ -9,8 +9,8 @@ import SwiftUI
 
 @main
 struct FunchApp: App {
-    @StateObject private var appCoordinator = AppCoordinator()
-    @StateObject private var diContainer = DIContainer()
+
+    @StateObject private var container = DIContainer()
     
     @State private var isSplashing: Bool = true
     
@@ -21,20 +21,14 @@ struct FunchApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                NavigationStack(path: $appCoordinator.paths) {
-                    if !diContainer.inject.userStorage.profiles.isEmpty {
-                        HomeViewBuilder(diContainer: diContainer).body
+                NavigationStack(path: $container.paths) {
+                    if !container.inject.userStorage.profiles.isEmpty {
+                        HomeViewBuilder(container).body
                     } else {
                         OnboardingViewBuilder().body
-                            .navigationDestination(for: AppCoordinatorPathType.self) { type in
-                                switch type {
-                                case let .onboarding(pathType):
-                                    switch pathType {
-                                    case .createProfile:
-                                        ProfileEditorViewBuilder(diContainer: diContainer).body
-                                            .navigationBarBackButtonHidden()
-                                    }
-                                }
+                            .navigationDestination(for: NavigationDestination.self) {
+                                NavigationDestintationView(destination: $0)
+                                    .navigationBarBackButtonHidden()
                             }
                     }
                 }
@@ -52,8 +46,7 @@ struct FunchApp: App {
                     isSplashing.toggle()
                 }
             }
-            .environmentObject(appCoordinator)
-            .environmentObject(diContainer)
+            .environmentObject(container)
         }
     }
 }
