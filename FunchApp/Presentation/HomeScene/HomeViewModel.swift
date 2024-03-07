@@ -87,16 +87,10 @@ final class HomeViewModel: ObservableObject {
                 } else if inject.userStorage.selectionProfile?.userCode != profile?.userCode {
                     // 유저코드가 변경되었다면
                     self.profile = inject.userStorage.selectionProfile
+                    fetchProfile()
                 }
             } else {
-                let query: FetchUserQuery = .init(id: inject.userStorage.selectionProfile?.userId ?? "")
-                useCase.fetchProfile.fetchProfileFromId(query: query)
-                    .sink { _ in
-
-                    } receiveValue: { [weak self] profile in
-                        guard let self else { return }
-                        self.profile = profile
-                    }.store(in: &cancellables)
+                fetchProfile()
             }
         case .matching:
             guard let profile else { return }
@@ -161,5 +155,16 @@ final class HomeViewModel: ObservableObject {
             alertMessage = type
             
         }
+    }
+    
+    private func fetchProfile() {
+        let query: FetchUserQuery = .init(id: inject.userStorage.selectionProfile?.userId ?? "")
+        useCase.fetchProfile.fetchProfileFromId(query: query)
+            .sink { _ in
+
+            } receiveValue: { [weak self] profile in
+                guard let self else { return }
+                self.profile = profile
+            }.store(in: &cancellables)
     }
 }

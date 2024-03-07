@@ -89,7 +89,7 @@
 		1A8F12F42B87A914001E0237 /* MBTIRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F32B87A914001E0237 /* MBTIRepositoryImpl.swift */; };
 		1A8F12FA2B8A068A001E0237 /* SearchSubwayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */; };
 		1A8F12FD2B8A152A001E0237 /* MatchingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */; };
-		1A8F13042B8B7791001E0237 /* OpenURLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLInterface.swift */; };
+		1A8F13042B8B7791001E0237 /* OpenURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13032B8B7791001E0237 /* OpenURLType.swift */; };
 		1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */; };
 		1A8F130B2B8B8EDF001E0237 /* EasterEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */; };
 		1AC781192B90E3F000E298E3 /* EasterEggViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC781182B90E3F000E298E3 /* EasterEggViewModel.swift */; };
@@ -226,7 +226,7 @@
 		1A8F12F32B87A914001E0237 /* MBTIRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIRepositoryImpl.swift; sourceTree = "<group>"; };
 		1A8F12F92B8A068A001E0237 /* SearchSubwayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubwayUseCase.swift; sourceTree = "<group>"; };
 		1A8F12FC2B8A152A001E0237 /* MatchingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingUseCase.swift; sourceTree = "<group>"; };
-		1A8F13032B8B7791001E0237 /* OpenURLInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLInterface.swift; sourceTree = "<group>"; };
+		1A8F13032B8B7791001E0237 /* OpenURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLType.swift; sourceTree = "<group>"; };
 		1A8F13082B8B7DAB001E0237 /* LinkStringSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStringSet.swift; sourceTree = "<group>"; };
 		1A8F130A2B8B8EDF001E0237 /* EasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggView.swift; sourceTree = "<group>"; };
 		1AC781182B90E3F000E298E3 /* EasterEggViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggViewModel.swift; sourceTree = "<group>"; };
@@ -451,18 +451,18 @@
 			path = Matching;
 			sourceTree = "<group>";
 		};
-		1A8F13022B8B7710001E0237 /* Inject */ = {
+		1A8F13022B8B7710001E0237 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				1A8F13052B8B7AC4001E0237 /* OpenURL */,
 			);
-			path = Inject;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		1A8F13052B8B7AC4001E0237 /* OpenURL */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F13032B8B7791001E0237 /* OpenURLInterface.swift */,
+				1A8F13032B8B7791001E0237 /* OpenURLType.swift */,
 			);
 			path = OpenURL;
 			sourceTree = "<group>";
@@ -727,7 +727,7 @@
 				1ACE49872B5BAB7000024336 /* DesignSystem */,
 				1A7B06952B5D675C0024356C /* Utils */,
 				1A83F0392B81085D00E6EC89 /* Extensions */,
-				1A8F13022B8B7710001E0237 /* Inject */,
+				1A8F13022B8B7710001E0237 /* Manager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1102,7 +1102,7 @@
 				1A83F0282B80D74200E6EC89 /* HomeViewBuilder.swift in Sources */,
 				1ACE49802B5BA46600024336 /* ProfileRepositoryImpl.swift in Sources */,
 				1A7B069A2B5D68AC0024356C /* SearchSubwayStation.Req.swift in Sources */,
-				1A8F13042B8B7791001E0237 /* OpenURLInterface.swift in Sources */,
+				1A8F13042B8B7791001E0237 /* OpenURLType.swift in Sources */,
 				1A8F12EF2B87A259001E0237 /* MBTI.swift in Sources */,
 				1A8F12EC2B878A54001E0237 /* MBTIBoardView.swift in Sources */,
 				1A792B8B2B5D62BE00A080F2 /* MatchingUser.Req.swift in Sources */,

@@ -33,7 +33,7 @@ final class DIContainer: ObservableObject {
     var inject = Inject()
     
     struct Inject {
-        var openUrl: OpenURLInterface = OpenURLManager()
+        var openUrl: OpenURLProtocol = OpenURLManager()
         var userStorage: UserStorage = UserDefaultImpl()
     }
 }
