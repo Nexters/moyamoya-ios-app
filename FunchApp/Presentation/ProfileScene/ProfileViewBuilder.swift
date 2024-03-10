@@ -8,10 +8,6 @@
 import SwiftUI
 import Combine
 
-protocol ProfileViewDelegate: AnyObject {
-    func delete(profile: Profile)
-}
-
 struct ProfileViewBuilder {
     
     private var container: DIContainer

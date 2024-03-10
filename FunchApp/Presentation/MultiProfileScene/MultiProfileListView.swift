@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct MultiProfileListView: View {
+    @StateObject var viewModel: MultiProfileListViewModel
     
     @Environment(\.dismiss) var dismiss
-    
-    @EnvironmentObject var container: DIContainer
-    
-    @StateObject var viewModel: MultiProfileListViewModel
     
     var body: some View {
         ZStack {

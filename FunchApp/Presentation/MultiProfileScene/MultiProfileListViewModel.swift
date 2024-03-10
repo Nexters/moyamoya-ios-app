@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-protocol MultiProfileListDelegate: AnyObject {
-    func change(profile: Profile)
-}
-
 final class MultiProfileListViewModel: ObservableObject {
     
     enum Action {

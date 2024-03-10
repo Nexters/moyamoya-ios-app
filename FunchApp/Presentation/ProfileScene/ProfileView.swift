@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: ProfileViewModel
     @EnvironmentObject var diContainer: DIContainer
+    
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {

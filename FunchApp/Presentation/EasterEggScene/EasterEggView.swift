@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct EasterEggView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: EasterEggViewModel
 
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             Color.gray900
