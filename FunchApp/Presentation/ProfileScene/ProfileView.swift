@@ -128,7 +128,6 @@ struct ProfileView: View {
         .toolbarBackground(Color.gray900, for: .navigationBar)
     }
     
-    
     private func profileView(_ profile: Profile) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(profile.userCode)

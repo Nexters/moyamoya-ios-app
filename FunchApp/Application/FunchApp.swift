@@ -34,16 +34,15 @@ struct FunchApp: App {
                 }
                 .overlay {
                     if isSplashing {
-                        withAnimation(.easeOut) {
-                            SplashViewBuilder().body
-                        }
-                        
+                        SplashViewBuilder().body
                     }
                 }
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.35) {
-                    isSplashing.toggle()
+                    withAnimation(.easeInOut) {
+                        isSplashing.toggle()
+                    }
                 }
             }
             .environmentObject(container)

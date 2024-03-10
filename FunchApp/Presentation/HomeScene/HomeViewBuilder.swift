@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-final class HomeViewBuilder {
+final class HomeViewBuilder{
     
     private var container: DIContainer
     
     init(_ container: DIContainer) {
         self.container = container
+        
     }
     
     var body: some View {
-        let viewModel = makeViewModel()
-        let view = HomeView(viewModel: viewModel)
+        let view = HomeView(viewModel: self.makeViewModel())
         
         return view
     }
