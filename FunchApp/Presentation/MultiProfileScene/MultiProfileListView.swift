@@ -62,25 +62,7 @@ struct MultiProfileListView: View {
             viewModel.send(action: .load)
         }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
-            switch presentation {
-            case .create:
-                NavigationStack {
-                    ProfileEditorViewBuilder(container).body
-                }
-                .onDisappear {
-                    viewModel.send(action: .load)
-                }
-            case .home:
-                EmptyView()
-            }
-        }
-        .onReceive(viewModel.$presentation) {
-            switch $0 {
-            case .home:
-                container.paths.removeAll()
-            default:
-                break
-            }
+            MultiProfileListPresentationView(presentation: presentation)
         }
         .onReceive(viewModel.$dismiss) { isDismiss in
             if isDismiss { dismiss() }

@@ -20,6 +20,7 @@ enum HomePresentation: Hashable, Identifiable {
 struct HomePresentationView: View {
     @EnvironmentObject var container: DIContainer
     @State var presentation: HomePresentation
+    
     var viewModel: HomeViewModel
     
     var body: some View {
@@ -31,9 +32,6 @@ struct HomePresentationView: View {
                     delegate: viewModel
                 ).body
             }
-//            .onDisappear {
-//                viewModel.send(action: .load)
-//            }
         case let .matchResult(matchingInfo):
             NavigationStack {
                 MatchResultViewBuilder(
@@ -56,9 +54,6 @@ struct HomePresentationView: View {
                     delegate: viewModel
                 ).body
             }
-//            .onDisappear {
-//                viewModel.send(action: .load)
-//            }
         }
     }
 }
