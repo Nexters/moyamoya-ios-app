@@ -17,7 +17,8 @@ final class HomeViewBuilder{
     }
     
     var body: some View {
-        let view = HomeView(viewModel: self.makeViewModel())
+        let viewModel = makeViewModel()
+        let view = HomeView(viewModel: viewModel)
         
         return view
     }

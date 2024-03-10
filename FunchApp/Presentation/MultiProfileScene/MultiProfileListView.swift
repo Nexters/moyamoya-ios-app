@@ -82,12 +82,15 @@ struct MultiProfileListView: View {
                 break
             }
         }
+        .onReceive(viewModel.$dismiss) { isDismiss in
+            if isDismiss { dismiss() }
+        }
         .toolbarBackground(Color.gray900, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    dismiss()
+                    viewModel.send(action: .dismiss)
                 } label: {
                     Image(.iconX)
                 }

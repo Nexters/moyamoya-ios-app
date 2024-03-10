@@ -51,7 +51,10 @@ struct HomePresentationView: View {
             }
         case .multiProfile:
             NavigationStack {
-                MultiProfileListViewBuilder(container).body
+                MultiProfileListViewBuilder(
+                    container,
+                    delegate: viewModel
+                ).body
             }
 //            .onDisappear {
 //                viewModel.send(action: .load)

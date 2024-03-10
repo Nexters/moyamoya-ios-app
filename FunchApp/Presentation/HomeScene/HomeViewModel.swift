@@ -173,3 +173,9 @@ extension HomeViewModel: ProfileViewDelegate {
         self.send(action: .load)
     }
 }
+
+extension HomeViewModel: MultiProfileListDelegate {
+    func change(profile: Profile) {
+        self.send(action: .load)
+    }
+}
