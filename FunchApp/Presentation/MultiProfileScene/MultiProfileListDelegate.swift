@@ -8,5 +8,6 @@
 import Foundation
 
 protocol MultiProfileListDelegate: AnyObject {
+    /// 프로필 변경
     func change(profile: Profile)
 }

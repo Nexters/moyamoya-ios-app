@@ -97,6 +97,7 @@ final class ProfileViewModel: ObservableObject {
         case let .alert(type):
             showsAlert = true
             alertMessage = type
+            
         }
         
     }
