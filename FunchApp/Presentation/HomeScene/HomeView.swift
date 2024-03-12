@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    @EnvironmentObject var container: DIContainer
-    
     @StateObject var viewModel: HomeViewModel
     
     var body: some View {
@@ -102,37 +99,7 @@ struct HomeView: View {
             hideKeyboard()
         }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
-            switch presentation {
-            case .profile:
-                NavigationStack {
-                    ProfileViewBuilder(container).body
-                }
-                .onDisappear {
-                    viewModel.send(action: .load)
-                }
-            case let .matchResult(matchingInfo):
-                NavigationStack {
-                    MatchResultViewBuilder(
-                        container,
-                        matchingInfo: matchingInfo
-                    ).body
-                }
-            case .mbtiCollection:
-                NavigationStack {
-                    MBTIBoardViewBuilder(container).body
-                }
-            case .easterEgg:
-                NavigationStack {
-                    EasterEggViewBuilder(container).body
-                }
-            case .multiProfile:
-                NavigationStack {
-                    MultiProfileListViewBuilder(container).body
-                }
-                .onDisappear {
-                    viewModel.send(action: .load)
-                }
-            }
+            HomePresentationView(presentation: presentation, viewModel: self.viewModel)
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {

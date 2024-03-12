@@ -120,6 +120,8 @@
 		1ACE49802B5BA46600024336 /* ProfileRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE497F2B5BA46600024336 /* ProfileRepositoryImpl.swift */; };
 		1ACE49862B5BAB5F00024336 /* DefaultFunchButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */; };
 		1ACE498D2B5C111500024336 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE498C2B5C111500024336 /* ChipView.swift */; };
+		1AFB7D9C2B9D9387007E4D2F /* MultiProfileListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7D9B2B9D9387007E4D2F /* MultiProfileListDelegate.swift */; };
+		1AFB7D9E2B9D9481007E4D2F /* ProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7D9D2B9D9481007E4D2F /* ProfileViewDelegate.swift */; };
 		3E1E73EF2B7071030082386A /* SubwayStationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73EE2B7071030082386A /* SubwayStationRepositoryTests.swift */; };
 		3E1E73F12B70B3570082386A /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F02B70B3570082386A /* ChipButton.swift */; };
 		3E1E73F32B713B3A0082386A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E73F22B713B3A0082386A /* String+.swift */; };
@@ -257,6 +259,8 @@
 		1ACE497F2B5BA46600024336 /* ProfileRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepositoryImpl.swift; sourceTree = "<group>"; };
 		1ACE49852B5BAB5F00024336 /* DefaultFunchButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFunchButtonStyle.swift; sourceTree = "<group>"; };
 		1ACE498C2B5C111500024336 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		1AFB7D9B2B9D9387007E4D2F /* MultiProfileListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiProfileListDelegate.swift; sourceTree = "<group>"; };
+		1AFB7D9D2B9D9481007E4D2F /* ProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewDelegate.swift; sourceTree = "<group>"; };
 		3E1E73EE2B7071030082386A /* SubwayStationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayStationRepositoryTests.swift; sourceTree = "<group>"; };
 		3E1E73F02B70B3570082386A /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
 		3E1E73F22B713B3A0082386A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 		1AC7812D2B91E6CC00E298E3 /* MultiProfileScene */ = {
 			isa = PBXGroup;
 			children = (
+				1AFB7D9B2B9D9387007E4D2F /* MultiProfileListDelegate.swift */,
 				1AC781362B923EEA00E298E3 /* MultiProfileListViewBuilder.swift */,
 				1AC7812B2B91E6C900E298E3 /* MultiProfileListView.swift */,
 				1AC781342B923EC800E298E3 /* MultiProfileListViewModel.swift */,
@@ -596,6 +601,7 @@
 		1ACE495E2B5B9EFF00024336 /* ProfileScene */ = {
 			isa = PBXGroup;
 			children = (
+				1AFB7D9D2B9D9481007E4D2F /* ProfileViewDelegate.swift */,
 				1A83F0302B80E6CB00E6EC89 /* ProfileViewBuilder.swift */,
 				1A83F0322B80E6E000E6EC89 /* ProfileViewModel.swift */,
 				1ACE49552B5B9E9300024336 /* ProfileView.swift */,
@@ -1037,6 +1043,7 @@
 				1A83F0382B80E8E200E6EC89 /* SplashViewBuilder.swift in Sources */,
 				1A44AAAC2B67EFCD006D8894 /* CreateProfile.Req.swift in Sources */,
 				1A8F13092B8B7DAB001E0237 /* LinkStringSet.swift in Sources */,
+				1AFB7D9E2B9D9481007E4D2F /* ProfileViewDelegate.swift in Sources */,
 				1AC781202B90E81500E298E3 /* RepositoryError.swift in Sources */,
 				1A8F12F12B87A33C001E0237 /* MBTIBoardUseCase.swift in Sources */,
 				1A7B069E2B5D702D0024356C /* APIEnvironment.swift in Sources */,
@@ -1053,6 +1060,7 @@
 				1A83F02C2B80E1BD00E6EC89 /* HomeViewModel.swift in Sources */,
 				3EA875682B86492B00713C64 /* DeleteProfile.Res.swift in Sources */,
 				1A7B06A22B5D8C710024356C /* MatchingInfo.swift in Sources */,
+				1AFB7D9C2B9D9387007E4D2F /* MultiProfileListDelegate.swift in Sources */,
 				1ACE497D2B5BA3B600024336 /* CreateProfile.Res.swift in Sources */,
 				1A83F02E2B80E26B00E6EC89 /* MatchResultViewBuilder.swift in Sources */,
 				1A8F12EA2B8784B8001E0237 /* ProfileEditorPresentation.swift in Sources */,

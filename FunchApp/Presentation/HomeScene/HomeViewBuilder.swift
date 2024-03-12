@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class HomeViewBuilder {
+final class HomeViewBuilder{
     
     private var container: DIContainer
     

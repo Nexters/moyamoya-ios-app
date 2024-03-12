@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct MultiProfileListView: View {
+    @StateObject var viewModel: MultiProfileListViewModel
     
     @Environment(\.dismiss) var dismiss
-    
-    @EnvironmentObject var container: DIContainer
-    
-    @StateObject var viewModel: MultiProfileListViewModel
     
     var body: some View {
         ZStack {
@@ -62,32 +59,17 @@ struct MultiProfileListView: View {
             viewModel.send(action: .load)
         }
         .fullScreenCover(item: $viewModel.presentation) { presentation in
-            switch presentation {
-            case .create:
-                NavigationStack {
-                    ProfileEditorViewBuilder(container).body
-                }
-                .onDisappear {
-                    viewModel.send(action: .load)
-                }
-            case .home:
-                EmptyView()
-            }
+            MultiProfileListPresentationView(presentation: presentation)
         }
-        .onReceive(viewModel.$presentation) {
-            switch $0 {
-            case .home:
-                container.paths.removeAll()
-            default:
-                break
-            }
+        .onReceive(viewModel.$dismiss) { isDismiss in
+            if isDismiss { dismiss() }
         }
         .toolbarBackground(Color.gray900, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    dismiss()
+                    viewModel.send(action: .dismiss)
                 } label: {
                     Image(.iconX)
                 }

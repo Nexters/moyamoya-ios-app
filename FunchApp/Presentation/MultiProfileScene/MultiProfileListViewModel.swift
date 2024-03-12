@@ -13,6 +13,7 @@ final class MultiProfileListViewModel: ObservableObject {
         case load
         case selection(Profile)
         case presentation(MultiProfileListPresentation)
+        case dismiss
     }
     
     @Published var presentation: MultiProfileListPresentation?
@@ -20,11 +21,17 @@ final class MultiProfileListViewModel: ObservableObject {
     @Published var profiles: [Profile] = [.empty, .testableValue]
     /// 유저가 선택한 프로필
     @Published var selection: Profile?
+    @Published var dismiss: Bool = false
     
     private var container: DIContainer
-
-    init(container: DIContainer) {
+    weak var delegate: MultiProfileListDelegate?
+    
+    init(
+        container: DIContainer,
+        delegate: MultiProfileListDelegate
+    ) {
         self.container = container
+        self.delegate = delegate
     }
     
     func send(action: Action) {
@@ -42,6 +49,11 @@ final class MultiProfileListViewModel: ObservableObject {
         
         case let .presentation(presentation):
             self.presentation = presentation
+            
+        case .dismiss:
+            guard let profile = self.selection else { return }
+            delegate?.change(profile: profile)
+            dismiss = true
         }
     }
 }

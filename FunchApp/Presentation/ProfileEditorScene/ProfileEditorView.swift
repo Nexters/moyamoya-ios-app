@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ProfileEditorView: View {
+    @StateObject var viewModel: ProfileEditorViewModel
     
     @Environment(\.dismiss) var dismiss
     
-    @StateObject var viewModel: ProfileEditorViewModel
-        
     var body: some View {
         ZStack {
             Color.gray900

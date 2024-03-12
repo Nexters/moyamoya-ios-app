@@ -9,11 +9,10 @@ import SwiftUI
 import SwiftUIPager
 
 struct MatchResultView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: MatchResultViewModel
     @StateObject var page: Page = .first()
+    
+    @Environment(\.dismiss) var dismiss
     
     var viewSize: CGSize = UIScreen.main.bounds.size
     
