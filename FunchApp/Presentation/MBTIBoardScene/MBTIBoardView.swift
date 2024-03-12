@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct MBTIBoardView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: MBTIBoardViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {

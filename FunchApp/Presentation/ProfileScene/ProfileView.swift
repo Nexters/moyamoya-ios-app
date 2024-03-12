@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: ProfileViewModel
     @EnvironmentObject var diContainer: DIContainer
+    
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -127,7 +126,6 @@ struct ProfileView: View {
         }
         .toolbarBackground(Color.gray900, for: .navigationBar)
     }
-    
     
     private func profileView(_ profile: Profile) -> some View {
         VStack(alignment: .leading, spacing: 0) {

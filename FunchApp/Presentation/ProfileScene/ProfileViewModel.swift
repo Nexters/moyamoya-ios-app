@@ -39,15 +39,18 @@ final class ProfileViewModel: ObservableObject {
     
     private var useCase: DeleteProfileUseCase
     private var container: DIContainer
+    weak var delegate: ProfileViewDelegate?
     
     private var cancellables = Set<AnyCancellable>()
     
     init(
         container: DIContainer,
-        useCase: DeleteProfileUseCase
+        useCase: DeleteProfileUseCase,
+        delegate: ProfileViewDelegate
     ) {
         self.container = container
         self.useCase = useCase
+        self.delegate = delegate
     }
     
     func send(action: Action) {
@@ -64,7 +67,6 @@ final class ProfileViewModel: ObservableObject {
             
         case .deleteProfile:
             guard let userId = profile?.userId else { return }
-            
             useCase.execute(requestId: userId)
                 .sink { _ in
                     
@@ -79,8 +81,8 @@ final class ProfileViewModel: ObservableObject {
                         self.presentation = .onboarding
                     } else {
                         self.presentation = .home
+                        delegate?.delete(profile: profile)
                     }
-                    
                 }
                 .store(in: &cancellables)
             
@@ -95,6 +97,7 @@ final class ProfileViewModel: ObservableObject {
         case let .alert(type):
             showsAlert = true
             alertMessage = type
+            
         }
         
     }

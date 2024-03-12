@@ -18,6 +18,11 @@ final class DIContainer: ObservableObject {
         let subwayStationRepository: SubwayStationRepository
     }
     
+    struct Delegate {
+        
+//        var ProfileViewDelegate: ProfileViewDelegate = ProfileDelegate
+    }
+    
     private(set) var dependency: Dependency
     
     private(set) var openUrl: OpenURLProtocol

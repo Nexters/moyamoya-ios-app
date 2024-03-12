@@ -59,6 +59,7 @@ final class HomeViewModel: ObservableObject {
     
     private var useCase: UseCase
     private var container: DIContainer
+    private var cancellables = Set<AnyCancellable>()
     
     struct UseCase {
         let fetchProfile: DefaultFetchProfileUseCase
@@ -71,8 +72,6 @@ final class HomeViewModel: ObservableObject {
         self.container = container
     }
 
-    var cancellables = Set<AnyCancellable>()
-    
     func send(action: Action) {
         switch action {
         case .load:
@@ -166,5 +165,17 @@ final class HomeViewModel: ObservableObject {
                 guard let self else { return }
                 self.profile = profile
             }.store(in: &cancellables)
+    }
+}
+
+extension HomeViewModel: ProfileViewDelegate {
+    func delete(profile: Profile) {
+        self.send(action: .load)
+    }
+}
+
+extension HomeViewModel: MultiProfileListDelegate {
+    func change(profile: Profile) {
+        self.send(action: .load)
     }
 }

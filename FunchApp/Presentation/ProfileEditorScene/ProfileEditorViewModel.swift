@@ -162,7 +162,6 @@ final class ProfileEditorViewModel: ObservableObject {
     }
 }
 
-
 extension ProfileEditorViewModel {
     private func makeCreateUserQuery() -> CreateUserQuery {
         let major = majors.map { major in
